@@ -1,0 +1,632 @@
+e3r11p9% mkdir ex09
+e3r11p9% cp ex08/clean ex09/ft_magic        
+e3r11p9% vi ex09/ft_magic 
+e3r11p9% cat ex09/ft_magic        
+file * | grep '42 file' 
+e3r11p9% file * | grep '42 file'
+e3r11p9% file * | grep 'text'   
+e3r11p9% tar -cf Shell00.tar *
+e3r11p9% ls -l
+total 92
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  6 15:03 ex00
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  6 13:32 ex01
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb  6 14:06 ex02
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  6 14:14 ex03
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  6 14:44 ex04
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  6 18:05 ex05
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  6 18:19 ex06
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  6 18:48 ex07
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  6 19:36 ex08
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  6 19:53 ex09
+-rw-r--r-- 1 hauerbac 2023_paris     0 Feb  6 19:35 find
+-rw-r--r-- 1 hauerbac 2023_paris 51200 Feb  6 19:59 Shell00.tar
+e3r11p9% cd ../Downloads 
+e3r11p9% git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint: 
+hint: 	git config --global init.defaultBranch <name>
+hint: 
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint: 
+hint: 	git branch -m <name>
+Initialized empty Git repository in /mnt/nfs/homes/hauerbac/Downloads/.git/
+e3r11p9% git remote add origin https://github.com/HELENE-AUERBACH/Piscine_42.git 
+e3r11p9% git add .
+e3r11p9% git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   Shell00.tar
+	new file:   Traces_shell00.txt
+	new file:   resources.tar.gz
+
+e3r11p9% git commit -m "First day"
+[master (root-commit) 8c60488] First day
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 3 files changed, 649 insertions(+)
+ create mode 100644 Shell00.tar
+ create mode 100644 Traces_shell00.txt
+ create mode 100644 resources.tar.gz
+e3r11p9% git push -u origin main
+error: src refspec main does not match any
+error: failed to push some refs to 'https://github.com/HELENE-AUERBACH/Piscine_42.git'
+e3r11p9% git branch -M main
+e3r11p9% git push -u origin main
+Username for 'https://github.com': HELENE-AUERBACH
+Password for 'https://HELENE-AUERBACH@github.com': 
+remote: Support for password authentication was removed on August 13, 2021.
+remote: Please see https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories#cloning-with-https-urls for information on currently recommended modes of authentication.
+fatal: Authentication failed for 'https://github.com/HELENE-AUERBACH/Piscine_42.git/'
+e3r11p9% pwd  
+/mnt/nfs/homes/hauerbac/Downloads
+e3r11p9% cd ../shell_00 
+e3r11p9% ls -l
+total 40
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 14:44 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 18:05 ex05
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 18:19 ex06
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 18:48 ex07
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 19:36 ex08
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 19:53 ex09
+-rw-r--r-- 1 hauerbac 2023_paris    0 Feb  6 19:35 find
+e3r11p9% ls -al
+total 52
+drwxr-xr-x 13 hauerbac 2023_paris 4096 Feb  6 20:00 .
+drwx------ 19 hauerbac 2023_paris 4096 Feb  6 19:53 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:44 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:05 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:19 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:48 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:36 ex08
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:53 ex09
+-rw-r--r--  1 hauerbac 2023_paris    0 Feb  6 19:35 find
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb  6 19:44 .git
+e3r11p9% git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ex01/testShell00
+	ex02/test0/
+	ex02/test1
+	ex02/test3
+	ex02/test4
+	ex02/test5
+	ex02/test6
+	ex07/
+	ex08/#titi#
+	ex08/find
+	ex08/toto~
+	ex09/
+	find
+
+nothing added to commit but untracked files present (use "git add" to track)
+e3r11p9% git log
+commit 586c9b6bca7d497402cbf181d1c48d8e3fa0926d (HEAD -> master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 19:44:49 2023 +0100
+
+    Addition of ex08 file
+
+commit 8a1ed26b833760b560e9978146d11deb2085f59d
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 18:22:11 2023 +0100
+
+    Addition of ex06 file
+
+commit 8dc80648bd586c2093e21a392734df251895ad14
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 18:06:57 2023 +0100
+
+    Addition of ex05 file
+
+commit 4ab285a724d1b99add6fae9129ce643dd5162c90
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:53:51 2023 +0100
+
+    Addition of ex04 file
+
+commit 0818e103e1b3179641c37ea1c57f92628a187010
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:53:13 2023 +0100
+
+    Addition of ex03 file
+
+commit f5fca6af0a7ae0f7a67bdac430cbae991247c6ce
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:52:15 2023 +0100
+
+    Addition of ex02 file
+
+commit 1dba46b2bf89384ffc34f5f005e38766a054d9cd
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:51:29 2023 +0100
+
+    Addition of ex01 file
+
+commit d2c55ab861e01098a833bab22e03030827130cb6
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:48:55 2023 +0100
+
+    Git init and addition of ex00 file
+e3r11p9% git push
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+e3r11p9% git push master
+fatal: 'master' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+e3r11p9% man git
+e3r11p9% man git-branches
+No manual entry for git-branches
+e3r11p9% man git-branch  
+e3r11p9% git branch -l
+* master
+e3r11p9% git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ex01/testShell00
+	ex02/test0/
+	ex02/test1
+	ex02/test3
+	ex02/test4
+	ex02/test5
+	ex02/test6
+	ex07/
+	ex08/#titi#
+	ex08/find
+	ex08/toto~
+	ex09/
+	find
+
+nothing added to commit but untracked files present (use "git add" to track)
+e3r11p9% git push 
+fatal: No configured push destination.
+Either specify the URL from the command-line or configure a remote repository using
+
+    git remote add <name> <url>
+
+and then push using the remote name
+
+    git push <name>
+
+e3r11p9% git push main
+fatal: 'main' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+e3r11p9% git push master
+fatal: 'master' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+e3r11p9% git push origin master
+fatal: 'origin' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+e3r11p9% git log
+commit 586c9b6bca7d497402cbf181d1c48d8e3fa0926d (HEAD -> master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 19:44:49 2023 +0100
+
+    Addition of ex08 file
+
+commit 8a1ed26b833760b560e9978146d11deb2085f59d
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 18:22:11 2023 +0100
+
+    Addition of ex06 file
+
+commit 8dc80648bd586c2093e21a392734df251895ad14
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 18:06:57 2023 +0100
+
+    Addition of ex05 file
+
+commit 4ab285a724d1b99add6fae9129ce643dd5162c90
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:53:51 2023 +0100
+
+    Addition of ex04 file
+e3r11p9% 
+e3r11p9% ls -al
+total 52
+drwxr-xr-x 13 hauerbac 2023_paris 4096 Feb  6 20:00 .
+drwx------ 19 hauerbac 2023_paris 4096 Feb  6 20:24 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:44 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:05 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:19 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:48 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:36 ex08
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:53 ex09
+-rw-r--r--  1 hauerbac 2023_paris    0 Feb  6 19:35 find
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb  6 20:20 .git
+e3r11p9% ls -al .git
+total 52
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb  6 20:20 .
+drwxr-xr-x 13 hauerbac 2023_paris 4096 Feb  6 20:00 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:08 branches
+-rw-r--r--  1 hauerbac 2023_paris   22 Feb  6 19:44 COMMIT_EDITMSG
+-rw-r--r--  1 hauerbac 2023_paris   92 Feb  6 15:08 config
+-rw-r--r--  1 hauerbac 2023_paris   73 Feb  6 15:08 description
+-rw-r--r--  1 hauerbac 2023_paris   23 Feb  6 15:08 HEAD
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:08 hooks
+-rw-r--r--  1 hauerbac 2023_paris  953 Feb  6 19:44 index
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:08 info
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  6 17:48 logs
+drwxr-xr-x 36 hauerbac 2023_paris 4096 Feb  6 19:44 objects
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 15:08 refs
+e3r11p9% cat .git/config
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+e3r11p9% ls -al .git/branches
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  6 15:08 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb  6 20:20 ..
+e3r11p9% git status            
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ex01/testShell00
+	ex02/test0/
+	ex02/test1
+	ex02/test3
+	ex02/test4
+	ex02/test5
+	ex02/test6
+	ex07/
+	ex08/#titi#
+	ex08/find
+	ex08/toto~
+	ex09/
+	find
+
+nothing added to commit but untracked files present (use "git add" to track)
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac git_first_day
+Cloning into 'git_first_day'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% ls -al
+total 56
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  6 20:30 .
+drwx------ 19 hauerbac 2023_paris 4096 Feb  6 20:24 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:44 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:05 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:19 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:48 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:36 ex08
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:53 ex09
+-rw-r--r--  1 hauerbac 2023_paris    0 Feb  6 19:35 find
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb  6 20:26 .git
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  6 20:30 git_first_day
+e3r11p9% ls -al git_first_day 
+total 12
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  6 20:30 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  6 20:30 ..
+drwxr-xr-x  7 hauerbac 2023_paris 4096 Feb  6 20:30 .git
+e3r11p9% cd git_first_day 
+e3r11p9% git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+e3r11p9% ls
+e3r11p9% git add ex00/z
+fatal: pathspec 'ex00/z' did not match any files
+e3r11p9% git add ../ex00/z
+fatal: ../ex00/z: '../ex00/z' is outside repository at '/mnt/nfs/homes/hauerbac/shell_00/git_first_day'
+e3r11p9% cp ../ex00/z .
+e3r11p9% ls
+z
+e3r11p9% rm z
+e3r11p9% ls
+e3r11p9% mkdir ex00
+e3r11p9% cp ../ex00/z ex00/z
+e3r11p9% ls
+ex00
+e3r11p9% ls -l ex00
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 2 Feb  6 20:35 z
+e3r11p9% git add ex00/z
+e3r11p9% git commit -m "Addition of ex00 file"
+[master (root-commit) f697ce7] Addition of ex00 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 ex00/z
+e3r11p9% git log
+commit f697ce796349899355efa5119331f01eccda32ca (HEAD -> master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 20:37:31 2023 +0100
+
+    Addition of ex00 file
+e3r11p9% git status
+On branch master
+Your branch is based on 'origin/master', but the upstream is gone.
+  (use "git branch --unset-upstream" to fixup)
+
+nothing to commit, working tree clean
+e3r11p9% git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 268 bytes | 134.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+ * [new branch]      master -> master
+e3r11p9% mkdir ex01
+e3r11p9% cp ex01/testShell00.tar ex01/testShell00.tar
+cp: cannot stat 'ex01/testShell00.tar': No such file or directory
+e3r11p9% cp ../ex01/testShell00.tar ex01/testShell00.tar
+e3r11p9% git add ex01/testShell00.tar
+e3r11p9% git commit -m "Addition of ex01 file"          
+[master c7ad206] Addition of ex01 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 ex01/testShell00.tar
+e3r11p9% git push                                       
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 477 bytes | 238.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   f697ce7..c7ad206  master -> master
+e3r11p9% mkdir ex02
+e3r11p9% cp ../ex02/exo2.tar ex02/exo2.tar
+e3r11p9% git add ex02/exo2.tar               
+e3r11p9% git commit -m "Addition of ex02 file" 
+[master 5b2b48f] Addition of ex02 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 ex02/exo2.tar
+e3r11p9% git push                           
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 680 bytes | 680.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   c7ad206..5b2b48f  master -> master
+e3r11p9% mkdir ex03                         
+e3r11p9% cp ../ex03/id_rsa_pub ex03/id_rsa_pub
+e3r11p9% git add ex03/id_rsa_pub         
+e3r11p9% git commit -m "Addition of ex03 file" 
+[master e8dcd24] Addition of ex03 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 ex03/id_rsa_pub
+e3r11p9% git push                             
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 811 bytes | 811.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   5b2b48f..e8dcd24  master -> master
+e3r11p9% mkdir ex04                           
+e3r11p9% cp ../ex04/midLS ex04/midLS
+e3r11p9% git add ex04/midLS                 
+e3r11p9% git commit -m "Addition of ex04 file"
+[master f919799] Addition of ex04 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100755 ex04/midLS
+e3r11p9% git push                             
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 356 bytes | 356.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   e8dcd24..f919799  master -> master
+e3r11p9% mkdir ex05                         
+e3r11p9% cp ../ex05/git_commit.sh ex05/git_commit.sh
+e3r11p9% git add ex05/git_commit.sh      
+e3r11p9% git commit -m "Addition of ex05 file"
+[master 88f1d32] Addition of ex05 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100755 ex05/git_commit.sh
+e3r11p9% git push                                   
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 373 bytes | 373.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   f919799..88f1d32  master -> master
+e3r11p9% mkdir ex06                                 
+e3r11p9% cp ../ex06/git_ignore.sh ex06/git_ignore.sh
+e3r11p9% git add ex06/git_ignore.sh            
+e3r11p9% git commit -m "Addition of ex06 file"      
+[master 4002336] Addition of ex06 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100755 ex06/git_ignore.sh
+e3r11p9% git push                                   
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 393 bytes | 393.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   88f1d32..4002336  master -> master
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+e3r11p9% git ls
+git: 'ls' is not a git command. See 'git --help'.
+
+The most similar command is
+	log
+e3r11p9% git show
+commit 40023368becde911acf363460a808fc5ffc3dff7 (HEAD -> master, origin/master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 20:48:40 2023 +0100
+
+    Addition of ex06 file
+
+diff --git a/ex06/git_ignore.sh b/ex06/git_ignore.sh
+new file mode 100755
+index 0000000..9ba02b6
+--- /dev/null
++++ b/ex06/git_ignore.sh
+@@ -0,0 +1,2 @@
++#!/bin/sh
++git ls-files --others --ignored --exclude-standard
+e3r11p9% 
