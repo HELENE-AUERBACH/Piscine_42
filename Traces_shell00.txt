@@ -1,0 +1,649 @@
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd shell_00
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  git_sh00  git_shell_00
+e3r11p9% cd git_shell_00
+e3r11p9% ls
+e3r11p9% ls -l
+total 0
+e3r11p9% cd ../git_sh00
+e3r11p9% ls -l
+total 0
+e3r11p9% cd ../ex00
+e3r11p9% ls -l
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 2 Feb  6 15:03 z
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_00
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% ls -l     
+total 36
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Desktop
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Documents
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 12:04 Downloads
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Music
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Pictures
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Public
+lrwxrwxrwx  1 hauerbac 2023_paris   32 Feb  6 17:04 sgoinfre -> /sgoinfre/goinfre/Perso/hauerbac
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  6 15:15 shell_00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Templates
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Videos
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac git_shell_00
+Cloning into 'git_shell_00'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% ls -l
+total 40
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Desktop
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Documents
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 12:04 Downloads
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  6 17:14 git_shell_00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Music
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Pictures
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Public
+lrwxrwxrwx  1 hauerbac 2023_paris   32 Feb  6 17:04 sgoinfre -> /sgoinfre/goinfre/Perso/hauerbac
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  6 15:15 shell_00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Templates
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Videos
+e3r11p9% ls -l git_shell_00
+total 0
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% git add .
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+e3r11p9% rmdir git_shell_00 
+rmdir: failed to remove 'git_shell_00': Directory not empty
+e3r11p9% ls -al git_shell_00 
+total 12
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  6 17:14 .
+drwx------ 20 hauerbac 2023_paris 4096 Feb  6 17:14 ..
+drwxr-xr-x  7 hauerbac 2023_paris 4096 Feb  6 17:15 .git
+e3r11p9% git logs
+git: 'logs' is not a git command. See 'git --help'.
+
+The most similar command is
+	log
+e3r11p9% git log
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+e3r11p9% export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
+e3r11p9% git log                                 
+fatal: not a git repository (or any of the parent directories): .git
+e3r11p9% cd ..
+e3r11p9% git log
+fatal: not a git repository (or any of the parent directories): .git
+e3r11p9% cd ..
+e3r11p9% ls -al
+total 1280
+drwxr-xr-x    5 root   root   4096 Oct  4 17:31 .
+drwxr-xr-x    3 root   root   4096 Jan 16 20:16 ..
+-rw-------    1 root   root   8192 Aug  2  2022 aquota.group
+-rw-------    1 root   root   7168 Aug  2  2022 aquota.group~
+-rw-------    1 root   root 683008 Aug  2  2022 aquota.user
+-rw-------    1 root   root 398336 Aug  2  2022 aquota.user~
+drwxr-xr-x 6352 root   root 139264 Feb  6 10:16 homes
+drwx------    2 root   root  16384 Apr 25  2022 lost+found
+drwx------    2 nobody tape  36864 Jun 27  2022 targets
+e3r11p9% cd ~
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% rmdir -r git_shell_00 
+rmdir: invalid option -- 'r'
+Try 'rmdir --help' for more information.
+e3r11p9% rmdir -R git_shell_00
+rmdir: invalid option -- 'R'
+Try 'rmdir --help' for more information.
+e3r11p9% rm -R git_shell_00 
+e3r11p9% rmdir git_shell_00                     
+rmdir: failed to remove 'git_shell_00': No such file or directory
+e3r11p9% ls -al
+total 292
+drwx------   19 hauerbac 2023_paris   4096 Feb  6 17:30 .
+drwxr-xr-x 6352 root     root       139264 Feb  6 10:16 ..
+lrwxrwxrwx    1 hauerbac 2023_paris     24 Feb  6 10:25 .cache -> /goinfre/hauerbac/.cache
+drwx------   22 hauerbac 2023_paris   4096 Feb  6 17:13 .config
+drwxr-xr-x    2 hauerbac 2023_paris   4096 Feb  6 10:25 Desktop
+drwxr-xr-x    3 hauerbac 2023_paris   4096 Feb  6 10:25 .docker
+drwxr-xr-x    2 hauerbac 2023_paris   4096 Feb  6 10:25 Documents
+drwxr-xr-x    2 hauerbac 2023_paris   4096 Feb  6 12:04 Downloads
+drwx------    2 hauerbac 2023_paris   4096 Feb  6 12:06 .fr-Gh5KSF
+drwx------    2 hauerbac 2023_paris   4096 Feb  6 12:05 .fr-tHb27r
+drwx------    2 hauerbac 2023_paris   4096 Feb  6 17:13 .gnupg
+-rw-r--r--    1 hauerbac 2023_paris     20 Feb  6 14:41 .lesshst
+drwx------    3 hauerbac 2023_paris   4096 Feb  6 10:25 .local
+drwx------    4 hauerbac 2023_paris   4096 Feb  6 10:29 .mozilla
+drwxr-xr-x    2 hauerbac 2023_paris   4096 Feb  6 10:25 Music
+drwxr-xr-x    2 hauerbac 2023_paris   4096 Feb  6 10:25 Pictures
+drwxr-xr-x    2 hauerbac 2023_paris   4096 Feb  6 10:25 Public
+lrwxrwxrwx    1 hauerbac 2023_paris     32 Feb  6 17:04 sgoinfre -> /sgoinfre/goinfre/Perso/hauerbac
+drwxr-xr-x   11 hauerbac 2023_paris   4096 Feb  6 15:15 shell_00
+drwx------    2 hauerbac 2023_paris   4096 Feb  6 17:15 .ssh
+drwxr-xr-x    2 hauerbac 2023_paris   4096 Feb  6 10:25 Templates
+drwxr-xr-x    2 hauerbac 2023_paris   4096 Feb  6 10:25 Videos
+-rw-------    1 hauerbac 2023_paris  10982 Feb  6 15:03 .viminfo
+-rw-------    1 hauerbac 2023_paris     72 Feb  6 17:04 .Xauthority
+-rw-------    1 hauerbac 2023_paris   1140 Feb  6 17:04 .xsession-errors
+-rw-------    1 hauerbac 2023_paris   1350 Feb  6 10:25 .xsession-errors.old
+-rw-r--r--    1 hauerbac 2023_paris  49751 Feb  6 17:05 .zcompdump
+-rw-r--r--    1 hauerbac 2023_paris      0 Feb  6 10:25 .zshrc
+e3r11p9% cd shell_00 
+e3r11p9% ls -al
+total 44
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  6 15:15 .
+drwx------ 19 hauerbac 2023_paris 4096 Feb  6 17:30 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:44 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:56 ex05
+drwxr-xr-x  7 hauerbac 2023_paris 4096 Feb  6 15:08 .git
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  6 12:02 git_sh00
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  6 15:15 git_shell_00
+e3r11p9% rm -R git_sh00
+e3r11p9% rm -R git_shell_00 
+e3r11p9% ls -al            
+total 36
+drwxr-xr-x  9 hauerbac 2023_paris 4096 Feb  6 17:34 .
+drwx------ 19 hauerbac 2023_paris 4096 Feb  6 17:30 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:44 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:56 ex05
+drwxr-xr-x  7 hauerbac 2023_paris 4096 Feb  6 15:08 .git
+e3r11p9% git stqtus
+git: 'stqtus' is not a git command. See 'git --help'.
+
+The most similar command is
+	status
+e3r11p9% git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ex00/
+	ex01/
+	ex02/
+	ex03/
+	ex04/
+	ex05/
+
+nothing added to commit but untracked files present (use "git add" to track)
+e3r11p9% git add ex00/z
+e3r11p9% git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   ex00/z
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ex01/
+	ex02/
+	ex03/
+	ex04/
+	ex05/
+
+e3r11p9% git commit -m "Git init and addition of ex00 file"
+[master (root-commit) d2c55ab] Git init and addition of ex00 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 ex00/z
+e3r11p9% git status
+On branch master
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ex01/
+	ex02/
+	ex03/
+	ex04/
+	ex05/
+
+nothing added to commit but untracked files present (use "git add" to track)
+e3r11p9% git log
+commit d2c55ab861e01098a833bab22e03030827130cb6 (HEAD -> master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:48:55 2023 +0100
+
+    Git init and addition of ex00 file
+e3r11p9% git add ex01/testShell00.tar
+e3r11p9% git commit -m "Addition of ex01 file"
+[master 1dba46b] Addition of ex01 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 ex01/testShell00.tar
+e3r11p9% git add ex02/exo2.tar                
+e3r11p9% git commit -m "Addition of ex02 file"
+[master f5fca6a] Addition of ex02 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 ex02/exo2.tar
+e3r11p9% git add ex03/id_rsa_pub              
+e3r11p9% git commit -m "Addition of ex03 file"
+[master 0818e10] Addition of ex03 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 ex03/id_rsa_pub
+e3r11p9% git add ex04/midLS                   
+e3r11p9% git commit -m "Addition of ex04 file"
+[master 4ab285a] Addition of ex04 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100755 ex04/midLS
+e3r11p9%  bash ex05/git_commit.sh | cat -e
+4ab285a$
+0818e10$
+f5fca6a$
+1dba46b$
+d2c55ab$
+e3r11p9%  cat ex05/git_commit.sh          
+#!/bin/sh
+git log -n5 --format="%h"
+e3r11p9% vi ex05/git_commit.sh
+e3r11p9% cat ex05/git_commit.sh 
+#!/bin/sh
+git log -n5
+e3r11p9% bash ex05/git_commit.sh | cat -e 
+commit 4ab285a724d1b99add6fae9129ce643dd5162c90$
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>$
+Date:   Mon Feb 6 17:53:51 2023 +0100$
+$
+    Addition of ex04 file$
+$
+commit 0818e103e1b3179641c37ea1c57f92628a187010$
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>$
+Date:   Mon Feb 6 17:53:13 2023 +0100$
+$
+    Addition of ex03 file$
+$
+commit f5fca6af0a7ae0f7a67bdac430cbae991247c6ce$
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>$
+Date:   Mon Feb 6 17:52:15 2023 +0100$
+$
+    Addition of ex02 file$
+$
+commit 1dba46b2bf89384ffc34f5f005e38766a054d9cd$
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>$
+Date:   Mon Feb 6 17:51:29 2023 +0100$
+$
+    Addition of ex01 file$
+$
+commit d2c55ab861e01098a833bab22e03030827130cb6$
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>$
+Date:   Mon Feb 6 17:48:55 2023 +0100$
+$
+    Git init and addition of ex00 file$
+e3r11p9% man git
+e3r11p9% man git-log
+e3r11p9% vi ex05/git_commit.sh          
+e3r11p9% cat ex05/git_commit.sh          
+#!/bin/sh
+git log -n5 --format="%H"
+e3r11p9% bash ex05/git_commit.sh | cat -e
+4ab285a724d1b99add6fae9129ce643dd5162c90$
+0818e103e1b3179641c37ea1c57f92628a187010$
+f5fca6af0a7ae0f7a67bdac430cbae991247c6ce$
+1dba46b2bf89384ffc34f5f005e38766a054d9cd$
+d2c55ab861e01098a833bab22e03030827130cb6$
+e3r11p9% git add ex05/git_commit.sh           
+e3r11p9% git commit -m "Addition of ex05 file"
+[master 8dc8064] Addition of ex05 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100755 ex05/git_commit.sh
+e3r11p9% git log
+commit 8dc80648bd586c2093e21a392734df251895ad14 (HEAD -> master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 18:06:57 2023 +0100
+
+    Addition of ex05 file
+
+commit 4ab285a724d1b99add6fae9129ce643dd5162c90
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:53:51 2023 +0100
+
+    Addition of ex04 file
+
+commit 0818e103e1b3179641c37ea1c57f92628a187010
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:53:13 2023 +0100
+
+    Addition of ex03 file
+
+commit f5fca6af0a7ae0f7a67bdac430cbae991247c6ce
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:52:15 2023 +0100
+
+    Addition of ex02 file
+
+commit 1dba46b2bf89384ffc34f5f005e38766a054d9cd
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:51:29 2023 +0100
+
+    Addition of ex01 file
+
+commit d2c55ab861e01098a833bab22e03030827130cb6
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 17:48:55 2023 +0100
+
+    Git init and addition of ex00 file
+e3r11p9% bash ex05/git_commit.sh | cat -e  
+8dc80648bd586c2093e21a392734df251895ad14$
+4ab285a724d1b99add6fae9129ce643dd5162c90$
+0818e103e1b3179641c37ea1c57f92628a187010$
+f5fca6af0a7ae0f7a67bdac430cbae991247c6ce$
+1dba46b2bf89384ffc34f5f005e38766a054d9cd$
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05
+e3r11p9% mkdir ex06
+e3r11p9% cp ex05/git_commit.sh ex06/git_ignore.sh
+e3r11p9% vi ex06/git_ignore.sh 
+e3r11p9% cat ex06/git_ignore.sh 
+#!/bin/sh
+git log --ignored
+e3r11p9% bash git_ignore.sh | cat -e 
+bash: git_ignore.sh: No such file or directory
+e3r11p9% bash ex06/git_ignore.sh | cat -e
+fatal: unrecognized argument: --ignored
+e3r11p9% vi ex06/git_ignore.sh          
+e3r11p9% cat ex06/git_ignore.sh          
+#!/bin/sh
+git ls-files --ignored
+e3r11p9% bash ex06/git_ignore.sh | cat -e
+fatal: ls-files -i must be used with either -o or -c
+e3r11p9% vi ex06/git_ignore.sh          
+e3r11p9% bash ex06/git_ignore.sh | cat -e
+fatal: ls-files --ignored needs some exclude pattern
+e3r11p9% cat ex06/git_ignore.sh          
+#!/bin/sh
+git ls-files --others --ignored
+e3r11p9% vi ex06/git_ignore.sh           
+e3r11p9% cat ex06/git_ignore.sh
+#!/bin/sh
+git ls-files --others --ignored --exclude-standard
+e3r11p9% bash ex06/git_ignore.sh | cat -e
+e3r11p9% git add ex06/git_ignore.sh           
+e3r11p9% git commit -m "Addition of ex06 file"   
+[master 8a1ed26] Addition of ex06 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100755 ex06/git_ignore.sh
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06
+e3r11p9% man patch
+e3r11p9% vi ex07/a
+e3r11p9% mkdir ex07
+e3r11p9% vi ex07/a 
+e3r11p9% cat -e a 
+cat: a: No such file or directory
+e3r11p9% ls -l ex07
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 535 Feb  6 18:27 a
+e3r11p9% cat -e ex07/a
+STARWARS$
+Episode IV, A NEW HOPE It is a period of civil war.$
+$
+Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.$
+During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,$
+an armored space station with enough power to destroy an entire planet.$
+$
+Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...$
+$
+e3r11p9% vi ex07/b    
+e3r11p9% cp ex07/a ex07/b
+e3r11p9% vi ex07/b       
+e3r11p9% diff ex07/a ex07/b > ex07/sw.diff 
+e3r11p9% cat -e a ex07/sw.diff
+cat: a: No such file or directory
+2c2$
+< Episode IV, A NEW HOPE It is a period of civil war.$
+---$
+> Episode V, A NEW H0PE It is a period of civil war$
+5,6c5$
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,$
+< an armored space station with enough power to destroy an entire planet.$
+---$
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.$
+8c7,9$
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...$
+---$
+> $
+> Pursued by the Empire's sinister agents,$
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..$
+e3r11p9% cat -e ex07/sw.diff 
+2c2$
+< Episode IV, A NEW HOPE It is a period of civil war.$
+---$
+> Episode V, A NEW H0PE It is a period of civil war$
+5,6c5$
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,$
+< an armored space station with enough power to destroy an entire planet.$
+---$
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.$
+8c7,9$
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...$
+---$
+> $
+> Pursued by the Empire's sinister agents,$
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..$
+e3r11p9% mv ex07/b ex07/c            
+e3r11p9% mkdir ex08                           
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08
+e3r11p9% vi ex08/clean
+e3r11p9% ls -l ex08
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 63 Feb  6 19:13 clean
+e3r11p9% cat ex08/clean     
+find . -type f \( -name '*~' ‑o -name '#*# \) -print -delete
+e3r11p9% find . -type f \( -name '*~' ‑o -name '#*# \) -print -delete
+quote> 
+quote> q
+quote> x
+quote> 
+e3r11p9% find . -type f \( -name '*~' ‑o -name '#*# \) -print -delete
+quote> 
+e3r11p9% touch ex08/toto~
+e3r11p9% touch ex08/#titi#
+e3r11p9% ls -l ex08                                                  
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 63 Feb  6 19:13  clean
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  6 19:16 '#titi#'
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  6 19:16  toto~
+e3r11p9% find . -type f \( -name '*~' ‑o -name '#*# \) -print -delete
+quote> 
+e3r11p9% find . -type f \( -name '*~' ‑o -name '#*# \) -print
+quote> 
+e3r11p9% ls -al
+total 48
+drwxr-xr-x 12 hauerbac 2023_paris 4096 Feb  6 19:05 .
+drwx------ 19 hauerbac 2023_paris 4096 Feb  6 19:13 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:44 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:05 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:19 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:48 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:16 ex08
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb  6 18:22 .git
+e3r11p9% find . -type f \( -name '*~' ‑o -name '#*# \)       
+quote> find . -type f -name '*~' ‑o -name '#*#           
+zsh: no matches found: #*# \)\nfind . -type f -name *~ ‑o -name #*#
+e3r11p9% vi ex08/clean                                               
+e3r11p9% cat ex08/clean                                              
+find . -type f \( -name '*~' ‑o -name '#*#' \) -print -delete
+e3r11p9% find . -type f \( -name '*~' ‑o -name '#*#' \) -print
+find: paths must precede expression: `‑o'
+e3r11p9% find . -type f -name '*~' ‑o -name '#*#' -print   
+find: paths must precede expression: `‑o'
+e3r11p9% find . -type f -name "*~" ‑o -name "#*#" -print 
+find: paths must precede expression: `‑o'
+e3r11p9% find . -type f \( -name "*~" ‑o -name "#*#" \) -print 
+find: paths must precede expression: `‑o'
+e3r11p9% find . -type f \( -name "*~" ‑o -name "#*#" \)       
+find: paths must precede expression: `‑o'
+e3r11p9% find . -type f \( -name "\*\~" ‑o -name "\#\*\#" \)
+find: paths must precede expression: `‑o'
+e3r11p9% find . -type f \( -name "\*~" ‑o -name "#\*#" \)  
+find: paths must precede expression: `‑o'
+e3r11p9% find . -type f \( -name '*~' ‑o -name '#*#' \) -print
+find: paths must precede expression: `‑o'
+e3r11p9% find . -type f -name '*~' ‑o -name '#*#' -print   
+find: paths must precede expression: `‑o'
+e3r11p9% FIND_EXEC="find . -type f -name '*~' ‑o -name '#*#' -print"
+e3r11p9% eval $FIND_EXEC
+find: paths must precede expression: `‑o'
+e3r11p9% FIND_EXEC=">find . -type f \( -name '*~' ‑o -name '#*#' \) -print"
+e3r11p9% eval $FIND_EXEC                                                   
+.: no such file or directory: -type
+e3r11p9% cd ex08
+e3r11p9% eval $FIND_EXEC                                                   
+.: no such file or directory: -type
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_00
+e3r11p9% FIND_EXEC=">find . -type f \( -name '*.sh' ‑o -name '#*#' \) -print" 
+e3r11p9% eval $FIND_EXEC                                                     
+.: no such file or directory: -type
+e3r11p9% FIND_EXEC=">find . \( -name '*.sh' ‑o -name '#*#' \) -print" 
+e3r11p9% eval $FIND_EXEC                                             
+.: no such file or directory: (
+e3r11p9% FIND_EXEC=">find ~ \( -name '*.sh' ‑o -name '#*#' \) -print" 
+e3r11p9% eval $FIND_EXEC                                             
+zsh: permission denied: /mnt/nfs/homes/hauerbac
+e3r11p9% FIND_EXEC=">find . \( -name '\*.sh' ‑o -name '#\*#' \) -print"
+e3r11p9% eval $FIND_EXEC                                               
+.: no such file or directory: (
+e3r11p9% FIND_EXEC=">find . -name '\*.sh' ‑o -name '#\*#' -print"  
+e3r11p9% eval $FIND_EXEC                                         
+.: no such file or directory: -name
+e3r11p9% FIND_EXEC="find . -type f \( -name '*.sh' ‑o -name '#*#' \) -print" 
+e3r11p9% eval $FIND_EXEC                                                    
+find: paths must precede expression: `‑o'
+e3r11p9% cat ex08/clean                                        
+find . -type f \( -name '*~' ‑o -name '#*#' \) -print -delete
+e3r11p9% git add ex08/clean                                    
+e3r11p9% git commit -m "Addition of ex08 file"
+[master 586c9b6] Addition of ex08 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 ex08/clean
+e3r11p9% mkdir ex09
+e3r11p9% cp ex08/clean ex09/ft_magic        
+e3r11p9% vi ex09/ft_magic 
+e3r11p9% cat ex09/ft_magic        
+file * | grep '42 file' 
+e3r11p9% file * | grep '42 file'
+e3r11p9% file * | grep 'text'   
+e3r11p9% 
+
+
