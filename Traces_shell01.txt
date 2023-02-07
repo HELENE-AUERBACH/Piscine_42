@@ -1,0 +1,1601 @@
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% ls
+Desktop    Downloads  Pictures	sgoinfre  Templates
+Documents  Music      Public	shell_00  Videos
+e3r11p9% mkdir shell_01
+e3r11p9% cd shell_01
+e3r11p9% mkdir ex01
+e3r11p9% man id
+e3r11p9% id $FT_USER -Gn
+2023_paris _developer
+e3r11p9% id -Gn $FT_USER    
+2023_paris _developer
+e3r11p9% env            
+SYSTEMD_EXEC_PID=90875
+SSH_AUTH_SOCK=/run/user/104746/keyring/ssh
+SESSION_MANAGER=local/e3r11p9.clusters.42paris.fr:@/tmp/.ICE-unix/90852,unix/e3r11p9.clusters.42paris.fr:/tmp/.ICE-unix/90852
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/1012aa13_7d20_4454_8d78_1862fbc04df9
+LANG=en_US.UTF-8
+LANGUAGE=en
+XDG_CURRENT_DESKTOP=ubuntu:GNOME
+DEFAULTS_PATH=/usr/share/gconf/ubuntu.default.path
+XDG_GREETER_DATA_DIR=/var/lib/lightdm-data/hauerbac
+LIBVIRT_DEFAULT_URI=qemu:///system
+GPG_AGENT_INFO=/run/user/104746/gnupg/S.gpg-agent:0:1
+DESKTOP_SESSION=ubuntu
+USER=hauerbac
+XDG_MENU_PREFIX=gnome-
+XDG_SESSION_PATH=/org/freedesktop/DisplayManager/Session1
+QT_IM_MODULE=ibus
+HOME=/mnt/nfs/homes/hauerbac
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/104746/bus
+DOCKER_HOST=unix:///run/user/104746/docker.sock
+SSH_AGENT_LAUNCHER=gnome-keyring
+GTK_MODULES=gail:atk-bridge
+XDG_CONFIG_DIRS=/etc/xdg/xdg-ubuntu:/etc/xdg
+VTE_VERSION=6800
+XDG_SESSION_DESKTOP=ubuntu
+KRB5CCNAME=FILE:/tmp/krb5cc_104746_4Ls349
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+MANDATORY_PATH=/usr/share/gconf/ubuntu.mandatory.path
+LOGNAME=hauerbac
+GNOME_TERMINAL_SERVICE=:1.83
+XDG_SEAT_PATH=/org/freedesktop/DisplayManager/Seat0
+PATH=/mnt/nfs/homes/hauerbac/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+XDG_DATA_DIRS=/usr/share/ubuntu:/usr/share/gnome:/mnt/nfs/homes/hauerbac/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+XMODIFIERS=@im=ibus
+XDG_RUNTIME_DIR=/run/user/104746
+XDG_SESSION_TYPE=x11
+SHELL=/bin/zsh
+QT_ACCESSIBILITY=1
+GDM_LANG=en
+COLORTERM=truecolor
+XAUTHORITY=/mnt/nfs/homes/hauerbac/.Xauthority
+PWD=/mnt/nfs/homes/hauerbac/shell_01
+XDG_SESSION_CLASS=user
+TERM=xterm-256color
+GDMSESSION=ubuntu
+DISPLAY=:0
+SHLVL=1
+OLDPWD=/mnt/nfs/homes/hauerbac
+_=/usr/bin/env
+e3r11p9% man tr
+e3r11p9% id -Gn $FT_USER | tr [:space:] ","
+zsh: no matches found: [:space:]
+e3r11p9% vi ex01/print_groups.sh
+e3r11p9% /bin/sh ex01/print_groups.sh 
+2023_paris,_developer,%                                                         e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+2023_paris,_developer,%                                                         e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+2023_paris,_developer,%                                                         e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+tr: when not truncating set1, string2 must be non-empty
+e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+2023_paris,_developer,%                                                         e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+2023_paris _developer
+2023_paris,_developer,%                                                         e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+2023_paris,_developer
+2023_paris,_developer,%                                                         e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+2023_paris,_developer
+e3r11p9% FT_USER=nours  
+e3r11p9% /bin/sh ex01/print_groups.sh
+2023_paris,_developer
+e3r11p9% cat ex01/print_groups.sh  
+#!/bin/sh
+id -Gn $FT_USER | tr ' ' ','
+e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+id: ‘nours’: no such user
+e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+daemon
+e3r11p9% cat ex01/print_groups.sh    
+#!/bin/sh
+FT_USER=daemon
+id -Gn $FT_USER | tr ' ' ','
+e3r11p9% vi ex01/print_groups.sh     
+e3r11p9% /bin/sh ex01/print_groups.sh
+2023_paris,_developer
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% ls ../shell_00
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09  find  git_first_day
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac git_second_day
+Cloning into 'git_second_day'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% ls ../shell_00/git_first_day 
+ex00  ex01  ex02  ex03	ex04  ex05  ex06
+e3r11p9% mkdir git_second_day/ex01
+e3r11p9% cp ex01/print_groups.sh git_second_day/ex01/print_groups.sh
+e3r11p9% git cd git_second_day 
+git: 'cd' is not a git command. See 'git --help'.
+
+The most similar command is
+	add
+e3r11p9% cd git_second_day 
+e3r11p9% git add ex01/print_groups.sh
+e3r11p9% git commit -m "Addition of ex01 file"
+[master (root-commit) d09a51e] Addition of ex01 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100644 ex01/print_groups.sh
+e3r11p9% git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 318 bytes | 159.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+ * [new branch]      master -> master
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% cat ex01/print_groups.sh    
+#!/bin/sh
+id -Gn $FT_USER | tr ' ' ','
+e3r11p9% mkdir ex02
+e3r11p9% mkdir git_second_day/ex02
+e3r11p9% ./ex01/print_groups.sh 
+zsh: permission denied: ./ex01/print_groups.sh
+e3r11p9% chmod ugo+x ex01/print_groups.sh 
+e3r11p9% ./ex01/print_groups.sh          
+2023_paris,_developer
+e3r11p9% chmod ugo+x git_second_day/ex01/print_groups.sh 
+e3r11p9% cd git_second_day 
+e3r11p9% git add ex01/print_groups.sh 
+e3r11p9% git commit -m "Modification of permissions"
+[master 25cffe1] Modification of permissions
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ mode change 100644 => 100755 ex01/print_groups.sh
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 307 bytes | 307.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+   d09a51e..25cffe1  master -> master
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% vi ex02/find_sh.sh
+e3r11p9% chmod ugo+x ex02/find_sh.sh                    
+e3r11p9% ls -al ex02
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:04 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:56 ..
+-rwxr-xr-x 1 hauerbac 2023_paris   34 Feb  7 09:04 find_sh.sh
+e3r11p9% ./ex02/find_sh.sh | cat -e
+ 97717398      4 drwxr-xr-x   5 hauerbac 2023_paris     4096 Feb  7 08:56 .$
+ 99812114      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 09:04 ./ex02$
+ 99815318      4 -rwxr-xr-x   1 hauerbac 2023_paris       34 Feb  7 09:04 ./ex02/find_sh.sh$
+ 98670785      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:48 ./ex01$
+ 98670787      4 -rwxr-xr-x   1 hauerbac 2023_paris       39 Feb  7 08:48 ./ex01/print_groups.sh$
+ 99811783      4 drwxr-xr-x   5 hauerbac 2023_paris     4096 Feb  7 08:56 ./git_second_day$
+ 99811785      4 drwxr-xr-x   8 hauerbac 2023_paris     4096 Feb  7 09:02 ./git_second_day/.git$
+ 99811889      4 -rw-r--r--   1 hauerbac 2023_paris       28 Feb  7 09:02 ./git_second_day/.git/COMMIT_EDITMSG$
+ 99811854      4 -rw-r--r--   1 hauerbac 2023_paris       23 Feb  7 08:51 ./git_second_day/.git/HEAD$
+ 99811795      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:51 ./git_second_day/.git/branches$
+ 99811798      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:51 ./git_second_day/.git/info$
+ 99811808      4 -rw-r--r--   1 hauerbac 2023_paris      240 Feb  7 08:51 ./git_second_day/.git/info/exclude$
+ 99811855      4 -rw-r--r--   1 hauerbac 2023_paris      324 Feb  7 08:51 ./git_second_day/.git/config$
+ 99811856      4 drwxr-xr-x  11 hauerbac 2023_paris     4096 Feb  7 09:02 ./git_second_day/.git/objects$
+ 99814784      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 09:02 ./git_second_day/.git/objects/7f$
+ 99814785      4 -r--r--r--   1 hauerbac 2023_paris       46 Feb  7 09:02 ./git_second_day/.git/objects/7f/a675a86bfa88c5ab95280e122248ade0a6a587$
+ 99811859      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:51 ./git_second_day/.git/objects/pack$
+ 99811861      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:51 ./git_second_day/.git/objects/info$
+ 99811947      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:53 ./git_second_day/.git/objects/d0$
+ 99811948      4 -r--r--r--   1 hauerbac 2023_paris      150 Feb  7 08:53 ./git_second_day/.git/objects/d0/9a51e7583713cf1d65845620c14ee2be6e2728$
+ 99814782      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 09:02 ./git_second_day/.git/objects/c0$
+ 99814783      4 -r--r--r--   1 hauerbac 2023_paris       60 Feb  7 09:02 ./git_second_day/.git/objects/c0/ec6260cd2b6993c225f5ed615efd3c62058622$
+ 99811906      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:53 ./git_second_day/.git/objects/0d$
+ 99811907      4 -r--r--r--   1 hauerbac 2023_paris       60 Feb  7 08:53 ./git_second_day/.git/objects/0d/e46c8cd1acbc84a0cff6e97b0d56e97491c3b1$
+ 99814781      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 09:02 ./git_second_day/.git/objects/25$
+ 99814786      4 -r--r--r--   1 hauerbac 2023_paris      186 Feb  7 09:02 ./git_second_day/.git/objects/25/cffe1fc9fe4b0e35d524ecb8b6912cc7036eee$
+ 99811891      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:53 ./git_second_day/.git/objects/d6$
+ 99811893      4 -r--r--r--   1 hauerbac 2023_paris       52 Feb  7 09:02 ./git_second_day/.git/objects/d6/f7f887bfd5231046e81c20b0eb092622d8a507$
+ 99811910      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:53 ./git_second_day/.git/objects/bc$
+ 99811913      4 -r--r--r--   1 hauerbac 2023_paris       47 Feb  7 08:53 ./git_second_day/.git/objects/bc/40951ec65281a91eee75928c314846c07a7144$
+ 99811899      4 -rw-r--r--   1 hauerbac 2023_paris      182 Feb  7 09:02 ./git_second_day/.git/index$
+ 99811788      4 -rw-r--r--   1 hauerbac 2023_paris       73 Feb  7 08:51 ./git_second_day/.git/description$
+ 99811809      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:51 ./git_second_day/.git/hooks$
+ 99811821      4 -rwxr-xr-x   1 hauerbac 2023_paris      189 Feb  7 08:51 ./git_second_day/.git/hooks/post-update.sample$
+ 99811839      4 -rwxr-xr-x   1 hauerbac 2023_paris      478 Feb  7 08:51 ./git_second_day/.git/hooks/applypatch-msg.sample$
+ 99811841      4 -rwxr-xr-x   1 hauerbac 2023_paris      424 Feb  7 08:51 ./git_second_day/.git/hooks/pre-applypatch.sample$
+ 99811820      8 -rwxr-xr-x   1 hauerbac 2023_paris     4898 Feb  7 08:51 ./git_second_day/.git/hooks/pre-rebase.sample$
+ 99811842      4 -rwxr-xr-x   1 hauerbac 2023_paris     1374 Feb  7 08:51 ./git_second_day/.git/hooks/pre-push.sample$
+ 99811843      4 -rwxr-xr-x   1 hauerbac 2023_paris     2783 Feb  7 08:51 ./git_second_day/.git/hooks/push-to-checkout.sample$
+ 99811822      4 -rwxr-xr-x   1 hauerbac 2023_paris     1643 Feb  7 08:51 ./git_second_day/.git/hooks/pre-commit.sample$
+ 99811840      8 -rwxr-xr-x   1 hauerbac 2023_paris     4655 Feb  7 08:51 ./git_second_day/.git/hooks/fsmonitor-watchman.sample$
+ 99811837      4 -rwxr-xr-x   1 hauerbac 2023_paris      416 Feb  7 08:51 ./git_second_day/.git/hooks/pre-merge-commit.sample$
+ 99811817      4 -rwxr-xr-x   1 hauerbac 2023_paris      896 Feb  7 08:51 ./git_second_day/.git/hooks/commit-msg.sample$
+ 99811835      4 -rwxr-xr-x   1 hauerbac 2023_paris     3650 Feb  7 08:51 ./git_second_day/.git/hooks/update.sample$
+ 99811823      4 -rwxr-xr-x   1 hauerbac 2023_paris      544 Feb  7 08:51 ./git_second_day/.git/hooks/pre-receive.sample$
+ 99811836      4 -rwxr-xr-x   1 hauerbac 2023_paris     1492 Feb  7 08:51 ./git_second_day/.git/hooks/prepare-commit-msg.sample$
+ 99811952      4 drwxr-xr-x   3 hauerbac 2023_paris     4096 Feb  7 08:53 ./git_second_day/.git/logs$
+ 99811953      4 -rw-r--r--   1 hauerbac 2023_paris      384 Feb  7 09:02 ./git_second_day/.git/logs/HEAD$
+ 99811955      4 drwxr-xr-x   4 hauerbac 2023_paris     4096 Feb  7 08:54 ./git_second_day/.git/logs/refs$
+ 99811964      4 drwxr-xr-x   3 hauerbac 2023_paris     4096 Feb  7 08:54 ./git_second_day/.git/logs/refs/remotes$
+ 99811966      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:54 ./git_second_day/.git/logs/refs/remotes/origin$
+ 99811971      4 -rw-r--r--   1 hauerbac 2023_paris      338 Feb  7 09:02 ./git_second_day/.git/logs/refs/remotes/origin/master$
+ 99811956      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:53 ./git_second_day/.git/logs/refs/heads$
+ 99811958      4 -rw-r--r--   1 hauerbac 2023_paris      384 Feb  7 09:02 ./git_second_day/.git/logs/refs/heads/master$
+ 99811845      4 drwxr-xr-x   5 hauerbac 2023_paris     4096 Feb  7 08:54 ./git_second_day/.git/refs$
+ 99811853      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:51 ./git_second_day/.git/refs/tags$
+ 99811949      4 drwxr-xr-x   3 hauerbac 2023_paris     4096 Feb  7 08:54 ./git_second_day/.git/refs/remotes$
+ 99811959      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 09:02 ./git_second_day/.git/refs/remotes/origin$
+ 99814968      4 -rw-r--r--   1 hauerbac 2023_paris       41 Feb  7 09:02 ./git_second_day/.git/refs/remotes/origin/master$
+ 99811851      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 09:02 ./git_second_day/.git/refs/heads$
+ 99814788      4 -rw-r--r--   1 hauerbac 2023_paris       41 Feb  7 09:02 ./git_second_day/.git/refs/heads/master$
+ 99812121      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:56 ./git_second_day/ex02$
+ 99811873      4 drwxr-xr-x   2 hauerbac 2023_paris     4096 Feb  7 08:52 ./git_second_day/ex01$
+ 99811888      4 -rwxr-xr-x   1 hauerbac 2023_paris       39 Feb  7 08:52 ./git_second_day/ex01/print_groups.sh$
+e3r11p9% cat ex02/find_sh.sh     
+#!/bin/sh
+find . -ls -name "*.sh"
+e3r11p9% vi ex02/find_sh.sh         
+e3r11p9% cat ex02/find_sh.sh       
+#!/bin/sh
+find . -name "*.sh" -ls
+e3r11p9% ./ex02/find_sh.sh | cat -e
+ 99815577      4 -rwxr-xr-x   1 hauerbac 2023_paris       34 Feb  7 09:07 ./ex02/find_sh.sh$
+ 98670787      4 -rwxr-xr-x   1 hauerbac 2023_paris       39 Feb  7 08:48 ./ex01/print_groups.sh$
+ 99811888      4 -rwxr-xr-x   1 hauerbac 2023_paris       39 Feb  7 08:52 ./git_second_day/ex01/print_groups.sh$
+e3r11p9% vi ex02/find_sh.sh       
+e3r11p9% cat ex02/find_sh.sh       
+#!/bin/sh
+find . -ls -name "*.sh" | awk -F' " '{print $11}
+e3r11p9% ./ex02/find_sh.sh | cat -e
+awk: cmd. line:1: 1}
+awk: cmd. line:1:  ^ syntax error
+e3r11p9% vi ex02/find_sh.sh       
+e3r11p9% cat ex02/find_sh.sh       
+#!/bin/sh
+find . -ls -name "*.sh" | awk -F" " '{print $11}'
+e3r11p9% ./ex02/find_sh.sh | cat -e
+.$
+./ex02$
+./ex02/find_sh.sh$
+./ex01$
+./ex01/print_groups.sh$
+./git_second_day$
+./git_second_day/.git$
+./git_second_day/.git/COMMIT_EDITMSG$
+./git_second_day/.git/HEAD$
+./git_second_day/.git/branches$
+./git_second_day/.git/info$
+./git_second_day/.git/info/exclude$
+./git_second_day/.git/config$
+./git_second_day/.git/objects$
+./git_second_day/.git/objects/7f$
+./git_second_day/.git/objects/7f/a675a86bfa88c5ab95280e122248ade0a6a587$
+./git_second_day/.git/objects/pack$
+./git_second_day/.git/objects/info$
+./git_second_day/.git/objects/d0$
+./git_second_day/.git/objects/d0/9a51e7583713cf1d65845620c14ee2be6e2728$
+./git_second_day/.git/objects/c0$
+./git_second_day/.git/objects/c0/ec6260cd2b6993c225f5ed615efd3c62058622$
+./git_second_day/.git/objects/0d$
+./git_second_day/.git/objects/0d/e46c8cd1acbc84a0cff6e97b0d56e97491c3b1$
+./git_second_day/.git/objects/25$
+./git_second_day/.git/objects/25/cffe1fc9fe4b0e35d524ecb8b6912cc7036eee$
+./git_second_day/.git/objects/d6$
+./git_second_day/.git/objects/d6/f7f887bfd5231046e81c20b0eb092622d8a507$
+./git_second_day/.git/objects/bc$
+./git_second_day/.git/objects/bc/40951ec65281a91eee75928c314846c07a7144$
+./git_second_day/.git/index$
+./git_second_day/.git/description$
+./git_second_day/.git/hooks$
+./git_second_day/.git/hooks/post-update.sample$
+./git_second_day/.git/hooks/applypatch-msg.sample$
+./git_second_day/.git/hooks/pre-applypatch.sample$
+./git_second_day/.git/hooks/pre-rebase.sample$
+./git_second_day/.git/hooks/pre-push.sample$
+./git_second_day/.git/hooks/push-to-checkout.sample$
+./git_second_day/.git/hooks/pre-commit.sample$
+./git_second_day/.git/hooks/fsmonitor-watchman.sample$
+./git_second_day/.git/hooks/pre-merge-commit.sample$
+./git_second_day/.git/hooks/commit-msg.sample$
+./git_second_day/.git/hooks/update.sample$
+./git_second_day/.git/hooks/pre-receive.sample$
+./git_second_day/.git/hooks/prepare-commit-msg.sample$
+./git_second_day/.git/logs$
+./git_second_day/.git/logs/HEAD$
+./git_second_day/.git/logs/refs$
+./git_second_day/.git/logs/refs/remotes$
+./git_second_day/.git/logs/refs/remotes/origin$
+./git_second_day/.git/logs/refs/remotes/origin/master$
+./git_second_day/.git/logs/refs/heads$
+./git_second_day/.git/logs/refs/heads/master$
+./git_second_day/.git/refs$
+./git_second_day/.git/refs/tags$
+./git_second_day/.git/refs/remotes$
+./git_second_day/.git/refs/remotes/origin$
+./git_second_day/.git/refs/remotes/origin/master$
+./git_second_day/.git/refs/heads$
+./git_second_day/.git/refs/heads/master$
+./git_second_day/ex02$
+./git_second_day/ex01$
+./git_second_day/ex01/print_groups.sh$
+e3r11p9% vi ex02/find_sh.sh       
+e3r11p9% cat ex02/find_sh.sh       
+#!/bin/sh
+find . -name "*.sh" -ls | awk -F" " '{print $11}'
+e3r11p9% ./ex02/find_sh.sh | cat -e
+./ex02/find_sh.sh$
+./ex01/print_groups.sh$
+./git_second_day/ex01/print_groups.sh$
+e3r11p9% vi ex02/find_sh.sh       
+e3r11p9% cat ex02/find_sh.sh       
+#!/bin/sh
+find . -name "*.sh" -ls | awk -F" " '{print $11}' | sed 's/.sh//'
+e3r11p9% ./ex02/find_sh.sh | cat -e
+./ex02/find.sh$
+./ex01/print_groups$
+./git_second_day/ex01/print_groups$
+e3r11p9% vi ex02/find_sh.sh       
+e3r11p9% cat ex02/find_sh.sh       
+#!/bin/sh
+find . -name "*.sh" -ls | awk -F" " '{print $11}' | sed 's/\.sh//'
+e3r11p9% ./ex02/find_sh.sh | cat -e
+./ex02/find_sh$
+./ex01/print_groups$
+./git_second_day/ex01/print_groups$
+e3r11p9% cd ex02
+e3r11p9% ./ex02/find_sh.sh | cat -e
+zsh: no such file or directory: ./ex02/find_sh.sh
+e3r11p9% ./find_sh.sh | cat -e 
+./find_sh$
+e3r11p9% cd ..                     
+e3r11p9% vi ex02/find_sh.sh       
+e3r11p9% cat ex02/find_sh.sh       
+#!/bin/sh
+find . -name "*.sh" -ls | awk -F" " '{print $11}' | sed 's/\.sh//' | awk -F/ '{print $NF}'
+e3r11p9% ./ex02/find_sh.sh | cat -e
+find_sh$
+print_groups$
+print_groups$
+e3r11p9% cp ex02/find_sh.sh git_second_day/ex02/find_sh.sh
+e3r11p9% cd git_second_day 
+e3r11p9% ls -al ex02
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:34 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:56 ..
+-rwxr-xr-x 1 hauerbac 2023_paris  101 Feb  7 09:34 find_sh.sh
+e3r11p9% git add ex02/find_sh.sh
+e3r11p9% git commit -m "Addition of ex02 file"
+[master c937370] Addition of ex02 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100755 ex02/find_sh.sh
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 416 bytes | 416.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+   25cffe1..c937370  master -> master
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% mkdir ex03
+e3r11p9% mkdir git_second_day/ex03
+e3r11p9% ls -R -l | wc -l
+34
+e3r11p9% ls -R -l        
+.:
+total 16
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:48 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:53 ex03
+drwxr-xr-x 6 hauerbac 2023_paris 4096 Feb  7 09:54 git_second_day
+
+./ex01:
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 39 Feb  7 08:48 print_groups.sh
+
+./ex02:
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 101 Feb  7 09:32 find_sh.sh
+
+./ex03:
+total 0
+
+./git_second_day:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:52 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:34 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:54 ex03
+
+./git_second_day/ex01:
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 39 Feb  7 08:52 print_groups.sh
+
+./git_second_day/ex02:
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 101 Feb  7 09:34 find_sh.sh
+
+./git_second_day/ex03:
+total 0
+e3r11p9% ls -R -al
+.:
+total 24
+drwxr-xr-x  6 hauerbac 2023_paris 4096 Feb  7 09:53 .
+drwx------ 20 hauerbac 2023_paris 4096 Feb  7 09:32 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:48 ex01
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:53 ex03
+drwxr-xr-x  6 hauerbac 2023_paris 4096 Feb  7 09:54 git_second_day
+
+./ex01:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:48 .
+drwxr-xr-x 6 hauerbac 2023_paris 4096 Feb  7 09:53 ..
+-rwxr-xr-x 1 hauerbac 2023_paris   39 Feb  7 08:48 print_groups.sh
+
+./ex02:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 .
+drwxr-xr-x 6 hauerbac 2023_paris 4096 Feb  7 09:53 ..
+-rwxr-xr-x 1 hauerbac 2023_paris  101 Feb  7 09:32 find_sh.sh
+
+./ex03:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:53 .
+drwxr-xr-x 6 hauerbac 2023_paris 4096 Feb  7 09:53 ..
+
+./git_second_day:
+total 24
+drwxr-xr-x 6 hauerbac 2023_paris 4096 Feb  7 09:54 .
+drwxr-xr-x 6 hauerbac 2023_paris 4096 Feb  7 09:53 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:52 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:34 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:54 ex03
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb  7 09:35 .git
+
+./git_second_day/ex01:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:52 .
+drwxr-xr-x 6 hauerbac 2023_paris 4096 Feb  7 09:54 ..
+-rwxr-xr-x 1 hauerbac 2023_paris   39 Feb  7 08:52 print_groups.sh
+
+./git_second_day/ex02:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:34 .
+drwxr-xr-x 6 hauerbac 2023_paris 4096 Feb  7 09:54 ..
+-rwxr-xr-x 1 hauerbac 2023_paris  101 Feb  7 09:34 find_sh.sh
+
+./git_second_day/ex03:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:54 .
+drwxr-xr-x 6 hauerbac 2023_paris 4096 Feb  7 09:54 ..
+
+./git_second_day/.git:
+total 52
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb  7 09:35 .
+drwxr-xr-x  6 hauerbac 2023_paris 4096 Feb  7 09:54 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 branches
+-rw-r--r--  1 hauerbac 2023_paris   22 Feb  7 09:35 COMMIT_EDITMSG
+-rw-r--r--  1 hauerbac 2023_paris  324 Feb  7 08:51 config
+-rw-r--r--  1 hauerbac 2023_paris   73 Feb  7 08:51 description
+-rw-r--r--  1 hauerbac 2023_paris   23 Feb  7 08:51 HEAD
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 hooks
+-rw-r--r--  1 hauerbac 2023_paris  291 Feb  7 09:35 index
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 info
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  7 08:53 logs
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 objects
+drwxr-xr-x  5 hauerbac 2023_paris 4096 Feb  7 08:54 refs
+
+./git_second_day/.git/branches:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+
+./git_second_day/.git/hooks:
+total 68
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-rwxr-xr-x 1 hauerbac 2023_paris  478 Feb  7 08:51 applypatch-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  896 Feb  7 08:51 commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4655 Feb  7 08:51 fsmonitor-watchman.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  189 Feb  7 08:51 post-update.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  424 Feb  7 08:51 pre-applypatch.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1643 Feb  7 08:51 pre-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  416 Feb  7 08:51 pre-merge-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1492 Feb  7 08:51 prepare-commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1374 Feb  7 08:51 pre-push.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4898 Feb  7 08:51 pre-rebase.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  544 Feb  7 08:51 pre-receive.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 2783 Feb  7 08:51 push-to-checkout.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 3650 Feb  7 08:51 update.sample
+
+./git_second_day/.git/info:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-rw-r--r-- 1 hauerbac 2023_paris  240 Feb  7 08:51 exclude
+
+./git_second_day/.git/logs:
+total 16
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-rw-r--r-- 1 hauerbac 2023_paris  568 Feb  7 09:35 HEAD
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb  7 08:54 refs
+
+./git_second_day/.git/logs/refs:
+total 16
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:53 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:53 heads
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 remotes
+
+./git_second_day/.git/logs/refs/heads:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+-rw-r--r-- 1 hauerbac 2023_paris  568 Feb  7 09:35 master
+
+./git_second_day/.git/logs/refs/remotes:
+total 12
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:54 origin
+
+./git_second_day/.git/logs/refs/remotes/origin:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+-rw-r--r-- 1 hauerbac 2023_paris  507 Feb  7 09:36 master
+
+./git_second_day/.git/objects:
+total 56
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 .
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 0d
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 25
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 77
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:34 7c
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:02 7f
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 bc
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:02 c0
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 c9
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 d0
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 d6
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 info
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 pack
+
+./git_second_day/.git/objects/0d:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris   60 Feb  7 08:53 e46c8cd1acbc84a0cff6e97b0d56e97491c3b1
+
+./git_second_day/.git/objects/25:
+total 16
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris   55 Feb  7 09:35 040da4d17dbca9e3ed4e9b7fb0142c3b432610
+-r--r--r--  1 hauerbac 2023_paris  186 Feb  7 09:02 cffe1fc9fe4b0e35d524ecb8b6912cc7036eee
+
+./git_second_day/.git/objects/77:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris   71 Feb  7 09:35 6d10e15af4e6b46d3f33286a7ea1375954b13b
+
+./git_second_day/.git/objects/7c:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:34 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris  101 Feb  7 09:34 e24e7a43ca9380e5bf19148c56d8cccaad2b17
+
+./git_second_day/.git/objects/7f:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:02 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris   46 Feb  7 09:02 a675a86bfa88c5ab95280e122248ade0a6a587
+
+./git_second_day/.git/objects/bc:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris   47 Feb  7 08:53 40951ec65281a91eee75928c314846c07a7144
+
+./git_second_day/.git/objects/c0:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:02 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris   60 Feb  7 09:02 ec6260cd2b6993c225f5ed615efd3c62058622
+
+./git_second_day/.git/objects/c9:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris  181 Feb  7 09:35 37370cc54a409bd6e77f607679cd715af2f6a5
+
+./git_second_day/.git/objects/d0:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris  150 Feb  7 08:53 9a51e7583713cf1d65845620c14ee2be6e2728
+
+./git_second_day/.git/objects/d6:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+-r--r--r--  1 hauerbac 2023_paris   52 Feb  7 09:02 f7f887bfd5231046e81c20b0eb092622d8a507
+
+./git_second_day/.git/objects/info:
+total 8
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+
+./git_second_day/.git/objects/pack:
+total 8
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+
+./git_second_day/.git/refs:
+total 20
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb  7 09:35 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:35 heads
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 remotes
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 tags
+
+./git_second_day/.git/refs/heads:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:35 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+-rw-r--r-- 1 hauerbac 2023_paris   41 Feb  7 09:35 master
+
+./git_second_day/.git/refs/remotes:
+total 12
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:36 origin
+
+./git_second_day/.git/refs/remotes/origin:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:36 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+-rw-r--r-- 1 hauerbac 2023_paris   41 Feb  7 09:36 master
+
+./git_second_day/.git/refs/tags:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+e3r11p9% ls -R           
+.:
+ex01  ex02  ex03  git_second_day
+
+./ex01:
+print_groups.sh
+
+./ex02:
+find_sh.sh
+
+./ex03:
+
+./git_second_day:
+ex01  ex02  ex03
+
+./git_second_day/ex01:
+print_groups.sh
+
+./git_second_day/ex02:
+find_sh.sh
+
+./git_second_day/ex03:
+e3r11p9% ls -R | wc -l
+26
+e3r11p9% ls -R | wc   
+     26      19     220
+e3r11p9% find . -type d,f
+.
+./ex02
+./ex02/find_sh.sh
+./ex03
+./ex01
+./ex01/print_groups.sh
+./git_second_day
+./git_second_day/.git
+./git_second_day/.git/COMMIT_EDITMSG
+./git_second_day/.git/HEAD
+./git_second_day/.git/branches
+./git_second_day/.git/info
+./git_second_day/.git/info/exclude
+./git_second_day/.git/config
+./git_second_day/.git/objects
+./git_second_day/.git/objects/7f
+./git_second_day/.git/objects/7f/a675a86bfa88c5ab95280e122248ade0a6a587
+./git_second_day/.git/objects/pack
+./git_second_day/.git/objects/c9
+./git_second_day/.git/objects/c9/37370cc54a409bd6e77f607679cd715af2f6a5
+./git_second_day/.git/objects/info
+./git_second_day/.git/objects/77
+./git_second_day/.git/objects/77/6d10e15af4e6b46d3f33286a7ea1375954b13b
+./git_second_day/.git/objects/d0
+./git_second_day/.git/objects/d0/9a51e7583713cf1d65845620c14ee2be6e2728
+./git_second_day/.git/objects/c0
+./git_second_day/.git/objects/c0/ec6260cd2b6993c225f5ed615efd3c62058622
+./git_second_day/.git/objects/7c
+./git_second_day/.git/objects/7c/e24e7a43ca9380e5bf19148c56d8cccaad2b17
+./git_second_day/.git/objects/0d
+./git_second_day/.git/objects/0d/e46c8cd1acbc84a0cff6e97b0d56e97491c3b1
+./git_second_day/.git/objects/25
+./git_second_day/.git/objects/25/040da4d17dbca9e3ed4e9b7fb0142c3b432610
+./git_second_day/.git/objects/25/cffe1fc9fe4b0e35d524ecb8b6912cc7036eee
+./git_second_day/.git/objects/d6
+./git_second_day/.git/objects/d6/f7f887bfd5231046e81c20b0eb092622d8a507
+./git_second_day/.git/objects/bc
+./git_second_day/.git/objects/bc/40951ec65281a91eee75928c314846c07a7144
+./git_second_day/.git/index
+./git_second_day/.git/description
+./git_second_day/.git/hooks
+./git_second_day/.git/hooks/post-update.sample
+./git_second_day/.git/hooks/applypatch-msg.sample
+./git_second_day/.git/hooks/pre-applypatch.sample
+./git_second_day/.git/hooks/pre-rebase.sample
+./git_second_day/.git/hooks/pre-push.sample
+./git_second_day/.git/hooks/push-to-checkout.sample
+./git_second_day/.git/hooks/pre-commit.sample
+./git_second_day/.git/hooks/fsmonitor-watchman.sample
+./git_second_day/.git/hooks/pre-merge-commit.sample
+./git_second_day/.git/hooks/commit-msg.sample
+./git_second_day/.git/hooks/update.sample
+./git_second_day/.git/hooks/pre-receive.sample
+./git_second_day/.git/hooks/prepare-commit-msg.sample
+./git_second_day/.git/logs
+./git_second_day/.git/logs/HEAD
+./git_second_day/.git/logs/refs
+./git_second_day/.git/logs/refs/remotes
+./git_second_day/.git/logs/refs/remotes/origin
+./git_second_day/.git/logs/refs/remotes/origin/master
+./git_second_day/.git/logs/refs/heads
+./git_second_day/.git/logs/refs/heads/master
+./git_second_day/.git/refs
+./git_second_day/.git/refs/tags
+./git_second_day/.git/refs/remotes
+./git_second_day/.git/refs/remotes/origin
+./git_second_day/.git/refs/remotes/origin/master
+./git_second_day/.git/refs/heads
+./git_second_day/.git/refs/heads/master
+./git_second_day/ex02
+./git_second_day/ex02/find_sh.sh
+./git_second_day/ex03
+./git_second_day/ex01
+./git_second_day/ex01/print_groups.sh
+e3r11p9% find . -type d,f | wc -l
+74
+e3r11p9% vi ex03/count_files.sh
+e3r11p9% cat ex03/count_files.sh 
+#!/bin/sh
+find . -type d,f | wc -l
+e3r11p9% chmod ugo+x ex03/count_files.sh 
+e3r11p9% ls -l ex03
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 35 Feb  7 10:22 count_files.sh
+e3r11p9% ./ex03/count_files.sh | cat -e
+75$
+e3r11p9% cp ex03/count_files.sh git_second_day/ex03/count_files.sh
+e3r11p9% ls -l git_second_day/ex03/count_files.sh
+-rwxr-xr-x 1 hauerbac 2023_paris 35 Feb  7 10:25 git_second_day/ex03/count_files.sh
+e3r11p9% cd git_second_day 
+e3r11p9% git add ex03/count_files.sh
+e3r11p9% git commit -m "Addition of ex03 file"
+[master 7bddaad] Addition of ex03 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100755 ex03/count_files.sh
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 397 bytes | 397.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+   c937370..7bddaad  master -> master
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% man ifconfig
+e3r11p9% ifconfig -a
+docker0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 172.17.0.1  netmask 255.255.0.0  broadcast 172.17.255.255
+        ether 02:42:de:6f:25:10  txqueuelen 0  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+enp3s0f0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 10.13.11.9  netmask 255.255.0.0  broadcast 10.13.255.255
+        inet6 fe80::12dd:b1ff:feab:1edb  prefixlen 64  scopeid 0x20<link>
+        ether 10:dd:b1:ab:1e:db  txqueuelen 1000  (Ethernet)
+        RX packets 1132306  bytes 674217616 (674.2 MB)
+        RX errors 0  dropped 17  overruns 0  frame 0
+        TX packets 1168835  bytes 1028486783 (1.0 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+        device interrupt 18  
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 43805  bytes 6457222 (6.4 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 43805  bytes 6457222 (6.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+virbr0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        inet 192.168.122.1  netmask 255.255.255.0  broadcast 192.168.122.255
+        ether 52:54:00:96:6c:fa  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlp4s0b1: flags=4098<BROADCAST,MULTICAST>  mtu 1500
+        ether ec:35:86:3b:fa:e6  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+e3r11p9% ifconfig -a | grep 'ether'
+        ether 02:42:de:6f:25:10  txqueuelen 0  (Ethernet)
+        ether 10:dd:b1:ab:1e:db  txqueuelen 1000  (Ethernet)
+        ether 52:54:00:96:6c:fa  txqueuelen 1000  (Ethernet)
+        ether ec:35:86:3b:fa:e6  txqueuelen 1000  (Ethernet)
+e3r11p9% ifconfig -a | grep 'ether' | awk -F2
+Usage: awk [POSIX or GNU style options] -f progfile [--] file ...
+Usage: awk [POSIX or GNU style options] [--] 'program' file ...
+POSIX options:		GNU long options: (standard)
+	-f progfile		--file=progfile
+	-F fs			--field-separator=fs
+	-v var=val		--assign=var=val
+Short options:		GNU long options: (extensions)
+	-b			--characters-as-bytes
+	-c			--traditional
+	-C			--copyright
+	-d[file]		--dump-variables[=file]
+	-D[file]		--debug[=file]
+	-e 'program-text'	--source='program-text'
+	-E file			--exec=file
+	-g			--gen-pot
+	-h			--help
+	-i includefile		--include=includefile
+	-l library		--load=library
+	-L[fatal|invalid|no-ext]	--lint[=fatal|invalid|no-ext]
+	-M			--bignum
+	-N			--use-lc-numeric
+	-n			--non-decimal-data
+	-o[file]		--pretty-print[=file]
+	-O			--optimize
+	-p[file]		--profile[=file]
+	-P			--posix
+	-r			--re-interval
+	-s			--no-optimize
+	-S			--sandbox
+	-t			--lint-old
+	-V			--version
+
+To report bugs, see node `Bugs' in `gawk.info'
+which is section `Reporting Problems and Bugs' in the
+printed version.  This same information may be found at
+https://www.gnu.org/software/gawk/manual/html_node/Bugs.html.
+PLEASE do NOT try to report bugs by posting in comp.lang.awk,
+or by using a web forum such as Stack Overflow.
+
+gawk is a pattern scanning and processing language.
+By default it reads standard input and writes standard output.
+
+Examples:
+	awk '{ sum += $1 }; END { print sum }' file
+	awk -F: '{ print $1 }' /etc/passwd
+e3r11p9% ifconfig -a | grep 'ether' | awk -F' ' '{ print $2 }'
+02:42:de:6f:25:10
+10:dd:b1:ab:1e:db
+52:54:00:96:6c:fa
+ec:35:86:3b:fa:e6
+e3r11p9% mkdir ex04
+e3r11p9% mkdir git_second_day/ex04
+e3r11p9% vi ex04/MAC.sh
+e3r11p9% cat ex04/MAC.sh 
+#!/bin/sh
+ifconfig -a | grep 'ether' | awk -F' ' '{ print $2 }'
+e3r11p9% chmod ugo+x ex04/MAC.sh                                  
+e3r11p9% ./ex04/MAC.sh
+02:42:de:6f:25:10
+10:dd:b1:ab:1e:db
+52:54:00:96:6c:fa
+ec:35:86:3b:fa:e6
+e3r11p9% cp ex04/MAC.sh git_second_day/ex04/MAC.sh
+e3r11p9% ls -l git_second_day/ex04/MAC.sh 
+-rwxr-xr-x 1 hauerbac 2023_paris 64 Feb  7 10:39 git_second_day/ex04/MAC.sh
+e3r11p9% cd git_second_day 
+e3r11p9% git add ex04/MAC.sh
+e3r11p9% git commit -m "Addition of ex04 file"
+[master 6247559] Addition of ex04 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100755 ex04/MAC.sh
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 389 bytes | 389.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+   7bddaad..6247559  master -> master
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% mkdir ex05
+e3r11p9% mkdir git_second_day/ex05
+e3r11p9% vi ex05/\"\\\?\$\*\'MaRViN\'\*\$\?\\\"
+e3r11p9% ls -lRa *MaRV* | cat -e 
+zsh: no matches found: *MaRV*
+e3r11p9% ls -lRa e05/*MaRV* | cat -e
+zsh: no matches found: e05/*MaRV*
+e3r11p9% cd ex05
+e3r11p9% ls -lRa *MaRV* | cat -e 
+-rw-r--r-- 1 hauerbac 2023_paris 5 Feb  7 10:49 "\?$*'MaRViN'*$?\"$
+e3r11p9% chmod g-r *M*
+e3r11p9% ls -lRa *MaRV* | cat -e
+-rw----r-- 1 hauerbac 2023_paris 5 Feb  7 10:49 "\?$*'MaRViN'*$?\"$
+e3r11p9% chmod g+x *M*          
+e3r11p9% ls -lRa *MaRV* | cat -e
+-rw---xr-- 1 hauerbac 2023_paris 5 Feb  7 10:49 "\?$*'MaRViN'*$?\"$
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% cp ex05/*MaRV* git_second_day/ex05
+e3r11p9% ls -l git_second_day/ex05
+total 4
+-rw---xr-- 1 hauerbac 2023_paris 5 Feb  7 10:52 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% cd git_second_day/ex05
+e3r11p9% ls -lRa *MaRV* | cat -e
+-rw---xr-- 1 hauerbac 2023_paris 5 Feb  7 10:52 "\?$*'MaRViN'*$?\"$
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01/git_second_day
+e3r11p9% git add ex05/*
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   "ex05/\"\\?$*'MaRViN'*$?\\\""
+
+e3r11p9% git commit -m "Addition of ex05 file"
+[master 8ca89f5] Addition of ex05 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100644 "ex05/\"\\?$*'MaRViN'*$?\\\""
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 346 bytes | 346.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+   6247559..8ca89f5  master -> master
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% mkdir ex06
+e3r11p9% mkdir git_second_day/ex06
+e3r11p9% ls -l
+total 28
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:48 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:22 ex03
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:49 ex05
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb  7 11:04 git_second_day
+e3r11p9% ls -l | sed '0~2d'
+total 28
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+e3r11p9% ls -l | sed '1~0d' 
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:48 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:22 ex03
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:49 ex05
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb  7 11:04 git_second_day
+e3r11p9% ls -l | sed '0~1d'
+e3r11p9% ls -l | sed 'n;d;n;'   
+total 28
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+e3r11p9% ls -l | sed 'n;d;'  
+total 28
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+e3r11p9% ls -l | sed 'd;n;' 
+e3r11p9% ls -l | sed '${p;n;}'
+total 28
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:48 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:22 ex03
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:49 ex05
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb  7 11:04 git_second_day
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb  7 11:04 git_second_day
+e3r11p9% ls -l | sed '1,${p;n;}'
+total 28
+total 28
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:48 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:22 ex03
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:49 ex05
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb  7 11:04 git_second_day
+e3r11p9% ls -l | sed -n '1,${p;n;}'
+total 28
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+e3r11p9% ls -l | sed -n '${p;n;}'  
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb  7 11:04 git_second_day
+e3r11p9% ls -l | sed -n '0,${p;n;}'
+sed: -e expression #1, char 4: invalid usage of line address 0
+e3r11p9% ls -l | sed -n '1,${p;n;p;}'
+total 28
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:48 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:22 ex03
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:49 ex05
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 11:03 ex06
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb  7 11:04 git_second_day
+e3r11p9% ls -l | sed -n '1,${n;p;}' 
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:48 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:22 ex03
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:49 ex05
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb  7 11:04 git_second_day
+e3r11p9% vi ex06/skip.sh
+e3r11p9% vi ex06/skip.sh
+e3r11p9% cat ex06/skip.sh 
+#!/bin/sh
+ls -l | sed -n '1,${n;p;}'
+e3r11p9% chmod ugo+x ex06/skip.sh           
+e3r11p9% ls -l ex06
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 37 Feb  7 11:45 skip.sh
+e3r11p9% ./ex06/skip.sh 
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:48 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:22 ex03
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 10:49 ex05
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb  7 11:04 git_second_day
+e3r11p9% cp ex06/skip.sh git_second_day/ex06/skip.sh
+e3r11p9% cd git_second_day 
+e3r11p9% ls -l ex06
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 37 Feb  7 11:53 skip.sh
+e3r11p9% git add ex06/skip.sh
+e3r11p9% git commit -m "Addition of ex06 file"
+[master 3d330a3] Addition of ex06 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100755 ex06/skip.sh
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 369 bytes | 369.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+   8ca89f5..3d330a3  master -> master
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% mkdir ex07
+e3r11p9% mkdir git_second_day/ex07
+e3r11p9% cat /etc/passwd
+root:x:0:0:root:/root:/bin/bash
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin
+bin:x:2:2:bin:/bin:/usr/sbin/nologin
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+games:x:5:60:games:/usr/games:/usr/sbin/nologin
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin
+proxy:x:13:13:proxy:/bin:/usr/sbin/nologin
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin
+irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/usr/sbin/nologin
+systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin
+systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+messagebus:x:103:104::/nonexistent:/usr/sbin/nologin
+systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+pollinate:x:105:1::/var/cache/pollinate:/bin/false
+sshd:x:106:65534::/run/sshd:/usr/sbin/nologin
+syslog:x:107:113::/home/syslog:/usr/sbin/nologin
+uuidd:x:108:114::/run/uuidd:/usr/sbin/nologin
+tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin
+tss:x:110:116:TPM software stack,,,:/var/lib/tpm:/bin/false
+landscape:x:111:117::/var/lib/landscape:/usr/sbin/nologin
+usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin
+rtkit:x:113:118:RealtimeKit,,,:/proc:/usr/sbin/nologin
+dnsmasq:x:114:65534:dnsmasq,,,:/var/lib/misc:/usr/sbin/nologin
+whoopsie:x:115:120::/nonexistent:/bin/false
+avahi:x:116:122:Avahi mDNS daemon,,,:/run/avahi-daemon:/usr/sbin/nologin
+cups-pk-helper:x:117:123:user for cups-pk-helper service,,,:/home/cups-pk-helper:/usr/sbin/nologin
+saned:x:118:125::/var/lib/saned:/usr/sbin/nologin
+colord:x:119:126:colord colour management daemon,,,:/var/lib/colord:/usr/sbin/nologin
+geoclue:x:120:127::/var/lib/geoclue:/usr/sbin/nologin
+pulse:x:121:128:PulseAudio daemon,,,:/run/pulse:/usr/sbin/nologin
+lightdm:x:123:133:Light Display Manager:/var/lib/lightdm:/bin/false
+libvirt-qemu:x:64055:108:Libvirt Qemu,,,:/var/lib/libvirt:/usr/sbin/nologin
+libvirt-dnsmasq:x:124:136:Libvirt Dnsmasq,,,:/var/lib/libvirt/dnsmasq:/usr/sbin/nologin
+swtpm:x:125:137:virtual TPM software stack,,,:/var/lib/swtpm:/bin/false
+redis:x:126:139::/var/lib/redis:/usr/sbin/nologin
+_rpc:x:127:65534::/run/rpcbind:/usr/sbin/nologin
+statd:x:128:65534::/var/lib/nfs:/usr/sbin/nologin
+_flatpak:x:129:140:Flatpak system-wide installation helper,,,:/nonexistent:/usr/sbin/nologin
+sssd:x:130:141:SSSD system user,,,:/var/lib/sss:/usr/sbin/nologin
+nslcd:x:131:142:nslcd name service LDAP connection daemon,,,:/run/nslcd:/usr/sbin/nologin
+bocal:x:1000:1000:bocal:/home/bocal:/bin/bash
+lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false
+gdm:x:122:130:Gnome Display Manager:/var/lib/gdm3:/bin/false
+nvidia-persistenced:x:132:143:NVIDIA Persistence Daemon,,,:/nonexistent:/usr/sbin/nologin
+exporter:x:1001:1001::/home/exporter:/bin/false
+e3r11p9% echo $FT_LINE1  
+
+e3r11p9% FT_LINE1=7
+e3r11p9% echo $FT_LINE1
+7
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 ]' | sed -n '1,${p;n;}'
+awk: cmd. line:1: { print $1 ]
+awk: cmd. line:1:            ^ syntax error
+awk: cmd. line:1: { print $1 ]
+awk: cmd. line:1:             ^ unexpected newline or end of string
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '1,${p;n;}' 
+root
+bin
+sync
+man
+mail
+uucp
+www-data
+list
+gnats
+_apt
+systemd-resolve
+systemd-timesync
+sshd
+uuidd
+tss
+usbmux
+dnsmasq
+avahi
+saned
+geoclue
+lightdm
+libvirt-dnsmasq
+redis
+statd
+sssd
+bocal
+gdm
+exporter
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' 
+daemon
+sys
+games
+lp
+news
+proxy
+backup
+irc
+nobody
+systemd-network
+messagebus
+pollinate
+syslog
+tcpdump
+landscape
+rtkit
+whoopsie
+cups-pk-helper
+colord
+pulse
+libvirt-qemu
+swtpm
+_rpc
+_flatpak
+nslcd
+lxd
+nvidia-persistenced
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev
+nomead
+sys
+semag
+pl
+swen
+yxorp
+pukcab
+cri
+ydobon
+krowten-dmetsys
+subegassem
+etanillop
+golsys
+pmudpct
+epacsdnal
+tiktr
+eispoohw
+repleh-kp-spuc
+droloc
+eslup
+umeq-trivbil
+mptws
+cpr_
+kaptalf_
+dclsn
+dxl
+decnetsisrep-aidivn
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -reverse
+sort: invalid option -- 'e'
+Try 'sort --help' for more information.
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r     
+yxorp
+ydobon
+umeq-trivbil
+tiktr
+sys
+swen
+subegassem
+semag
+repleh-kp-spuc
+pukcab
+pmudpct
+pl
+nomead
+mptws
+krowten-dmetsys
+kaptalf_
+golsys
+etanillop
+eslup
+epacsdnal
+eispoohw
+dxl
+droloc
+decnetsisrep-aidivn
+dclsn
+cri
+cpr_
+e3r11p9% FT_LINE2=15
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk 'NR >= $FT_LINE1 && NR <= $FT_LINE2'   
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk '{ NR >= $FT_LINE1 && NR <= $FT_LINE2 }'
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" 
+subegassem
+semag
+repleh-kp-spuc
+pukcab
+pmudpct
+pl
+nomead
+mptws
+krowten-dmetsys
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed 's/\n/, /'
+subegassem
+semag
+repleh-kp-spuc
+pukcab
+pmudpct
+pl
+nomead
+mptws
+krowten-dmetsys
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed 's/$/, /' 
+subegassem, 
+semag, 
+repleh-kp-spuc, 
+pukcab, 
+pmudpct, 
+pl, 
+nomead, 
+mptws, 
+krowten-dmetsys, 
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed 's/$/, /' | sed 's/\n//'
+subegassem, 
+semag, 
+repleh-kp-spuc, 
+pukcab, 
+pmudpct, 
+pl, 
+nomead, 
+mptws, 
+krowten-dmetsys, 
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed 's/\n$/, /'          
+subegassem
+semag
+repleh-kp-spuc
+pukcab
+pmudpct
+pl
+nomead
+mptws
+krowten-dmetsys
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed 's/\n/", "/'            
+subegassem
+semag
+repleh-kp-spuc
+pukcab
+pmudpct
+pl
+nomead
+mptws
+krowten-dmetsys
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed -e 'N;s/\n/, /'
+subegassem, semag
+repleh-kp-spuc, pukcab
+pmudpct, pl
+nomead, mptws
+krowten-dmetsys
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed -e 's/\n/, /' 
+subegassem
+semag
+repleh-kp-spuc
+pukcab
+pmudpct
+pl
+nomead
+mptws
+krowten-dmetsys
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed -e 'N;s/\n/, /g'
+subegassem, semag
+repleh-kp-spuc, pukcab
+pmudpct, pl
+nomead, mptws
+krowten-dmetsys
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed 'N;s/\n/, /g' 
+subegassem, semag
+repleh-kp-spuc, pukcab
+pmudpct, pl
+nomead, mptws
+krowten-dmetsys
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed ':a; N; $!ba; s/\n/, /g' 
+subegassem, semag, repleh-kp-spuc, pukcab, pmudpct, pl, nomead, mptws, krowten-dmetsys
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed ':a; N; $!ba; s/\n/, /g' | sed 's/$/.$'
+sed: -e expression #1, char 6: unterminated `s' command
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed ':a; N; $!ba; s/\n/, /g' | sed 's/$/.$/'
+subegassem, semag, repleh-kp-spuc, pukcab, pmudpct, pl, nomead, mptws, krowten-dmetsys.$
+e3r11p9% cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed ':a; N; $!ba; s/\n/, /g' | sed 's/$/./' 
+subegassem, semag, repleh-kp-spuc, pukcab, pmudpct, pl, nomead, mptws, krowten-dmetsys.
+e3r11p9% vi ex07/r_dwssap.sh
+e3r11p9% cat ex07/r_dwssap.sh 
+#!/bin/sh
+FT_LINE1=7
+FT_LINE2=15
+cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed ':a; N; $!ba; s/\n/, /g' | sed 's/$/./'
+e3r11p9% chmod ugo+x ex07/r_dwssap.sh                                                                                                                                        
+e3r11p9% ls -l ex07
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 200 Feb  7 14:28 r_dwssap.sh
+e3r11p9% ./ex07/r_dwssap.sh
+subegassem, semag, repleh-kp-spuc, pukcab, pmudpct, pl, nomead, mptws, krowten-dmetsys.
+e3r11p9% cp ex07/r_dwssap.sh git_second_day/ex07/r_dwssap.sh
+e3r11p9% cd git_second_day                                 
+e3r11p9% ls -l ex07
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 200 Feb  7 14:33 r_dwssap.sh
+e3r11p9% git add ex07/r_dwssap.sh
+e3r11p9% git commit -m 'Addition of ex07 file"
+quote> 
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   ex07/r_dwssap.sh
+
+e3r11p9% git log
+commit 3d330a38a54da4bd1bec11efe019fc00b86a2f16 (HEAD -> master, origin/master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 11:53:51 2023 +0100
+
+    Addition of ex06 file
+
+commit 8ca89f52a9c8ff7a06e96f378e5c5a389fe3e42d
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 10:55:09 2023 +0100
+
+    Addition of ex05 file
+
+commit 6247559f6cfd4537b094b18bb165f0f6247dacbe
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 10:40:56 2023 +0100
+
+    Addition of ex04 file
+
+commit 7bddaada341cbbe43bf741d0855656f15475897a
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 10:26:09 2023 +0100
+
+    Addition of ex03 file
+
+commit c937370cc54a409bd6e77f607679cd715af2f6a5
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 09:35:44 2023 +0100
+
+    Addition of ex02 file
+
+commit 25cffe1fc9fe4b0e35d524ecb8b6912cc7036eee
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 09:02:48 2023 +0100
+
+    Modification of permissions
+
+commit d09a51e7583713cf1d65845620c14ee2be6e2728
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 08:53:53 2023 +0100
+
+    Addition of ex01 file
+e3r11p9% git commit -m "Addition of ex07 file"
+[master 328774d] Addition of ex07 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 4 insertions(+)
+ create mode 100755 ex07/r_dwssap.sh
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 485 bytes | 485.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+   3d330a3..328774d  master -> master
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+
+

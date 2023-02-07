@@ -1,0 +1,197 @@
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-af918030-1f3d-46ff-959b-021fb2537cc5-4670487-sal-haja samed
+Cloning into 'samed'...
+remote: Enumerating objects: 23, done.
+remote: Counting objects: 100% (23/23), done.
+remote: Compressing objects: 100% (8/8), done.
+remote: Total 23 (delta 1), reused 0 (delta 0)
+Receiving objects: 100% (23/23), done.
+Resolving deltas: 100% (1/1), done.
+e3r11p9% ls -l samed
+total 40
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex00
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex01
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex02
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex03
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex04
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex05
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex06
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex07
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex08
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 17:32 ex09
+e3r11p9% ls
+Desktop    Downloads  Pictures	samed	  shell_00  Templates
+Documents  Music      Public	sgoinfre  shell_01  Videos
+e3r11p9% cd samed 
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09
+e3r11p9% cd ex00
+e3r11p9% ls
+z
+e3r11p9% cat z
+Z
+e3r11p9% cd ..
+e3r11p9% cd ex01
+e3r11p9% ls
+testShell00.tar
+e3r11p9% tar -xf testShell00.tar 
+tar: testShell00: time stamp 2024-06-01 23:42:00 is 41490463.237938382 s in the future
+e3r11p9% ls
+testShell00  testShell00.tar
+e3r11p9% ls -l
+total 16
+-r--r-xr-x 1 hauerbac 2023_paris    40 Jun  1  2024 testShell00
+-rw-r--r-- 1 hauerbac 2023_paris 10240 Feb  7 17:32 testShell00.tar
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09
+e3r11p9% cd ex02
+e3r11p9% ls
+exo2.tar
+e3r11p9% tar -xf exo2.tar 
+e3r11p9% ls -l
+total 36
+-rw-r--r-- 1 hauerbac 2023_paris 10240 Feb  7 17:32 exo2.tar
+drwx--xr-x 2 hauerbac 2023_paris  4096 Jun  1  2022 test0
+-rwx--xr-- 1 hauerbac 2023_paris     4 Jun  1  2022 test1
+dr-x---r-- 2 hauerbac 2023_paris  4096 Jun  1  2022 test2
+-r-----r-- 2 hauerbac 2023_paris     1 Jun  1  2022 test3
+-rw-r----x 1 hauerbac 2023_paris     2 Jun  1  2022 test4
+-r-----r-- 2 hauerbac 2023_paris     1 Jun  1  2022 test5
+lrwxrwxrwx 1 hauerbac 2023_paris     5 Jun  1  2022 test6 -> test0
+e3r11p9% cd ..
+e3r11p9% cd ex03
+e3r11p9% ls
+id_rsa_pub
+e3r11p9% cat id_rsa_pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCy1MtOOf/KbQqCq0n5R/gt3Zr3XWC3D1B97n1fv9uxxWb6QkW0QEslq0r3PABlIMMR3L+8q3Bv1CsQXCskTcmj7qcvXeaff6i03L7zSoFJSiw18Ge4urNkrFsv4WbyGUSBQsBd2JCk2l3gjhEUsI1ACGma852si4X+Z4WpzUzyy6ECZxzWOaWXyr1AkPJ4LgENoGEAzQMn0PMeu+CwMU1wp81ZB/8RpCsCbNBWsMV4hIeB6BObF0Z3X4OnN2GFzC13Kh/bFeKeGG93fQo/LTU8atGc4ibOPprt5QSJZA0O7Ef2nTrGhCFxRgfVarRnxHT2VoHOpr6Z33DKnTG/8lZRqdvKZpSoRIj6u61gI2Rsmm7uq/BOS4W3KacsEK6H7BAJH69PHeQIW3zMslNrP5rtTd3Bq+Dc+Aj5/gZqJhcQaFqLRzd/C4HI8Kn2RVDNvsrKyk8VxU384p6JgQFH6SgkAKZX4J2hsC0ymOldAANs3fXhPF2qrwYEX7f1oddcYE0= sal-haja@e3r2p9.clusters.42paris.fr
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09
+e3r11p9% cd ex04
+e3r11p9% ls
+midLS
+e3r11p9% cat midLS 
+ls -tmp%                                                                                                    e3r11p9% ls -tmp
+midLS
+e3r11p9% ls -tmp /
+tmp/, dev/, run/, proc/, sys/, etc/, home/, snap/, goinfre/, root/, media/, opt/, boot/, mnt/, var/,
+swap.img, lost+found/, usr/, srv/, bin, lib, lib32, lib64, libx32, sbin, sgoinfre/
+e3r11p9% cd ../ex05
+e3r11p9% ls
+git_commit.sh
+e3r11p9% cat git_commit.sh 
+#!/bin/bash
+git log --format="%H" -n 5%                                                                                 e3r11p9% cd >>ex06
+e3r11p9% ls
+Desktop    Downloads  Pictures	samed	  shell_00  Templates
+Documents  Music      Public	sgoinfre  shell_01  Videos
+e3r11p9% cd ../ex06
+cd: no such file or directory: ../ex06
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd ex06
+cd: no such file or directory: ex06
+e3r11p9% cd shell_00/ex06
+e3r11p9% ls
+git_ignore.sh
+e3r11p9% cat git_ignore.sh 
+#!/bin/sh
+git ls-files --others --ignored --exclude-standard
+e3r11p9% ls
+git_ignore.sh
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09  git_first_day
+e3r11p9%
+
+pwd
+/mnt/nfs/homes/hauerbac/samed/ex09
+e3r11p9% ls -l ../ex00
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 2 Feb  7 17:32 z
+e3r11p9% ls -l ../ex01
+total 16
+-r--r-xr-x 1 hauerbac 2023_paris    40 Jun  1  2024 testShell00
+-rw-r--r-- 1 hauerbac 2023_paris 10240 Feb  7 17:32 testShell00.tar
+e3r11p9% ls -l ../ex02
+total 36
+-rw-r--r-- 1 hauerbac 2023_paris 10240 Feb  7 17:32 exo2.tar
+drwx--xr-x 2 hauerbac 2023_paris  4096 Jun  1  2022 test0
+-rwx--xr-- 1 hauerbac 2023_paris     4 Jun  1  2022 test1
+dr-x---r-- 2 hauerbac 2023_paris  4096 Jun  1  2022 test2
+-r-----r-- 2 hauerbac 2023_paris     1 Jun  1  2022 test3
+-rw-r----x 1 hauerbac 2023_paris     2 Jun  1  2022 test4
+-r-----r-- 2 hauerbac 2023_paris     1 Jun  1  2022 test5
+lrwxrwxrwx 1 hauerbac 2023_paris     5 Jun  1  2022 test6 -> test0
+e3r11p9% ls -l ../ex03
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 589 Feb  7 17:32 id_rsa_pub
+e3r11p9% cat ../ex03/id_rsa_pub 
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCy1MtOOf/KbQqCq0n5R/gt3Zr3XWC3D1B97n1fv9uxxWb6QkW0QEslq0r3PABlIMMR3L+8q3Bv1CsQXCskTcmj7qcvXeaff6i03L7zSoFJSiw18Ge4urNkrFsv4WbyGUSBQsBd2JCk2l3gjhEUsI1ACGma852si4X+Z4WpzUzyy6ECZxzWOaWXyr1AkPJ4LgENoGEAzQMn0PMeu+CwMU1wp81ZB/8RpCsCbNBWsMV4hIeB6BObF0Z3X4OnN2GFzC13Kh/bFeKeGG93fQo/LTU8atGc4ibOPprt5QSJZA0O7Ef2nTrGhCFxRgfVarRnxHT2VoHOpr6Z33DKnTG/8lZRqdvKZpSoRIj6u61gI2Rsmm7uq/BOS4W3KacsEK6H7BAJH69PHeQIW3zMslNrP5rtTd3Bq+Dc+Aj5/gZqJhcQaFqLRzd/C4HI8Kn2RVDNvsrKyk8VxU384p6JgQFH6SgkAKZX4J2hsC0ymOldAANs3fXhPF2qrwYEX7f1oddcYE0= sal-haja@e3r2p9.clusters.42paris.fr
+e3r11p9% ls -l ../ex04         
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 7 Feb  7 17:32 midLS
+e3r11p9% cat ../ex04/midLS 
+ls -tmp%                                                                                 e3r11p9% ls -l ../ex05    
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  7 17:44 ex06
+-rwxr-xr-x 1 hauerbac 2023_paris 38 Feb  7 17:32 git_commit.sh
+e3r11p9% cat ../ex05/git_commit.sh 
+#!/bin/bash
+git log --format="%H" -n 5%                                                              e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/samed/ex09
+e3r11p9% ls -l ../ex06            
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 46 Feb  7 17:32 git_ignore.sh
+e3r11p9% cat ../ex06/git_ignore.sh 
+#!/bin/bash
+git ls-files -oi --exclude-standar%                                                      e3r11p9% ls -l ../ex07            
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 538 Feb  7 17:32 b
+e3r11p9% cat ../ex07/b
+Episode V, A NEW H0PE It is a period of civil war
+Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. 
+During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+
+
+Pursued by the Empire's sinister agents,
+Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+
+
+
+
+e3r11p9% diff ../../shell_00/ex07/a ../ex07/b 
+1,2c1,8
+< STARWARS
+< Episode IV, A NEW HOPE It is a period of civil war.
+---
+> Episode V, A NEW H0PE It is a period of civil war
+> Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. 
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+> 
+> 
+> Pursued by the Empire's sinister agents,
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+> 
+4,6d9
+< Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+< an armored space station with enough power to destroy an entire planet.
+8d10
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+e3r11p9% ls -l ../ex08                       
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 61 Feb  7 17:32 clean
+e3r11p9% cat ../ex08/clean 
+find . -type f \( -name "*~" -o -name "#*#" \) -print -delete%                           e3r11p9% find . -type f \( -name "*~" -o -name "#*#" \) -print -delete
+e3r11p9% ls -l ../ex09                                                
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 20 Feb  7 17:32 ft_magic
+e3r11p9% cat ../ex09/ft_magic 
+41 string 42 42 file%                                                                    e3r11p9% 41 string 42 42 file
+zsh: command not found: 41
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/samed/ex09 
+
