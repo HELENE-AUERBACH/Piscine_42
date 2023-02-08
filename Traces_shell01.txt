@@ -1598,4 +1598,249 @@ e3r11p9% cd ..
 e3r11p9% pwd
 /mnt/nfs/homes/hauerbac/shell_01
 
+----------------------------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd shell_01/ex01
+e3r11p9% cat print_groups.sh
+#!/bin/sh
+id -Gn $FT_USER | tr ' ' ','
+e3r11p9% cat ../git_second_day/print_groups.sh 
+cat: ../git_second_day/print_groups.sh: No such file or directory
+e3r11p9% cat ../git_second_day/ex01/print_groups.sh
+#!/bin/sh
+id -Gn $FT_USER | tr ' ' ','
+e3r11p9% vim test_print_groups.sh
+e3r11p9% cat test_print_groups.sh 
+#!/bin/sh
+export FT_USER=daemon
+./print_groups.sh
+e3r11p9% chmod ugo+x test_print_groups.sh 
+e3r11p9% ls -l
+total 8
+-rwxr-xr-x 1 hauerbac 2023_paris 39 Feb  7 08:48 print_groups.sh
+-rwxr-xr-x 1 hauerbac 2023_paris 50 Feb  8 11:40 test_print_groups.sh
+e3r11p9% ./test_print_groups.sh 
+daemon
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01/ex01
+e3r11p9% cd ../ex07
+e3r11p9% cat r_dwssap.sh 
+#!/bin/sh
+FT_LINE1=7
+FT_LINE2=15
+cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed ':a; N; $!ba; s/\n/, /g' | sed 's/$/./'
+e3r11p9% cat ../git_second_day/ex07/r_dwssap.sh  
+#!/bin/sh
+FT_LINE1=7
+FT_LINE2=15
+cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed ':a; N; $!ba; s/\n/, /g' | sed 's/$/./'
+e3r11p9% cp r_dwssap.sh test_r_dwssap.sh     
+e3r11p9% ls -l
+total 8
+-rwxr-xr-x 1 hauerbac 2023_paris 200 Feb  7 14:28 r_dwssap.sh
+-rwxr-xr-x 1 hauerbac 2023_paris 200 Feb  8 11:44 test_r_dwssap.sh
+e3r11p9% vi r_dwssap.sh
+e3r11p9% cat r_dwssap.sh 
+#!/bin/sh
+cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed ':a; N; $!ba; s/\n/, /g' | sed 's/$/./'
+e3r11p9% vi test_r_dwssap.sh 
+e3r11p9% cat test_r_dwssap.sh 
+#!/bin/sh
+export FT_LINE1=7
+export FT_LINE2=15
+./r_dwssap.sh
+e3r11p9% ./test_r_dwssap.sh 
+subegassem, semag, repleh-kp-spuc, pukcab, pmudpct, pl, nomead, mptws, krowten-dmetsys.
+e3r11p9% ls -l ../git_second_day/ex07          
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 200 Feb  7 14:33 r_dwssap.sh
+e3r11p9% cp r_dwssap.sh ../git_second_day/ex07/r_dwssap.sh
+e3r11p9% ls -l ../git_second_day/ex07                     
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 177 Feb  8 11:48 r_dwssap.sh
+e3r11p9% cd ../git_second_day 
+e3r11p9% git add ex07/r_dwssap.sh
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   ex07/r_dwssap.sh
+
+e3r11p9% git commit -m "Exportation of variables for ex07"
+[master af10155] Exportation of variables for ex07
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 deletions(-)
+e3r11p9% git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 373 bytes | 373.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+   328774d..af10155  master -> master
+---------------------------------------------------------------------------------------
+Nouvelle version pour l'ex07 afin de ne pas generer de fin de ligne :
+e3r11p9% ls -al ../../shell_01/git_second_day/ex07
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:33 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris  176 Feb  8 16:20 r_dwssap.sh
+e3r11p9% cat ../../shell_01/git_second_day/ex07/r_dwssap.sh 
+#!/bin/sh
+cat /etc/passwd | awk -F: '{ print $1 }' | sed -n '2,${p;n;}' | rev | sort -r | awk "NR >= $FT_LINE1 && NR <= $FT_LINE2" | sed ':a; N; $!ba; s/\n/, /g' | tr '\n' '.'
+e3r11p9% ../../shell_01/git_second_day/ex07/r_dwssap.sh | cat -e
+awk: cmd. line:1: NR >=  && NR <= 
+awk: cmd. line:1:        ^ syntax error
+e3r11p9% FT_LINE1=7
+e3r11p9% FT_LINE2=15 
+e3r11p9% ../../shell_01/git_second_day/ex07/r_dwssap.sh | cat -e
+awk: cmd. line:1: NR >=  && NR <= 
+awk: cmd. line:1:        ^ syntax error
+e3r11p9% export FT_LINE1=7                                      
+e3r11p9% export FT_LINE2=15                                     
+e3r11p9% ../../shell_01/git_second_day/ex07/r_dwssap.sh | cat -e
+subegassem, semag, repleh-kp-spuc, pukcab, pmudpct, pl, nomead, mptws, krowten-dmetsys.%                                                                            e3r11p9% ls -lRa ../../shell_01/git_second_day/ex05/*MaRV* | cat -e
+-rw---xr-- 1 hauerbac 2023_paris 5 Feb  7 10:52 ../../shell_01/git_second_day/ex05/"\?$*'MaRViN'*$?\"$
+e3r11p9% ../../shell_01/git_second_day/ex03/count_files.sh | cat -e 
+171$
+e3r11p9% ../../shell_01/git_second_day/ex02/find_sh.sh | cat -e
+git_commit$
+git_ignore$
+e3r11p9% ../../shell_01/git_second_day/ex01/print_groups.sh | cat -e
+2023_paris,_developer$
+-------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/c_00/ex01
+e3r11p9% ../../shell_01/git_second_day/ex02/find_sh.sh
+e3r11p9% ../../shell_01/git_second_day/ex01/print_groups.sh
+2023_paris,_developer
+e3r11p9% cat ../../shell_01/git_second_day/ex01/print_groups.sh
+#!/bin/sh
+id -Gn $FT_USER | tr ' ' ','
+e3r11p9% id
+uid=104746(hauerbac) gid=4316(2023_paris) groups=4316(2023_paris),204(_developer)
+e3r11p9% id -Gn $FT_USER | tr ' ' ',' | tr -d '\n' | cat -e
+2023_paris,_developer%                                                                                                                                              e3r11p9% vi ../../shell_01/ex01/print_groups.sh
+e3r11p9% cat ../../shell_01/ex01/print_groups.sh 
+#!/bin/sh
+id -Gn $FT_USER | tr ' ' ',' | tr -d '\n'
+e3r11p9% cp ../../shell_01/ex01/print_groups.sh ../../shell_01/git_second_day/ex01/print_groups.sh          
+e3r11p9% ../../shell_01/git_second_day/ex01/print_groups.sh | cat -e
+2023_paris,_developer%                                                                                                                                              e3r11p9% cd ../../shell_01/git_second_day
+e3r11p9% git add ex01/print_groups.sh
+e3r11p9% git commit -m "Correction of ex01 file"
+[master e849783] Correction of ex01 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+e3r11p9% git commit
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+e3r11p9% git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 386 bytes | 386.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac
+   a51f9eb..e849783  master -> master
+e3r11p9% git log
+commit e8497830487b08010b565162bbe1a984f56ec467 (HEAD -> master, origin/master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Wed Feb 8 19:33:42 2023 +0100
+
+    Correction of ex01 file
+
+commit a51f9eb22f622bdf8aaead44f9daae707b4a2957
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Wed Feb 8 16:22:19 2023 +0100
+
+    Correction of ex07 file
+
+commit af10155b9d14c3be2ba6ef72974684376540515b
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Wed Feb 8 11:49:56 2023 +0100
+
+    Exportation of variables for ex07
+
+commit 328774d0fa8721309e64b03e4b9f38ddd9613021
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 14:40:22 2023 +0100
+
+    Addition of ex07 file
+
+commit 3d330a38a54da4bd1bec11efe019fc00b86a2f16
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 11:53:51 2023 +0100
+
+    Addition of ex06 file
+
+commit 8ca89f52a9c8ff7a06e96f378e5c5a389fe3e42d
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 10:55:09 2023 +0100
+
+    Addition of ex05 file
+
+commit 6247559f6cfd4537b094b18bb165f0f6247dacbe
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 10:40:56 2023 +0100
+
+    Addition of ex04 file
+
+commit 7bddaada341cbbe43bf741d0855656f15475897a
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 10:26:09 2023 +0100
+
+    Addition of ex03 file
+
+commit c937370cc54a409bd6e77f607679cd715af2f6a5
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 09:35:44 2023 +0100
+
+    Addition of ex02 file
+
+commit 25cffe1fc9fe4b0e35d524ecb8b6912cc7036eee
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 09:02:48 2023 +0100
+
+    Modification of permissions
+
+commit d09a51e7583713cf1d65845620c14ee2be6e2728
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 08:53:53 2023 +0100
+
+    Addition of ex01 file
 

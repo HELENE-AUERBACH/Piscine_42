@@ -1,0 +1,839 @@
+tsaint-p (Tao)
+ — 
+Aujourd’hui à 09:29
+quelqu'un a des explications sur la norminette ? j'ai compris qu'on pouvait la run nous pour checker si c'est ok mais je vois pas comment
+annabrag (Anna)
+ — 
+Aujourd’hui à 09:31
+En tapant la commande indiquée sur une des premières pages du module
+norminette -R CheckForbiddenSourceHeader
+Ça marche aussi sans le flag mais prends l’habitude de faire avec, de même pour la compilation
+arbrevie (Armand)
+ — 
+Aujourd’hui à 09:35
+Les flags pour vos compilations:
+gcc -Wall -Wextra -Werror
+
+Hésitez pas à faire un alias (man alias) gccw avec ces flags si vous les connaissez par cœur, c’est pas nécessaire mais ça peut faire gagner du temps 😉
+annabrag (Anna)
+ — 
+Aujourd’hui à 09:53
+Quand on a oh-my-zsh c’est sur le .zsh non?
+Zsh.rc*
+arbrevie (Armand)
+ — 
+Aujourd’hui à 09:54
+Il me semble que le fichier à modifier est pas le même oui, à vérifier
+ arbrevie (Armand)
+ — 
+Aujourd’hui à 09:55
+vim ~/.zshrc 
+annabrag (Anna)
+ — 
+Aujourd’hui à 09:55
+Oui je me disais
+Merciii
+Sinon c’est vimrc pour le Shell normal
+lucravoi (Ludovic)
+ — 
+Aujourd’hui à 10:11
+
+alias gcc='echo "gcc -Wall -Wextra -Werror" && gcc -Wall -Wextra -Werror'
+guforest (Guillaume)
+ — 
+Aujourd’hui à 10:20
+Salut, comment on fait pour que le texte soit en couleur sous vim svp ?
+lucravoi (Ludovic)
+ — 
+Aujourd’hui à 10:35
+syntax on
+tsaint-p (Tao)
+ — 
+Aujourd’hui à 10:39
+ca marche sur vim
+avec le raccourci fn + f1
+hauerbac (Hélène)
+ — 
+Aujourd’hui à 12:38
+Euh... Vous ne vous etes pas contente(e)s que de la video "Piscine C - C00 - The C coding language" https://www.youtube.com/watch?v=zPK1idZuVlM&list=PLxeKVrYoZO6DNJxUBWIiTO-B6X62SMHVo&index=1 pour commencer vos exos C_00, n'est-ce pas?
+hauerbac (Hélène)
+ — 
+Aujourd’hui à 12:46
+S'ils ne demandent qu'une fonction, il ne faut pas de main
+hanjebou (Hanine)
+ — 
+Aujourd’hui à 12:47
+hello ! pour compiler on doit utiliser ces flags la uniquement ? sans -o ? 
+hauerbac (Hélène)
+ — 
+Aujourd’hui à 13:16
+Oui, j'ai par exemple execute ceci :
+gcc -Wall -Wextra -Werror test_ft_putchar_with_function.c 
+apiotrau (Ariel)
+ — 
+Aujourd’hui à 14:18
+comment on affiche le header sur emacs ?
+hauerbac (Hélène)
+ — 
+Aujourd’hui à 14:39
+Je viens de trouver la video qui me manquait sur l'intra : https://elearning.intra.42.fr/notions/c-piscine-c-00/subnotions/first-step-in-c/videos/premiers-pas-en-c
+et elle precise Ctrl-C Ctrl-H pour emacs
+hauerbac (Hélène)
+ — 
+Aujourd’hui à 15:15
+La norme pour la norminette se trouve sur l'intra  https://elearning.intra.42.fr/pdfs
+L'utilisation de la norminette se fait de n'importe quel repertoire sur ton terminal avec 
+
+norminette -R CheckForbiddenSourceHeader *nom_fichier*
+
+mpicardo (Maria Fernanda)
+ — 
+Aujourd’hui à 16:22
+Does anyone knows how to add the header?
+haparent (Hary)
+ — 
+Aujourd’hui à 16:24
+in vim :Stdheader
+
+amelbesh (Amina)
+ — 
+Aujourd’hui à 19:09
+Je remet le liens wattsapp
+https://chat.whatsapp.com/B6ThmmrM9P3IWbzzF3XToS
+
+
+-----------------------------------------------------------------------------------------------
+
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% mkdir c_00
+e3r11p9% mkdir c_00/git_c_00
+e3r11p9% rmdir c_00/git_c_00
+e3r11p9% cd c_00 
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/c_00
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-58142152-266a-4333-9664-9d63095da5b9-4672777-hauerbac git_c_00
+Cloning into 'git_c_00'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% ls -l git_c_00
+total 0
+e3r11p9% ls -al git_c_00
+total 12
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  8 12:15 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  8 12:15 ..
+drwxr-xr-x 7 hauerbac 2023_paris 4096 Feb  8 12:15 .git
+ e3r11p9% mkdir ex00
+e3r11p9% mkdir git_c_00/ex00 
+e3r11p9% vi ex00/ft_putchar.c
+e3r11p9% cat ex00/ft_putchar.c 
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+e3r11p9% vi ex00/test_ft_putchar.c
+e3r11p9% cat ex00/test_ft_putchar.c 
+#include <ft_putchar.h>
+
+int main(void)
+{
+	ft_putchar('H');
+
+	return 0;
+}
+e3r11p9% vi ex00/ft_putchar.h
+e3r11p9% cat ex00/ft_putchar.h 
+void ft_putchar(char c);
+e3r11p9% vi ex00/ft_putchar.c    
+e3r11p9% cat ex00/ft_putchar.c 
+#include <unistd.h>
+
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+e3r11p9% cd ex00                                                             
+e3r11p9% gcc -Wall -Wextra -Werror -R CheckForbiddenSourceHeader ft_putchar.c
+gcc: error: unrecognized command-line option ‘-R’
+e3r11p9% gcc -Wall -Wextra -Werror ft_putchar.c 
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/10/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+e3r11p9% gcc -Wall -Wextra -Werror test_ft_putchar.c 
+test_ft_putchar.c:1:10: fatal error: ft_putchar.h: No such file or directory
+    1 | #include <ft_putchar.h>
+      |          ^~~~~~~~~~~~~~
+compilation terminated.
+e3r11p9% ls -l
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris 67 Feb  8 13:06 ft_putchar.c
+-rw-r--r-- 1 hauerbac 2023_paris 25 Feb  8 13:03 ft_putchar.h
+-rw-r--r-- 1 hauerbac 2023_paris 74 Feb  8 13:02 test_ft_putchar.c
+e3r11p9% cp test_ft_putchar.c test_ft_putchar_with_function.c
+e3r11p9% vi test_ft_putchar_with_function.c
+e3r11p9% cat test_ft_putchar_with_function.c 
+#include <unistd.h>
+
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int main(void)
+{
+	ft_putchar('H');
+
+	return 0;
+}
+e3r11p9% gcc -Wall -Wextra -Werror test_ft_putchar_with_function.c 
+e3r11p9% ls -l
+total 32
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb  8 13:13 a.out
+-rw-r--r-- 1 hauerbac 2023_paris    67 Feb  8 13:06 ft_putchar.c
+-rw-r--r-- 1 hauerbac 2023_paris    25 Feb  8 13:03 ft_putchar.h
+-rw-r--r-- 1 hauerbac 2023_paris    74 Feb  8 13:02 test_ft_putchar.c
+-rw-r--r-- 1 hauerbac 2023_paris   117 Feb  8 13:12 test_ft_putchar_with_function.c
+e3r11p9% ./a.out 
+H%                                                                                                                                                    e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putchar.c
+ft_putchar.c: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: SPACE_BEFORE_FUNC    (line:   3, col:   5):	space before function name
+e3r11p9% vi ft_putchar.c
+e3r11p9% cat ft_putchar.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 14:23:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 14:24:33 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+e3r11p9% vi test_ft_putchar.c
+e3r11p9% cat test_ft_putchar.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putchar.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 14:25:07 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 14:25:31 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <ft_putchar.h>
+
+int main(void)
+{
+	ft_putchar('H');
+
+	return 0;
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putchar.c
+test_ft_putchar.c: Error!
+Error: SPACE_BEFORE_FUNC    (line:  15, col:   4):	space before function name
+Error: EMPTY_LINE_FUNCTION  (line:  18, col:   1):	Empty line in function
+Error: RETURN_PARENTHESIS   (line:  19, col:  12):	Return value must be in parenthesis
+e3r11p9% vi test_ft_putchar.c                                     
+e3r11p9% cat test_ft_putchar.c                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putchar.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 14:25:07 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 14:28:41 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <ft_putchar.h>
+
+int  main(void)
+{
+	ft_putchar('H');
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putchar.c
+test_ft_putchar.c: Error!
+Error: CONSECUTIVE_SPC      (line:  15, col:   4):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  15, col:   5):	space before function name
+e3r11p9% vi test_ft_putchar.c                                     
+e3r11p9% cat test_ft_putchar.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putchar.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 14:25:07 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 14:36:49 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <ft_putchar.h>
+
+int	main(void)
+{
+	ft_putchar('H');
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putchar.c
+test_ft_putchar.c: OK!
+e3r11p9% vi ft_putchar.c                                     
+e3r11p9% cat ft_putchar.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 14:23:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 14:56:32 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putchar.c
+ft_putchar.c: OK!
+e3r11p9% vi test_ft_putchar_with_function.c                       
+e3r11p9% cat test_ft_putchar_with_function.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putchar_with_function.c                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 14:57:54 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 14:57:58 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int	main(void)
+{
+	ft_putchar('H');
+
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putchar_with_function.c 
+test_ft_putchar_with_function.c: Error!
+Error: EMPTY_LINE_FUNCTION  (line:  23, col:   1):	Empty line in function
+e3r11p9% vi test_ft_putchar_with_function.c                                     
+e3r11p9% cat test_ft_putchar_with_function.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putchar_with_function.c                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 14:57:54 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 14:58:49 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+
+int	main(void)
+{
+	ft_putchar('H');
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putchar_with_function.c
+test_ft_putchar_with_function.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putchar.h                   
+ft_putchar.h: Error!
+Error: HEADER_PROT_ALL      (line:   1, col:   1):	Header protection must include all the instructions
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: SPACE_REPLACE_TAB    (line:   1, col:   5):	Found space when expecting tab
+e3r11p9% vi ft_putchar.h 
+e3r11p9% cat ft_putchar.h 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 14:59:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 14:59:37 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void ft_putchar(char c);
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putchar.h
+ft_putchar.h: Error!
+Error: HEADER_PROT_ALL      (line:  13, col:   1):	Header protection must include all the instructions
+Error: SPACE_REPLACE_TAB    (line:  13, col:   5):	Found space when expecting tab
+e3r11p9% vi ft_putchar.h                                     
+e3r11p9% cat ft_putchar.h                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 14:59:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 15:00:10 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_putchar(char c);
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putchar.h
+ft_putchar.h: Error!
+Error: HEADER_PROT_ALL      (line:  13, col:   1):	Header protection must include all the instructions
+e3r11p9% cp ft_putchar.c ../git_c_00/ex00/ft_putchar.c
+e3r11p9% ls -l
+total 32
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb  8 13:13 a.out
+-rw-r--r-- 1 hauerbac 2023_paris   959 Feb  8 14:56 ft_putchar.c
+-rw-r--r-- 1 hauerbac 2023_paris   917 Feb  8 15:00 ft_putchar.h
+-rw-r--r-- 1 hauerbac 2023_paris   967 Feb  8 14:36 test_ft_putchar.c
+-rw-r--r-- 1 hauerbac 2023_paris  1010 Feb  8 14:58 test_ft_putchar_with_function.c
+e3r11p9% ls ../git_c_00/ex00          
+ft_putchar.c
+e3r11p9% ls -l ../git_c_00/ex00
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 959 Feb  8 15:45 ft_putchar.c
+e3r11p9% cd ../git_c_00 
+e3r11p9% git add ex00/ft_putchar.c
+e3r11p9% git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   ex00/ft_putchar.c
+
+e3r11p9% git commit -m "Addition of ex00 file"
+[master (root-commit) 9d6c0e6] Addition of ex00 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 18 insertions(+)
+ create mode 100644 ex00/ft_putchar.c
+e3r11p9% git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 506 bytes | 506.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-58142152-266a-4333-9664-9d63095da5b9-4672777-hauerbac
+ * [new branch]      master -> master
+------------------------------------------------------------------------------------------------
+e3r11p9% cd ../../c_00 
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/c_00
+e3r11p9% mkdir ex01
+e3r11p9% mkdir git_c_00/ex01
+e3r11p9% cd ex01
+e3r11p9% cp ../ex00/ft_putchar.c ft_print_alphabet.c
+e3r11p9% vi ft_print_alphabet.c 
+e3r11p9% vi ft_print_alphabet.c
+e3r11p9% cat ft_print_alphabet.c 
+#include <unistd.h>
+
+void	ft_print_alphabet(void)
+{
+	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
+}
+e3r11p9% vi test_ft_print_alphabet.c
+e3r11p9% vi test_ft_print_alphabet.c
+e3r11p9% cat test_ft_print_alphabet.c 
+#include <unistd.h>
+
+void	ft_print_alphabet(void)
+{
+	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
+}
+
+int	main(void)
+{
+	ft_print_alphabet();
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror test_ft_print_alphabet.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  8 19:48 .
+drwxr-xr-x 6 hauerbac 2023_paris  4096 Feb  8 19:13 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb  8 19:48 a.out
+-rw-r--r-- 1 hauerbac 2023_paris    99 Feb  8 19:42 ft_print_alphabet.c
+-rw-r--r-- 1 hauerbac 2023_paris   154 Feb  8 19:47 test_ft_print_alphabet.c
+e3r11p9% ./a.out
+abcdefghijklmnopqrstuvwxyz%                                                                                                                                         e3r11p9% vi ft_print_alphabet.c                      
+e3r11p9% cat ft_print_alphabet.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 19:50:26 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 19:50:37 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+include <unistd.h>
+
+void	ft_print_alphabet(void)
+{
+	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
+}
+e3r11p9% vi test_ft_print_alphabet.c                      
+e3r11p9% cat test_ft_print_alphabet.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_print_alphabet.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 19:50:57 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 19:51:02 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_print_alphabet(void)
+{
+	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
+}
+
+int	main(void)
+{
+	ft_print_alphabet();
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_print_alphabet.c 
+ft_print_alphabet.c: Error!
+Error: SPC_AFTER_OPERATOR   (line:  13, col:   9):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line:  13, col:  18):	missing space before operator
+e3r11p9% vi ft_print_alphabet.c                                
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_print_alphabet.c 
+test_ft_print_alphabet.c: OK!
+e3r11p9% vi ft_print_alphabet.c                                           
+e3r11p9% cat ft_print_alphabet.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 19:50:26 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 19:53:23 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_print_alphabet(void)
+{
+	write(1, "abcdefghijklmnopqrstuvwxyz", 26);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_print_alphabet.c     
+ft_print_alphabet.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror test_ft_print_alphabet.c    
+e3r11p9% ls -al                                                
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  8 19:56 .
+drwxr-xr-x 6 hauerbac 2023_paris  4096 Feb  8 19:13 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb  8 19:56 a.out
+-rw-r--r-- 1 hauerbac 2023_paris   991 Feb  8 19:53 ft_print_alphabet.c
+-rw-r--r-- 1 hauerbac 2023_paris  1046 Feb  8 19:51 test_ft_print_alphabet.c
+e3r11p9% ./a.out                                               
+abcdefghijklmnopqrstuvwxyz%                                                                                                                                         e3r11p9% cp ft_print_alphabet.c ../git_c_00/ex01/ft_print_alphabet.c
+e3r11p9% ls -al ../git_c_00/ex01/ft_print_alphabet.c 
+-rw-r--r-- 1 hauerbac 2023_paris 991 Feb  8 19:58 ../git_c_00/ex01/ft_print_alphabet.c
+e3r11p9% cd ../git_c_00          
+e3r11p9% git add ex01/ft_print_alphabet.c
+e3r11p9% git commit -m "Addition of ex01 file"
+[master 71d5389] Addition of ex01 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 18 insertions(+)
+ create mode 100644 ex01/ft_print_alphabet.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 595 bytes | 595.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-58142152-266a-4333-9664-9d63095da5b9-4672777-hauerbac
+   9d6c0e6..71d5389  master -> master
+e3r11p9% cd .. 
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/c_00
+e3r11p9% mkdir ex02
+e3r11p9% mkdir git_c_00/ex02 
+e3r11p9% cp ex01/* ex02
+e3r11p9% cd ex02
+e3r11p9% ls-al
+zsh: command not found: ls-al
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  8 20:03 .
+drwxr-xr-x 7 hauerbac 2023_paris  4096 Feb  8 20:02 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb  8 20:03 a.out
+-rw-r--r-- 1 hauerbac 2023_paris   991 Feb  8 20:03 ft_print_alphabet.c
+-rw-r--r-- 1 hauerbac 2023_paris  1046 Feb  8 20:03 test_ft_print_alphabet.c
+e3r11p9% mv ft_print_alphabet.c ft_print_reverse_alphabet.c
+e3r11p9% vi ft_print_reverse_alphabet.c 
+e3r11p9% cat ft_print_reverse_alphabet.c 
+#include <unistd.h>
+
+void	ft_print_reverse_alphabet(void)
+{
+	write(1, "zyxwvutsrqponmlkjihgfedcba", 26);
+}
+e3r11p9% mv test_ft_print_alphabet.c test_ft_print_reverse_alphabet.c
+e3r11p9% vi test_ft_print_reverse_alphabet.c 
+e3r11p9% cat test_ft_print_reverse_alphabet.c 
+#include <unistd.h>
+
+void    ft_print_reverse_alphabet(void)
+{
+        write(1, "zyxwvutsrqponmlkjihgfedcba", 26);
+}
+
+int	main(void)
+{
+	ft_print_reverse_alphabet();
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror test_ft_print_reverse_alphabet.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  8 20:09 .
+drwxr-xr-x 7 hauerbac 2023_paris  4096 Feb  8 20:02 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16040 Feb  8 20:09 a.out
+-rw-r--r-- 1 hauerbac 2023_paris   107 Feb  8 20:06 ft_print_reverse_alphabet.c
+-rw-r--r-- 1 hauerbac 2023_paris   180 Feb  8 20:08 test_ft_print_reverse_alphabet.c
+e3r11p9% ./a.out                                                    
+zyxwvutsrqponmlkjihgfedcba%                                                                                                                                         e3r11p9% vi ft_print_reverse_alphabet.c                             
+e3r11p9% cat ft_print_reverse_alphabet.c                            
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_reverse_alphabet.c                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 20:09:36 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 20:09:41 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_print_reverse_alphabet(void)
+{
+	write(1, "zyxwvutsrqponmlkjihgfedcba", 26);
+}
+e3r11p9% vi test_ft_print_reverse_alphabet.c                         
+e3r11p9% cat test_ft_print_reverse_alphabet.c                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_print_reverse_alphabet.c                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 20:10:06 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 20:10:09 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void    ft_print_reverse_alphabet(void)
+{
+        write(1, "zyxwvutsrqponmlkjihgfedcba", 26);
+}
+
+int	main(void)
+{
+	ft_print_reverse_alphabet();
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror test_ft_print_reverse_alphabet.c  
+e3r11p9% ./a.out                                             
+zyxwvutsrqponmlkjihgfedcba%                                                                                                                                         e3r11p9% norminette -R CheckForbiddenSourceHeader ft_print_reverse_alphabet.c 
+ft_print_reverse_alphabet.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_print_reverse_alphabet.c 
+test_ft_print_reverse_alphabet.c: Error!
+Error: CONSECUTIVE_SPC      (line:  15, col:   5):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  15, col:   8):	space before function name
+Error: TOO_FEW_TAB          (line:  17, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  17, col:   9):	Found space when expecting tab
+e3r11p9% vi test_ft_print_reverse_alphabet.c                      
+e3r11p9% cat test_ft_print_reverse_alphabet.c                      
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_print_reverse_alphabet.c                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 20:10:06 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 20:12:23 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_print_reverse_alphabet(void)
+{
+        write(1, "zyxwvutsrqponmlkjihgfedcba", 26);
+}
+
+int	main(void)
+{
+	ft_print_reverse_alphabet();
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_print_reverse_alphabet.c
+test_ft_print_reverse_alphabet.c: Error!
+Error: TOO_FEW_TAB          (line:  17, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  17, col:   9):	Found space when expecting tab
+e3r11p9% vi test_ft_print_reverse_alphabet.c                                     
+e3r11p9% cat test_ft_print_reverse_alphabet.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_print_reverse_alphabet.c                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/08 20:10:06 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/08 20:13:00 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_print_reverse_alphabet(void)
+{
+	write(1, "zyxwvutsrqponmlkjihgfedcba", 26);
+}
+
+int	main(void)
+{
+	ft_print_reverse_alphabet();
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_print_reverse_alphabet.c
+test_ft_print_reverse_alphabet.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_print_reverse_alphabet.c     
+ft_print_reverse_alphabet.c: OK!
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  8 20:13 .
+drwxr-xr-x 7 hauerbac 2023_paris  4096 Feb  8 20:02 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16040 Feb  8 20:10 a.out
+-rw-r--r-- 1 hauerbac 2023_paris   999 Feb  8 20:09 ft_print_reverse_alphabet.c
+-rw-r--r-- 1 hauerbac 2023_paris  1062 Feb  8 20:13 test_ft_print_reverse_alphabet.c
+e3r11p9% gcc -Wall -Wextra -Werror test_ft_print_reverse_alphabet.c               
+e3r11p9% ls -al                                                              
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb  8 20:13 .
+drwxr-xr-x 7 hauerbac 2023_paris  4096 Feb  8 20:02 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16040 Feb  8 20:13 a.out
+-rw-r--r-- 1 hauerbac 2023_paris   999 Feb  8 20:09 ft_print_reverse_alphabet.c
+-rw-r--r-- 1 hauerbac 2023_paris  1062 Feb  8 20:13 test_ft_print_reverse_alphabet.c
+e3r11p9% ./a.out                                                                  
+zyxwvutsrqponmlkjihgfedcba%                                                                                                                                         e3r11p9% cp ft_print_reverse_alphabet.c ../git_c_00/ex02/ft_print_reverse_alphabet.c
+e3r11p9% cd ../git_c_00          
+e3r11p9% git add ex02/ft_print_reverse_alphabet.c
+e3r11p9% git commit -m "Addition of ex02 file"
+[master 85e6aac] Addition of ex02 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 18 insertions(+)
+ create mode 100644 ex02/ft_print_reverse_alphabet.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 633 bytes | 633.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-58142152-266a-4333-9664-9d63095da5b9-4672777-hauerbac
+   71d5389..85e6aac  master -> master
+

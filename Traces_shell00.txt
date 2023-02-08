@@ -645,5 +645,1497 @@ file * | grep '42 file'
 e3r11p9% file * | grep '42 file'
 e3r11p9% file * | grep 'text'   
 e3r11p9% 
+-------------------------------------------------------------------------------------------------
+e3r11p9% cd ~
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd shell_00
+e3r11p9% cd ex07
+e3r11p9% ls -al
+total 20
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:48 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  6 20:30 ..
+-rw-r--r--  1 hauerbac 2023_paris  535 Feb  6 18:27 a
+-rw-r--r--  1 hauerbac 2023_paris  544 Feb  6 18:42 c
+-rw-r--r--  1 hauerbac 2023_paris  881 Feb  6 18:43 sw.diff
+e3r11p9% cat a
+STARWARS
+Episode IV, A NEW HOPE It is a period of civil war.
 
+Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+an armored space station with enough power to destroy an entire planet.
+
+Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+
+e3r11p9% cat sw.diff 
+2c2
+< Episode IV, A NEW HOPE It is a period of civil war.
+---
+> Episode V, A NEW H0PE It is a period of civil war
+5,6c5
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+< an armored space station with enough power to destroy an entire planet.
+---
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+8c7,9
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+---
+> 
+> Pursued by the Empire's sinister agents,
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+e3r11p9% cd ../ex06
+e3r11p9% ls
+git_ignore.sh
+e3r11p9% ./git_ignore.sh 
+e3r11p9% cd ../ex04
+e3r11p9% ls
+midLS
+e3r11p9% cat midLS 
+ls -tr --format=commas -p .
+e3r11p9% cd ../ex07
+e3r11p9% ls
+a  c  sw.diff
+e3r11p9% rm c
+e3r11p9% patch a sw.diff > b
+e3r11p9% ls
+a  b  sw.diff
+e3r11p9% cat b
+patching file a
+e3r11p9% diff a b
+1,10c1
+< STARWARS
+< Episode V, A NEW H0PE It is a period of civil war
+< 
+< Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+< 
+< 
+< Pursued by the Empire's sinister agents,
+< Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+< 
+---
+> patching file a
+e3r11p9% cp sw.diff sw.diff.original
+e3r11p9% diff a b > sw.diff
+e3r11p9% cat sw.diff
+1,10c1
+< STARWARS
+< Episode V, A NEW H0PE It is a period of civil war
+< 
+< Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+< 
+< 
+< Pursued by the Empire's sinister agents,
+< Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+< 
+---
+> patching file a
+e3r11p9% cd ..?ex04
+zsh: no matches found: ..?ex04
+e3r11p9% cd ../ex04
+e3r11p9% ls
+midLS
+e3r11p9% ./midLS 
+midLS
+e3r11p9% cat midLS 
+ls -tr --format=commas -p .
+e3r11p9% ls -tr --format=commas -p .
+midLS
+e3r11p9% cd ..
+e3r11p9% ls -tr --format=commas -p .
+ex01/, ex02/, ex03/, ex04/, ex00/, ex05/, ex06/, find, ex08/, ex09/,
+git_first_day/, ex07/
+e3r11p9% ls -l .
+total 44
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:44 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:05 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:19 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 16:07 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:36 ex08
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:53 ex09
+-rw-r--r--  1 hauerbac 2023_paris    0 Feb  6 19:35 find
+drwxr-xr-x 10 hauerbac 2023_paris 4096 Feb  6 20:47 git_first_day
+e3r11p9% rm find
+e3r11p9% ls -l .
+total 44
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:44 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:05 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:19 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 16:07 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:36 ex08
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 19:53 ex09
+drwxr-xr-x 10 hauerbac 2023_paris 4096 Feb  6 20:47 git_first_day
+e3r11p9% ls -l ..
+total 40
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Desktop
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Documents
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  7 14:41 Downloads
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Music
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Pictures
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Public
+lrwxrwxrwx  1 hauerbac 2023_paris   32 Feb  7 08:05 sgoinfre -> /sgoinfre/goinfre/Perso/hauerbac
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 16:37 shell_00
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 shell_01
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Templates
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 10:25 Videos
+e3r11p9% find * -type f \( -name '*.sh' ‑o -name '#*#' \) -print 
+find: paths must precede expression: `‑o'
+e3r11p9% find . -type f -name '*.sh' -print ‑o -type f -name '#*#' -print
+find: paths must precede expression: `‑o'
+e3r11p9% find * -type f -name '*.sh' -print ‑o -type f -name '#*#' -print 
+find: paths must precede expression: `‑o'
+e3r11p9% cd ../ex07
+cd: no such file or directory: ../ex07
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_00
+e3r11p9% cd ex07   
+e3r11p9% ls
+a  b  sw.diff  sw.diff.original
+e3r11p9% rm b
+e3r11p9% cp a b
+e3r11p9% ls -l
+total 16
+-rw-r--r-- 1 hauerbac 2023_paris 544 Feb  7 16:06 a
+-rw-r--r-- 1 hauerbac 2023_paris 544 Feb  7 16:58 b
+-rw-r--r-- 1 hauerbac 2023_paris 593 Feb  7 16:07 sw.diff
+-rw-r--r-- 1 hauerbac 2023_paris 881 Feb  7 16:07 sw.diff.original
+e3r11p9% rm sw.diff
+e3r11p9% ls
+a  b  sw.diff.original
+e3r11p9% cp sw.diff.original sw.diff          
+e3r11p9% patch b sw.diff
+patching file b
+Reversed (or previously applied) patch detected!  Assume -R? [n] 
+Apply anyway? [n] 
+Skipping patch.
+3 out of 3 hunks ignored -- saving rejects to file b.rej
+e3r11p9% ls
+a  b  b.rej  sw.diff  sw.diff.original
+e3r11p9% cat b
+STARWARS
+Episode V, A NEW H0PE It is a period of civil war
+
+Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+
+
+Pursued by the Empire's sinister agents,
+Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+
+e3r11p9% ls                         
+a  b  b.rej  sw.diff  sw.diff.original
+e3r11p9% diff a b
+e3r11p9% cat a
+STARWARS
+Episode V, A NEW H0PE It is a period of civil war
+
+Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+
+
+Pursued by the Empire's sinister agents,
+Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+
+e3r11p9% rm a
+e3r11p9% rm b
+e3r11p9% rm sw.diff
+e3r11p9% ls
+b.rej  sw.diff.original
+e3r11p9% rm b.rej 
+e3r11p9% ls 
+sw.diff.original
+e3r11p9% ls ..
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09  git_first_day
+e3r11p9% ls ../..
+Desktop    Downloads  Pictures	sgoinfre  shell_01   Videos
+Documents  Music      Public	shell_00  Templates
+e3r11p9% ls ../../Downloads 
+resources.tar.gz  Shell00.tar  Traces_shell00.txt  Traces_shell01.txt
+e3r11p9% ls                
+a  sw.diff  sw.diff.original
+e3r11p9% ls -l                      
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-r--r-- 1 hauerbac 2023_paris 1118 Jul  4  2016 sw.diff
+-rw-r--r-- 1 hauerbac 2023_paris  881 Feb  7 16:07 sw.diff.original
+e3r11p9% cp a b                     
+e3r11p9% ls -l 
+total 16
+-rw-r--r-- 1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-r--r-- 1 hauerbac 2023_paris  535 Feb  7 17:07 b
+-rw-r--r-- 1 hauerbac 2023_paris 1118 Jul  4  2016 sw.diff
+-rw-r--r-- 1 hauerbac 2023_paris  881 Feb  7 16:07 sw.diff.original
+e3r11p9% patch b sw.diff   
+patching file b
+e3r11p9% cat b             
+Episode V, A NEW H0PE It is a period of civil war
+Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. 
+During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+
+
+Pursued by the Empire's sinister agents,
+Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+
+
+
+
+e3r11p9% cat a             
+STARWARS
+Episode IV, A NEW HOPE It is a period of civil war.
+
+Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+an armored space station with enough power to destroy an entire planet.
+
+Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+
+e3r11p9% diff a b > sw.diff
+e3r11p9% cat sw.diff
+1,2c1,8
+< STARWARS
+< Episode IV, A NEW HOPE It is a period of civil war.
+---
+> Episode V, A NEW H0PE It is a period of civil war
+> Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. 
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+> 
+> 
+> Pursued by the Empire's sinister agents,
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+> 
+4,6d9
+< Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+< an armored space station with enough power to destroy an entire planet.
+8d10
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+e3r11p9% cat sw.diff.original 
+2c2
+< Episode IV, A NEW HOPE It is a period of civil war.
+---
+> Episode V, A NEW H0PE It is a period of civil war
+5,6c5
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+< an armored space station with enough power to destroy an entire planet.
+---
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+8c7,9
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+---
+> 
+> Pursued by the Empire's sinister agents,
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+e3r11p9% ls -l
+total 16
+-rw-r--r-- 1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-r--r-- 1 hauerbac 2023_paris  538 Feb  7 17:07 b
+-rw-r--r-- 1 hauerbac 2023_paris 1118 Feb  7 17:08 sw.diff
+-rw-r--r-- 1 hauerbac 2023_paris  881 Feb  7 16:07 sw.diff.original
+e3r11p9% ls cd ../git_first_day/ex07
+ls: cannot access 'cd': No such file or directory
+ls: cannot access '../git_first_day/ex07': No such file or directory
+e3r11p9% ls ../git_first_day/ex07 
+ls: cannot access '../git_first_day/ex07': No such file or directory
+e3r11p9% mkdir ../git_first_day/ex07 
+e3r11p9% cp b ../git_first_day/ex07/b
+e3r11p9% ls ../git_first_day/ex07   
+b
+e3r11p9% ls -l ../git_first_day/ex07
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 538 Feb  7 17:12 b
+e3r11p9% cd ../git_first_day      
+e3r11p9% git add ex07/b
+e3r11p9% git commit -m "Addition of ex07 file"
+[master f537b60] Addition of ex07 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 11 insertions(+)
+ create mode 100644 ex07/b
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 660 bytes | 660.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   4002336..f537b60  master -> master
+e3r11p9% cd ../ex07
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_00/ex07
+e3r11p9% ls
+a  b  sw.diff  sw.diff.original
+e3r11p9% rm a b sw.diff
+e3r11p9% ls
+sw.diff.original
+e3r11p9% ls -l
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-r--r-- 1 hauerbac 2023_paris 1118 Jul  4  2016 sw.diff
+-rw-r--r-- 1 hauerbac 2023_paris  881 Feb  7 16:07 sw.diff.original
+e3r11p9% patch -o b a sw.diff           
+patching file b (read from a)
+e3r11p9% diff a b > sw.diff             
+e3r11p9% ls -al
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 17:23 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 16:37 ..
+-rw-r--r--  1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-------  1 hauerbac 2023_paris  538 Feb  7 17:23 b
+-rw-r--r--  1 hauerbac 2023_paris 1118 Feb  7 17:24 sw.diff
+-rw-r--r--  1 hauerbac 2023_paris  881 Feb  7 16:07 sw.diff.original
+e3r11p9% cat b
+Episode V, A NEW H0PE It is a period of civil war
+Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. 
+During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+
+
+Pursued by the Empire's sinister agents,
+Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+
+
+
+
+e3r11p9% cat sw.diff
+1,2c1,8
+< STARWARS
+< Episode IV, A NEW HOPE It is a period of civil war.
+---
+> Episode V, A NEW H0PE It is a period of civil war
+> Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. 
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+> 
+> 
+> Pursued by the Empire's sinister agents,
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+> 
+4,6d9
+< Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+< an armored space station with enough power to destroy an entire planet.
+8d10
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+e3r11p9% cat sw.diff.original 
+2c2
+< Episode IV, A NEW HOPE It is a period of civil war.
+---
+> Episode V, A NEW H0PE It is a period of civil war
+5,6c5
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+< an armored space station with enough power to destroy an entire planet.
+---
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+8c7,9
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+---
+> 
+> Pursued by the Empire's sinister agents,
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+e3r11p9% rm ../git_first_day/ex07/b      
+e3r11p9% ls -l ../git_first_day/ex07          
+total 0
+e3r11p9% cp b ../git_first_day/ex07/b      
+e3r11p9% ls -al                     
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 17:23 .
+drwxr-xr-x 14 hauerbac 2023_paris 4096 Feb  7 16:37 ..
+-rw-r--r--  1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-------  1 hauerbac 2023_paris  538 Feb  7 17:23 b
+-rw-r--r--  1 hauerbac 2023_paris 1118 Feb  7 17:24 sw.diff
+-rw-r--r--  1 hauerbac 2023_paris  881 Feb  7 16:07 sw.diff.original
+e3r11p9% ls -l ../git_first_day/ex07 
+total 4
+-rw------- 1 hauerbac 2023_paris 538 Feb  7 17:26 b
+e3r11p9% cd ../git_first_day                  
+e3r11p9% git add ex07/b                       
+e3r11p9% git commit -m "Correction of ex07 file" 
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+e3r11p9% git log                                
+commit f537b605f1652114ca36b21afe6922fab99c9b57 (HEAD -> master, origin/master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Tue Feb 7 17:14:13 2023 +0100
+
+    Addition of ex07 file
+
+commit 40023368becde911acf363460a808fc5ffc3dff7
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 20:48:40 2023 +0100
+
+    Addition of ex06 file
+
+commit 88f1d32c5b15b5e222d8dcf5485f6e5eb18fee93
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 20:47:08 2023 +0100
+
+    Addition of ex05 file
+
+commit f919799ebdb6c584c1f6be16651db38ff28eb280
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 20:45:34 2023 +0100
+
+    Addition of ex04 file
+
+commit e8dcd24b996fa75ded89b6ef5d648b0d0ab4bceb
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 20:44:07 2023 +0100
+
+    Addition of ex03 file
+
+commit 5b2b48fa9789d4937c46c173e8a6b77e7c0f2db7
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 20:41:50 2023 +0100
+
+    Addition of ex02 file
+
+commit c7ad206449fc6e8373355e4eb1e66031f638cb07
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 20:40:05 2023 +0100
+
+    Addition of ex01 file
+
+commit f697ce796349899355efa5119331f01eccda32ca
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 6 20:37:31 2023 +0100
+
+    Addition of ex00 file
+e3r11p9% git rm ex07/b
+rm 'ex07/b'
+e3r11p9% git add ex07/b                         
+fatal: pathspec 'ex07/b' did not match any files
+e3r11p9% ls ex07
+ls: cannot access 'ex07': No such file or directory
+e3r11p9% mkdir ex07
+e3r11p9% cp ../ex07/b ex07/b
+e3r11p9% git add ex07/b     
+e3r11p9% git status         
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+--------------------------------------------------------------------------------------
+e3r11p9% man magic
+e3r11p9% man file
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd shell_00
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09  git_first_day
+e3r11p9% ls ex09
+ft_magic
+e3r11p9% ls -l ex09
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 25 Feb  6 19:53 ft_magic
+e3r11p9% cat -l ex09/ft_magic 
+cat: invalid option -- 'l'
+Try 'cat --help' for more information.
+e3r11p9% cat ex09/ft_magic 
+file * | grep '42 file' 
+e3r11p9% vim ex09/ft_magic 
+e3r11p9% cat ex09/ft_magic
+42        string 42 This is a 42 file
+!:mime text/42 file
+e3r11p9% cd ex09    
+e3r11p9% file -C -m ft_magic
+e3r11p9% ls -l
+total 8
+-rw-r--r-- 1 hauerbac 2023_paris  58 Feb  8 09:16 ft_magic
+-rw-r--r-- 1 hauerbac 2023_paris 752 Feb  8 09:18 ft_magic.mgc
+e3r11p9% vim test42file
+e3r11p9% ls -l         
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris  58 Feb  8 09:16 ft_magic
+-rw-r--r-- 1 hauerbac 2023_paris 752 Feb  8 09:18 ft_magic.mgc
+-rw-r--r-- 1 hauerbac 2023_paris  45 Feb  8 09:21 test42file
+e3r11p9% cat test42file 
+                                          42
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/42
+e3r11p9% vim ft_magic                  
+e3r11p9% cat ft_magic                      
+42        string 42 This is a 42 file
+!:mime text/"42 file"
+e3r11p9% file -C -m ft_magic               
+ft_magic, 2: Warning: MIME type ` text/"42 file"' has bad char '"'
+e3r11p9% vim ft_magic       
+e3r11p9% cat ft_magic       
+42        string 42 This is a 42 file
+!:mime 'text/42 file'
+e3r11p9% file -C -m ft_magic
+ft_magic, 2: Warning: MIME type ` 'text/42 file'' has bad char '''
+file: line 2: Bad magic entry ' 'text/42 file''
+e3r11p9% vim ft_magic       
+e3r11p9% cat ft_magic       
+42        string 42 This is a 42 file
+!:mime text/\"42 file\"
+e3r11p9% file -C -m ft_magic
+ft_magic, 2: Warning: MIME type ` text/\"42 file\"' has bad char '\'
+e3r11p9% vim ft_magic       
+e3r11p9% cat ft_magic       
+42        string 42 This is a 42 file
+!:mime "text/42 file"
+e3r11p9% file -C -m ft_magic
+ft_magic, 2: Warning: MIME type ` "text/42 file"' has bad char '"'
+file: line 2: Bad magic entry ' "text/42 file"'
+e3r11p9% vim test42file                    
+e3r11p9% cat test42file                    
+                                         42
+e3r11p9% ls -l
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris  60 Feb  8 09:28 ft_magic
+-rw-r--r-- 1 hauerbac 2023_paris 752 Feb  8 09:25 ft_magic.mgc
+-rw-r--r-- 1 hauerbac 2023_paris  44 Feb  8 09:42 test42file
+e3r11p9% vim test42file
+e3r11p9% cat test42file
+                                        42
+e3r11p9% ls -l         
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris  60 Feb  8 09:28 ft_magic
+-rw-r--r-- 1 hauerbac 2023_paris 752 Feb  8 09:25 ft_magic.mgc
+-rw-r--r-- 1 hauerbac 2023_paris  43 Feb  8 09:42 test42file
+e3r11p9% vim ft_magic       
+e3r11p9% cat ft_magic       
+42      string 42 This is a 42 file
+!:mime text/42-file
+e3r11p9% file -C -m ft_magic
+e3r11p9% ls -l              
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris  56 Feb  8 09:47 ft_magic
+-rw-r--r-- 1 hauerbac 2023_paris 752 Feb  8 09:47 ft_magic.mgc
+-rw-r--r-- 1 hauerbac 2023_paris  43 Feb  8 09:42 test42file
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/plain
+e3r11p9% file -m ft_magic.mgc * 
+ft_magic:     ASCII text
+ft_magic.mgc: data
+test42file:   ASCII text
+e3r11p9% vim ft_magic        
+e3r11p9% cat ft_magic               
+42        string 42 This is a 42 file
+!:mime text/42 file
+e3r11p9% file -C -m ft_magic               
+e3r11p9% ls -l                             
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris  58 Feb  8 09:50 ft_magic
+-rw-r--r-- 1 hauerbac 2023_paris 752 Feb  8 09:51 ft_magic.mgc
+-rw-r--r-- 1 hauerbac 2023_paris  43 Feb  8 09:42 test42file
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/plain
+e3r11p9% file -m ft_magic.mgc *     
+ft_magic:     ASCII text
+ft_magic.mgc: data
+test42file:   ASCII text
+e3r11p9% vim test42file             
+e3r11p9% cat test42file             
+                                         42
+e3r11p9% ls -l                             
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris  58 Feb  8 09:50 ft_magic
+-rw-r--r-- 1 hauerbac 2023_paris 752 Feb  8 09:51 ft_magic.mgc
+-rw-r--r-- 1 hauerbac 2023_paris  44 Feb  8 09:55 test42file
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/plain
+e3r11p9% file -m ft_magic.mgc *            
+ft_magic:     ASCII text
+ft_magic.mgc: data
+test42file:   ASCII text
+e3r11p9% vim test42file                    
+e3r11p9% cat test42file                    
+                                          42
+e3r11p9% ls -l                             
+total 12
+-rw-r--r-- 1 hauerbac 2023_paris  58 Feb  8 09:50 ft_magic
+-rw-r--r-- 1 hauerbac 2023_paris 752 Feb  8 09:51 ft_magic.mgc
+-rw-r--r-- 1 hauerbac 2023_paris  45 Feb  8 09:57 test42file
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/42
+e3r11p9% file -m ft_magic.mgc *            
+ft_magic:     ASCII text
+ft_magic.mgc: data
+test42file:   This is a 42 file
+e3r11p9% file * | grep '42 file'
+e3r11p9% cat ft_magic               
+42        string 42 This is a 42 file
+!:mime text/42 file
+e3r11p9% man magic
+e3r11p9% man MIMETYPE
+e3r11p9% vim ft_magic               
+e3r11p9% cat ft_magic
+42        string 42 This is a 42 file
+!:mime text/`42 file`
+e3r11p9% file -C -m ft_magic               
+ft_magic, 2: Warning: MIME type ` text/`42 file`' has bad char '`'
+e3r11p9% vim ft_magic       
+e3r11p9% cat ft_magic       
+42        string 42 This is a 42 file
+!:mime `text/42 file`
+e3r11p9% file -C -m ft_magic
+ft_magic, 2: Warning: MIME type ` `text/42 file`' has bad char '`'
+file: line 2: Bad magic entry ' `text/42 file`'
+e3r11p9% cd ../ex08
+e3r11p9% ls -l
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 64 Feb  6 19:21  clean
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  6 19:36  find
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  6 19:16 '#titi#'
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  6 19:16  toto~
+e3r11p9% cat clean
+find . -type f \( -name '*~' ‑o -name '#*#' \) -print -delete
+e3r11p9% vi clean           
+e3r11p9% cat clean
+find . -type f \( -name '*~' ‑or -name '#*#' \) -print -delete
+e3r11p9% chmod ugo+x clean 
+e3r11p9% ls -l            
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 65 Feb  8 10:22  clean
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  6 19:36  find
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  6 19:16 '#titi#'
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  6 19:16  toto~
+e3r11p9% ./clean
+find: paths must precede expression: `‑or'
+e3r11p9% cat ../../samed/ex08/clean 
+find . -type f \( -name "*~" -o -name "#*#" \) -print -delete%                                                        e3r11p9% vi clean                  
+e3r11p9% cat clean                 
+find . -type f \( -name '*~' ‑or -name "#*#" \) -print -delete
+e3r11p9% ./clean                   
+find: paths must precede expression: `‑or'
+e3r11p9% vi clean 
+e3r11p9% cat clean
+find . -type f \( -name "*~" ‑or -name "#*#" \) -print -delete
+e3r11p9% ./clean                   
+find: paths must precede expression: `‑or'
+e3r11p9% vi clean 
+e3r11p9% vi ../../samed/ex08/clean 
+e3r11p9% vi clean                 
+e3r11p9% cat clean                
+find . -type f \( -name "*~" -o -name "#*#" \) -print -delete
+e3r11p9% ./clean                  
+./toto~
+./#titi#
+e3r11p9% ls -l                     
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 62 Feb  8 10:30 clean
+-rw-r--r-- 1 hauerbac 2023_paris  0 Feb  6 19:36 find
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_00
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09  git_first_day
+e3r11p9% ls -l git_first_day/ex08
+ls: cannot access 'git_first_day/ex08': No such file or directory
+e3r11p9% mkdir git_first_day/ex08 
+e3r11p9% cp ex08/clean git_first_day/ex08/clean
+e3r11p9% ls -l git_first_day/ex08              
+total 4
+-rwxr-xr-x 1 hauerbac 2023_paris 62 Feb  8 10:34 clean
+e3r11p9% cd git_first_day 
+e3r11p9% git add ex08/clean
+e3r11p9% git commit -m "Addition of ex08 file"
+[master c02817c] Addition of ex08 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+)
+ create mode 100755 ex08/clean
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 384 bytes | 384.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   f537b60..c02817c  master -> master
+e3r11p9% cd ..
+e3r11p9% ls -l git_first_day/ex09             
+ls: cannot access 'git_first_day/ex09': No such file or directory
+e3r11p9% mkdir git_first_day/ex09              
+e3r11p9% cp ex09/ft_magic git_first_day/ex09/ft_magic
+e3r11p9% ls -l git_first_day/ex09                    
+total 4
+-rw-r--r-- 1 hauerbac 2023_paris 60 Feb  8 10:36 ft_magic
+e3r11p9% cd git_first_day                            
+e3r11p9% git add ex09/ft_magic                       
+e3r11p9% git commit -m "Addition of ex09 file"       
+[master c42048c] Addition of ex09 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+)
+ create mode 100644 ex09/ft_magic
+e3r11p9% git push                                    
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 378 bytes | 378.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   c02817c..c42048c  master -> master
+-------------------------------------------------------------------------------------------------------------------------------
+https://www.youtube.com/watch?v=fVOd3Dxifms
+-------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd ../../shell_00/ex07
+e3r11p9% ls -l
+total 16
+-rw-r--r-- 1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw------- 1 hauerbac 2023_paris  538 Feb  7 17:23 b
+-rw-r--r-- 1 hauerbac 2023_paris 1118 Feb  7 17:24 sw.diff
+-rw-r--r-- 1 hauerbac 2023_paris  881 Feb  7 16:07 sw.diff.original
+e3r11p9% ls -l ../git_first_day/ex07
+total 4
+-rw------- 1 hauerbac 2023_paris 538 Feb  7 17:30 b
+e3r11p9% cd ../git_first_day 
+e3r11p9% git add ex07/b force
+fatal: pathspec 'force' did not match any files
+e3r11p9% git add ex07/b      
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+e3r11p9% git force add ex07/b 
+git: 'force' is not a git command. See 'git --help'.
+e3r11p9% git --help
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [--super-prefix=<path>] [--config-env=<name>=<envvar>]
+           <command> [<args>]
+
+These are common Git commands used in various situations:
+
+start a working area (see also: git help tutorial)
+   clone     Clone a repository into a new directory
+   init      Create an empty Git repository or reinitialize an existing one
+
+work on the current change (see also: git help everyday)
+   add       Add file contents to the index
+   mv        Move or rename a file, a directory, or a symlink
+   restore   Restore working tree files
+   rm        Remove files from the working tree and from the index
+
+examine the history and state (see also: git help revisions)
+   bisect    Use binary search to find the commit that introduced a bug
+   diff      Show changes between commits, commit and working tree, etc
+   grep      Print lines matching a pattern
+   log       Show commit logs
+   show      Show various types of objects
+   status    Show the working tree status
+
+grow, mark and tweak your common history
+   branch    List, create, or delete branches
+   commit    Record changes to the repository
+   merge     Join two or more development histories together
+   rebase    Reapply commits on top of another base tip
+   reset     Reset current HEAD to the specified state
+   switch    Switch branches
+   tag       Create, list, delete or verify a tag object signed with GPG
+
+collaborate (see also: git help workflows)
+   fetch     Download objects and refs from another repository
+   pull      Fetch from and integrate with another repository or a local branch
+   push      Update remote refs along with associated objects
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+See 'git help git' for an overview of the system.
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_00/git_first_day
+e3r11p9% cp ../ex07/b ex07/b
+e3r11p9% ls -l ex07
+total 4
+-rw------- 1 hauerbac 2023_paris 538 Feb  8 12:03 b
+e3r11p9% git add ex07/b
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+---------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01/ex07
+e3r11p9% cd ../../shell_00/git_first_day/ex07
+e3r11p9% ls
+b
+e3r11p9% ls -l
+total 4
+-rw------- 1 hauerbac 2023_paris 538 Feb  8 12:03 b
+e3r11p9% git add b
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+e3r11p9% git rm --cached b 
+rm 'ex07/b'
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    b
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	./
+
+e3r11p9% ls
+b
+e3r11p9% git commit -m "suppression ex07/b"
+[master 0e2908a] suppression ex07/b
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 11 deletions(-)
+ delete mode 100644 ex07/b
+e3r11p9% git push
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 243 bytes | 243.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   c42048c..0e2908a  master -> master
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	./
+
+nothing added to commit but untracked files present (use "git add" to track)
+e3r11p9% ls
+b
+e3r11p9% cp ../../ex07/b ./b
+e3r11p9% ls -l
+total 4
+-rw------- 1 hauerbac 2023_paris 538 Feb  8 14:17 b
+e3r11p9% git add b
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   b
+
+e3r11p9% git commit -m "Correction of ex07 file"
+[master 80f16a5] Correction of ex07 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 11 insertions(+)
+ create mode 100644 ex07/b
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 656 bytes | 656.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   0e2908a..80f16a5  master -> master
+   ----------------------------------------------------------------------------------------
+  e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd shell_00/ex09
+e3r11p9% ls -al
+total 20
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 17:18 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris   58 Feb  8 17:18 ft_magic
+-rw-r--r--  1 hauerbac 2023_paris  752 Feb  8 17:18 ft_magic.mgc
+-rw-r--r--  1 hauerbac 2023_paris   45 Feb  8 17:23 test42file
+e3r11p9% vi test42file2
+e3r11p9% cat test42file2 
+0123456789012345678901234567890123456789042
+e3r11p9% ls -al         
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 17:46 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris   58 Feb  8 17:18 ft_magic
+-rw-r--r--  1 hauerbac 2023_paris  752 Feb  8 17:18 ft_magic.mgc
+-rw-r--r--  1 hauerbac 2023_paris   45 Feb  8 17:23 test42file
+-rw-r--r--  1 hauerbac 2023_paris   44 Feb  8 17:46 test42file2
+e3r11p9% cat ft_magic
+42        string 42 This is a 42 file
+!:mime text/42-file
+e3r11p9% file -C -m ft_magic
+e3r11p9% ls -al             
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 17:46 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris   58 Feb  8 17:18 ft_magic
+-rw-r--r--  1 hauerbac 2023_paris  752 Feb  8 17:48 ft_magic.mgc
+-rw-r--r--  1 hauerbac 2023_paris   45 Feb  8 17:23 test42file
+-rw-r--r--  1 hauerbac 2023_paris   44 Feb  8 17:46 test42file2
+e3r11p9% cat test42file
+                                          42
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/42-file
+test42file2:  text/plain
+e3r11p9% file -m ft_magic.mgc * 
+ft_magic:     ASCII text
+ft_magic.mgc: data
+test42file:   This is a 42 file
+test42file2:  ASCII text
+e3r11p9% vi ft_magic     
+e3r11p9% cat ft_magic 
+41        string 42 This is a 42 file
+!:mime text/42-file
+e3r11p9% file -C -m ft_magic        
+e3r11p9% file -m ft_magic.mgc *
+ft_magic:     ASCII text
+ft_magic.mgc: data
+test42file:   ASCII text
+test42file2:  This is a 42 file
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/plain
+test42file2:  text/42-file
+e3r11p9% vi test42file             
+e3r11p9% cat test42file 
+                                         42
+e3r11p9% ls -al                            
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 17:53 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris   58 Feb  8 17:51 ft_magic
+-rw-r--r--  1 hauerbac 2023_paris  752 Feb  8 17:51 ft_magic.mgc
+-rw-r--r--  1 hauerbac 2023_paris   44 Feb  8 17:53 test42file
+-rw-r--r--  1 hauerbac 2023_paris   44 Feb  8 17:46 test42file2
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/42-file
+test42file2:  text/42-file
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/42-file
+test42file2:  text/42-file
+e3r11p9% file -m ft_magic.mgc * 
+ft_magic:     ASCII text
+ft_magic.mgc: data
+test42file:   This is a 42 file
+test42file2:  This is a 42 file
+e3r11p9% cp ft_magic ../git_first_day/ex09/ft_magic
+e3r11p9% ls -al ../git_first_day/ex09          
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 10:36 .
+drwxr-xr-x 13 hauerbac 2023_paris 4096 Feb  8 10:35 ..
+-rw-r--r--  1 hauerbac 2023_paris   58 Feb  8 17:57 ft_magic
+e3r11p9% cd ../git_first_day   
+e3r11p9% git add ft_magic
+fatal: pathspec 'ft_magic' did not match any files
+e3r11p9% git add ex09/ft_magic
+e3r11p9% git commit -m "Correction of ex09 file"
+[master f5d990e] Correction of ex09 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+e3r11p9% git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 370 bytes | 370.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   80f16a5..f5d990e  master -> master
+e3r11p9% cd ../shell_00/ex07       
+cd: no such file or directory: ../shell_00/ex07
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_00/git_first_day
+e3r11p9% cd ../ex07         
+e3r11p9% ls
+a  b  sw.diff  sw.diff.original
+e3r11p9% ls -al
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 17:23 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-------  1 hauerbac 2023_paris  538 Feb  7 17:23 b
+-rw-r--r--  1 hauerbac 2023_paris 1118 Feb  7 17:24 sw.diff
+-rw-r--r--  1 hauerbac 2023_paris  881 Feb  7 16:07 sw.diff.original
+e3r11p9% cp a b
+e3r11p9% patch b sw.diff.original 
+patching file b
+e3r11p9% diff a b > sw.diff 
+e3r11p9% ls -al                  
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:08 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-------  1 hauerbac 2023_paris  544 Feb  8 18:08 b
+-rw-r--r--  1 hauerbac 2023_paris  881 Feb  8 18:08 sw.diff
+-rw-r--r--  1 hauerbac 2023_paris  881 Feb  7 16:07 sw.diff.original
+e3r11p9% cat sw.diff
+2c2
+< Episode IV, A NEW HOPE It is a period of civil war.
+---
+> Episode V, A NEW H0PE It is a period of civil war
+5,6c5
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+< an armored space station with enough power to destroy an entire planet.
+---
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+8c7,9
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+---
+> 
+> Pursued by the Empire's sinister agents,
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+e3r11p9% cp a b                  
+e3r11p9% cp sw.diff.original sw.diff
+e3r11p9% patch sw.diff b          
+patch: **** Only garbage was found in the patch input.
+e3r11p9% rm sw* b a
+e3r11p9% ls -al
+total 8
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:10 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+e3r11p9% ls -al                     
+total 16
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:11 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-r--r--  1 hauerbac 2023_paris 1118 Jul  4  2016 sw.diff
+e3r11p9% cp a b
+e3r11p9% ls -al
+total 20
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:11 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-r--r--  1 hauerbac 2023_paris  535 Feb  8 18:11 b
+-rw-r--r--  1 hauerbac 2023_paris 1118 Jul  4  2016 sw.diff
+e3r11p9% cp sw.diff sw.diff.original
+e3r11p9% ls -al                     
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:12 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-r--r--  1 hauerbac 2023_paris  535 Feb  8 18:11 b
+-rw-r--r--  1 hauerbac 2023_paris 1118 Jul  4  2016 sw.diff
+-rw-r--r--  1 hauerbac 2023_paris 1118 Feb  8 18:12 sw.diff.original
+e3r11p9% patch b sw.diff            
+patching file b
+e3r11p9% rm sw.diff                             
+e3r11p9% diff a b > sw.diff 
+e3r11p9% ls -al            
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:14 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rw-r--r--  1 hauerbac 2023_paris  535 Jul  4  2016 a
+-rw-r--r--  1 hauerbac 2023_paris  538 Feb  8 18:12 b
+-rw-r--r--  1 hauerbac 2023_paris 1118 Feb  8 18:14 sw.diff
+-rw-r--r--  1 hauerbac 2023_paris 1118 Feb  8 18:12 sw.diff.original
+e3r11p9% cat sw.diff  
+1,2c1,8
+< STARWARS
+< Episode IV, A NEW HOPE It is a period of civil war.
+---
+> Episode V, A NEW H0PE It is a period of civil war
+> Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. 
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+> 
+> 
+> Pursued by the Empire's sinister agents,
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+> 
+4,6d9
+< Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+< an armored space station with enough power to destroy an entire planet.
+8d10
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+e3r11p9% cat sw.diff.original 
+1,2c1,8
+< STARWARS
+< Episode IV, A NEW HOPE It is a period of civil war.
+---
+> Episode V, A NEW H0PE It is a period of civil war
+> Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire. 
+> During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the STAR DEATH, an armored space station with enough power to destroy an entire planet.
+> 
+> 
+> Pursued by the Empire's sinister agents,
+> Princess Mehdi races home aboard her starship, custodian of the stolen plans that can save her people and restore the dictatorship to the galaxie..
+> 
+4,6d9
+< Rebel spaceships, striking from a hidden base, have won their first victory against the evil Galactic Empire.
+< During the battle, Rebel spies managed to steal secret plans to the Empire's ultimate weapon, the DEATH STAR,
+< an armored space station with enough power to destroy an entire planet.
+8d10
+< Pursued by the Empire's sinister agents, Princess Leia races home aboard her starship, custodian of the stolen plans that can save her people and restore freedom to the galaxy...
+e3r11p9% cp b ../git_first_day/ex07/b
+e3r11p9% ls -al ../git_first_day/ex07   
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 17:30 .
+drwxr-xr-x 13 hauerbac 2023_paris 4096 Feb  8 10:35 ..
+-rw-------  1 hauerbac 2023_paris  538 Feb  8 18:19 b
+e3r11p9% cd ../git_first_day     
+e3r11p9% git add ex07/b
+e3r11p9% git commit -m "Correction of ex07 file"
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+e3r11p9% git rm --cached ex07/b
+rm 'ex07/b'
+e3r11p9% git rm --cached 'ex07/b'
+fatal: pathspec 'ex07/b' did not match any files
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_00/git_first_day
+e3r11p9% cd ex07
+e3r11p9% git rm --cached b       
+fatal: pathspec 'b' did not match any files
+e3r11p9% git add b                              
+e3r11p9% git status              
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+e3r11p9% cd ..            
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_00/git_first_day
+e3r11p9% git rm --cached 'ex07/*' 
+rm 'ex07/b'
+e3r11p9% git add ex07/b                         
+e3r11p9% git status              
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+e3r11p9% git rm --cached 'ex07/*'
+rm 'ex07/b'
+e3r11p9% git status              
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	deleted:    ex07/b
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ex07/
+
+e3r11p9% git commit -m "Deletion of ex07 file"
+[master 5274572] Deletion of ex07 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 11 deletions(-)
+ delete mode 100644 ex07/b
+e3r11p9% git push
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 246 bytes | 246.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   f5d990e..5274572  master -> master
+e3r11p9% git add ex07/b
+e3r11p9% git status                           
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	new file:   ex07/b
+
+e3r11p9% git commit -m "Correction of ex07 file" 
+[master 47d6fb1] Correction of ex07 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 11 insertions(+)
+ create mode 100644 ex07/b
+e3r11p9% git push                               
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 656 bytes | 656.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   5274572..47d6fb1  master -> master
+e3r11p9% cd ../ex05
+e3r11p9% ls -al
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:05 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   36 Feb  6 18:05 git_commit.sh
+e3r11p9% cat git_commit.sh 
+#!/bin/sh
+git log -n5 --format="%H"
+e3r11p9% vi git_commit.sh 
+e3r11p9% cat git_commit.sh 
+#!/bin/sh
+git log -n5 --pretty=%H
+e3r11p9% ./git_commit.sh 
+586c9b6bca7d497402cbf181d1c48d8e3fa0926d
+8a1ed26b833760b560e9978146d11deb2085f59d
+8dc80648bd586c2093e21a392734df251895ad14
+4ab285a724d1b99add6fae9129ce643dd5162c90
+0818e103e1b3179641c37ea1c57f92628a187010
+e3r11p9% ./git_commit.sh | cat -e
+586c9b6bca7d497402cbf181d1c48d8e3fa0926d$
+8a1ed26b833760b560e9978146d11deb2085f59d$
+8dc80648bd586c2093e21a392734df251895ad14$
+4ab285a724d1b99add6fae9129ce643dd5162c90$
+0818e103e1b3179641c37ea1c57f92628a187010$
+e3r11p9% cp git_commit.sh ../git_first_day/ex05/git_commit.sh
+e3r11p9% ls -l ../git_first_day/ex05/git_commit.sh
+-rwxr-xr-x 1 hauerbac 2023_paris 34 Feb  8 18:36 ../git_first_day/ex05/git_commit.sh
+e3r11p9% cd ../git_first_day          
+e3r11p9% git add ex05/git_commit.sh
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   ex05/git_commit.sh
+
+e3r11p9% git commit -m "Other solution for ex05 file"
+[master 38641dc] Other solution for ex05 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+e3r11p9% git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 374 bytes | 374.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   47d6fb1..38641dc  master -> master
+e3r11p9% cd ../ex04
+e3r11p9% ls
+midLS
+e3r11p9% cat midLS 
+ls -tr --format=commas -p .
+e3r11p9% vi midLS   
+e3r11p9% cat midLS
+ls -trpm .
+e3r11p9% ls -trpm .
+midLS
+e3r11p9% ls -trpm ..
+ex01/, ex02/, ex03/, ex00/, ex06/, ex08/, git_first_day/, amhappio/, ex09/, ex07/, ex05/, ex04/
+e3r11p9% ls -al     
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:41 .
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 ..
+-rwxr--r--  1 hauerbac 2023_paris   11 Feb  8 18:41 midLS
+e3r11p9% ls -al ..
+total 60
+drwxr-xr-x 15 hauerbac 2023_paris 4096 Feb  8 16:36 .
+drwx------ 23 hauerbac 2023_paris 4096 Feb  8 18:41 ..
+drwxr-xr-x  5 hauerbac 2023_paris 4096 Feb  8 16:57 amhappio
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 15:03 ex00
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 13:32 ex01
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb  6 14:06 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 14:14 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:41 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:35 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 18:19 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 18:14 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 10:30 ex08
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 17:53 ex09
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb  6 20:26 .git
+drwxr-xr-x 13 hauerbac 2023_paris 4096 Feb  8 10:35 git_first_day
+e3r11p9% cp midLS ../git_first_day/ex04/midLS
+e3r11p9% ls -al ../git_first_day/ex04      
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  6 20:45 .
+drwxr-xr-x 13 hauerbac 2023_paris 4096 Feb  8 10:35 ..
+-rwxr--r--  1 hauerbac 2023_paris   11 Feb  8 18:44 midLS
+e3r11p9% cd ../git_first_day      
+e3r11p9% git add ex04/midLS
+e3r11p9% git commit -m "Other solution for ex04 file"
+[master a7b36e1] Other solution for ex04 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+e3r11p9% git push                                    
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 341 bytes | 341.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac
+   38641dc..a7b36e1  master -> master
+e3r11p9% bash ex06/git_ignore.sh | cat -e
+e3r11p9% ls -al ex02
+total 20
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb  6 20:41 .
+drwxr-xr-x 13 hauerbac 2023_paris  4096 Feb  8 10:35 ..
+-rw-r--r--  1 hauerbac 2023_paris 10240 Feb  6 20:41 exo2.tar
+
+ 
 
