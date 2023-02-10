@@ -1928,6 +1928,983 @@ You have been graded 40 on C Piscine Shell 01:
 
 ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: KO | ex06: KO | ex07: OK | ex08: Nothing turned in
 ------------------------------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd shell_01/ex05
+e3r11p9% ls -al
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:49  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    5 Feb  7 10:49 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% vi \"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+e3r11p9% cati -e \"\\\?\$\*\'MaRViN\'\*\$\?\\\"
+zsh: command not found: cati
+e3r11p9% cat -e \"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+42%                                                                                                                                           e3r11p9% ls -al
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 09:53  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Feb 10 09:53 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% touch -t "122110021221" \"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+e3r11p9% ls -al                                                
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 09:53  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Dec 13  1901 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% touch -mht "122110021221" \"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+e3r11p9% ls -al                                                  
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 09:53  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Dec 13  1901 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% touch -mht "202310021221" \"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+e3r11p9% ls -al                                                  
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 09:53  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Oct  2  2023 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% touch -hmt "202310021221" \"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+e3r11p9% ls -al                                                  
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 09:53  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Oct  2  2023 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% touch -hamt "122110021221" \"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+e3r11p9% ls -al                                                   
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 09:53  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Dec 13  1901 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% touch -hamt "202310021221" \"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+e3r11p9% ls -al                                                   
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 09:53  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Oct  2  2023 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% ls -lRa *MaRV* | cat -e 
+-rw---xr-- 1 hauerbac 2023_paris 2 Oct  2  2023 "\?$*'MaRViN'*$?\"$
+e3r11p9% ls -al ../git_second_day/ex05 
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:52  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    5 Feb  7 10:52 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% cp \"\\\?\$\*\'MaRViN\'\*\$\?\\\" ../git_second_day/ex05 
+e3r11p9% ls -al ../git_second_day/ex05                           
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:52  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Feb 10 10:08 '"\?$*'\''MaRViN'\''*$?\"'
+e3r11p9% cd ../git_second_day                              
+e3r11p9% git add ex05/\"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+e3r11p9% git commit -m "Correction of ex05 file for bytes size"
+[master b7ad6e2] Correction of ex05 file for bytes size
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+e3r11p9% git push
+Gitea: Unauthorized
+User: 21146:hauerbac with Key: 574834:hauerbac 2023-02-06T10:55:03Z is not authorized to write to vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+e3r11p9% cd ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% cd ex06
+e3r11p9% ls -al
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:45 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   37 Feb  7 11:45 skip.sh
+e3r11p9% cat skip.sh 
+#!/bin/sh
+ls -l | sed -n '1,${n;p;}'
+e3r11p9% ls -l | sed -n '1,${n;p;}'
+-rwxr-xr-x 1 hauerbac 2023_paris 37 Feb  7 11:45 skip.sh
+e3r11p9% ls -l .. | sed -n '1,${n;p;}'
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:28 ex01
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:22 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 09:53 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:18 ex07
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 git_second_day
+e3r11p9% ls -al ..
+total 44
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 .
+drwx------ 23 hauerbac 2023_paris 4096 Feb 10 09:53 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:28 ex01
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:22 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 09:53 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:45 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:18 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:46 ex08
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 git_second_day
+e3r11p9% ls -l .. | sed -n '1,${p;n;}'
+total 36
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:32 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:37 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:45 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:46 ex08
+e3r11p9% vi skip.sh                 
+e3r11p9% cat skip.sh                  
+#!/bin/sh
+ls -l | sed -n '1,${p;n;}
+e3r11p9% vi skip.sh 
+e3r11p9% cat skip.sh
+#!/bin/sh
+ls -l | sed -n '1,${p;n;}'
+e3r11p9% ls -al                       
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:22 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   37 Feb 10 10:22 skip.sh
+e3r11p9% ls -al ../git_second_day/ex06
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   37 Feb  7 11:53 skip.sh
+e3r11p9% cp skip.sh ../git_second_day/ex06
+e3r11p9% ls -al ../git_second_day/ex06    
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   37 Feb 10 10:24 skip.sh
+e3r11p9% cd ../git_second_day     
+e3r11p9% git add ex06/skip.sh
+e3r11p9% git commit -m "Correction of ex06 file for the beginning"
+[master b96b82b] Correction of ex06 file for the beginning
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+e3r11p9% git push
+Gitea: Unauthorized
+User: 21146:hauerbac with Key: 574834:hauerbac 2023-02-06T10:55:03Z is not authorized to write to vogsphere/intra-uuid-28bb066e-d0b3-4ba8-adda-7a891ab97f1c-4668668-hauerbac.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+e3r11p9% cd ..
+e3r11p9% ls
+ex01  ex02  ex03  ex04	ex05  ex06  ex07  ex08	git_second_day
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-7d2ef9fe-a081-4ea0-ba70-9e972a6b37da-4679110-hauerbac git_second_day_2
+Cloning into 'git_second_day_2'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% cd git_second_day_2
+e3r11p9% git add
+Nothing specified, nothing added.
+hint: Maybe you wanted to say 'git add .'?
+hint: Turn this message off by running
+hint: "git config advice.addEmptyPathspec false"
+e3r11p9% ls -alR ../git_second_day
+../git_second_day:
+total 44
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 .
+drwxr-xr-x 12 hauerbac 2023_paris 4096 Feb 10 10:27 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:52 ex01
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:34 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:25 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:39 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:52 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:33 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:46 ex08
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb 10 10:26 .git
+
+../git_second_day/ex01:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:52 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   52 Feb  8 19:29 print_groups.sh
+
+../git_second_day/ex02:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:34 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris  101 Feb  7 09:34 find_sh.sh
+
+../git_second_day/ex03:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:25 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   35 Feb  7 10:25 count_files.sh
+
+../git_second_day/ex04:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:39 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   64 Feb  7 10:39 MAC.sh
+
+../git_second_day/ex05:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:52  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Feb 10 10:08 '"\?$*'\''MaRViN'\''*$?\"'
+
+../git_second_day/ex06:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   37 Feb 10 10:24 skip.sh
+
+../git_second_day/ex07:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:33 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+-rwxr-xr-x  1 hauerbac 2023_paris  176 Feb  8 16:20 r_dwssap.sh
+
+../git_second_day/ex08:
+total 8
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:46 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+
+../git_second_day/.git:
+total 52
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb 10 10:26 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb  7 14:46 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 branches
+-rw-r--r--  1 hauerbac 2023_paris   42 Feb 10 10:26 COMMIT_EDITMSG
+-rw-r--r--  1 hauerbac 2023_paris  324 Feb  7 08:51 config
+-rw-r--r--  1 hauerbac 2023_paris   73 Feb  7 08:51 description
+-rw-r--r--  1 hauerbac 2023_paris   23 Feb  7 08:51 HEAD
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 hooks
+-rw-r--r--  1 hauerbac 2023_paris  852 Feb 10 10:26 index
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 info
+drwxr-xr-x  3 hauerbac 2023_paris 4096 Feb  7 08:53 logs
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 objects
+drwxr-xr-x  5 hauerbac 2023_paris 4096 Feb  7 08:54 refs
+
+../git_second_day/.git/branches:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+
+../git_second_day/.git/hooks:
+total 68
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-rwxr-xr-x 1 hauerbac 2023_paris  478 Feb  7 08:51 applypatch-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  896 Feb  7 08:51 commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4655 Feb  7 08:51 fsmonitor-watchman.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  189 Feb  7 08:51 post-update.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  424 Feb  7 08:51 pre-applypatch.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1643 Feb  7 08:51 pre-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  416 Feb  7 08:51 pre-merge-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1492 Feb  7 08:51 prepare-commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1374 Feb  7 08:51 pre-push.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4898 Feb  7 08:51 pre-rebase.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  544 Feb  7 08:51 pre-receive.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 2783 Feb  7 08:51 push-to-checkout.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 3650 Feb  7 08:51 update.sample
+
+../git_second_day/.git/info:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-rw-r--r-- 1 hauerbac 2023_paris  240 Feb  7 08:51 exclude
+
+../git_second_day/.git/logs:
+total 16
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-rw-r--r-- 1 hauerbac 2023_paris 2461 Feb 10 10:26 HEAD
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb  7 08:54 refs
+
+../git_second_day/.git/logs/refs:
+total 16
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:53 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:53 heads
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 remotes
+
+../git_second_day/.git/logs/refs/heads:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+-rw-r--r-- 1 hauerbac 2023_paris 2461 Feb 10 10:26 master
+
+../git_second_day/.git/logs/refs/remotes:
+total 12
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:54 origin
+
+../git_second_day/.git/logs/refs/remotes/origin:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+-rw-r--r-- 1 hauerbac 2023_paris 1859 Feb  8 19:33 master
+
+../git_second_day/.git/objects:
+total 200
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 .
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:25 04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 0d
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 13
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:40 15
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:21 19
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:25 1a
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 25
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:40 2e
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:40 32
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:40 3c
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 3d
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:40 43
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:10 49
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 55
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:40 62
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 11:48 72
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 77
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:26 7b
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:34 7c
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:33 7f
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:22 80
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:55 8c
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:40 94
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:10 9b
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:26 a0
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:55 a1
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:22 a5
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 11:49 af
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:31 b1
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:10 b7
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:26 b9
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:26 bb
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 bc
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:02 c0
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:33 c4
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 11:49 c9
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:22 cb
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 d0
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 d6
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:55 d9
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:26 e1
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:26 e6
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:33 e8
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 11:49 e9
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:08 f7
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 info
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 pack
+
+../git_second_day/.git/objects/04:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:25 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   53 Feb 10 10:25 cdfc7ca78154fc9bd256db18f3f5d30a7d712c
+
+../git_second_day/.git/objects/06:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   52 Feb  7 11:53 51259feaafffc956baba255837c7e4a3a0858a
+
+../git_second_day/.git/objects/0d:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   60 Feb  7 08:53 e46c8cd1acbc84a0cff6e97b0d56e97491c3b1
+
+../git_second_day/.git/objects/13:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   53 Feb  7 11:53 0af3881e500aaa433bb75307288990fded11de
+
+../git_second_day/.git/objects/15:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:40 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  122 Feb  7 10:40 54c9c22d81a007ba5ec41cb2ec31a30d7e27c7
+
+../git_second_day/.git/objects/19:
+total 16
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:21 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   20 Feb  7 10:54 2548e949786b9903109a943350e6ca0f1241d3
+-r--r--r--  1 hauerbac 2023_paris  158 Feb  8 16:21 8f78dc835c93523be295aacef994813bf0fadc
+
+../git_second_day/.git/objects/1a:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:25 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   51 Feb  7 10:25 66e0dfee68bb49bbefb4c4fa8619915fe79c67
+
+../git_second_day/.git/objects/25:
+total 16
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   55 Feb  7 09:35 040da4d17dbca9e3ed4e9b7fb0142c3b432610
+-r--r--r--  1 hauerbac 2023_paris  186 Feb  7 09:02 cffe1fc9fe4b0e35d524ecb8b6912cc7036eee
+
+../git_second_day/.git/objects/2e:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:40 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   51 Feb  7 10:40 b471d3883854e38f723a3e4dc5f0b4d3f43db9
+
+../git_second_day/.git/objects/32:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:40 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  183 Feb  7 14:40 8774d0fa8721309e64b03e4b9f38ddd9613021
+
+../git_second_day/.git/objects/3c:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:40 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   77 Feb  7 10:40 4f4b3798a50858364490e239c6ddd9afa918dc
+
+../git_second_day/.git/objects/3d:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  182 Feb  7 11:53 330a38a54da4bd1bec11efe019fc00b86a2f16
+
+../git_second_day/.git/objects/43:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:40 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  197 Feb  7 14:40 4e4a3a174288bf029be7465f245b7e3b65d3cf
+
+../git_second_day/.git/objects/49:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:10 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   63 Feb 10 10:10 403637585b1e314a6e41c4149c8c48322f30c5
+
+../git_second_day/.git/objects/55:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 11:53 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  172 Feb  7 11:53 0f8d4eaf80bf77a83e8358becdbdd30953c73f
+
+../git_second_day/.git/objects/62:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:40 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  182 Feb  7 10:40 47559f6cfd4537b094b18bb165f0f6247dacbe
+
+../git_second_day/.git/objects/72:
+total 16
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 11:48 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  165 Feb  7 14:39 10c0795937e22ffbd6b54332246ad116ef2f84
+-r--r--r--  1 hauerbac 2023_paris  156 Feb  8 11:48 983af614d04faf6669d12b6bccc53b60e8be94
+
+../git_second_day/.git/objects/77:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:35 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   71 Feb  7 09:35 6d10e15af4e6b46d3f33286a7ea1375954b13b
+
+../git_second_day/.git/objects/7b:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:26 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  182 Feb  7 10:26 ddaada341cbbe43bf741d0855656f15475897a
+
+../git_second_day/.git/objects/7c:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:34 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  101 Feb  7 09:34 e24e7a43ca9380e5bf19148c56d8cccaad2b17
+
+../git_second_day/.git/objects/7f:
+total 16
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:33 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   60 Feb  8 19:33 3cc3b780675e51639984027d1757e2d2b1690e
+-r--r--r--  1 hauerbac 2023_paris   46 Feb  7 09:02 a675a86bfa88c5ab95280e122248ade0a6a587
+
+../git_second_day/.git/objects/80:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:22 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  197 Feb  8 16:22 4982b107f2a93ebd7d35c0645a4b7a76f0f8ba
+
+../git_second_day/.git/objects/8c:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:55 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  182 Feb  7 10:55 a89f52a9c8ff7a06e96f378e5c5a389fe3e42d
+
+../git_second_day/.git/objects/94:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 14:40 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   56 Feb  7 14:40 e4d665d9dc63ee9e0f47382cf2664e00465775
+
+../git_second_day/.git/objects/9b:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:10 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  196 Feb 10 10:10 6979f012ae3d54365a5d98b38b559fdfe78639
+
+../git_second_day/.git/objects/a0:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:26 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  196 Feb 10 10:26 75c024015c53f046dbf5fe9c0f2a6a39fc96e6
+
+../git_second_day/.git/objects/a1:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:55 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  146 Feb  7 10:55 16399d52b519bf3df7947362c3048419967060
+
+../git_second_day/.git/objects/a5:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:22 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  184 Feb  8 16:22 1f9eb22f622bdf8aaead44f9daae707b4a2957
+
+../git_second_day/.git/objects/af:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 11:49 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  191 Feb  8 11:49 10155b9d14c3be2ba6ef72974684376540515b
+
+../git_second_day/.git/objects/b1:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:31 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   61 Feb  8 19:31 e2aaed8f3ec1702d85c78c55810324d4f0abac
+
+../git_second_day/.git/objects/b7:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:10 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  194 Feb 10 10:10 ad6e268ff8a36e29bde144003d5457397a9479
+
+../git_second_day/.git/objects/b9:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:26 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  194 Feb 10 10:26 6b82b6e2d582e8061e452b27bdd3e70577e04c
+
+../git_second_day/.git/objects/bb:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:26 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   96 Feb  7 10:26 39adf9d880900c0e190b1e558526a935b7714c
+
+../git_second_day/.git/objects/bc:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   47 Feb  7 08:53 40951ec65281a91eee75928c314846c07a7144
+
+../git_second_day/.git/objects/c0:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 09:02 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   60 Feb  7 09:02 ec6260cd2b6993c225f5ed615efd3c62058622
+
+../git_second_day/.git/objects/c4:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:33 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  197 Feb  8 19:33 eb7be747669454af70107b90edaec3f6f6fe86
+
+../git_second_day/.git/objects/c9:
+total 16
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 11:49 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  181 Feb  7 09:35 37370cc54a409bd6e77f607679cd715af2f6a5
+-r--r--r--  1 hauerbac 2023_paris   56 Feb  8 11:49 ed1a552c6159ec3dcfaae61e8fa2023a63dc0f
+
+../git_second_day/.git/objects/cb:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 16:22 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   56 Feb  8 16:22 8380e16ad1b2e73c0b2a769eb1a19d497cc2a3
+
+../git_second_day/.git/objects/d0:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  150 Feb  7 08:53 9a51e7583713cf1d65845620c14ee2be6e2728
+
+../git_second_day/.git/objects/d6:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:53 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   52 Feb  7 09:02 f7f887bfd5231046e81c20b0eb092622d8a507
+
+../git_second_day/.git/objects/d9:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:55 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   63 Feb  7 10:55 d535f76a503f33743b6957697f30c14f1b89ad
+
+../git_second_day/.git/objects/e1:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 10:26 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   59 Feb  7 10:26 af8150a23c72a0b6c113221d5e0d218237fce3
+
+../git_second_day/.git/objects/e6:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:26 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   52 Feb 10 10:26 851b5e2aeb861b3994c72f35ffc07ddbe70a03
+
+../git_second_day/.git/objects/e8:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 19:33 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  182 Feb  8 19:33 497830487b08010b565162bbe1a984f56ec467
+
+../git_second_day/.git/objects/e9:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  8 11:49 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris  197 Feb  8 11:49 e0d9666ef046d22b632ac6d950d1c70b4c66b3
+
+../git_second_day/.git/objects/f7:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:08 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+-r--r--r--  1 hauerbac 2023_paris   17 Feb 10 10:08 0d7bba4ae1f07682e0358bd7a2068094fc023b
+
+../git_second_day/.git/objects/info:
+total 8
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+
+../git_second_day/.git/objects/pack:
+total 8
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 50 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+
+../git_second_day/.git/refs:
+total 20
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 10 10:26 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:26 heads
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 remotes
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 tags
+
+../git_second_day/.git/refs/heads:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:26 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+-rw-r--r-- 1 hauerbac 2023_paris   41 Feb 10 10:26 master
+
+../git_second_day/.git/refs/remotes:
+total 12
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  8 19:33 origin
+
+../git_second_day/.git/refs/remotes/origin:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  8 19:33 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+-rw-r--r-- 1 hauerbac 2023_paris   41 Feb  8 19:33 master
+
+../git_second_day/.git/refs/tags:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb  7 08:51 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb  7 08:54 ..
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01/git_second_day_2
+e3r11p9% cp ../git_second_day/ex01/print_groups.sh .
+e3r11p9% ls
+print_groups.sh
+e3r11p9% rm print_groups.sh 
+e3r11p9% mkdir ex01
+e3r11p9% mkdir ex02
+e3r11p9% mkdir ex03
+e3r11p9% mkdir ex04
+e3r11p9% mkdir ex05
+e3r11p9% mkdir ex06
+e3r11p9% mkdir ex07
+e3r11p9% mkdir ex08
+e3r11p9% cp ../git_second_day/ex01/print_groups.sh ex01
+e3r11p9% ls
+ex01  ex02  ex03  ex04	ex05  ex06  ex07  ex08
+e3r11p9% ls ex01
+print_groups.sh
+e3r11p9% cp ../git_second_day/ex02/find_sh.sh ex02     
+e3r11p9% cp ../git_second_day/ex02/count_files.sh ex03
+cp: cannot stat '../git_second_day/ex02/count_files.sh': No such file or directory
+e3r11p9% cp ../git_second_day/ex03/count_files.sh ex03 
+e3r11p9% cp ../git_second_day/ex04/MAC.sh ex04        
+e3r11p9% cp ../git_second_day/ex05/\"\\\?\$\*\'MaRViN\'\*\$\?\\\" ex05 
+e3r11p9% cp ../git_second_day/ex06/skip.sh ex06                       
+e3r11p9% cp ../git_second_day/ex07/r_dwssap.sh ex07
+e3r11p9% ls -alR                                                      
+.:
+total 44
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32 .
+drwxr-xr-x 12 hauerbac 2023_paris 4096 Feb 10 10:27 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:32 ex01
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:33 ex02
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:33 ex03
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:33 ex04
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:34 ex05
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:34 ex06
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:35 ex07
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:32 ex08
+drwxr-xr-x  7 hauerbac 2023_paris 4096 Feb 10 10:28 .git
+
+./ex01:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:32 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   52 Feb 10 10:32 print_groups.sh
+
+./ex02:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:33 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32 ..
+-rwxr-xr-x  1 hauerbac 2023_paris  101 Feb 10 10:33 find_sh.sh
+
+./ex03:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:33 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   35 Feb 10 10:33 count_files.sh
+
+./ex04:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:33 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   64 Feb 10 10:33 MAC.sh
+
+./ex05:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:34  .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32  ..
+-rw---xr--  1 hauerbac 2023_paris    2 Feb 10 10:34 '"\?$*'\''MaRViN'\''*$?\"'
+
+./ex06:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:34 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32 ..
+-rwxr-xr-x  1 hauerbac 2023_paris   37 Feb 10 10:34 skip.sh
+
+./ex07:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:35 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32 ..
+-rwxr-xr-x  1 hauerbac 2023_paris  176 Feb 10 10:35 r_dwssap.sh
+
+./ex08:
+total 8
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:32 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32 ..
+
+./.git:
+total 40
+drwxr-xr-x  7 hauerbac 2023_paris 4096 Feb 10 10:28 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 10 10:32 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:27 branches
+-rw-r--r--  1 hauerbac 2023_paris  324 Feb 10 10:27 config
+-rw-r--r--  1 hauerbac 2023_paris   73 Feb 10 10:27 description
+-rw-r--r--  1 hauerbac 2023_paris   23 Feb 10 10:27 HEAD
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:27 hooks
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 10:27 info
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb 10 10:27 objects
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Feb 10 10:27 refs
+
+./.git/branches:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 .
+drwxr-xr-x 7 hauerbac 2023_paris 4096 Feb 10 10:28 ..
+
+./.git/hooks:
+total 68
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 .
+drwxr-xr-x 7 hauerbac 2023_paris 4096 Feb 10 10:28 ..
+-rwxr-xr-x 1 hauerbac 2023_paris  478 Feb 10 10:27 applypatch-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  896 Feb 10 10:27 commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4655 Feb 10 10:27 fsmonitor-watchman.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  189 Feb 10 10:27 post-update.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  424 Feb 10 10:27 pre-applypatch.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1643 Feb 10 10:27 pre-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  416 Feb 10 10:27 pre-merge-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1492 Feb 10 10:27 prepare-commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1374 Feb 10 10:27 pre-push.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4898 Feb 10 10:27 pre-rebase.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  544 Feb 10 10:27 pre-receive.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 2783 Feb 10 10:27 push-to-checkout.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 3650 Feb 10 10:27 update.sample
+
+./.git/info:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 .
+drwxr-xr-x 7 hauerbac 2023_paris 4096 Feb 10 10:28 ..
+-rw-r--r-- 1 hauerbac 2023_paris  240 Feb 10 10:27 exclude
+
+./.git/objects:
+total 16
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 10 10:27 .
+drwxr-xr-x 7 hauerbac 2023_paris 4096 Feb 10 10:28 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 info
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 pack
+
+./.git/objects/info:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 10 10:27 ..
+
+./.git/objects/pack:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 10 10:27 ..
+
+./.git/refs:
+total 16
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 10 10:27 .
+drwxr-xr-x 7 hauerbac 2023_paris 4096 Feb 10 10:28 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 heads
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 tags
+
+./.git/refs/heads:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 10 10:27 ..
+
+./.git/refs/tags:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 10 10:27 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 10 10:27 ..
+e3r11p9% git add ex01/print_groups.sh 
+e3r11p9% git add ex02/find_sh.sh     
+e3r11p9% git add ex03/count_files.sh 
+e3r11p9% git add ex04/MAC.sh        
+e3r11p9% git add ex05/\"\\\?\$\*\'MaRViN\'\*\$\?\\\" 
+e3r11p9% git add ex06/skip.sh                       
+e3r11p9% git add ex07/r_dwssap.sh 
+e3r11p9% git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   ex01/print_groups.sh
+	new file:   ex02/find_sh.sh
+	new file:   ex03/count_files.sh
+	new file:   ex04/MAC.sh
+	new file:   "ex05/\"\\?$*'MaRViN'*$?\\\""
+	new file:   ex06/skip.sh
+	new file:   ex07/r_dwssap.sh
+
+e3r11p9% git commit -m "Retry"
+[master (root-commit) a936b60] Retry
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 7 files changed, 13 insertions(+)
+ create mode 100755 ex01/print_groups.sh
+ create mode 100755 ex02/find_sh.sh
+ create mode 100755 ex03/count_files.sh
+ create mode 100755 ex04/MAC.sh
+ create mode 100644 "ex05/\"\\?$*'MaRViN'*$?\\\""
+ create mode 100755 ex06/skip.sh
+ create mode 100755 ex07/r_dwssap.sh
+e3r11p9% git push
+Enumerating objects: 16, done.
+Counting objects: 100% (16/16), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (16/16), 1.16 KiB | 395.00 KiB/s, done.
+Total 16 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-7d2ef9fe-a081-4ea0-ba70-9e972a6b37da-4679110-hauerbac
+ * [new branch]      master -> master
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01/git_second_day_2
+e3r11p9% cd ..
+e3r11p9% cat git_second_day_2/ex06/skip.sh 
+#!/bin/sh
+ls -l | sed -n '1,${p;n;}'
+------------------------------------------------------------------------------------------------------------------------------------------------------
+logo42 		
+	You have been graded by Moulinette 	
+		
+	
+		
+	
+
+Hi,
+
+You have been graded 85 on C Piscine Shell 01:
+
+ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: Nothing turned in
+---------------------------------------------------------------------------------------------------------------------------------------
+ptessier (Pierre)
+ — 
+Hier à 16:58
+Perso quand j'enregistre un fichier sous vim avec des tabs de 4, les tabs sont de nouveau a 8 si je refresh le fichier. Tu connais un moyen de l'enregistrer en dur ?
+
+lucravoi (Ludovic)
+ — 
+Hier à 17:00
+tu met ca dans ton ~/.vimrc 
+
+set tabstop=4
+set shiftwidth=4
+set cindent
+set autoindent
+
+ 
+et quand tu ouvre ton fichier de nouveau tu fais
+
+gG=G
+
+pour appliquer ta nouvelle indentation
+faudra corriger manuellement ce qui est pas corrige
+
+hanjebou (Hanine)
+ — 
+Aujourd’hui à 13:39
+comment on accède au .vimrc s'il vous plait ?
+lucravoi (Ludovic)
+ — 
+Aujourd’hui à 13:40
+
+vim ~/.vimrc
+
 
 
 

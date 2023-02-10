@@ -1,0 +1,119 @@
+Règles Exam machine
+Règles Exams Machine
+
+Dernière Mise à jour : 09/12/2021
+
+Tout manquement à l'une des règles suivante entraînera l'exclusion de l'examen, la note -42 et pourra être suivi de sanction supplémentaire.
+
+    L'entrée s'effectue par la porte extérieure, dans le calme et sans précipitation.
+
+    A l'entrée, vous devrez présenter votre carte aux Tuteurs, sans carte l'accès à la session d'examen vous sera refusé.
+
+    Il est interdit de se connecter sur sa session personnelle dans le cluster réservé pour l'exam, après y être entré et avant en être sorti.
+
+    Vous devez vous utiliser le login exam et le password exam.
+
+    Une fois l'examen commencé, il est interdit de rentrer dans la salle. Aucun retardataire ne sera admis.
+
+    Les téléphones, montres connectées et autres objets (connectés ou non) sont interdits, ils devront être éteint et rangé dans les sacs ou déposés dans la boîte à l'entrée du cluster. Pas en silencieux. Éteints.
+
+    Les écouteurs, filaires ou non, sont des objets connectés et doivent être rangés dans les sacs. Pas dans les poches, ni dans les oreilles.
+
+    Vous n'êtes autorisés à garder aucun objet sur vous (Ni dans vos poches). Sont uniquement autorisés sur votre bureau :
+        Papier (3 feuilles max)
+        un et un seul stylo/crayon
+        une montre mécanique (== avec des aiguilles et rien d'autre)
+        mouchoirs
+        boule quiès
+
+    Les sacs et manteaux devront être déposés au fond du cluster ou sur les rangés de gauche en rentrant, si des sièges sont libres.
+
+    Il est interdit de les déposer devant les extincteurs, sous les oeuvres et bouches d'aération.
+
+    Les cartes d'étudiant·e·s doivent être posées en évidence sur les tables.
+
+    Vos poches doivent être vides. Tout autre objet trouvé sur vous entraîne une suspicion de triche.
+
+    Tout périphérique personnel connecté (clavier, souris, etc) sont interdits en examen.
+
+    Les sacs et manteaux devront être déposés au fond du cluster, ou sur les rangées de gauche en entrant.
+
+    Vous avez le droit uniquement à des feuilles vierges volantes en guise de brouillon (pas de carnet), à un stylo ou un crayon, ainsi qu'une bouteille d'eau fermée au sol. Si vous avez besoin d'objets supplémentaires concernant votre santé, prévenez l'un de vos surveillants.
+
+    Vos feuilles doivent être vierges jusqu'au début de l'examen. Vous n'avez pas le droit de coder avant le début de l'examen.
+
+    Toute tentative de communication avec d'autres étudiant·e·s que ce soit oral, écrit ou autre est prohibée, et sera considéré comme une tentative de triche.
+
+    Il est interdit de se connecter avec les identifiants d'un autre étudiant.
+
+    Vous devez désactiver le son de vos iMac dès votre arrivée, une fois l'examen commencé toute personne faisant "sonner" volontairement son mac sera exclue de l'examen sans avertissement préalable.
+
+    Il est interdit de se déplacer, sauf pour quitter la session d'examen.
+
+    Les Tuteurs ainsi que leurs décisions doivent être respectés.
+
+    Si vous souhaitez aller aux toilettes, vous devrez attendre qu'un Tuteur fasse une annonce. En cas d'extrême urgence, levez vous et attendez un tuteur pour lui demander. Si vous êtes malade, prévenez l'un des surveillants.
+
+    Pour toute question, vous devrez vous LEVER ET ATTENDRE un Tuteur.
+
+    Les règles générales des clusters s'appliquent aux examens.
+
+    Vérifiez que vous n'oubliez rien en sortant, les cartes oubliées seront à récupérer au bocal, le reste sera rapporté aux objets trouvés.
+
+    Une fois l'examen terminé merci de faire preuve de respect en rangeant sa chaise, son clavier, sa souris et ses feuilles de brouillon, de déconnecter la session ouverte sur le poste et de sortir en silence.
+
+    Si vous avez des besoins spéciaux et que le staff a été mis au courant dites le dès le début aux surveillants.
+
+SPÉCIFICITÉS SUPPLÉMENTAIRES EN PISCINE
+
+    Les sacs et manteaux devront être déposés au fond du cluster Il est interdit de les déposer devant les extincteurs ou les bouches d'aération, ni sous les œuvres. Les poches des vêtements sur vos dossiers doivent être vides.
+
+EXAM FINAL
+
+    Vous avez le droit à 6 feuilles de brouillon au lieu de 3.
+
+    Nourriture sèche, qui ne fait pas de miettes, tout doit être posé au sol. Vous ne devez pas manger au-dessus de vos claviers : reculez vous pour manger.
+        Pas de chocolat, sous toutes ses formes.
+            Si vous avez un doute : demandez au staff.
+                Si vous avez toujours un doute : prenez autre chose.
+
+    Toute tentative de communication avec d'autres personnes, ou soi même, que ce soit orale, écrite ou autre est prohibée, et sera considéré comme une tentative de triche.
+
+    Il est interdit de se connecter avec les identifiants d'un.e autre candidat.e.
+
+    Il est interdit de regarder le mac d'un.e autre candidat.e.
+
+    Vous devez désactiver le son de vos iMac dès votre arrivée.
+
+    Il est interdit de se déplacer après le début de l'examen, sauf pour quitter la session d'examen.
+
+    Les Tuteurs ainsi que leurs décisions doivent être respectés.
+
+    Si vous souhaitez aller aux toilettes, vous devrez attendre qu'un Tuteur fasse une annonce. En cas d'extrême urgence, levez vous et attendez un tuteur pour lui demander. Si vous êtes malade, prévenez l'un des surveillants.
+
+    Pour toute question, vous devrez vous LEVER ET ATTENDRE un Tuteur.
+
+    Vérifiez que vous n'oubliez rien en sortant, les cartes oubliées seront à récupérer au bocal, le reste sera rapporté aux objets trouvés.
+
+    Une fois l'examen terminé merci de faire preuve de respect en rangeant vos chaise/clavier/souris/feuilles de brouillon, de déconnecter la session ouverte sur le poste et de sortir en silence.
+
+    Si vous avez des besoins spécifiques et que le staff a été mis au courant, faites en part aux surveillants dès votre entrée dans le cluster.
+
+    En cas de problème technique, ou tout autre souci, vous devez vous lever EN SILENCE et attendre qu'un membre du staff vienne vous voir. Il est interdit de demander à vos voisins, ou d'appeler verbalement un membre du staff.
+
+    En cas de doute pendant l'examen, les présentes règles sont accessibles dans /docs
+
+SEULES LES INFRACTIONS SUIVANTES ENTRAÎNERONT AUTOMATIQUEMENT, AU MOINS, UNE EXCLUSION DE L'EXAMEN:
+
+    Communication orale/autre à qui que ce soit, même à soi même
+    Tout objet sur vous (sauf liste au dessus)
+    Appareil électronique allumé dans un sac
+    Se connecter avec l'identifiant d'un.e autre étudiant.e
+    Regarder un autre écran que le sien
+    Brouillon non vierge avant le début de l'examen
+    Commencer à coder avant le début de l'examen
+    Multiple récidive d'une même infraction
+    Le non-respect des gestes barrières contre le COVID en salle d'exam.
+
+    TOUTE AUTRE INFRACTION POURRA ÊTRE SANCTIONNÉE PAR UN TIG
+

@@ -2488,6 +2488,78 @@ You have been graded 85 on C Piscine Shell 00:
 
 ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: OK | ex09: KO
 -------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/shell_01
+e3r11p9% cd ../shell_00
+e3r11p9% ls
+amhappio  ex00	ex01  ex02  ex03  ex04	ex05  ex06  ex07  ex08	ex09  git_first_day  git_first_day_2
+e3r11p9% cd ex09
+e3r11p9% ls
+ft_magic  ft_magic.mgc	test42file  test42file2
+e3r11p9% cat ft_magic
+41        string 42 This is a 42 file
+!:mime text/42-file
+e3r11p9% vi ft_magic 
+e3r11p9% cat ft_magic 
+41	string 42	42 file
+e3r11p9% file -C -m ft_magic
+e3r11p9% ls -al
+total 24
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 10 14:01 .
+drwxr-xr-x 16 hauerbac 2023_paris 4096 Feb  9 15:02 ..
+-rw-r--r--  1 hauerbac 2023_paris   21 Feb 10 14:01 ft_magic
+-rw-r--r--  1 hauerbac 2023_paris  752 Feb 10 14:02 ft_magic.mgc
+-rw-r--r--  1 hauerbac 2023_paris   44 Feb  8 17:53 test42file
+-rw-r--r--  1 hauerbac 2023_paris   44 Feb  8 17:46 test42file2
+e3r11p9% file -m ft_magic.mgc *
+ft_magic:     ASCII text
+ft_magic.mgc: data
+test42file:   42 file
+test42file2:  42 file
+e3r11p9% file --mime-type -m ft_magic.mgc *
+ft_magic:     text/plain
+ft_magic.mgc: application/octet-stream
+test42file:   text/plain
+test42file2:  text/plain
+e3r11p9% cat ../../samed/ex09/ft_magic   
+41 string 42 42 file%                                                                                                                       e3r11p9% cp ft_magic ../git_first_day/ex09/ft_magic
+e3r11p9% cat ../git_first_day/ex09/ft_magic 
+41	string 42	42 file
+e3r11p9% cd ../git_first_day          
+e3r11p9% git add ex09/ft_magic
+e3r11p9% git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   ex09/ft_magic
+
+e3r11p9% git commit -m "Correction of ex09 file for the message type"
+[master c895306] Correction of ex09 file for the message type
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+e3r11p9% git push
+Gitea: Unauthorized
+User: 21146:hauerbac with Key: 574834:hauerbac 2023-02-06T10:55:03Z is not authorized to write to vogsphere/intra-uuid-f3f67a0c-15cc-48d9-9735-e77e3476906b-4666045-hauerbac.
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
 
 	
 		
