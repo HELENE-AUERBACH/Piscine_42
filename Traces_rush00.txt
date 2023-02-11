@@ -1,0 +1,664 @@
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% ls
+c_00	 Documents  Music     Public  sgoinfre	shell_01   Videos
+Desktop  Downloads  Pictures  samed   shell_00	Templates
+e3r11p9% mkdir rush_00
+e3r11p9% cd rush_00 
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-1d7fcc1f-8a72-4eaa-848d-104b342112d6-4680407-mpicardo git_rush00
+Cloning into 'git_rush00'...
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 10 (delta 5), reused 0 (delta 0)
+Receiving objects: 100% (10/10), done.
+Resolving deltas: 100% (5/5), done.
+e3r11p9% cd git_rush00 
+e3r11p9% ls -alR
+.:
+total 16
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 ex00
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 11 18:14 .git
+
+./ex00:
+total 36
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+-rw-r--r-- 1 hauerbac 2023_paris  959 Feb 11 18:14 ft_putchar.c
+-rw-r--r-- 1 hauerbac 2023_paris  963 Feb 11 18:14 main.c
+-rw-r--r-- 1 hauerbac 2023_paris 1669 Feb 11 18:14 rush00.c
+-rw-r--r-- 1 hauerbac 2023_paris 1886 Feb 11 18:14 rush01.c
+-rw-r--r-- 1 hauerbac 2023_paris 1884 Feb 11 18:14 rush02.c
+-rw-r--r-- 1 hauerbac 2023_paris 1669 Feb 11 18:14 rush03.c
+-rw-r--r-- 1 hauerbac 2023_paris 1884 Feb 11 18:14 rush04.c
+
+./.git:
+total 52
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 branches
+-rw-r--r-- 1 hauerbac 2023_paris  320 Feb 11 18:14 config
+-rw-r--r-- 1 hauerbac 2023_paris   73 Feb 11 18:14 description
+-rw-r--r-- 1 hauerbac 2023_paris   21 Feb 11 18:14 HEAD
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 hooks
+-rw-r--r-- 1 hauerbac 2023_paris  654 Feb 11 18:14 index
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 info
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 logs
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 objects
+-rw-r--r-- 1 hauerbac 2023_paris  112 Feb 11 18:14 packed-refs
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb 11 18:14 refs
+
+./.git/branches:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+
+./.git/hooks:
+total 68
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+-rwxr-xr-x 1 hauerbac 2023_paris  478 Feb 11 18:14 applypatch-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  896 Feb 11 18:14 commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4655 Feb 11 18:14 fsmonitor-watchman.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  189 Feb 11 18:14 post-update.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  424 Feb 11 18:14 pre-applypatch.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1643 Feb 11 18:14 pre-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  416 Feb 11 18:14 pre-merge-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1492 Feb 11 18:14 prepare-commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1374 Feb 11 18:14 pre-push.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4898 Feb 11 18:14 pre-rebase.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  544 Feb 11 18:14 pre-receive.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 2783 Feb 11 18:14 push-to-checkout.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 3650 Feb 11 18:14 update.sample
+
+./.git/info:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+-rw-r--r-- 1 hauerbac 2023_paris  240 Feb 11 18:14 exclude
+
+./.git/logs:
+total 16
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+-rw-r--r-- 1 hauerbac 2023_paris  262 Feb 11 18:14 HEAD
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 refs
+
+./.git/logs/refs:
+total 16
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 heads
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 remotes
+
+./.git/logs/refs/heads:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+-rw-r--r-- 1 hauerbac 2023_paris  262 Feb 11 18:14 main
+
+./.git/logs/refs/remotes:
+total 12
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 origin
+
+./.git/logs/refs/remotes/origin:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+-rw-r--r-- 1 hauerbac 2023_paris  262 Feb 11 18:14 HEAD
+
+./.git/objects:
+total 16
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 info
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 pack
+
+./.git/objects/info:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+
+./.git/objects/pack:
+total 16
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+-r--r--r-- 1 hauerbac 2023_paris 1352 Feb 11 18:14 pack-9a405a4e9dd41a68b98d060c66f92cf5c2408b3b.idx
+-r--r--r-- 1 hauerbac 2023_paris 1568 Feb 11 18:14 pack-9a405a4e9dd41a68b98d060c66f92cf5c2408b3b.pack
+
+./.git/refs:
+total 20
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 heads
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 remotes
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 tags
+
+./.git/refs/heads:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+-rw-r--r-- 1 hauerbac 2023_paris   41 Feb 11 18:14 main
+
+./.git/refs/remotes:
+total 12
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 origin
+
+./.git/refs/remotes/origin:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+-rw-r--r-- 1 hauerbac 2023_paris   30 Feb 11 18:14 HEAD
+
+./.git/refs/tags:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:14 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Feb 11 18:14 ..
+e3r11p9% pwd      
+/mnt/nfs/homes/hauerbac/rush_00/git_rush00
+e3r11p9% mkdir ../ex00
+e3r11p9% cp ex00/* ../ex00
+e3r11p9% cd ../ex00 
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/rush_00/ex00
+e3r11p9% ls -al
+total 36
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 11 18:17 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 11 18:16 ..
+-rw-r--r-- 1 hauerbac 2023_paris  959 Feb 11 18:17 ft_putchar.c
+-rw-r--r-- 1 hauerbac 2023_paris  963 Feb 11 18:17 main.c
+-rw-r--r-- 1 hauerbac 2023_paris 1669 Feb 11 18:17 rush00.c
+-rw-r--r-- 1 hauerbac 2023_paris 1886 Feb 11 18:17 rush01.c
+-rw-r--r-- 1 hauerbac 2023_paris 1884 Feb 11 18:17 rush02.c
+-rw-r--r-- 1 hauerbac 2023_paris 1669 Feb 11 18:17 rush03.c
+-rw-r--r-- 1 hauerbac 2023_paris 1884 Feb 11 18:17 rush04.c
+e3r11p9% cc -Wall -Wextra -Werror -o test_rush00 ft_putchar.c rush00.c main.c 
+e3r11p9% cc -Wall -Wextra -Werror -o test_rush01 ft_putchar.c rush01.c main.c 
+e3r11p9% cc -Wall -Wextra -Werror -o test_rush02 ft_putchar.c rush02.c main.c 
+e3r11p9% cc -Wall -Wextra -Werror -o test_rush04 ft_putchar.c rush04.c main.c 
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c 
+e3r11p9% ls -al
+total 116
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 11 18:19 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 11 18:16 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16200 Feb 11 18:19 a.out
+-rw-r--r-- 1 hauerbac 2023_paris   959 Feb 11 18:17 ft_putchar.c
+-rw-r--r-- 1 hauerbac 2023_paris   963 Feb 11 18:17 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  1669 Feb 11 18:17 rush00.c
+-rw-r--r-- 1 hauerbac 2023_paris  1886 Feb 11 18:17 rush01.c
+-rw-r--r-- 1 hauerbac 2023_paris  1884 Feb 11 18:17 rush02.c
+-rw-r--r-- 1 hauerbac 2023_paris  1669 Feb 11 18:17 rush03.c
+-rw-r--r-- 1 hauerbac 2023_paris  1884 Feb 11 18:17 rush04.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16200 Feb 11 18:18 test_rush00
+-rwxr-xr-x 1 hauerbac 2023_paris 16248 Feb 11 18:18 test_rush01
+-rwxr-xr-x 1 hauerbac 2023_paris 16248 Feb 11 18:18 test_rush02
+-rwxr-xr-x 1 hauerbac 2023_paris 16248 Feb 11 18:19 test_rush04
+e3r11p9% ./test_rush00
+o---o
+|   |
+o---o
+e3r11p9% ./test_rush01
+/***\
+*   *
+\***/
+e3r11p9% ./test_rush012
+zsh: no such file or directory: ./test_rush012
+e3r11p9% ./test_rush02 
+ABBBA
+B   B
+CBBBC
+e3r11p9% ./a.out      
+ABBBC
+B   B
+ABBBC
+e3r11p9% ./test_rush04
+ABBBC
+B   B
+CBBBA
+e3r11p9% vi main.c 
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c
+main.c:17:11: error: implicit conversion from 'long' to 'int' changes value from 30000000000 to -64771072 [-Werror,-Wconstant-conversion]
+        rush(-5, 30000000000);
+        ~~~~     ^~~~~~~~~~~
+1 error generated.
+e3r11p9% vi main.c                                            
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c
+e3r11p9% ./a.out
+e3r11p9% vi main.c                                            
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c
+e3r11p9% ./a.out                                              
+e3r11p9% vi main.c                                            
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c
+e3r11p9% ./a.out                                              
+ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBC
+B                                      B
+B                                      B
+B                                      B
+B                                      B
+B                                      B
+ABBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBC
+e3r11p9% cc -Wall -Wextra -Werror -o test_generic_rush0 ft_putchar.c generic_rush.c generic_main.c 
+e3r11p9% ./test_generic_rush0 
+o---o
+|   |
+o---o
+
+/***\
+*   *
+\***/
+
+ABBBA
+B   B
+CBBBC
+
+ABBBC
+B   B
+ABBBC
+
+ABBBC
+B   B
+CBBBA
+e3r11p9% vi main.c                                            
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c
+e3r11p9% ./a.out
+ABBC
+B  B
+B  B
+ABBC
+e3r11p9% vi main.c                                            
+e3r11p9% ./a.out  
+ABBC
+B  B
+B  B
+ABBC
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c
+e3r11p9% ./a.out                                              
+A
+B
+B
+B
+A
+e3r11p9% vi main.c                                            
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c
+e3r11p9% ./a.out                                              
+A
+e3r11p9% vi main.c                                            
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c
+e3r11p9% ./a.out                                              
+ABBBC
+e3r11p9% vi main.c                                            
+e3r11p9% cc -Wall -Wextra -Werror ft_putchar.c rush03.c main.c
+e3r11p9% ./a.out                                              
+ABBBC
+B   B
+ABBBC
+e3r11p9% cat ft_putchar.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpicardo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/11 13:04:22 by mpicardo          #+#    #+#             */
+/*   Updated: 2023/02/11 13:04:49 by mpicardo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+}
+e3r11p9% cat rush03.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush03.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpicardo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/11 14:36:04 by mpicardo          #+#    #+#             */
+/*   Updated: 2023/02/11 14:46:15 by mpicardo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_putchar(char c);
+
+void	ft_rush_horizontal_line(int x)
+{
+	if (x > 0)
+	{
+		ft_putchar('A');
+		if (x >= 2)
+		{
+			x = x - 2;
+			while (x > 0)
+			{
+				ft_putchar('B');
+				x--;
+			}
+			ft_putchar('C');
+		}
+		ft_putchar('\n');
+	}
+}
+
+void	ft_rush_vertical_line(int x)
+{
+	if (x > 0)
+	{
+		ft_putchar('B');
+		if (x >= 2)
+		{
+			x = x - 2;
+			while (x > 0)
+			{
+				ft_putchar(' ');
+				x--;
+			}
+			ft_putchar('B');
+		}
+		ft_putchar('\n');
+	}
+}
+
+void	ft_rush_vertical_lines(int y, int x)
+{
+	if (y > 0)
+	{
+		while (y > 0)
+		{
+			ft_rush_vertical_line(x);
+			y--;
+		}
+	}
+}
+
+void	rush(int x, int y)
+{
+	if (x > 0 && y > 0)
+	{
+		ft_rush_horizontal_line(x);
+		y = y - 2;
+		if (y > 0)
+		{
+			ft_rush_vertical_lines(y, x);
+		}
+		if (y >= 0)
+		{
+			ft_rush_horizontal_line(x);
+		}
+	}
+}
+e3r11p9% cat main.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpicardo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/11 12:23:12 by mpicardo          #+#    #+#             */
+/*   Updated: 2023/02/11 18:54:30 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	rush(int x, int y);
+
+int	main(void)
+{
+	rush(5, 3);
+	return (0);
+}
+e3r11p9% cat rush00.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rush00.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpicardo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/11 17:23:58 by mpicardo          #+#    #+#             */
+/*   Updated: 2023/02/11 17:24:06 by mpicardo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_putchar(char c);
+
+void	ft_rush_horizontal_line(int x)
+{
+	if (x > 0)
+	{
+		ft_putchar('o');
+		if (x >= 2)
+		{
+			x = x - 2;
+			while (x > 0)
+			{
+				ft_putchar('-');
+				x--;
+			}
+			ft_putchar('o');
+		}
+		ft_putchar('\n');
+	}
+}
+
+void	ft_rush_vertical_line(int x)
+{
+	if (x > 0)
+	{
+		ft_putchar('|');
+		if (x >= 2)
+		{
+			x = x - 2;
+			while (x > 0)
+			{
+				ft_putchar(' ');
+				x--;
+			}
+			ft_putchar('|');
+		}
+		ft_putchar('\n');
+	}
+}
+
+void	ft_rush_vertical_lines(int y, int x)
+{
+	if (y > 0)
+	{
+		while (y > 0)
+		{
+			ft_rush_vertical_line(x);
+			y--;
+		}
+	}
+}
+
+void	rush(int x, int y)
+{
+	if (x > 0 && y > 0)
+	{
+		ft_rush_horizontal_line(x);
+		y = y - 2;
+		if (y > 0)
+		{
+			ft_rush_vertical_lines(y, x);
+		}
+		if (y >= 0)
+		{
+			ft_rush_horizontal_line(x);
+		}
+	}
+}
+e3r11p9% cat generic_rush.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   generic_rush.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpicardo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/11 16:46:46 by mpicardo          #+#    #+#             */
+/*   Updated: 2023/02/11 16:48:45 by mpicardo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_putchar(char c);
+
+void	ft_rush_horizontal_line(int x, char character1, char character2,
+		char character3)
+{
+	if (x > 0)
+	{
+		ft_putchar(character1);
+		if (x >= 2)
+		{
+			x = x - 2;
+			while (x > 0)
+			{
+				ft_putchar(character2);
+				x--;
+			}
+			ft_putchar(character3);
+		}
+		ft_putchar('\n');
+	}
+}
+
+void	ft_rush_vertical_line(int x, char character4)
+{
+	if (x > 0)
+	{
+		ft_putchar(character4);
+		if (x >= 2)
+		{
+			x = x - 2;
+			while (x > 0)
+			{
+				ft_putchar(' ');
+				x--;
+			}
+			ft_putchar(character4);
+		}
+		ft_putchar('\n');
+	}
+}
+
+void	ft_rush_vertical_lines(int y, int x, char character4)
+{
+	if (y > 0)
+	{
+		while (y > 0)
+		{
+			ft_rush_vertical_line(x, character4);
+			y--;
+		}
+	}
+}
+
+void	rush(int x, int y, char character1, char character2,
+		char character3, char character4, char character5,
+		char character6)
+{
+	if (x > 0 && y > 0)
+	{
+		ft_rush_horizontal_line(x, character1, character2, character3);
+		y = y - 2;
+		if (y > 0)
+		{
+			ft_rush_vertical_lines(y, x, character4);
+		}
+		if (y >= 0)
+		{
+			ft_rush_horizontal_line(x, character5, character2, character6);
+		}
+	}
+}
+e3r11p9% cat generic_main.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   generic_main.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpicardo <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/11 15:13:53 by mpicardo          #+#    #+#             */
+/*   Updated: 2023/02/11 17:06:10 by mpicardo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_putchar(char c);
+void	rush(int x, int y, char character1, char character2, char character3,
+		char character4, char character5, char character6);
+
+int	main(void)
+{
+	int	x;
+	int	y;
+	char	character1;
+	char	character2;
+	char	character3;
+	char	character4;
+	char	character5;
+	char	character6;
+
+	x = 5;
+	y = 3;
+	character1 = 'o';
+	character2 = '-';
+	character3 = 'o';
+	character4 = '|';
+	character5 = 'o';
+	character6 = 'o';
+	rush(x, y, character1, character2, character3, character4, character5,
+		character6);
+	ft_putchar('\n');
+	character1 = '/';
+	character2 = '*';
+	character3 = '\\';
+	character4 = '*';
+	character5 = '\\';
+	character6 = '/';
+	rush(x, y, character1, character2, character3, character4, character5,
+		character6);
+	ft_putchar('\n');
+	character1 = 'A';
+	character2 = 'B';
+	character3 = 'A';
+	character4 = 'B';
+	character5 = 'C';
+	character6 = 'C';
+	rush(x, y, character1, character2, character3, character4, character5,
+		character6);
+	ft_putchar('\n');
+	character1 = 'A';
+	character2 = 'B';
+	character3 = 'C';
+	character4 = 'B';
+	character5 = 'A';
+	character6 = 'C';
+	rush(x, y, character1, character2, character3, character4, character5,
+		character6);
+	ft_putchar('\n');
+	character1 = 'A';
+	character2 = 'B';
+	character3 = 'C';
+	character4 = 'B';
+	character5 = 'C';
+	character6 = 'A';
+	rush(x, y, character1, character2, character3, character4, character5,
+		character6);
+	return (0);
+}
+
+
+
