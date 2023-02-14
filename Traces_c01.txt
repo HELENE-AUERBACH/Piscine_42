@@ -1,0 +1,3282 @@
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% ls
+c_00	 Documents  elsa-correction  Pictures  rush_00	sgoinfre  shell_01   Videos
+Desktop  Downloads  Music	     Public    samed	shell_00  Templates
+e3r11p9% rm -r elsa-correction/*
+zsh: sure you want to delete all the files in /mnt/nfs/homes/hauerbac/elsa-correction [yn]? y
+e3r11p9% 
+e3r11p9% rmdir elsa-correction 
+rmdir: failed to remove 'elsa-correction': Directory not empty
+e3r11p9% rm -r elsa-correction  
+rm: remove write-protected regular file 'elsa-correction/.git/objects/pack/pack-49988e6bf98f3e69504257a01f7d0b275da9f557.pack'? y
+rm: remove write-protected regular file 'elsa-correction/.git/objects/pack/pack-49988e6bf98f3e69504257a01f7d0b275da9f557.idx'? y
+e3r11p9% rmdir elsa-correction
+rmdir: failed to remove 'elsa-correction': No such file or directory
+e3r11p9% ls
+c_00	 Documents  Music     Public   samed	 shell_00  Templates
+Desktop  Downloads  Pictures  rush_00  sgoinfre  shell_01  Videos
+e3r11p9% mkdir c_01
+e3r11p9% ls c_00
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  git_c_00	notamr-a
+e3r11p9% cd c_01
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-6e9d523a-04e7-40c5-a472-2ae28862ce6e-4685142-hauerbac git_c_01
+Cloning into 'git_c_01'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% mkdir ex00
+e3r11p9% mkdir git_c_01/ex00
+e3r11p9% vi ft_ft.c
+e3r11p9% cat ft_ft.c  
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 09:23:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/13 09:23:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_ft(int *nbr)
+{
+	*nbr = 42;
+}
+e3r11p9% cp ft_ft.c test_ft_ft.c
+e3r11p9% vi test_ft_ft.c 
+e3r11p9% cat test_ft_ft.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ft.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 09:30:48 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/13 09:30:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ft(int *nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+		int	the_number;
+
+		ft_ft(&the_number);
+		ft_putnbr(the_number);
+		return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_ft.c 
+ft_ft.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ft.c 
+test_ft_ft.c: Error!
+Error: TOO_MANY_TAB         (line:  42, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  44, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  45, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  46, col:   1):	Extra tabs for indent level
+e3r11p9% vi test_ft_ft.c                                     
+e3r11p9% cat test_ft_ft.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ft.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/13 09:30:48 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/13 09:33:12 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ft(int *nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	the_number;
+
+	ft_ft(&the_number);
+	ft_putnbr(the_number);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ft.c
+test_ft_ft.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ft test_ft_ft.c 
+/usr/bin/ld: /tmp/cck1pl11.o: in function `main':
+test_ft_ft.c:(.text+0x11b): undefined reference to `ft_ft'
+collect2: error: ld returned 1 exit status
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ft ft_ft.c test_ft_ft.c 
+e3r11p9% ls -al
+total 40
+drwxr-xr-x  4 hauerbac 2023_paris  4096 Feb 13 09:34 .
+drwx------ 25 hauerbac 2023_paris  4096 Feb 13 09:33 ..
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 13 09:20 ex00
+-rw-r--r--  1 hauerbac 2023_paris   929 Feb 13 09:23 ft_ft.c
+drwxr-xr-x  4 hauerbac 2023_paris  4096 Feb 13 09:20 git_c_01
+-rwxr-xr-x  1 hauerbac 2023_paris 16104 Feb 13 09:34 test_ft_ft
+-rw-r--r--  1 hauerbac 2023_paris  1363 Feb 13 09:33 test_ft_ft.c
+e3r11p9% ./test_ft_ft 
+42%                                                                                                    e3r11p9% cp ft_ft.c git_c_01/ex00/ft_ft.c
+e3r11p9% ls     
+ex00  ft_ft.c  git_c_01  test_ft_ft  test_ft_ft.c
+e3r11p9% mv ft* ex00
+e3r11p9% mv t* ex00
+e3r11p9% ls
+ex00  git_c_01
+e3r11p9% ls -al ex00 
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 13 09:37 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 13 09:37 ..
+-rw-r--r-- 1 hauerbac 2023_paris   929 Feb 13 09:23 ft_ft.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16104 Feb 13 09:34 test_ft_ft
+-rw-r--r-- 1 hauerbac 2023_paris  1363 Feb 13 09:33 test_ft_ft.c
+e3r11p9% cd git_c_01 
+e3r11p9% ls -al ex00 
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 13 09:36 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 13 09:20 ..
+-rw-r--r-- 1 hauerbac 2023_paris  929 Feb 13 09:36 ft_ft.c
+e3r11p9% git add ex00/ft_ft.c
+e3r11p9% git commit -m "Addition of ex00 file"
+[master (root-commit) feac61b] Addition of ex00 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 16 insertions(+)
+ create mode 100644 ex00/ft_ft.c
+e3r11p9% git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 472 bytes | 472.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-6e9d523a-04e7-40c5-a472-2ae28862ce6e-4685142-hauerbac
+ * [new branch]      master -> master
+------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd c_01
+e3r11p9% ls
+ex00  git_c_01
+e3r11p9% mkdir ex01
+e3r11p9% mkdir git_c_01/ex01
+e3r11p9% cd ex01
+e3r11p9% vi ft_ultimate_ft.c
+e3r11p9% cat ft_ultimate_ft.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_ft.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:35:32 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 07:35:36 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_ultimate_ft(int *********nbr)
+{
+	*********nbr = 42;
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_ultimate_ft.c
+ft_ultimate_ft.c: OK!
+e3r11p9% cp ft_ultimate_ft.c test_ft_ultimate_ft.c
+e3r11p9% vi test_ft_ultimate_ft.c 
+e3r11p9% cat test_ft_ultimate_ft.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_ft.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:41:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 07:41:40 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ultimate_ft(int *********nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	nbr;
+
+	ft_ultimate_ft(int &&&&&&&&&nbr);
+	ft_putnbr(nbr);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ultimate_ft.c 
+test_ft_ultimate_ft.c: Error!
+Error: SPC_AFTER_OPERATOR   (line:  44, col:  24):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  44, col:  26):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line:  44, col:  26):	missing space before operator
+Error: SPC_AFTER_OPERATOR   (line:  44, col:  28):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line:  44, col:  28):	missing space before operator
+Error: SPC_AFTER_OPERATOR   (line:  44, col:  30):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line:  44, col:  30):	missing space before operator
+e3r11p9% vi test_ft_ultimate_ft.c                                     
+e3r11p9% cat test_ft_ultimate_ft.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_ft.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:41:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 07:42:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ultimate_ft(int *********nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	nbr;
+
+	ft_ultimate_ft(&&&&&&&&&nbr);
+	ft_putnbr(nbr);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: Error!
+Error: SPC_AFTER_OPERATOR   (line:  44, col:  20):	missing space after operator
+Error: SPC_AFTER_OPERATOR   (line:  44, col:  22):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line:  44, col:  22):	missing space before operator
+Error: SPC_AFTER_OPERATOR   (line:  44, col:  24):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line:  44, col:  24):	missing space before operator
+Error: SPC_AFTER_OPERATOR   (line:  44, col:  26):	missing space after operator
+Error: SPC_BFR_OPERATOR     (line:  44, col:  26):	missing space before operator
+e3r11p9% vi test_ft_ultimate_ft.c                                     
+e3r11p9% cat test_ft_ultimate_ft.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_ft.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:41:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 07:57:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ultimate_ft(int *********nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	nbr;
+
+	ft_ultimate_ft(&(&(&(&(&(&(&(&(&nbr)))))))));
+	ft_putnbr(nbr);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_ft ft_ultimate_ft.c test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: In function ‘main’:
+test_ft_ultimate_ft.c:44:31: error: lvalue required as unary ‘&’ operand
+   44 |  ft_ultimate_ft(&(&(&(&(&(&(&(&(&nbr)))))))));
+      |                               ^
+e3r11p9% vi test_ft_ultimate_ft.c                                     
+e3r11p9% cat test_ft_ultimate_ft.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_ft.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:41:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:05:06 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ultimate_ft(int *********nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	nbr;
+
+	ft_ultimate_ft(&(&(&(&(&(&(&(&(&(int)nbr)))))))));
+	ft_putnbr(nbr);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_ft ft_ultimate_ft.c test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: In function ‘main’:
+test_ft_ultimate_ft.c:44:33: error: lvalue required as unary ‘&’ operand
+   44 |  ft_ultimate_ft(&(&(&(&(&(&(&(&(&(int)nbr)))))))));
+      |                                 ^
+e3r11p9% vi test_ft_ultimate_ft.c                                     
+e3r11p9% cat test_ft_ultimate_ft.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_ft.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:41:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:06:00 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ultimate_ft(int *********nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	nbr;
+
+	ft_ultimate_ft(&(&(&(&(&(&(&(&((&(int))nbr)))))))));
+	ft_putnbr(nbr);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_ft ft_ultimate_ft.c test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: In function ‘main’:
+test_ft_ultimate_ft.c:44:40: error: expected expression before ‘)’ token
+   44 |  ft_ultimate_ft(&(&(&(&(&(&(&(&((&(int))nbr)))))))));
+      |                                        ^
+e3r11p9% vi test_ft_ultimate_ft.c                                     
+e3r11p9% cat test_ft_ultimate_ft.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_ft.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:41:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:07:35 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ultimate_ft(int *********nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	nbr;
+
+	ft_ultimate_ft(&(&(&(&(&(&(&(&((&(int)nbr))))))))));
+	ft_putnbr(nbr);
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_ft ft_ultimate_ft.c test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: In function ‘main’:
+test_ft_ultimate_ft.c:44:34: error: lvalue required as unary ‘&’ operand
+   44 |  ft_ultimate_ft(&(&(&(&(&(&(&(&((&(int)nbr))))))))));
+      |                                  ^
+e3r11p9% vi test_ft_ultimate_ft.c                                     
+e3r11p9% cat test_ft_ultimate_ft.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_ft.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:41:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:09:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+	
+
+void	ft_ultimate_ft(int *********nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	nbr;
+
+	ft_ultimate_ft(&(&(&(&(&(&(&(&(int)(&nbr)))))))));
+	ft_putnbr(nbr);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_ft ft_ultimate_ft.c test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: In function ‘main’:
+test_ft_ultimate_ft.c:44:32: error: cast from pointer to integer of different size [-Werror=pointer-to-int-cast]
+   44 |  ft_ultimate_ft(&(&(&(&(&(&(&(&(int)(&nbr)))))))));
+      |                                ^
+test_ft_ultimate_ft.c:44:31: error: lvalue required as unary ‘&’ operand
+   44 |  ft_ultimate_ft(&(&(&(&(&(&(&(&(int)(&nbr)))))))));
+      |                               ^
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_ft.c                                     
+e3r11p9% cat test_ft_ultimate_ft.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_ft.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:41:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:23:42 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ultimate_ft(int *********nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	nbr;
+	int	*ptr;
+
+	ptr = &nbr;
+	ft_ultimate_ft(&(&(&(&(&(&(&(&ptr))))))));
+	ft_putnbr(nbr);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_ft ft_ultimate_ft.c test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: In function ‘main’:
+test_ft_ultimate_ft.c:46:29: error: lvalue required as unary ‘&’ operand
+   46 |  ft_ultimate_ft(&(&(&(&(&(&(&(&ptr))))))));
+      |                             ^
+e3r11p9% vi test_ft_ultimate_ft.c                                     
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ultimate_ft.c
+test_ft_ultimate_ft.c: Error!
+Error: TOO_MANY_VARS_FUNC   (line:  47, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  48, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  49, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  50, col:   1):	Too many variables declarations in a function
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_ft ft_ultimate_ft.c test_ft_ultimate_ft.c
+e3r11p9% ./test_ft_ultimate_ft 
+42%                                                                                             eee3r11e3r11p9e3r11e3r1e3r11pe3re3e3eeeee3ee3eeeeeeee3r11p9% cat test_ft_ultimate_ft.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_ft.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 07:41:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:28:03 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_ultimate_ft(int *********nbr);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	nbr;
+	int	*ptr1;
+	int	**ptr2;
+	int	***ptr3;
+	int	****ptr4;
+	int	*****ptr5;
+	int	******ptr6;
+	int	*******ptr7;
+	int	********ptr8;
+
+	ptr1 = &nbr;
+	ptr2 = &ptr1;
+	ptr3 = &ptr2;
+	ptr4 = &ptr3;
+	ptr5 = &ptr4;
+	ptr6 = &ptr5;
+	ptr7 = &ptr6;
+	ptr8 = &ptr7;
+	ft_ultimate_ft(&ptr8);
+	ft_putnbr(nbr);
+	return (0);
+}
+e3r11p9% cd ..                
+e3r11p9% cp ex01/ft_ultimate_ft.c git_c_01/ex01/ft_ultimate_ft.c
+e3r11p9% cd git_c_01 
+e3r11p9% git add ex01/ft_ultimate_ft.c
+e3r11p9% git commit -m "Addition of ex01 file"
+[master f842f6d] Addition of ex01 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 16 insertions(+)
+ create mode 100644 ex01/ft_ultimate_ft.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 547 bytes | 547.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-6e9d523a-04e7-40c5-a472-2ae28862ce6e-4685142-hauerbac
+   feac61b..f842f6d  master -> master
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  git_c_01
+e3r11p9% mkdir ex02
+e3r11p9% mkdir git_c_01/ex02
+e3r11p9% cd ex02
+e3r11p9% vi ft_swap.c
+e3r11p9% cat ft_swap.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 08:37:24 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:37:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	t_swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_swap.c                                     
+ft_swap.c: OK!
+e3r11p9% cp ft_swap.c test_ft_swap.c
+e3r11p9% vi test_ft_swap.c 
+e3r11p9% cat test_ft_swap.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_swap.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 08:46:20 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:46:24 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_swap(int *a, int *b);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+
+	a = 42;
+	b = 24;
+	write(1, "a avant le swap vaut :", 22);
+	ft_putbr(a);
+	write(1, "b avant le swap vaut :", 22);
+	ft_putbr(b);
+	ft_swap(&a, &b);
+	write(1, "a apres le swap vaut :", 22);
+	ft_putbr(a);
+	write(1, "b apres le swap vaut :", 22);
+	ft_putbr(b);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_swap.c 
+test_ft_swap.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_swap.c ft_swap.c test_ft_swap.c                   
+gcc: fatal error: input file ‘test_ft_swap.c’ is the same as output file
+compilation terminated.
+e3r11p9% vi ft_swap.c          
+e3r11p9% cat ft_swap.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 08:37:24 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:47:47 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_swap(int *a, int *b)
+{
+	int	temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_swap.c                  
+ft_swap.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_swap ft_swap.c test_ft_swap.c 
+test_ft_swap.c: In function ‘main’:
+test_ft_swap.c:48:2: error: implicit declaration of function ‘ft_putbr’; did you mean ‘ft_putnbr’? [-Werror=implicit-function-declaration]
+   48 |  ft_putbr(a);
+      |  ^~~~~~~~
+      |  ft_putnbr
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_swap.c                                     
+e3r11p9% cat test_ft_swap.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_swap.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 08:46:20 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 08:49:03 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_swap(int *a, int *b);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+
+	a = 42;
+	b = 24;
+	write(1, "a avant le swap vaut :", 22);
+	ft_putnbr(a);
+	write(1, "b avant le swap vaut :", 22);
+	ft_putnbr(b);
+	ft_swap(&a, &b);
+	write(1, "a apres le swap vaut :", 22);
+	ft_putnbr(a);
+	write(1, "b apres le swap vaut :", 22);
+	ft_putnbr(b);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_swap.c             
+test_ft_swap.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_swap ft_swap.c test_ft_swap.c
+e3r11p9% ./test_ft_swap 
+a avant le swap vaut :42b avant le swap vaut :24a apres le swap vaut :24b apres le swap vaut :42%                                                   e3r11p9% vi test_ft_swap.c                                     
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_swap.c           
+test_ft_swap.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_swap ft_swap.c test_ft_swap.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 14 08:51 .
+drwxr-xr-x 6 hauerbac 2023_paris  4096 Feb 14 08:34 ..
+-rw-r--r-- 1 hauerbac 2023_paris   971 Feb 14 08:47 ft_swap.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16112 Feb 14 08:51 test_ft_swap
+-rw-r--r-- 1 hauerbac 2023_paris  1669 Feb 14 08:51 test_ft_swap.c
+e3r11p9% ./test_ft_swap                                        
+a avant le swap vaut : 42
+b avant le swap vaut : 24
+a apres le swap vaut : 24
+b apres le swap vaut : 42
+e3r11p9% cd ..
+e3r11p9% cp ex02/ft_swap.c git_c_01/ex02/ft_swap.c
+e3r11p9% cd ..
+e3r11p9% pwd 
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd c_01/git_c_01 
+e3r11p9% ls ex02
+ft_swap.c
+e3r11p9% git add ex02/ft_swap.c
+e3r11p9% git commit -m "Addition of ex02 file"
+[master 9c9558d] Addition of ex02 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 20 insertions(+)
+ create mode 100644 ex02/ft_swap.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 578 bytes | 578.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-6e9d523a-04e7-40c5-a472-2ae28862ce6e-4685142-hauerbac
+   f842f6d..9c9558d  master -> master
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  git_c_01
+e3r11p9% mkdir ex03
+e3r11p9% mkdir git_c_01/ex03
+e3r11p9% cd ex03
+e3r11p9% vi ft_div_mod.c
+e3r11p9% cat ft_div_mod.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_div_mod.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 08:59:59 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:00:02 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_div_mod(int a, int b, int *div, int *mod)
+{
+	*div = a / b;
+	*mod = a % b;
+}
+e3r11p9% cp ft_div_mod.c test_ft_div_mod.c
+e3r11p9% vi test_ft_div_mod.c 
+e3r11p9% cat test_ft_div_mod.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:08:31 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int a;
+	int b;
+	int *div;
+	int *mod;
+
+	a = 8;
+	b = 7;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_div_mod.c             
+ft_div_mod.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c 
+test_ft_div_mod.c: Error!
+Error: SPACE_REPLACE_TAB    (line:  42, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  43, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  44, col:   8):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  45, col:   8):	Found space when expecting tab
+e3r11p9% vi test_ft_div_mod.c                                
+e3r11p9% cat test_ft_div_mod.c                                
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:09:46 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_div_mod.c
+ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+test_ft_div_mod.c: In function ‘main’:
+test_ft_div_mod.c:49:2: error: ‘div’ is used uninitialized in this function [-Werror=uninitialized]
+   49 |  ft_div_mod(a, b, div, mod);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~
+test_ft_div_mod.c:49:2: error: ‘mod’ is used uninitialized in this function [-Werror=uninitialized]
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_div_mod.c                                
+e3r11p9% cat test_ft_div_mod.c                                
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:11:53 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	*div = 0;
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+test_ft_div_mod.c: In function ‘main’:
+test_ft_div_mod.c:49:7: error: ‘div’ is used uninitialized in this function [-Werror=uninitialized]
+   49 |  *div = 0;
+      |  ~~~~~^~~
+test_ft_div_mod.c:50:7: error: ‘mod’ is used uninitialized in this function [-Werror=uninitialized]
+   50 |  *mod = 0;
+      |  ~~~~~^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:13:10 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	*div = 0;
+	*mod = 0;
+	ft_div_mod(a, b, &div, &mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c                 
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+test_ft_div_mod.c: In function ‘main’:
+test_ft_div_mod.c:51:19: error: passing argument 3 of ‘ft_div_mod’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   51 |  ft_div_mod(a, b, &div, &mod);
+      |                   ^~~~
+      |                   |
+      |                   int **
+test_ft_div_mod.c:15:36: note: expected ‘int *’ but argument is of type ‘int **’
+   15 | void ft_div_mod(int a, int b, int *div, int *mod);
+      |                               ~~~~~^~~
+test_ft_div_mod.c:51:25: error: passing argument 4 of ‘ft_div_mod’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   51 |  ft_div_mod(a, b, &div, &mod);
+      |                         ^~~~
+      |                         |
+      |                         int **
+test_ft_div_mod.c:15:46: note: expected ‘int *’ but argument is of type ‘int **’
+   15 | void ft_div_mod(int a, int b, int *div, int *mod);
+      |                                         ~~~~~^~~
+test_ft_div_mod.c:49:2: error: ‘div’ is used uninitialized in this function [-Werror=uninitialized]
+   49 |  *div = 0;
+      |  ^~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:16:04 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	*div = 0;
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c                 
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+test_ft_div_mod.c: In function ‘main’:
+test_ft_div_mod.c:49:7: error: ‘div’ is used uninitialized in this function [-Werror=uninitialized]
+   49 |  *div = 0;
+      |  ~~~~~^~~
+test_ft_div_mod.c:50:7: error: ‘mod’ is used uninitialized in this function [-Werror=uninitialized]
+   50 |  *mod = 0;
+      |  ~~~~~^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:23:04 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	*div = malloc(sizeof(int));
+	*div = 0;
+	*mod = malloc(sizeof(int));
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c                 
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+test_ft_div_mod.c: In function ‘main’:
+test_ft_div_mod.c:49:9: error: implicit declaration of function ‘malloc’ [-Werror=implicit-function-declaration]
+   49 |  *div = malloc(sizeof(int));
+      |         ^~~~~~
+test_ft_div_mod.c:49:9: error: incompatible implicit declaration of built-in function ‘malloc’ [-Werror]
+test_ft_div_mod.c:14:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+   13 | #include <unistd.h>
+  +++ |+#include <stdlib.h>
+   14 | 
+test_ft_div_mod.c:49:7: error: assignment to ‘int’ from ‘void *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   49 |  *div = malloc(sizeof(int));
+      |       ^
+test_ft_div_mod.c:51:7: error: assignment to ‘int’ from ‘void *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   51 |  *mod = malloc(sizeof(int));
+      |       ^
+test_ft_div_mod.c:49:7: error: ‘div’ is used uninitialized in this function [-Werror=uninitialized]
+   49 |  *div = malloc(sizeof(int));
+      |  ~~~~~^~~~~~~~~~~~~~~~~~~~~
+test_ft_div_mod.c:51:7: error: ‘mod’ is used uninitialized in this function [-Werror=uninitialized]
+   51 |  *mod = malloc(sizeof(int));
+      |  ~~~~~^~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:28:17 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	*div = (int*)malloc(sizeof(int));
+	*div = 0;
+	*mod = (int*)malloc(sizeof(int));
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c                 
+test_ft_div_mod.c: Error!
+Error: SPACE_AFTER_KW       (line:  49, col:  13):	Missing space after keyword
+Error: SPACE_AFTER_KW       (line:  51, col:  13):	Missing space after keyword
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:28:49 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	*div = (int*) malloc(sizeof(int));
+	*div = 0;
+	*mod = (int*) malloc(sizeof(int));
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c
+test_ft_div_mod.c: Error!
+Error: SPACE_AFTER_KW       (line:  49, col:  13):	Missing space after keyword
+Error: SPACE_AFTER_KW       (line:  51, col:  13):	Missing space after keyword
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:29:21 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	*div = (int *) malloc(sizeof(int));
+	*div = 0;
+	*mod = (int *) malloc(sizeof(int));
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+test_ft_div_mod.c: In function ‘main’:
+test_ft_div_mod.c:49:17: error: implicit declaration of function ‘malloc’ [-Werror=implicit-function-declaration]
+   49 |  *div = (int *) malloc(sizeof(int));
+      |                 ^~~~~~
+test_ft_div_mod.c:49:17: error: incompatible implicit declaration of built-in function ‘malloc’ [-Werror]
+test_ft_div_mod.c:14:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+   13 | #include <unistd.h>
+  +++ |+#include <stdlib.h>
+   14 | 
+test_ft_div_mod.c:49:7: error: assignment to ‘int’ from ‘int *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   49 |  *div = (int *) malloc(sizeof(int));
+      |       ^
+test_ft_div_mod.c:51:7: error: assignment to ‘int’ from ‘int *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   51 |  *mod = (int *) malloc(sizeof(int));
+      |       ^
+test_ft_div_mod.c:49:7: error: ‘div’ is used uninitialized in this function [-Werror=uninitialized]
+   49 |  *div = (int *) malloc(sizeof(int));
+      |  ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_ft_div_mod.c:51:7: error: ‘mod’ is used uninitialized in this function [-Werror=uninitialized]
+   51 |  *mod = (int *) malloc(sizeof(int));
+      |  ~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:30:07 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	div = (int *) malloc(sizeof(int));
+	*div = 0;
+	mod = (int *) malloc(sizeof(int));
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c                 
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+test_ft_div_mod.c: In function ‘main’:
+test_ft_div_mod.c:49:16: error: implicit declaration of function ‘malloc’ [-Werror=implicit-function-declaration]
+   49 |  div = (int *) malloc(sizeof(int));
+      |                ^~~~~~
+test_ft_div_mod.c:49:16: error: incompatible implicit declaration of built-in function ‘malloc’ [-Werror]
+test_ft_div_mod.c:14:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+   13 | #include <unistd.h>
+  +++ |+#include <stdlib.h>
+   14 | 
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:30:47 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	div = (int *) malloc(sizeof(int));
+	*div = 0;
+	mod = (int *) malloc(sizeof(int));
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c                 
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 14 09:30 .
+drwxr-xr-x 7 hauerbac 2023_paris  4096 Feb 14 08:56 ..
+-rw-r--r-- 1 hauerbac 2023_paris   976 Feb 14 09:00 ft_div_mod.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16160 Feb 14 09:30 test_ft_div_mod
+-rw-r--r-- 1 hauerbac 2023_paris  1655 Feb 14 09:30 test_ft_div_mod.c
+e3r11p9% ./test_ft_div_mod 
+Le resultat de 8 / 7 est : 1Le resultat de 8 % 7 est : 1%                                                                                           e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:31:42 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 8;
+	b = 7;
+	div = (int *) malloc(sizeof(int));
+	*div = 0;
+	mod = (int *) malloc(sizeof(int));
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 8 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "\n", 1);
+	write(1, "Le resultat de 8 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	write(1, "\n", 1);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c                 
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+e3r11p9% ls -al                                                  
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 14 09:31 .
+drwxr-xr-x 7 hauerbac 2023_paris  4096 Feb 14 08:56 ..
+-rw-r--r-- 1 hauerbac 2023_paris   976 Feb 14 09:00 ft_div_mod.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16160 Feb 14 09:31 test_ft_div_mod
+-rw-r--r-- 1 hauerbac 2023_paris  1695 Feb 14 09:31 test_ft_div_mod.c
+e3r11p9% ./test_ft_div_mod                                       
+Le resultat de 8 / 7 est : 1
+Le resultat de 8 % 7 est : 1
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:32:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 18;
+	b = 7;
+	div = (int *) malloc(sizeof(int));
+	*div = 0;
+	mod = (int *) malloc(sizeof(int));
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 18 / 7 est : ", 27);
+	ft_putnbr(*div);
+	write(1, "\n", 1);
+	write(1, "Le resultat de 18 % 7 est : ", 27);
+	ft_putnbr(*mod);
+	write(1, "\n", 1);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c                 
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+e3r11p9% ./test_ft_div_mod                                       
+Le resultat de 18 / 7 est :2
+Le resultat de 18 % 7 est :4
+e3r11p9% vi test_ft_div_mod.c                                     
+e3r11p9% cat test_ft_div_mod.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_div_mod.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:08:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:34:24 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+
+void	ft_div_mod(int a, int b, int *div, int *mod);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	a;
+	int	b;
+	int	*div;
+	int	*mod;
+
+	a = 18;
+	b = 7;
+	div = (int *) malloc(sizeof(int));
+	*div = 0;
+	mod = (int *) malloc(sizeof(int));
+	*mod = 0;
+	ft_div_mod(a, b, div, mod);
+	write(1, "Le resultat de 18 / 7 est :\t", 28);
+	ft_putnbr(*div);
+	write(1, "\n", 1);
+	write(1, "Le resultat de 18 % 7 est :\t", 28);
+	ft_putnbr(*mod);
+	write(1, "\n", 1);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_div_mod.c                 
+test_ft_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_div_mod ft_div_mod.c test_ft_div_mod.c
+e3r11p9% ./test_ft_div_mod                                       
+Le resultat de 18 / 7 est :	2
+Le resultat de 18 % 7 est :	4
+e3r11p9% cd ..
+e3r11p9% cp ex03/ft_div_mod.c git_c_01/ex03/ft_div_mod.c
+e3r11p9% cd git_c_01 
+e3r11p9% git add ex03/ft_div_mod.c
+e3r11p9% git commit -m "Addition of ex03 file"
+[master 4e876ef] Addition of ex03 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 17 insertions(+)
+ create mode 100644 ex03/ft_div_mod.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 560 bytes | 560.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-6e9d523a-04e7-40c5-a472-2ae28862ce6e-4685142-hauerbac
+   9c9558d..4e876ef  master -> master
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  ex03	git_c_01
+e3r11p9% mkdir ex04
+e3r11p9% mkdir git_c_01/ex04
+e3r11p9% cd ex04
+e3r11p9% vi ft_ultimate_div_mod.c
+e3r11p9% cat ft_ultimate_div_mod.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_div_mod.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:44:27 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:44:30 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_ultimate_div_mod(int *a, int *b)
+{
+	int	div;
+	int	mod;
+
+	div = *a / *b;
+	mod = *a % *b;
+	*a = div;
+	*b = mod;
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_ultimate_div_mod.c 
+ft_ultimate_div_mod.c: OK!
+e3r11p9% cp ../ex03/test_ft_div_mod.c test_ft_ultimate_div_mod
+e3r11p9% cp ../ex03/test_ft_div_mod.c test_ft_ultimate_div_mod.c
+e3r11p9% vi test_ft_ultimate_div_mod.c 
+e3r11p9% cat test_ft_ultimate_div_mod.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_div_mod.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 09:49:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 09:49:35 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <unistd.h>
+
+void	ft_ultimate_div_mod(int *a, int *b);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	int	*a;
+	int	*b;
+
+	a = (int *) malloc(sizeof(int));
+	*a = 18;
+	b = (int *) malloc(sizeof(int));
+	*b = 7;
+	ft_ultimate_div_mod(a, b);
+	write(1, "Le resultat de 18 / 7 est :\t", 28);
+	ft_putnbr(*a);
+	write(1, "\n", 1);
+	write(1, "Le resultat de 18 % 7 est :\t", 28);
+	ft_putnbr(*b);
+	write(1, "\n", 1);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_ultimate_div_mod.c
+test_ft_ultimate_div_mod.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_div_mod ft_ultimate_div_mod.c test_ft_ultimate_div_mod.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 14 09:50 .
+drwxr-xr-x 8 hauerbac 2023_paris  4096 Feb 14 09:40 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1012 Feb 14 09:44 ft_ultimate_div_mod.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16176 Feb 14 09:50 test_ft_ultimate_div_mod
+-rw-r--r-- 1 hauerbac 2023_paris  1642 Feb 14 09:49 test_ft_ultimate_div_mod.c
+e3r11p9% ./test_ft_ultimate_div_mod 
+Le resultat de 18 / 7 est :	2
+Le resultat de 18 % 7 est :	4
+e3r11p9% cd ..
+e3r11p9% cp ex04/ft_ultimate_div_mod.c git_c_01/ex04/ft_ultimate_div_mod.c
+e3r11p9% cd git_c_01 
+e3r11p9% git add ex04/ft_ultimate_div_mod.c
+e3r11p9% git commit -m "Addition of ex04 file"
+[master 1cc2890] Addition of ex04 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 22 insertions(+)
+ create mode 100644 ex04/ft_ultimate_div_mod.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 589 bytes | 589.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-6e9d523a-04e7-40c5-a472-2ae28862ce6e-4685142-hauerbac
+   4e876ef..1cc2890  master -> master
+----------------------------------
+e3r11p9% cd ..
+e3r11p9% mkdir ex05
+e3r11p9% mkdir git_c_01/ex05
+e3r11p9% cd ex05
+e3r11p9% vi ft_putstr.c
+e3r11p9% cat ft_putstr.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 12:11:18 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 12:11:54 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putstr.c
+e3r11p9% cp ft_putstr.c test_ft_putstr.c
+e3r11p9% vi test_ft_putstr.c
+e3r11p9% cat test_ft_putstr.c
+* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putstr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 12:36:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 12:48:04 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+
+void	ft_putstr(char *str);
+
+int	main(void)
+{
+	ft_putstr(NULL);
+	ft_putstr("La chaine qui suit est vide.\n");
+	ft_putstr("");
+	ft_putstr(" ~\n  !@42\\'`\";:.,/?+-()*&^%$#=[]{}est trop\tbIZaRRE");
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putstr.c
+  e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putstr ft_putstr.c test_ft_putstr.c
+e3r11p9% ls -al                                                                  
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 14 12:50 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 14 12:01 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1021 Feb 14 12:11 ft_putstr.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16032 Feb 14 12:50 test_ft_putstr
+-rw-r--r-- 1 hauerbac 2023_paris  1123 Feb 14 12:48 test_ft_putstr.c
+e3r11p9% ./test_ft_putstr
+ ...
+ LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL^C
+e3r11p9% vi ft_putstr.c                     
+e3r11p9% cat ft_putstr.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 12:11:18 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 12:53:41 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = -1;
+	while (str && str[i] != '\0')
+	{
+		i++;
+		write(1, &str[i], 1);
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putstr.c               
+ft_putstr.c: OK!
+e3r11p9% vi test_ft_putstr.c                                     
+e3r11p9% cat test_ft_putstr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putstr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 12:36:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 12:55:11 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+
+void	ft_putstr(char *str);
+
+int	main(void)
+{
+	ft_putstr(NULL);
+	ft_putstr("La chaine qui suit est vide.\n");
+	ft_putstr("");
+	ft_putstr(" ~\n  !@42\\'`\";:.,/?+-()*&^%$#=[]{}\vest trop\tbIZaRRE");
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putstr.c               
+test_ft_putstr.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putstr ft_putstr.c test_ft_putstr.c
+e3r11p9% ls -al                                             
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 14 12:55 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 14 12:01 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1029 Feb 14 12:53 ft_putstr.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16032 Feb 14 12:55 test_ft_putstr
+-rw-r--r-- 1 hauerbac 2023_paris  1125 Feb 14 12:55 test_ft_putstr.c
+e3r11p9% ./test_ft_putstr                                   
+e3r11p9% vi ft_putstr.c                                     
+e3r11p9% cat ft_putstr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 12:11:18 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 12:57:30 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putstr.c
+ft_putstr.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putstr ft_putstr.c test_ft_putstr.c
+e3r11p9% ls -al                                             
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 14 12:57 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 14 12:01 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1028 Feb 14 12:57 ft_putstr.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16032 Feb 14 12:57 test_ft_putstr
+-rw-r--r-- 1 hauerbac 2023_paris  1125 Feb 14 12:55 test_ft_putstr.c
+e3r11p9% ./test_ft_putstr     
+La chaine qui suit est vide.
+ ~
+  !@42\'`";:.,/?+-()*&^%$#=[]{}
+                               est trop	bIZaRRE%                  
+e3r11p9% cd ..
+e3r11p9% cp ex05/ft_putstr.c git_c_01/ex05/ft_putstr.c
+e3r11p9% cd git_c_01 
+e3r11p9% git add ex05/ft_putstr.c
+e3r11p9% pwd                                  
+/mnt/nfs/homes/hauerbac/c_01/git_c_01
+e3r11p9% git commit -m "Addition of ex05 file"
+[master c0c1cff] Addition of ex05 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 25 insertions(+)
+ create mode 100644 ex05/ft_putstr.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 612 bytes | 612.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-6e9d523a-04e7-40c5-a472-2ae28862ce6e-4685142-hauerbac
+   1cc2890..c0c1cff  master -> master
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  git_c_01
+e3r11p9% mkdir ex06
+e3r11p9% mkdir git_c_01/ex06
+e3r11p9% cd ex06
+e3r11p9% vi ft_strlen.c
+e3r11p9% cat ft_strlen.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 13:19:06 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 13:19:09 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlen.c                    
+ft_strlen.c: OK!
+e3r11p9% cp ft_strlen.c test_ft_strlen.c 
+e3r11p9% vi test_ft_strlen.c 
+e3r11p9% cat test_ft_strlen.c 
+#include <stddef.h>
+#include <unistd.h>
+
+int	ft_strlen(char *str);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	write(1, "La taille d'une chaine \"NULL\" est :\t", 36);
+	ft_putnbr(ft_strlen(NULL));
+	write(1, "\nLa taille d'une chaine \"vide\" est :\t", 37);
+	ft_putnbr(ft_strlen(""));
+	write(1, "\nLa taille de la chaine \"Piscine de fevrier 2023\" est :\t", 56);
+	ft_putnbr(ft_strlen("Piscine de fevrier 2023"));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlen.c 
+test_ft_strlen.c: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+e3r11p9% vi test_ft_strlen.c                                     
+e3r11p9% cat test_ft_strlen.c                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlen.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 13:30:39 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 13:30:43 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <unistd.h>
+
+int	ft_strlen(char *str);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+int	main(void)
+{
+	write(1, "La taille d'une chaine \"NULL\" est :\t", 36);
+	ft_putnbr(ft_strlen(NULL));
+	write(1, "\nLa taille d'une chaine \"vide\" est :\t", 37);
+	ft_putnbr(ft_strlen(""));
+	write(1, "\nLa taille de la chaine \"Piscine de fevrier 2023\" est :\t", 56);
+	ft_putnbr(ft_strlen("Piscine de fevrier 2023"));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlen.c
+test_ft_strlen.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlen ft_strlen.c test_ft_strlen.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 14 13:31 .
+drwxr-xr-x 10 hauerbac 2023_paris  4096 Feb 14 13:15 ..
+-rw-r--r--  1 hauerbac 2023_paris   995 Feb 14 13:19 ft_strlen.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16112 Feb 14 13:31 test_ft_strlen
+-rw-r--r--  1 hauerbac 2023_paris  1627 Feb 14 13:30 test_ft_strlen.c
+e3r11p9% ./test_ft_strlen 
+La taille d'une chaine "NULL" est :	0
+La taille d'une chaine "vide" est :	0
+La taille de la chaine "Piscine de fevrier 2023" est :	23%                                                                             e3r11p9% cd ..
+e3r11p9% cp ex06/ft_strlen.c git_c_01/ex06/ft_strlen.c
+e3r11p9% cd git_c_01 
+e3r11p9% git add ex06/ft_strlen.c
+e3r11p9% git commit -m "Addition of ex06 file"
+[master 39088dc] Addition of ex06 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+ create mode 100644 ex06/ft_strlen.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 587 bytes | 587.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-6e9d523a-04e7-40c5-a472-2ae28862ce6e-4685142-hauerbac
+   c0c1cff..39088dc  master -> master
+e3r11p9% cd ..
+e3r11p9% mkdir ex07
+e3r11p9% mkdir git_c_01/ex07
+e3r11p9% cd ex07
+e3r11p9% vi ft_rev_int_tab.c
+e3r11p9% cat ft_rev_int_tab.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 14:19:21 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 14:43:31 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_rev_int_tab(int *tab, int size)
+{
+	int	middle;
+	int	i;
+	int	temp;
+
+	if (size > 0 && tab)
+	{
+		middle = size / 2;
+		i = 0;
+		while (i <= middle)
+		{
+			temp = tab[i];
+			tab[i] = tab[size - 1 - i];
+			tab[size - 1 - i] = temp;
+			i++;
+		}
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_rev_int_tab.c 
+ft_rev_int_tab.c: OK!
+e3r11p9% vi test_ft_rev_int_tab.c 
+e3r11p9% vi test_ft_rev_int_tab.c
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_rev_int_tab ft_rev_int_tab.c test_ft_rev_int_tab.c 
+test_ft_rev_int_tab.c: In function ‘main’:
+test_ft_rev_int_tab.c:75:17: error: passing argument 1 of ‘ft_rev_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   75 |  ft_rev_int_tab(&tab2, size);
+      |                 ^~~~~
+      |                 |
+      |                 int (*)[0]
+test_ft_rev_int_tab.c:16:26: note: expected ‘int *’ but argument is of type ‘int (*)[0]’
+   16 | void ft_rev_int_tab(int *tab, int size);
+      |                     ~~~~~^~~
+test_ft_rev_int_tab.c:76:19: error: passing argument 1 of ‘ft_print_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   76 |  ft_print_int_tab(&tab2, size);
+      |                   ^~~~~
+      |                   |
+      |                   int (*)[0]
+test_ft_rev_int_tab.c:41:28: note: expected ‘int *’ but argument is of type ‘int (*)[0]’
+   41 | void ft_print_int_tab(int *tab, int size)
+      |                       ~~~~~^~~
+test_ft_rev_int_tab.c:79:17: error: passing argument 1 of ‘ft_rev_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   79 |  ft_rev_int_tab(&tab3, size);
+      |                 ^~~~~
+      |                 |
+      |                 int (*)[4]
+test_ft_rev_int_tab.c:16:26: note: expected ‘int *’ but argument is of type ‘int (*)[4]’
+   16 | void ft_rev_int_tab(int *tab, int size);
+      |                     ~~~~~^~~
+test_ft_rev_int_tab.c:80:19: error: passing argument 1 of ‘ft_print_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   80 |  ft_print_int_tab(&tab3, size);
+      |                   ^~~~~
+      |                   |
+      |                   int (*)[4]
+test_ft_rev_int_tab.c:41:28: note: expected ‘int *’ but argument is of type ‘int (*)[4]’
+   41 | void ft_print_int_tab(int *tab, int size)
+      |                       ~~~~~^~~
+test_ft_rev_int_tab.c:83:17: error: passing argument 1 of ‘ft_rev_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   83 |  ft_rev_int_tab(&tab4, size);
+      |                 ^~~~~
+      |                 |
+      |                 int (*)[5]
+test_ft_rev_int_tab.c:16:26: note: expected ‘int *’ but argument is of type ‘int (*)[5]’
+   16 | void ft_rev_int_tab(int *tab, int size);
+      |                     ~~~~~^~~
+test_ft_rev_int_tab.c:84:19: error: passing argument 1 of ‘ft_print_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   84 |  ft_print_int_tab(&tab4, size);
+      |                   ^~~~~
+      |                   |
+      |                   int (*)[5]
+test_ft_rev_int_tab.c:41:28: note: expected ‘int *’ but argument is of type ‘int (*)[5]’
+   41 | void ft_print_int_tab(int *tab, int size)
+      |                       ~~~~~^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_rev_int_tab.c                                                               
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_rev_int_tab ft_rev_int_tab.c test_ft_rev_int_tab.c
+e3r11p9% cat test_ft_rev_int_tab.c                                                            
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_rev_int_tab.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 14:40:22 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 15:58:41 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <unistd.h>
+
+void	ft_rev_int_tab(int *tab, int size);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (size > 0 && tab)
+	{
+		i = 0;
+		write(1, "[", 1);
+		while (i < size)
+		{
+			if (i > 0)
+				write(1, ", ", 2);
+			ft_putnbr(tab[i]);
+			i++;
+		}
+		write(1, "]\n", 2);
+	}
+}
+
+int	main(void)
+{
+	int	size;
+	int	*tab1;
+	int	tab2[0] = {};
+	int	tab3[4] = {1, 2, 3, 4};
+	int	tab4[5] = {1, 2, 0, -13, 4};
+
+	write(1, "Voici le tableau \"NULL\" inverse :\n", 33);
+	tab1 = NULL;
+	size = 0;
+	ft_rev_int_tab(tab1, size);
+	ft_print_int_tab(tab1, size);
+	write(1, "Voici le tableau \"vide\" inverse :\n", 33);
+	size = 0;
+	ft_rev_int_tab(tab2, size);
+	ft_print_int_tab(tab2, size);
+	write(1, "Voici le tableau \"[1, 2, 3, 4]\" inverse :\n", 41);
+	size = 4;
+	ft_rev_int_tab(tab3, size);
+	ft_print_int_tab(tab3, size);
+	write(1, "Voici le tableau \"[1, 2, 0, -13, 4]\" inverse :\n", 41);
+	size = 5;
+	ft_rev_int_tab(tab4, size);
+	ft_print_int_tab(tab4, size);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_rev_int_tab.c
+test_ft_rev_int_tab.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  64, col:  17):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  65, col:  17):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  66, col:  17):	Declaration and assignation on a single line
+e3r11p9% ls -al
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 14 15:58 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 14 13:43 ..
+-rw-r--r--  1 hauerbac 2023_paris  1143 Feb 14 14:43 ft_rev_int_tab.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16168 Feb 14 15:58 test_ft_rev_int_tab
+-rw-r--r--  1 hauerbac 2023_paris  2217 Feb 14 15:58 test_ft_rev_int_tab.c
+e3r11p9% ./test_ft_rev_int_tab 
+Voici le tableau "NULL" inverse :Voici le tableau "vide" inverse :Voici le tableau "[1, 2, 3, 4]" inverse :[4, 2, 3, 1]
+Voici le tableau "[1, 2, 0, -13, 4]" inve[4, -13, 0, 2, 1]
+e3r11p9% vi test_ft_rev_int_tab.c                                                               
+e3r11p9% cat test_ft_rev_int_tab.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_rev_int_tab.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 14:40:22 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 16:00:42 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <unistd.h>
+
+void	ft_rev_int_tab(int *tab, int size);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (size > 0 && tab)
+	{
+		i = 0;
+		write(1, "[", 1);
+		while (i < size)
+		{
+			if (i > 0)
+				write(1, ", ", 2);
+			ft_putnbr(tab[i]);
+			i++;
+		}
+		write(1, "]\n", 2);
+	}
+}
+
+int	main(void)
+{
+	int	size;
+	int	*tab1;
+	int	tab2[0] = {};
+	int	tab3[4] = {1, 2, 3, 4};
+	int	tab4[5] = {1, 2, 0, -13, 4};
+
+	write(1, "Voici le tableau \"NULL\" inverse :\n", 33);
+	tab1 = NULL;
+	size = 0;
+	ft_rev_int_tab(tab1, size);
+	ft_print_int_tab(tab1, size);
+	write(1, "\nVoici le tableau \"vide\" inverse :\n", 33);
+	size = 0;
+	ft_rev_int_tab(tab2, size);
+	ft_print_int_tab(tab2, size);
+	write(1, "\nVoici le tableau \"[1, 2, 3, 4]\" inverse :\n", 41);
+	size = 4;
+	ft_rev_int_tab(tab3, size);
+	ft_print_int_tab(tab3, size);
+	write(1, "\nVoici le tableau \"[1, 2, 0, -13, 4]\" inverse :\n", 41);
+	size = 5;
+	ft_rev_int_tab(tab4, size);
+	ft_print_int_tab(tab4, size);
+	return (0);
+}
+e3r11p9% vi ft_rev_int_tab.c                                   
+e3r11p9% cat ft_rev_int_tab.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 14:19:21 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 14:43:31 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_rev_int_tab(int *tab, int size)
+{
+	int	middle;
+	int	i;
+	int	temp;
+
+	if (size > 0 && tab)
+	{
+		middle = size / 2;
+		i = 0;
+		while (i <= middle)
+		{
+			temp = tab[i];
+			tab[i] = tab[size - 1 - i];
+			tab[size - 1 - i] = temp;
+			i++;
+		}
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_rev_int_tab.c 
+ft_rev_int_tab.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_rev_int_tab.c
+test_ft_rev_int_tab.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  64, col:  17):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  65, col:  17):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  66, col:  17):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_rev_int_tab ft_rev_int_tab.c test_ft_rev_int_tab.c
+e3r11p9% ls -al                                                
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 14 16:03 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 14 13:43 ..
+-rw-r--r--  1 hauerbac 2023_paris  1143 Feb 14 14:43 ft_rev_int_tab.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16168 Feb 14 16:03 test_ft_rev_int_tab
+-rw-r--r--  1 hauerbac 2023_paris  2223 Feb 14 16:00 test_ft_rev_int_tab.c
+e3r11p9% ./test_ft_rev_int_tab                                 
+Voici le tableau "NULL" inverse :
+Voici le tableau "vide" inverse 
+Voici le tableau "[1, 2, 3, 4]" inverse [4, 2, 3, 1]
+
+Voici le tableau "[1, 2, 0, -13, 4]" inv[4, -13, 0, 2, 1]
+e3r11p9% vi test_ft_rev_int_tab.c                               
+e3r11p9% cat test_ft_rev_int_tab.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_rev_int_tab.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 14:40:22 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 16:05:38 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <unistd.h>
+
+void	ft_rev_int_tab(int *tab, int size);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (size > 0 && tab)
+	{
+		i = 0;
+		write(1, "[", 1);
+		while (i < size)
+		{
+			if (i > 0)
+				write(1, ", ", 2);
+			ft_putnbr(tab[i]);
+			i++;
+		}
+		write(1, "]\n", 2);
+	}
+	write(1, "\n", 1);
+}
+
+int	main(void)
+{
+	int	size;
+	int	*tab1;
+	int	tab2[0] = {};
+	int	tab3[4] = {1, 2, 3, 4};
+	int	tab4[5] = {1, 2, 0, -13, 4};
+
+	write(1, "Voici le tableau \"NULL\" inverse :\n", 33);
+	tab1 = NULL;
+	size = 0;
+	ft_rev_int_tab(tab1, size);
+	ft_print_int_tab(tab1, size);
+	write(1, "Voici le tableau \"vide\" inverse :\n", 33);
+	size = 0;
+	ft_rev_int_tab(tab2, size);
+	ft_print_int_tab(tab2, size);
+	write(1, "Voici le tableau \"[1, 2, 3, 4]\" inverse :\n", 41);
+	size = 4;
+	ft_rev_int_tab(tab3, size);
+	ft_print_int_tab(tab3, size);
+	write(1, "Voici le tableau \"[1, 2, 0, -13, 4]\" inverse :\n", 41);
+	size = 5;
+	ft_rev_int_tab(tab4, size);
+	ft_print_int_tab(tab4, size);
+	return (0);
+}
+e3r11p9% vi ft_rev_int_tab.c 
+e3r11p9% cat ft_rev_int_tab.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_int_tab.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 14:19:21 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 16:07:30 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+void	ft_rev_int_tab(int *tab, int size)
+{
+	int	middle;
+	int	i;
+	int	temp;
+
+	if (size > 0 && tab)
+	{
+		middle = size / 2;
+		i = 0;
+		while (i < middle)
+		{
+			temp = tab[i];
+			tab[i] = tab[size - 1 - i];
+			tab[size - 1 - i] = temp;
+			i++;
+		}
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_rev_int_tab.c                         
+ft_rev_int_tab.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_rev_int_tab.c                         
+test_ft_rev_int_tab.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  65, col:  17):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  66, col:  17):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  67, col:  17):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_rev_int_tab ft_rev_int_tab.c test_ft_rev_int_tab.c
+e3r11p9% ls -al                                                
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 14 16:08 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 14 13:43 ..
+-rw-r--r--  1 hauerbac 2023_paris  1142 Feb 14 16:07 ft_rev_int_tab.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16168 Feb 14 16:08 test_ft_rev_int_tab
+-rw-r--r--  1 hauerbac 2023_paris  2237 Feb 14 16:05 test_ft_rev_int_tab.c
+e3r11p9% ./test_ft_rev_int_tab                                 
+Voici le tableau "NULL" inverse :
+Voici le tableau "vide" inverse :
+Voici le tableau "[1, 2, 3, 4]" inverse :[4, 3, 2, 1]
+
+Voici le tableau "[1, 2, 0, -13, 4]" inve[4, -13, 0, 2, 1]
+
+e3r11p9% vi test_ft_rev_int_tab.c
+e3r11p9% cat test_ft_rev_int_tab.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_rev_int_tab.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/14 14:40:22 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/14 16:11:20 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <unistd.h>
+
+void	ft_rev_int_tab(int *tab, int size);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	char	digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (size > 0 && tab)
+	{
+		i = 0;
+		write(1, "[", 1);
+		while (i < size)
+		{
+			if (i > 0)
+				write(1, ", ", 2);
+			ft_putnbr(tab[i]);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+	write(1, "\n", 1);
+}
+
+int	main(void)
+{
+	int	size;
+	int	*tab1;
+	int	tab2[0] = {};
+	int	tab3[4] = {1, 2, 3, 4};
+	int	tab4[5] = {1, 2, 0, -13, 4};
+
+	write(1, "Voici le tableau \"NULL\" inverse :\n", 33);
+	tab1 = NULL;
+	size = 0;
+	ft_rev_int_tab(tab1, size);
+	ft_print_int_tab(tab1, size);
+	write(1, "Voici le tableau \"vide\" inverse :\n", 33);
+	size = 0;
+	ft_rev_int_tab(tab2, size);
+	ft_print_int_tab(tab2, size);
+	write(1, "Voici le tableau \"[1, 2, 3, 4]\" inverse :\n", 41);
+	size = 4;
+	ft_rev_int_tab(tab3, size);
+	ft_print_int_tab(tab3, size);
+	write(1, "Voici le tableau \"[1, 2, 0, -13, 4]\" inverse :\n", 41);
+	size = 5;
+	ft_rev_int_tab(tab4, size);
+	ft_print_int_tab(tab4, size);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_rev_int_tab.c                         
+ft_rev_int_tab.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_rev_int_tab.c                         
+test_ft_rev_int_tab.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  65, col:  17):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  66, col:  17):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  67, col:  17):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_rev_int_tab ft_rev_int_tab.c test_ft_rev_int_tab.c
+e3r11p9% ./test_ft_rev_int_tab                              
+Voici le tableau "NULL" inverse :
+Voici le tableau "vide" inverse :
+Voici le tableau "[1, 2, 3, 4]" inverse :[4, 3, 2, 1]
+Voici le tableau "[1, 2, 0, -13, 4]" inve[4, -13, 0, 2, 1]
+e3r11p9% cd ..
+e3r11p9% cp ex07/ft_rev_int_tab.c git_c_01/ex07/ft_rev_int_tab.c
+e3r11p9% cd git_c_01 
+e3r11p9% git add ex07/ft_rev_int_tab.c
+e3r11p9% git commit -m "Addition of ex07 file"
+[master 1887d30] Addition of ex07 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 31 insertions(+)
+ create mode 100644 ex07/ft_rev_int_tab.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 644 bytes | 644.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-6e9d523a-04e7-40c5-a472-2ae28862ce6e-4685142-hauerbac
+   39088dc..1887d30  master -> master
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	git_c_01
+e3r11p9% mkdir ex08
+e3r11p9% mkdir git_c_01/ex08
+e3r11p9% cd ex08
+e3r11p9% vi ft_sort_int_tab.c
+
+
+
+

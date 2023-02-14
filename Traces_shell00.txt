@@ -2559,6 +2559,17 @@ fatal: Could not read from remote repository.
 
 Please make sure you have the correct access rights
 and the repository exists.
+-------------------------------------------------------------------------------------------------
+aarjona (Abel)
+ — 
+Aujourd’hui à 14:00
+Quelqu’un aurait la commande pour changer la date de test6 -> test0
+iben-che (Ines)
+ — 
+Aujourd’hui à 14:02
+Ouip, normalement c'est touch -ht pour un lien symbolique
+(fais attention, si tu as fait touch -t ça modifie les infos que le lien symbolique pointe -> test0 ici)
+-------------------------------------------------------------------------------------------------
 
 
 	
