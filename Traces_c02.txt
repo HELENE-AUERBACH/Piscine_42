@@ -1,0 +1,1554 @@
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  git_c_01
+e3r11p9% cd ..
+e3r11p9% ls
+c_00  Desktop	 Downloads  Pictures  rush_00  sgoinfre  shell_01   Videos
+c_01  Documents  Music	    Public    samed    shell_00  Templates
+e3r11p9% mkdir c_02
+e3r11p9% cd c_02
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-b7056e4f-9a2e-4069-90d5-37fb099c927d-4691558-hauerbac git_c_02
+Cloning into 'git_c_02'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% ls
+git_c_02
+e3r11p9% mkdir ex00            
+e3r11p9% mkdir git_c_02/ex00
+e3r11p9% cd ex00 
+e3r11p9% vi ft_strcpy.c
+e3r11p9% cat ft_strcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 09:03:06 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 09:03:13 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
+	
+	if (src && dest)
+	{
+		i = 0;
+		while (src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return dest;
+}
+
+e3r11p9% cp ../../c_01/ex08/test_ft_sort_int_tab.c test_ft_strcpy.c
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strcpy.c                                      
+ft_strcpy.c: Error!
+Error: SPACE_EMPTY_LINE     (line:  16, col:   1):	Space on empty line
+Error: RETURN_PARENTHESIS   (line:  27, col:  12):	Return value must be in parenthesis
+Error: EMPTY_LINE_EOF       (line:  29, col:   1):	Empty line at end of file
+e3r11p9% vi ft_strcpy.c                                           
+e3r11p9% cat ft_strcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 09:03:06 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 09:06:26 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	if (src && dest)
+	{
+		i = 0;
+		while (src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strcpy.c
+ft_strcpy.c: OK!
+e3r11p9% vi test_ft_strcpy.c 
+e3r11p9% cat test_ft_strcpy.c 
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;
+
+	null_src = NULL;
+	null_dest = NULL;
+	empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi"
+	src1 = "Toto Titi"
+	src2 = "Tuut"
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(null_dest, null_src), strcpy(null_dest, null_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(null_dest, empty_src), strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(empty_dest, src1), strcpy("", src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strcpy.c 
+test_ft_strcpy.c: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: TOO_MANY_VARS_FUNC   (line:  14, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  15, col:   1):	Too many variables declarations in a function
+Error: TOO_FEW_TAB          (line:  22, col:   1):	Missing tabs for indent level
+Error: MULT_ASSIGN_LINE     (line:  22, col:  10):	Multiple assignations on a single line
+Error: TOO_FEW_TAB          (line:  23, col:   1):	Missing tabs for indent level
+Error: MULT_ASSIGN_LINE     (line:  23, col:  10):	Multiple assignations on a single line
+Error: TOO_FEW_TAB          (line:  24, col:   1):	Missing tabs for indent level
+Error: LINE_TOO_LONG        (line:  25, col:  86):	line too long
+Error: LINE_TOO_LONG        (line:  27, col:  87):	line too long
+Error: LINE_TOO_LONG        (line:  29, col:  90):	line too long
+Error: LINE_TOO_LONG        (line:  31, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  33, col:  82):	line too long
+Error: TOO_MANY_LINES       (line:  35, col:   1):	Function has more than 25 lines
+e3r11p9% vi test_ft_strcpy.c                                     
+e3r11p9% cat test_ft_strcpy.c 
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;
+
+	null_src = NULL;
+	null_dest = NULL;
+	empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(null_dest, null_src), strcpy(null_dest, null_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(null_dest, empty_src), strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(empty_dest, src1), strcpy("", src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strcpy.c
+test_ft_strcpy.c: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+Error: TOO_MANY_VARS_FUNC   (line:  14, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  15, col:   1):	Too many variables declarations in a function
+Error: LINE_TOO_LONG        (line:  25, col:  86):	line too long
+Error: LINE_TOO_LONG        (line:  27, col:  87):	line too long
+Error: LINE_TOO_LONG        (line:  29, col:  90):	line too long
+Error: LINE_TOO_LONG        (line:  31, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  33, col:  82):	line too long
+Error: TOO_MANY_LINES       (line:  35, col:   1):	Function has more than 25 lines
+e3r11p9% vi test_ft_strcpy.c                                     
+e3r11p9% cat test_ft_strcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcpy.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 10:13:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;
+
+	null_src = NULL;
+	null_dest = NULL;
+	empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(null_dest, null_src), strcpy(null_dest, null_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(null_dest, empty_src), strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(empty_dest, src1), strcpy("", src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strcpy.c
+test_ft_strcpy.c: Error!
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: LINE_TOO_LONG        (line:  37, col:  86):	line too long
+Error: LINE_TOO_LONG        (line:  39, col:  87):	line too long
+Error: LINE_TOO_LONG        (line:  41, col:  90):	line too long
+Error: LINE_TOO_LONG        (line:  43, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  45, col:  82):	line too long
+Error: TOO_MANY_LINES       (line:  47, col:   1):	Function has more than 25 lines
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcpy ft_strcpy.c test_ft_strcpy.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 15 10:14 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 15 08:42 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1073 Feb 15 09:06 ft_strcpy.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16112 Feb 15 10:14 test_ft_strcpy
+-rw-r--r-- 1 hauerbac 2023_paris  2104 Feb 15 10:13 test_ft_strcpy.c
+e3r11p9% ./test_ft_strcpy 
+Voici la chaine "NULL" copiee dans la chaine "NULL" :
+zsh: segmentation fault (core dumped)  ./test_ft_strcpy
+e3r11p9% vi test_ft_strcpy.c                                     
+e3r11p9% cat test_ft_strcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcpy.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 10:15:50 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;
+
+	null_src = NULL;
+	null_dest = NULL;
+	empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(null_dest, null_src), strcpy(null_dest, null_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(empty_dest, src1), strcpy("", src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcpy ft_strcpy.c test_ft_strcpy.c
+e3r11p9% ./test_ft_strcpy                                                      
+Voici la chaine "NULL" copiee dans la chaine "NULL" :
+zsh: segmentation fault (core dumped)  ./test_ft_strcpy
+e3r11p9% vi test_ft_strcpy.c                                                    
+e3r11p9% cat test_ft_strcpy.c                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcpy.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 10:16:36 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;
+
+	null_src = NULL;
+	null_dest = NULL;
+	empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, null_src)));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(empty_dest, src1), strcpy("", src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+	return (0);
+}
+e3r11p9% ./test_ft_strcpy   
+Voici la chaine "NULL" copiee dans la chaine "NULL" :
+zsh: segmentation fault (core dumped)  ./test_ft_strcpy
+e3r11p9% vi test_ft_strcpy.c 
+e3r11p9% cat test_ft_strcpy.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcpy.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 10:17:48 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;
+
+	null_src = NULL;
+	null_dest = NULL;
+	empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, null_src)));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s\n", ft_strcpy(empty_dest, src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcpy ft_strcpy.c test_ft_strcpy.c
+test_ft_strcpy.c: In function ‘main’:
+test_ft_strcpy.c:37:48: error: expected ‘;’ before ‘)’ token
+   37 |  printf("%s\n", ft_strcpy(null_dest, null_src)));
+      |                                                ^
+      |                                                ;
+test_ft_strcpy.c:37:48: error: expected statement before ‘)’ token
+e3r11p9% vi test_ft_strcpy.c                                                    
+e3r11p9% cat test_ft_strcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcpy.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 10:18:14 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;
+
+	null_src = NULL;
+	null_dest = NULL;
+	empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, null_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s\n", ft_strcpy(empty_dest, src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcpy ft_strcpy.c test_ft_strcpy.c
+e3r11p9% ./test_ft_strcpy                                                      
+Voici la chaine "NULL" copiee dans la chaine "NULL" :
+zsh: segmentation fault (core dumped)  ./test_ft_strcpy
+e3r11p9% vi test_ft_strcpy.c                                                    
+e3r11p9% cat test_ft_strcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcpy.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 10:19:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;
+
+	null_src = NULL;
+	null_dest = NULL;
+	empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, null_src));
+/*	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s\n", ft_strcpy(empty_dest, src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+*/	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcpy ft_strcpy.c test_ft_strcpy.c
+test_ft_strcpy.c: In function ‘main’:
+test_ft_strcpy.c:27:8: error: variable ‘src2’ set but not used [-Werror=unused-but-set-variable]
+   27 |  char *src2;
+      |        ^~~~
+test_ft_strcpy.c:26:8: error: variable ‘src1’ set but not used [-Werror=unused-but-set-variable]
+   26 |  char *src1;
+      |        ^~~~
+test_ft_strcpy.c:25:8: error: variable ‘dest1’ set but not used [-Werror=unused-but-set-variable]
+   25 |  char *dest1;
+      |        ^~~~~
+test_ft_strcpy.c:24:8: error: variable ‘empty_src’ set but not used [-Werror=unused-but-set-variable]
+   24 |  char *empty_src;
+      |        ^~~~~~~~~
+test_ft_strcpy.c:23:8: error: variable ‘empty_dest’ set but not used [-Werror=unused-but-set-variable]
+   23 |  char *empty_dest;
+      |        ^~~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strcpy.c                                                    
+e3r11p9% cat test_ft_strcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcpy.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 10:19:57 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;
+
+	null_src = NULL;
+	null_dest = NULL;
+	/*empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi";
+	src1 = "Toto Titi";
+	src2 = "Tuut";*/
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, null_src));
+/*	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s\n", ft_strcpy(empty_dest, src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+*/	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcpy ft_strcpy.c test_ft_strcpy.c
+test_ft_strcpy.c: In function ‘main’:
+test_ft_strcpy.c:27:8: error: unused variable ‘src2’ [-Werror=unused-variable]
+   27 |  char *src2;
+      |        ^~~~
+test_ft_strcpy.c:26:8: error: unused variable ‘src1’ [-Werror=unused-variable]
+   26 |  char *src1;
+      |        ^~~~
+test_ft_strcpy.c:25:8: error: unused variable ‘dest1’ [-Werror=unused-variable]
+   25 |  char *dest1;
+      |        ^~~~~
+test_ft_strcpy.c:24:8: error: unused variable ‘empty_src’ [-Werror=unused-variable]
+   24 |  char *empty_src;
+      |        ^~~~~~~~~
+test_ft_strcpy.c:23:8: error: unused variable ‘empty_dest’ [-Werror=unused-variable]
+   23 |  char *empty_dest;
+      |        ^~~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strcpy.c                                                    
+e3r11p9% cat test_ft_strcpy.c                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcpy.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 10:20:32 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	char	*null_dest;
+	char	*null_src;
+	/*char	*empty_dest;
+	char	*empty_src;
+	char	*dest1;
+	char	*src1;
+	char	*src2;*/
+
+	null_src = NULL;
+	null_dest = NULL;
+	/*empty_src = "";
+	empty_dest = "";
+	dest1 = "Toto Titi";
+	src1 = "Toto Titi";
+	src2 = "Tuut";*/
+	printf("Voici la chaine \"NULL\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, null_src));
+/*	printf("Voici la chaine \"vide\" copiee dans la chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, empty_src));
+	printf("Voici la chaine \"vide\" copiee dans la chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"vide\" :\n", src1);
+	printf("%s\n", ft_strcpy(empty_dest, src1));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy("Toto Titi", src2));
+*/	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcpy ft_strcpy.c test_ft_strcpy.c
+e3r11p9% ./test_ft_strcpy                                                        
+Voici la chaine "NULL" copiee dans la chaine "NULL" :
+zsh: segmentation fault (core dumped)  ./test_ft_strcpy
+---------------------------------------------------------------------------------------------------------
+...
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd c_02
+e3r11p9% ls
+ex00  git_c_02
+e3r11p9% cat ex00/ft_strcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 09:03:06 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 09:06:26 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
+
+	if (src && dest)
+	{
+		i = 0;
+		while (src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+e3r11p9% cat ex00/test_ft_strcpy.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcpy.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 10:53:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strcpy(char *dest, char *src);
+
+int	main(void)
+{
+	//char	*null_dest;
+	//char	*null_src;
+	//char	*empty_dest;
+	char	*empty_src;
+	char	dest1[25];
+	char	dest1_1[25];
+	//char	*src1;
+	char	*src2;
+	char	dest2[2];
+	char	dest2_1[2];
+
+	//null_src = NULL;
+	//null_dest = NULL;
+	empty_src = "";
+	//empty_dest = "";
+	//src1 = "Toto Titi";
+	src2 = "Tuut";
+	/*printf("Voici la chaine \"NULL\" copiee dans une autre chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, null_src));*/
+	/*printf("Voici la chaine \"vide\" copiee dans une autre chaine \"NULL\" :\n");
+	printf("%s\n", ft_strcpy(null_dest, empty_src));*/
+	printf("Voici la chaine \"vide\" copiee dans une autre chaine \"%s\" :\n", dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, empty_src), strcpy(dest1, empty_src));
+	/*printf("Voici la chaine \"%s\" copiee dans une autre chaine \"vide\" :\n", src1);
+	printf("%s\n", ft_strcpy(empty_dest, src1));*/
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest1, src2), strcpy(dest1_1, src2));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest2);
+	printf("%s (avec strcpy : %s)\n", ft_strcpy(dest2, src2), strcpy(dest2_1, src2));
+	return (0);
+}
+e3r11p9% ls -al ex00              
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 15 10:53 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 15 08:42 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1073 Feb 15 09:06 ft_strcpy.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16120 Feb 15 10:53 test_ft_strcpy
+-rw-r--r-- 1 hauerbac 2023_paris  2220 Feb 15 10:53 test_ft_strcpy.c
+e3r11p9% ./ex00/test_ft_strcpy 
+Voici la chaine "vide" copiee dans une autre chaine "" :
+ (avec strcpy : )
+Voici la chaine "Tuut" copiee dans la chaine "" :
+Tuut (avec strcpy : Tuut)
+Voici la chaine "Tuut" copiee dans la chaine "" :
+Tuut (avec strcpy : ut)
+e3r11p9% cd ..
+e3r11p9% ls
+c_00  c_01  c_02  Desktop  Documents  Downloads  Music	Pictures  Public  rush_00  samed  sgoinfre  shell_00  shell_01	Templates  Videos
+e3r11p9% cd c_02
+e3r11p9% ls
+ex00  git_c_02
+e3r11p9% mkdir ex01
+e3r11p9% mkdir git_c_02/ex01
+e3r11p9% cd ex01
+e3r11p9% vi ft_strncpy.c
+e3r11p9% cat ft_strncpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:22:24 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 14:22:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	int	i;
+
+	if (src && dest && n > 0)
+	{
+		i = 0;
+		while (i < n && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
+	return (dest);
+}
+e3r11p9% cp ../ex00/test_ft_strcpy.c test_ft_strncpy.c
+e3r11p9% vi test_ft_strncpy.c
+e3r11p9% cat test_ft_strncpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strncpy.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 10:13:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 14:36:57 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+
+int	main(void)
+{
+	unsigned int	n = 2;
+	//char	*null_dest;
+	//char	*null_src;
+	//char	*empty_dest;
+	char	*empty_src;
+	char	dest1[25];
+	char	dest1_1[25];
+	//char	*src1;
+	char	*src2;
+	char	dest2[2] = "M";
+	char	dest2_1[2] = "M";
+
+	//null_src = NULL;
+	//null_dest = NULL;
+	empty_src = "";
+	//empty_dest = "";
+	//src1 = "Toto Titi";
+	src2 = "Tuut";
+	/*printf("Voici la chaine \"NULL\" copiee dans une autre chaine \"NULL\" :\n");
+	printf("%s\n", ft_strncpy(null_dest, null_src, n));*/
+	/*printf("Voici la chaine \"vide\" copiee dans une autre chaine \"NULL\" :\n");
+	printf("%s\n", ft_strncpy(null_dest, empty_src, n));*/
+	printf("Voici la chaine \"vide\" copiee dans une autre chaine \"%s\" :\n", dest1);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest1, empty_src, n), n, strncpy(dest1, empty_src, n));
+	/*printf("Voici la chaine \"%s\" copiee dans une autre chaine \"vide\" :\n", src1);
+	printf("%s\n", ft_strncpy(empty_dest, src1, n));*/
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest1, src2, n), n, strncpy(dest1_1, src2, n));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest2);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest2, src2, n), n, strncpy(dest2_1, src2, n));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strncpy.c 
+ft_strncpy.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strncpy.c 
+test_ft_strncpy.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  21, col:  23):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line:  22, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  23, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  24, col:   5):	Comment is invalid in this scope
+Error: VAR_DECL_START_FUNC  (line:  25, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  25, col:  13):	Misaligned variable declaration
+Error: VAR_DECL_START_FUNC  (line:  26, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  26, col:  13):	Misaligned variable declaration
+Error: VAR_DECL_START_FUNC  (line:  27, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  27, col:  13):	Misaligned variable declaration
+Error: WRONG_SCOPE_COMMENT  (line:  28, col:   5):	Comment is invalid in this scope
+Error: VAR_DECL_START_FUNC  (line:  29, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  29, col:  13):	Misaligned variable declaration
+Error: TOO_MANY_VARS_FUNC   (line:  30, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  30, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  30, col:  13):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  30, col:  22):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  31, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  31, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  31, col:  13):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  31, col:  24):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line:  33, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  34, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  36, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  37, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  39, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  41, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  43, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  44, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  45, col:   1):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  45, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  48, col:  88):	line too long
+Error: LINE_TOO_LONG        (line:  50, col:  88):	line too long
+Error: TOO_MANY_LINES       (line:  52, col:   1):	Function has more than 25 lines
+e3r11p9% vi test_ft_strncpy.c                                
+e3r11p9% cat test_ft_strncpy.c                                
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strncpy.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:41:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 14:41:35 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+
+int	main(void)
+{
+	unsigned int	n = 2;
+	//char		*null_dest;
+	//char		*null_src;
+	//char		*empty_dest;
+	char		*empty_src;
+	char		dest1[25];
+	char		dest1_1[25];
+	//char		*src1;
+	char		*src2;
+	char		dest2[2] = "M";
+	char		dest2_1[2] = "M";
+
+	//null_src = NULL;
+	//null_dest = NULL;
+	empty_src = "";
+	//empty_dest = "";
+	//src1 = "Toto Titi";
+	src2 = "Tuut";
+	/*printf("Voici la chaine \"NULL\" copiee dans une autre chaine \"NULL\" :\n");
+	printf("%s\n", ft_strncpy(null_dest, null_src, n));*/
+	/*printf("Voici la chaine \"vide\" copiee dans une autre chaine \"NULL\" :\n");
+	printf("%s\n", ft_strncpy(null_dest, empty_src, n));*/
+	printf("Voici la chaine \"vide\" copiee dans une autre chaine \"%s\" :\n", dest1);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest1, empty_src, n), n, strncpy(dest1, empty_src, n));
+	/*printf("Voici la chaine \"%s\" copiee dans une autre chaine \"vide\" :\n", src1);
+	printf("%s\n", ft_strncpy(empty_dest, src1, n));*/
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest1, src2, n), n, strncpy(dest1_1, src2, n));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest2);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest2, src2, n), n, strncpy(dest2_1, src2, n));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strncpy.c
+test_ft_strncpy.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  21, col:  23):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line:  22, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  23, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  24, col:   5):	Comment is invalid in this scope
+Error: VAR_DECL_START_FUNC  (line:  25, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  25, col:  17):	Misaligned variable declaration
+Error: VAR_DECL_START_FUNC  (line:  26, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  26, col:  17):	Misaligned variable declaration
+Error: VAR_DECL_START_FUNC  (line:  27, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  27, col:  17):	Misaligned variable declaration
+Error: WRONG_SCOPE_COMMENT  (line:  28, col:   5):	Comment is invalid in this scope
+Error: VAR_DECL_START_FUNC  (line:  29, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  29, col:  17):	Misaligned variable declaration
+Error: TOO_MANY_VARS_FUNC   (line:  30, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  30, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  30, col:  17):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  30, col:  26):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  31, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  31, col:   1):	Variable declaration not at start of function
+Error: MISALIGNED_VAR_DECL  (line:  31, col:  17):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  31, col:  28):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line:  33, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  34, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  36, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  37, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  39, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  41, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  43, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  44, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  45, col:   1):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  45, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  48, col:  88):	line too long
+Error: LINE_TOO_LONG        (line:  50, col:  88):	line too long
+Error: TOO_MANY_LINES       (line:  52, col:   1):	Function has more than 25 lines
+e3r11p9% vi test_ft_strncpy.c                                     
+e3r11p9% cat test_ft_strncpy.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strncpy.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:41:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 14:42:54 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+
+int	main(void)
+{
+	unsigned int	n = 2;
+	//char			*null_dest;
+	//char			*null_src;
+	//char			*empty_dest;
+	char			*empty_src;
+	char			dest1[25];
+	char			dest1_1[25];
+	//char			*src1;
+	char			*src2;
+	char			dest2[2] = "M";
+	char			dest2_1[2] = "M";
+
+	//null_src = NULL;
+	//null_dest = NULL;
+	empty_src = "";
+	//empty_dest = "";
+	//src1 = "Toto Titi";
+	src2 = "Tuut";
+	/*printf("Voici la chaine \"NULL\" copiee dans une autre chaine \"NULL\" :\n");
+	printf("%s\n", ft_strncpy(null_dest, null_src, n));*/
+	/*printf("Voici la chaine \"vide\" copiee dans une autre chaine \"NULL\" :\n");
+	printf("%s\n", ft_strncpy(null_dest, empty_src, n));*/
+	printf("Voici la chaine \"vide\" copiee dans une autre chaine \"%s\" :\n", dest1);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest1, empty_src, n), n, strncpy(dest1, empty_src, n));
+	/*printf("Voici la chaine \"%s\" copiee dans une autre chaine \"vide\" :\n", src1);
+	printf("%s\n", ft_strncpy(empty_dest, src1, n));*/
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest1);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest1, src2, n), n, strncpy(dest1_1, src2, n));
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest2);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest2, src2, n), n, strncpy(dest2_1, src2, n));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strncpy.c
+test_ft_strncpy.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  21, col:  23):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line:  22, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  23, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  24, col:   5):	Comment is invalid in this scope
+Error: VAR_DECL_START_FUNC  (line:  25, col:   1):	Variable declaration not at start of function
+Error: VAR_DECL_START_FUNC  (line:  26, col:   1):	Variable declaration not at start of function
+Error: VAR_DECL_START_FUNC  (line:  27, col:   1):	Variable declaration not at start of function
+Error: WRONG_SCOPE_COMMENT  (line:  28, col:   5):	Comment is invalid in this scope
+Error: VAR_DECL_START_FUNC  (line:  29, col:   1):	Variable declaration not at start of function
+Error: TOO_MANY_VARS_FUNC   (line:  30, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  30, col:   1):	Variable declaration not at start of function
+Error: DECL_ASSIGN_LINE     (line:  30, col:  30):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  31, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  31, col:   1):	Variable declaration not at start of function
+Error: DECL_ASSIGN_LINE     (line:  31, col:  32):	Declaration and assignation on a single line
+Error: WRONG_SCOPE_COMMENT  (line:  33, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  34, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  36, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  37, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  39, col:   5):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  41, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  43, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  44, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  45, col:   1):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  45, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  48, col:  88):	line too long
+Error: LINE_TOO_LONG        (line:  50, col:  88):	line too long
+Error: TOO_MANY_LINES       (line:  52, col:   1):	Function has more than 25 lines
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncpy ft_strncpy.c test_ft_strncpy.c 
+ft_strncpy.c: In function ‘ft_strncpy’:
+ft_strncpy.c:20:12: error: comparison of integer expressions of different signedness: ‘int’ and ‘unsigned int’ [-Werror=sign-compare]
+   20 |   while (i < n && src[i] != '\0')
+      |            ^
+ft_strncpy.c:25:12: error: comparison of integer expressions of different signedness: ‘int’ and ‘unsigned int’ [-Werror=sign-compare]
+   25 |   while (i < n)
+      |            ^
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_strncpy.c                             
+e3r11p9% cat ft_strncpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:22:24 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 14:50:56 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	if (src && dest && n > 0)
+	{
+		i = 0;
+		while (i < n && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
+	return (dest);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strncpy.c                 
+ft_strncpy.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncpy ft_strncpy.c test_ft_strncpy.c
+e3r11p9% ./test_ft_strncpy 
+Voici la chaine "vide" copiee dans une autre chaine "" :
+ (avec strncpy et n == 2 : )
+Voici la chaine "Tuut" copiee dans la chaine "" :
+Tu (avec strncpy et n == 2 : Tu)
+Voici la chaine "Tuut" copiee dans la chaine "M" :
+TuTuTu (avec strncpy et n == 2 : TuTu)
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/c_02/ex01
+e3r11p9% vi test_ft_strncpy.c                                     
+e3r11p9% cat test_ft_strncpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strncpy.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:41:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 18:20:09 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*
+ *  Cette fonction permet de copier le contenu d'une chaîne de caractère dans une autre, dans la limite de n caractères. Plusieurs cas peuvent être considérés :
+
+    Si la chaîne source a une taille inférieure à celle spécifiée en paramètre (paramètre n), alors la chaîne de destination sera complétée avec des codes ASCII nuls (caractère '\0').
+    Si la chaîne source a une taille supérieure à celle spécifiée en paramètre, alors la chaîne produite ne sera pas terminée par un code ASCII nul (caractère '\0'). Il sera alors de votre responsabilité de l'ajouter si vous souhaitez exploiter correctement la chaîne produite. En effet, n'oubliez pas qu'en C on manipule des chaînes AZT (A Zéro Terminal).
+    Si la chaîne source a une taille égale à celle spécifiée en paramètre, alors la chaîne source sera intégralement copiée (y compris le code ASCII 0 terminal).
+
+Rappel : en langage C, les chaînes de caractères sont qualifiées d'AZT : A Zéro Terminal. Cela signifie qu'une chaîne de caractères se termine forcément par un code ASCII nul (pouvant aussi être représenté par '\0'). 
+ */
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+
+int	main(void)
+{
+	unsigned int	n;
+	//char			*empty_dest;
+	char			*empty_src;
+	char			dest1[25];
+	char			dest1_1[25];
+	char			*src1;
+	char			*src2;
+	char			dest2[5] = "M";
+	char			dest2_1[5] = "M";
+
+	empty_src = "";
+	//empty_dest = "";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	n = 2;
+	printf("Voici la chaine \"vide\" copiee dans une autre chaine \"%s\" :\n", dest1);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c'\n", ft_strncpy(dest1, empty_src, n), n, strncpy(dest1, empty_src, n), dest1[n -1]);
+	n = 7;
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src1, dest1);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest1, src1, n), n, strncpy(dest1_1, src1, n));
+	n = 4;
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest2);
+	printf("%s (avec strncpy et n == %d : %s)\n", ft_strncpy(dest2, src2, n), n, strncpy(dest2_1, src2, n));
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncpy ft_strncpy.c test_ft_strncpy.c
+e3r11p9% ./test_ft_strncpy                                                         
+Voici la chaine "vide" copiee dans une autre chaine "" :
+ (avec strncpy et n == 2 : ) se termine par ''
+Voici la chaine "Toto Titi" copiee dans la chaine "" :
+Toto Ti (avec strncpy et n == 7 : Toto Ti)
+Voici la chaine "Tuut" copiee dans la chaine "M" :
+Tuut (avec strncpy et n == 4 : Tuut)
+e3r11p9% vi test_ft_strncpy.c                                                      
+e3r11p9% cat test_ft_strncpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strncpy.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:41:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 18:25:55 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*
+ *  Cette fonction permet de copier le contenu d'une chaîne de caractère dans une autre, dans la limite de n caractères. Plusieurs cas peuvent être considérés :
+
+    Si la chaîne source a une taille inférieure à celle spécifiée en paramètre (paramètre n), alors la chaîne de destination sera complétée avec des codes ASCII nuls (caractère '\0').
+    Si la chaîne source a une taille supérieure à celle spécifiée en paramètre, alors la chaîne produite ne sera pas terminée par un code ASCII nul (caractère '\0'). Il sera alors de votre responsabilité de l'ajouter si vous souhaitez exploiter correctement la chaîne produite. En effet, n'oubliez pas qu'en C on manipule des chaînes AZT (A Zéro Terminal).
+    Si la chaîne source a une taille égale à celle spécifiée en paramètre, alors la chaîne source sera intégralement copiée (y compris le code ASCII 0 terminal).
+
+Rappel : en langage C, les chaînes de caractères sont qualifiées d'AZT : A Zéro Terminal. Cela signifie qu'une chaîne de caractères se termine forcément par un code ASCII nul (pouvant aussi être représenté par '\0'). 
+ */
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+
+int	main(void)
+{
+	unsigned int	n;
+	//char			*empty_dest;
+	char			*empty_src;
+	char			dest0[25];
+	char			dest0_1[25];
+	char			dest1[25];
+	char			dest1_1[25];
+	char			*src1;
+	char			*src2;
+	char			dest2[5] = "M";
+	char			dest2_1[5] = "M";
+
+	empty_src = "";
+	//empty_dest = "";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	n = 2;
+	printf("Voici la chaine \"vide\" copiee dans une autre chaine \"%s\" :\n", dest0);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c'\n", ft_strncpy(dest0, empty_src, n), n, strncpy(dest0_1, empty_src, n), dest0[n -1]);
+	n = 7;
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src1, dest1);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c'\n", ft_strncpy(dest1, src1, n), n, strncpy(dest1_1, src1, n), dest1[n -1]);
+	n = 4;
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest2);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c'\n", ft_strncpy(dest2, src2, n), n, strncpy(dest2_1, src2, n), dest2[n -1]);
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncpy ft_strncpy.c test_ft_strncpy.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 15 18:26 .
+drwxr-xr-x 5 hauerbac 2023_paris  4096 Feb 15 14:15 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1150 Feb 15 14:50 ft_strncpy.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16128 Feb 15 18:26 test_ft_strncpy
+-rw-r--r-- 1 hauerbac 2023_paris  3174 Feb 15 18:25 test_ft_strncpy.c
+e3r11p9% ./test_ft_strncpy                                                        
+Voici la chaine "vide" copiee dans une autre chaine "" :
+ (avec strncpy et n == 2 : ) se termine par ''
+Voici la chaine "Toto Titi" copiee dans la chaine "" :
+Toto Ti (avec strncpy et n == 7 : Toto Ti) se termine par ''
+Voici la chaine "Tuut" copiee dans la chaine "M" :
+Tuut (avec strncpy et n == 4 : Tuut) se termine par ''
+e3r11p9% vi test_ft_strncpy.c                                                      
+e3r11p9% cat test_ft_strncpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strncpy.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:41:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 18:28:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*
+ *  Cette fonction permet de copier le contenu d'une chaîne de caractère dans une autre, dans la limite de n caractères. Plusieurs cas peuvent être considérés :
+
+    Si la chaîne source a une taille inférieure à celle spécifiée en paramètre (paramètre n), alors la chaîne de destination sera complétée avec des codes ASCII nuls (caractère '\0').
+    Si la chaîne source a une taille supérieure à celle spécifiée en paramètre, alors la chaîne produite ne sera pas terminée par un code ASCII nul (caractère '\0'). Il sera alors de votre responsabilité de l'ajouter si vous souhaitez exploiter correctement la chaîne produite. En effet, n'oubliez pas qu'en C on manipule des chaînes AZT (A Zéro Terminal).
+    Si la chaîne source a une taille égale à celle spécifiée en paramètre, alors la chaîne source sera intégralement copiée (y compris le code ASCII 0 terminal).
+
+Rappel : en langage C, les chaînes de caractères sont qualifiées d'AZT : A Zéro Terminal. Cela signifie qu'une chaîne de caractères se termine forcément par un code ASCII nul (pouvant aussi être représenté par '\0'). 
+ */
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+
+int	main(void)
+{
+	unsigned int	n;
+	//char			*empty_dest;
+	char			*empty_src;
+	char			dest0[25];
+	char			dest0_1[25];
+	char			dest1[25];
+	char			dest1_1[25];
+	char			*src1;
+	char			*src2;
+	char			dest2[5] = "M";
+	char			dest2_1[5] = "M";
+
+	empty_src = "";
+	//empty_dest = "";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	n = 2;
+	printf("Voici la chaine \"vide\" copiee dans une autre chaine \"%s\" :\n", dest0);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c (%d)'\n", ft_strncpy(dest0, empty_src, n), n, strncpy(dest0_1, empty_src, n), dest0[n -1], dest0[n -1]);
+	n = 7;
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src1, dest1);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c' (%d)\n", ft_strncpy(dest1, src1, n), n, strncpy(dest1_1, src1, n), dest1[n -1], dest1[n -1]);
+	n = 4;
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest2);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c (%d)'\n", ft_strncpy(dest2, src2, n), n, strncpy(dest2_1, src2, n), dest2[n -1], dest2[n -1]);
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncpy ft_strncpy.c test_ft_strncpy.c
+e3r11p9% ./test_ft_strncpy                                                        
+Voici la chaine "vide" copiee dans une autre chaine "" :
+ (avec strncpy et n == 2 : ) se termine par ' (0)'
+Voici la chaine "Toto Titi" copiee dans la chaine "" :
+Toto Ti (avec strncpy et n == 7 : Toto Ti) se termine par '' (0)
+Voici la chaine "Tuut" copiee dans la chaine "M" :
+Tuut (avec strncpy et n == 4 : Tuut) se termine par ' (0)'
+e3r11p9% vi test_ft_strncpy.c                                                      
+e3r11p9% cat test_ft_strncpy.c                                                      
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strncpy.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:41:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 18:30:26 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*
+ *  Cette fonction permet de copier le contenu d'une chaîne de caractère dans une autre, dans la limite de n caractères. Plusieurs cas peuvent être considérés :
+
+    Si la chaîne source a une taille inférieure à celle spécifiée en paramètre (paramètre n), alors la chaîne de destination sera complétée avec des codes ASCII nuls (caractère '\0').
+    Si la chaîne source a une taille supérieure à celle spécifiée en paramètre, alors la chaîne produite ne sera pas terminée par un code ASCII nul (caractère '\0'). Il sera alors de votre responsabilité de l'ajouter si vous souhaitez exploiter correctement la chaîne produite. En effet, n'oubliez pas qu'en C on manipule des chaînes AZT (A Zéro Terminal).
+    Si la chaîne source a une taille égale à celle spécifiée en paramètre, alors la chaîne source sera intégralement copiée (y compris le code ASCII 0 terminal).
+
+Rappel : en langage C, les chaînes de caractères sont qualifiées d'AZT : A Zéro Terminal. Cela signifie qu'une chaîne de caractères se termine forcément par un code ASCII nul (pouvant aussi être représenté par '\0'). 
+ */
+#include <stddef.h>
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n);
+
+int	main(void)
+{
+	unsigned int	n;
+	//char			*empty_dest;
+	char			*empty_src;
+	char			dest0[25];
+	char			dest0_1[25];
+	char			dest1[25];
+	char			dest1_1[25];
+	char			*src1;
+	char			*src2;
+	char			dest2[5] = "M";
+	char			dest2_1[5] = "M";
+
+	empty_src = "";
+	//empty_dest = "";
+	src1 = "Toto Titi";
+	src2 = "Tuut";
+	n = 2;
+	printf("Voici la chaine \"vide\" copiee dans une autre chaine \"%s\" :\n", dest0);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c' (%d)\n", ft_strncpy(dest0, empty_src, n), n, strncpy(dest0_1, empty_src, n), dest0[n -1], dest0[n -1]);
+	n = 7;
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src1, dest1);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c' (%d)\n", ft_strncpy(dest1, src1, n), n, strncpy(dest1_1, src1, n), dest1[n -1], dest1[n -1]);
+	n = 4;
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" :\n", src2, dest2);
+	printf("%s (avec strncpy et n == %d : %s) se termine par '%c' (%d)\n", ft_strncpy(dest2, src2, n), n, strncpy(dest2_1, src2, n), dest2[n -1], dest2[n -1]);
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncpy ft_strncpy.c test_ft_strncpy.c
+e3r11p9% ./test_ft_strncpy                                                        
+Voici la chaine "vide" copiee dans une autre chaine "" :
+ (avec strncpy et n == 2 : ) se termine par '' (0)
+Voici la chaine "Toto Titi" copiee dans la chaine "" :
+Toto Ti (avec strncpy et n == 7 : Toto Ti) se termine par '' (0)
+Voici la chaine "Tuut" copiee dans la chaine "M" :
+Tuut (avec strncpy et n == 4 : Tuut) se termine par '' (0)
+e3r11p9% cat ft_strncpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:22:24 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 14:50:56 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	if (src && dest && n > 0)
+	{
+		i = 0;
+		while (i < n && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
+	return (dest);
+}
+e3r11p9% vi test_ft_strncpy.c                                                      
+e3r11p9% cat ft_strncpy.c    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:22:24 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 14:50:56 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	if (src && dest && n > 0)
+	{
+		i = 0;
+		while (i < n && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
+	return (dest);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncpy ft_strncpy.c test_ft_strncpy.c
+test_ft_strncpy.c: In function ‘main’:
+test_ft_strncpy.c:47:2: error: ‘null_dest’ is used uninitialized in this function [-Werror=uninitialized]
+   47 |  printf("Voici la chaine \"vide\" copiee dans une autre chaine \"%s\" :\n", null_dest);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test_ft_strncpy.c:48:2: error: ‘null_dest_1’ is used uninitialized in this function [-Werror=uninitialized]
+   48 |  printf("%s (avec strncpy et n == %d : %s) se termine par '%c' (%d)\n", ft_strncpy(null_dest, empty_src, n), n, strncpy(null_dest_1, empty_src, n), null_dest[n -1], null_dest[n -1]);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strncpy.c                                                       
+e3r11p9% cat ft_strncpy.c                                                           
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/15 14:22:24 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/15 14:50:56 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	if (src && dest && n > 0)
+	{
+		i = 0;
+		while (i < n && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
+	return (dest);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncpy ft_strncpy.c test_ft_strncpy.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 15 18:54 .
+drwxr-xr-x 5 hauerbac 2023_paris  4096 Feb 15 14:15 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1150 Feb 15 14:50 ft_strncpy.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16128 Feb 15 18:54 test_ft_strncpy
+-rw-r--r-- 1 hauerbac 2023_paris  3506 Feb 15 18:54 test_ft_strncpy.c
+e3r11p9% ./test_ft_strncpy                                                      
+Voici la chaine "vide" copiee dans une autre chaine "" :
+ (avec strncpy et n == 2 : ) se termine par '' (0)
+Voici la chaine "Toto Titi" copiee dans la chaine "" :
+Toto Ti (avec strncpy et n == 7 : Toto Ti) se termine par '' (0)
+Voici la chaine "Tuut" copiee dans la chaine "M" :
+Tuut (avec strncpy et n == 4 : Tuut) se termine par '' (0)
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  git_c_02
+e3r11p9% cp ex01/ft_strncpy.c git_c_02/ex01/ft_strncpy.c
+e3r11p9% cd git_c_02 
+e3r11p9% git add ex01/ft_strncpy.c
+e3r11p9% git commit -m "Addition of ex01 file"
+[master (root-commit) 0525045] Addition of ex01 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 32 insertions(+)
+ create mode 100644 ex01/ft_strncpy.c
+e3r11p9% git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 589 bytes | 589.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-b7056e4f-9a2e-4069-90d5-37fb099c927d-4691558-hauerbac
+ * [new branch]      master -> master
+
