@@ -1,0 +1,2658 @@
+Cas particulier de strstr qui ne se trouve pqs dans le man : "Cette fonction permet de rechercher la chaîne de caractères «search» dans la chaîne de caractères «source». Si la chaîne de caractères search est une chaîne de caractères vides, la chaîne de caractères source entière est retourné par la fonction strstr. (https://www.gladir.com/CODER/C/strstr.htm)"
+jihalee
+ — 
+16/02/2023 13:47
+https://man7.org/linux/man-pages/man3/strstr.3.html
+------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% ls
+c_00  c_02     Documents  Music     Public   samed     shell_00  Templates
+c_01  Desktop  Downloads  Pictures  rush_00  sgoinfre  shell_01  Videos
+e3r11p9% mkdir c_03
+e3r11p9% cd c_03
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-e6c1503e-5b4e-46b2-8237-9210f88d952c-4698556-hauerbac git_c_03
+Cloning into 'git_c_03'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% ls
+git_c_03
+e3r11p9% mkdir ex00
+e3r11p9% mkdir git_c_03/ex00
+e3r11p9% vi ft_strcmp.c
+e3r11p9% cat ft_strcmp.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 08:06:45 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 08:07:20 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int				result;
+	int				i;
+	int				j;
+	unsigned char	c1;
+	unsigned char	c2;
+
+	result = 0;
+	if (s1 && s2)
+	{
+		i = 0;
+		j = 0;
+		while (s1[i] != '\0' || s2[j] != '\0')
+		{
+				c1 = (unsigned char) s1[i];
+				c2 = (unsigned char) s2[j];
+				result = c1 - c2;
+				if (result != 0)
+						return result;
+				else
+				{
+						if (s1[i] != '\0')
+								i++;
+						if (s2[j] != '\0')
+								j++;
+				}
+		}
+	}
+	return result;
+}
+e3r11p9% vi test_ft_strcmp.c 
+e3r11p9% cat test_ft_strcmp.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcmp.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 08:18:43 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 08:18:48 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_strcmp(char *s1, char *s2);
+
+int	main(void)
+{
+	char	s1_1[] = "ABC";
+	char	s2_1[] = "ABC";
+	char	s1_2[] = "ABC";
+	char	s2_2[] = "AB";
+	char	s1_3[] = "ABA";
+	char	s2_3[] = "ABZ";
+	char	s1_4[] = "ABJ";
+	char	s2_4[] = "ABC";
+	char	s1_5[] = "$'\201'";
+	char	s2_5[] = "A";
+
+	printf("%s compare a %s donne %d", s1_1, s2_1, ft_strcmp(s1_1, s2_1));
+	printf("%s compare a %s donne %d", s1_2, s2_2, ft_strcmp(s1_2, s2_2));
+	printf("%s compare a %s donne %d", s1_3, s2_3, ft_strcmp(s1_3, s2_3));
+	printf("%s compare a %s donne %d", s1_4, s2_4, ft_strcmp(s1_4, s2_4));
+	printf("%s compare a %s donne %d", s1_5, s2_5, ft_strcmp(s1_5, s2_5));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strcmp.c 
+ft_strcmp.c: Error!
+Error: TOO_MANY_TAB         (line:  31, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  32, col:   1):	Extra tabs for indent level
+Error: RETURN_PARENTHESIS   (line:  32, col:  32):	Return value must be in parenthesis
+Error: TOO_MANY_TAB         (line:  33, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  34, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  35, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  37, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  39, col:   1):	Extra tabs for indent level
+Error: RETURN_PARENTHESIS   (line:  42, col:  12):	Return value must be in parenthesis
+Error: TOO_MANY_LINES       (line:  43, col:   1):	Function has more than 25 lines
+e3r11p9% vi ft_strcmp.c                                
+e3r11p9% cat ft_strcmp.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 08:06:45 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 08:22:14 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int				result;
+	int				i;
+	int				j;
+
+	result = 0;
+	if (s1 && s2)
+	{
+		i = 0;
+		j = 0;
+		while (s1[i] != '\0' || s2[j] != '\0')
+		{
+				result = (unsigned char) s1[i] - (unsigned char) s2[j];
+				if (result != 0)
+					return result;
+				if (s1[i] != '\0')
+					i++;
+				if (s2[j] != '\0')
+					j++;
+		}
+	}
+	return result;
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strcmp.c
+ft_strcmp.c: Error!
+Error: TOO_MANY_TAB         (line:  27, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  28, col:   1):	Extra tabs for indent level
+Error: RETURN_PARENTHESIS   (line:  28, col:  28):	Return value must be in parenthesis
+Error: TOO_MANY_TAB         (line:  29, col:   1):	Extra tabs for indent level
+Error: TOO_MANY_TAB         (line:  31, col:   1):	Extra tabs for indent level
+Error: RETURN_PARENTHESIS   (line:  35, col:  12):	Return value must be in parenthesis
+e3r11p9% vi ft_strcmp.c                                     
+e3r11p9% cat ft_strcmp.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 08:06:45 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 08:24:02 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int		result;
+	int		i;
+	int		j;
+
+	result = 0;
+	if (s1 && s2)
+	{
+		i = 0;
+		j = 0;
+		while (s1[i] != '\0' || s2[j] != '\0')
+		{
+			result = (unsigned char) s1[i] - (unsigned char) s2[j];
+			if (result != 0)
+				return (result);
+			if (s1[i] != '\0')
+				i++;
+			if (s2[j] != '\0')
+				j++;
+		}
+	}
+	return (result);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strcmp.c
+ft_strcmp.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strcmp.c
+test_ft_strcmp.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  20, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  24, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  20):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcmp ft_strcmp.c test_ft_strcmp.c 
+e3r11p9% ./test_ft_strcmp 
+ABC compare a ABC donne 0ABC compare a AB donne 67ABA compare a ABZ donne -25ABJ compare a ABC donne 7$'�' compare a A donne -29%                                                                                               e3r11p9% vi test_ft_strcmp.c                            
+e3r11p9% cat test_ft_strcmp.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcmp.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 08:18:43 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 08:26:34 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_strcmp(char *s1, char *s2);
+
+int	main(void)
+{
+	char	s1_1[] = "ABC";
+	char	s2_1[] = "ABC";
+	char	s1_2[] = "ABC";
+	char	s2_2[] = "AB";
+	char	s1_3[] = "ABA";
+	char	s2_3[] = "ABZ";
+	char	s1_4[] = "ABJ";
+	char	s2_4[] = "ABC";
+	char	s1_5[] = "\201";
+	char	s2_5[] = "A";
+
+	printf("%s compare a %s donne %d\n", s1_1, s2_1, ft_strcmp(s1_1, s2_1));
+	printf("%s compare a %s donne %d\n", s1_2, s2_2, ft_strcmp(s1_2, s2_2));
+	printf("%s compare a %s donne %d\n", s1_3, s2_3, ft_strcmp(s1_3, s2_3));
+	printf("%s compare a %s donne %d\n", s1_4, s2_4, ft_strcmp(s1_4, s2_4));
+	printf("%s compare a %s donne %d\n", s1_5, s2_5, ft_strcmp(s1_5, s2_5));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strcmp.c               
+test_ft_strcmp.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  20, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  24, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  20):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcmp ft_strcmp.c test_ft_strcmp.c
+e3r11p9% ./test_ft_strcmp                                       
+ABC compare a ABC donne 0
+ABC compare a AB donne 67
+ABA compare a ABZ donne -25
+ABJ compare a ABC donne 7
+� compare a A donne 64
+e3r11p9% cd ..
+e3r11p9% ls
+c_00  c_02  Desktop    Downloads  Pictures  rush_00  sgoinfre  shell_01   Videos
+c_01  c_03  Documents  Music	  Public    samed    shell_00  Templates
+e3r11p9% cd c_03
+e3r11p9% ls
+ex00  ft_strcmp.c  git_c_03  test_ft_strcmp  test_ft_strcmp.c
+e3r11p9% mv *f* ex00
+e3r11p9% ls
+ex00  git_c_03
+e3r11p9% ls -al ex00
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 17 08:28 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 17 08:28 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1244 Feb 17 08:24 ft_strcmp.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16080 Feb 17 08:26 test_ft_strcmp
+-rw-r--r-- 1 hauerbac 2023_paris  1569 Feb 17 08:26 test_ft_strcmp.c
+e3r11p9% cp ex00/ft_strcmp.c git_c_03/ex00/ft_strcmp.c
+e3r11p9% cd git_c_03 
+e3r11p9% git add ex00/ft_strcmp.c
+e3r11p9% git commit -m "Addition of ex00 file"
+[master (root-commit) 86f4609] Addition of ex00 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 36 insertions(+)
+ create mode 100644 ex00/ft_strcmp.c
+e3r11p9% git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 607 bytes | 607.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-e6c1503e-5b4e-46b2-8237-9210f88d952c-4698556-hauerbac
+ * [new branch]      master -> master
+e3r11p9% cd ..
+e3r11p9% mkdir ex01
+e3r11p9% mkdir git_c_03/ex01
+e3r11p9% cd ex01
+e3r11p9% cp ../ex00/ft_strcmp.c ft_strncmp.c
+e3r11p9% vi ft_strncmp.c
+e3r11p9% cat ft_strncmp.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 08:40:58 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 08:41:04 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	int		result;
+	int		i;
+	int		j;
+
+	result = 0;
+	if (s1 && s2 && n > 0)
+	{
+		i = 0;
+		j = 0;
+		while ((s1[i] != '\0' || s2[j] != '\0')
+		     && (i < n || j < n))
+		{
+			result = (unsigned char) s1[i] - (unsigned char) s2[j];
+			if (result != 0)
+				return (result);
+			if (s1[i] != '\0')
+				i++;
+			if (s2[j] != '\0')
+				j++;
+		}
+	}
+	return (result);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strncmp.c                   
+ft_strncmp.c: Error!
+Error: MIXED_SPACE_TAB      (line:  25, col:   5):	Mixed spaces and tabs
+Error: CONSECUTIVE_SPC      (line:  25, col:   9):	Two or more consecutives spaces
+Error: TOO_FEW_TAB          (line:  25, col:   9):	Missing tabs for indent level
+e3r11p9% vi ft_strncmp.c                                     
+e3r11p9% cat ft_strncmp.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 08:40:58 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 08:42:11 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	int		result;
+	int		i;
+	int		j;
+
+	result = 0;
+	if (s1 && s2 && n > 0)
+	{
+		i = 0;
+		j = 0;
+		while ((s1[i] != '\0' || s2[j] != '\0')
+			&& (i < n || j < n))
+		{
+			result = (unsigned char) s1[i] - (unsigned char) s2[j];
+			if (result != 0)
+				return (result);
+			if (s1[i] != '\0')
+				i++;
+			if (s2[j] != '\0')
+				j++;
+		}
+	}
+	return (result);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strncmp.c
+ft_strncmp.c: OK!
+e3r11p9% cp ../ex00/test_ft_strcmp.c test_ft_strncmp.c 
+e3r11p9% vi test_ft_strncmp.c 
+e3r11p9% cat test_ft_strncmp.c  
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strncmp.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 08:49:35 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 08:49:39 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n);
+
+int	main(void)
+{
+	char	s1_1[] = "ABC";
+	char	s2_1[] = "ABC";
+	char	s1_2[] = "ABC";
+	char	s2_2[] = "AB";
+	char	s1_3[] = "ABC";
+	char	s2_3[] = "AB";
+	char	s1_4[] = "ABC";
+	char	s2_4[] = "ABC";
+	char	s1_5[] = "\201";
+	char	s2_5[] = "A";
+
+	printf("%s compare a %s pour n = %d donne %d\n", s1_1, s2_1, 5, ft_strncmp(s1_1, s2_1, 5));
+	printf("%s compare a %s pour n = %d donne %d\n", s1_2, s2_2, 3, ft_strncmp(s1_2, s2_2, 3));
+	printf("%s compare a %s pour n = %d donne %d\n", s1_3, s2_3, 2, ft_strncmp(s1_3, s2_3, 2));
+	printf("%s compare a %s pour n = %d donne %d\n", s1_4, s2_4, 3, ft_strncmp(s1_4, s2_4, 3));
+	printf("%s compare a %s pour n = %d donne %d\n", s1_5, s2_5, 1, ft_strncmp(s1_5, s2_5, 1));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strncmp.c 
+test_ft_strncmp.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  20, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  24, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  20):	Declaration and assignation on a single line
+Error: LINE_TOO_LONG        (line:  30, col:  83):	line too long
+Error: LINE_TOO_LONG        (line:  31, col:  83):	line too long
+Error: LINE_TOO_LONG        (line:  32, col:  83):	line too long
+Error: LINE_TOO_LONG        (line:  33, col:  83):	line too long
+Error: LINE_TOO_LONG        (line:  34, col:  83):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncmp ft_strncmp.c test_ft_strncmp.c 
+ft_strncmp.c: In function ‘ft_strncmp’:
+ft_strncmp.c:25:10: error: comparison of integer expressions of different signedness: ‘int’ and ‘unsigned int’ [-Werror=sign-compare]
+   25 |    && (i < n || j < n))
+      |          ^
+ft_strncmp.c:25:19: error: comparison of integer expressions of different signedness: ‘int’ and ‘unsigned int’ [-Werror=sign-compare]
+   25 |    && (i < n || j < n))
+      |                   ^
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_strncmp.c                                     
+e3r11p9% cat ft_strncmp.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 08:40:58 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 08:51:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	int		result;
+	int		i;
+	int		j;
+
+	result = 0;
+	if (s1 && s2 && n > 0)
+	{
+		i = 0;
+		j = 0;
+		while ((s1[i] != '\0' || s2[j] != '\0')
+			&& ((unsigned int) i < n || (unsigned int) j < n))
+		{
+			result = (unsigned char) s1[i] - (unsigned char) s2[j];
+			if (result != 0)
+				return (result);
+			if (s1[i] != '\0')
+				i++;
+			if (s2[j] != '\0')
+				j++;
+		}
+	}
+	return (result);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strncmp.c 
+ft_strncmp.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncmp ft_strncmp.c test_ft_strncmp.c
+e3r11p9% ./test_ft_strncmp                                   
+ABC compare a ABC pour n = 5 donne 0
+ABC compare a AB pour n = 3 donne 67
+ABC compare a AB pour n = 2 donne 0
+ABC compare a ABC pour n = 3 donne 0
+� compare a A pour n = 1 donne 64
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  git_c_03
+e3r11p9% cp ex01/ft_strncmp.c git_c_03/cp ex01/ft_strncmp.c
+cp: target 'ex01/ft_strncmp.c' is not a directory
+e3r11p9% cp ex01/ft_strncmp.c git_c_03/ex01/ft_strncmp.c 
+e3r11p9% cd git_c_03 
+e3r11p9% git add ex01/ft_strncmp.c 
+e3r11p9% git commit -m "Addition of ex01 file"
+[master 8481fb3] Addition of ex01 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 37 insertions(+)
+ create mode 100644 ex01/ft_strncmp.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 698 bytes | 698.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-e6c1503e-5b4e-46b2-8237-9210f88d952c-4698556-hauerbac
+   86f4609..8481fb3  master -> master
+e3r11p9% cd ..
+e3r11p9% mkdir ex02
+e3r11p9% mkdir git_c_03/ex02
+e3r11p9% cd ex02
+e3r11p9% cp ../ex00/ft_strcmp.c ft_strcat.c
+e3r11p9% vi ft_strcat.c
+e3r11p9% cat ft_strcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 09:05:38 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 09:06:58 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int		i;
+	int		j;
+
+	if (dest && src)
+	{
+		i = 0;
+		while (dest[i] != '\0')
+			i++;
+		j = 0;
+		while (src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strcat.c                       
+ft_strcat.c: OK!
+e3r11p9% cp ../ex00/test_ft_strcmp.c test_ft_strcat.c 
+e3r11p9% vi test_ft_strcat.c 
+e3r11p9% cat test_ft_strcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcat.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 09:19:18 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 09:19:21 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strcat(char *dest, char *src);
+
+int	main(void)
+{
+	char	src1[] = "";
+	char	dest1[] = "";
+	char	src2[] = "ABC";
+	char	dest2[] = "";
+	char	src3[] = "Toto Tata";
+	char	dest3[] = "Titi";
+	char	src4[] = "Toto Tata";
+	char	dest4[] = "Titi           ";
+	char	src5[] = "\201";
+	char	dest5[] = "A";
+
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src1, dest1, ft_strcat(src1, dest1));
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src2, dest2, ft_strcat(src2, dest2));
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src3, dest3, ft_strcat(src3, dest3));
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src4, dest4, ft_strcat(src4, dest4));
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src5, dest5, ft_strcat(src5, dest5));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strcat.c 
+test_ft_strcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  20, col:  21):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  21):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  24, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  21):	Declaration and assignation on a single line
+Error: LINE_TOO_LONG        (line:  30, col:  83):	line too long
+Error: LINE_TOO_LONG        (line:  31, col:  83):	line too long
+Error: LINE_TOO_LONG        (line:  32, col:  83):	line too long
+Error: LINE_TOO_LONG        (line:  33, col:  83):	line too long
+Error: LINE_TOO_LONG        (line:  34, col:  83):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcat ft_strcat.c test_ft_strcat.c   
+e3r11p9% ./test_ft_strcat 
+"" concatene a "" donne ""
+"ABC" concatene a "" donne "ABC"
+"Toto TataTiti" concatene a "Titi" donne "Toto TataTiti"
+"itiTiti           " concatene a "        " donne "itiTiti           "
+"�A" concatene a "" donne "�A"
+e3r11p9% vi test_ft_strcat.c                                     
+e3r11p9% cat test_ft_strcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcat.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 09:19:18 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 09:24:02 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strcat(char *dest, char *src);
+
+int	main(void)
+{
+	char	src1[] = "";
+	char	dest1[] = "";
+	char	dest1_0[] = "";
+	char	src2[] = "ABC";
+	char	dest2[] = "";
+	char	dest2_0[] = "";
+	char	src3[] = "Toto Tata";
+	char	dest3[] = "Titi";
+	char	dest3_0[] = "Titi";
+	char	src4[] = "Toto Tata";
+	char	dest4[] = "Titi           ";
+	char	dest4_0[] = "Titi           ";
+	char	src5[] = "\201";
+	char	dest5[] = "A";
+	char	dest5_0[] = "A";
+
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src1, dest1_0, ft_strcat(dest1, src1));
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src2, dest2_0, ft_strcat(dest2, src2));
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src3, dest3_0, ft_strcat(dest3, src3));
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src4, dest4_0, ft_strcat(dest4, src4));
+	printf("\"%s\" concatene a \"%s\" donne \"%s\"\n", src5, dest5_0, ft_strcat(dest5, src5));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strcat.c               
+test_ft_strcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  20, col:  21):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  23):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  24, col:  23):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  23):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  29, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  29, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  30, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  30, col:  23):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  31, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  31, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  32, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  32, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  33, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  33, col:  23):	Declaration and assignation on a single line
+Error: LINE_TOO_LONG        (line:  35, col:  85):	line too long
+Error: LINE_TOO_LONG        (line:  36, col:  85):	line too long
+Error: LINE_TOO_LONG        (line:  37, col:  85):	line too long
+Error: LINE_TOO_LONG        (line:  38, col:  85):	line too long
+Error: LINE_TOO_LONG        (line:  39, col:  85):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcat ft_strcat.c test_ft_strcat.c
+e3r11p9% ./test_ft_strcat                                       
+"" concatene a "" donne ""
+"ABC" concatene a "BC" donne "ABC"
+"ata" concatene a "oto Tata" donne "TitiToto Tata"
+"Toto Tata" concatene a "oto Tata" donne "Titi           Toto Tata"
+"C" concatene a "" donne "AC"
+e3r11p9% vi test_ft_strcat.c                                     
+e3r11p9% cat test_ft_strcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcat.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 09:19:18 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 09:32:17 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strcat(char *dest, char *src);
+
+int	main(void)
+{
+	char	src1[] = "";
+	char	dest1[] = "";
+	char	src2[] = "ABC";
+	char	dest2[] = "";
+	char	src3[] = "Toto Tata";
+	char	dest3[] = "Titi";
+	char	src4[] = "Tuto Tata";
+	char	dest4[] = "Toiti           ";
+	char	src5[] = "\201";
+	char	dest5[] = "A";
+
+	printf("\"%s\" concatene a \"%s\" donne :\n", src1, dest1);
+	printf("\"%s\"\n", ft_strcat(dest1, src1));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src2, dest2);
+	printf("\"%s\"\n", ft_strcat(dest2, src2));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src3, dest3);
+	printf("\"%s\"\n", ft_strcat(dest3, src3));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src4, dest4);
+	printf("\"%s\"\n", ft_strcat(dest4, src4));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src5, dest5);
+	printf("\"%s\"\n", ft_strcat(dest5, src5));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strcat.c               
+test_ft_strcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  20, col:  21):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  21):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  24, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  21):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcat ft_strcat.c test_ft_strcat.c
+e3r11p9% ./test_ft_strcat                                       
+"" concatene a "" donne :
+""
+"ABC" concatene a "" donne :
+"ABC"
+"Toto Tata" concatene a "Titi" donne :
+"TitiToto Tata"
+"Tuto Tata" concatene a "Toiti           " donne :
+"Toiti           Tuto Tata"
+"BC" concatene a "" donne :
+zsh: segmentation fault (core dumped)  ./test_ft_strcat
+e3r11p9% vi test_ft_strcat.c                                     
+e3r11p9% cat test_ft_strcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcat.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 09:19:18 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 09:39:21 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strcat(char *dest, char *src);
+
+int	main(void)
+{
+	char	src1[] = "";
+	char	dest1[] = "";
+	char	src2[] = "ABC";
+	char	dest2[] = "";
+	char	src3[] = "Toto Tata";
+	char	dest3[] = "Titi";
+	char	src4[] = "Tuto Tata";
+	char	dest4[] = "Toiti           ";
+	char	src5[] = "2";
+	char	dest5[] = "H";
+
+	printf("\"%s\" concatene a \"%s\" donne :\n", src1, dest1);
+	printf("\"%s\"\n", ft_strcat(dest1, src1));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src2, dest2);
+	printf("\"%s\"\n", ft_strcat(dest2, src2));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src3, dest3);
+	printf("\"%s\"\n", ft_strcat(dest3, src3));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src4, dest4);
+	printf("\"%s\"\n", ft_strcat(dest4, src4));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src5, dest5);
+	printf("\"%s\"\n", ft_strcat(dest5, src5));
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcat ft_strcat.c test_ft_strcat.c
+e3r11p9% ./test_ft_strcat                                                      
+"" concatene a "" donne :
+""
+"ABC" concatene a "" donne :
+"ABC"
+"Toto Tata" concatene a "Titi" donne :
+"TitiToto Tata"
+"Tuto Tata" concatene a "Toiti           " donne :
+"Toiti           Tuto Tata"
+"BC" concatene a "" donne :
+zsh: segmentation fault (core dumped)  ./test_ft_strcat
+e3r11p9% vi test_ft_strcat.c                                                    
+e3r11p9% cat test_ft_strcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcat.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 09:19:18 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 09:42:16 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strcat(char *dest, char *src);
+
+int	main(void)
+{
+	char	src1[] = "";
+	char	dest1[] = "";
+	char	src2[] = "ABC";
+	char	dest2[] = "";
+	char	src3[] = "Toto Tata";
+	char	dest3[] = "Titi";
+	char	src4[] = "Tuto Tata";
+	char	dest4[] = "Toiti           ";
+	char	src5[1] = "2";
+	char	dest5[1] = "H";
+
+	printf("\"%s\" concatene a \"%s\" donne :\n", src1, dest1);
+	printf("\"%s\"\n", ft_strcat(dest1, src1));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src2, dest2);
+	printf("\"%s\"\n", ft_strcat(dest2, src2));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src3, dest3);
+	printf("\"%s\"\n", ft_strcat(dest3, src3));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src4, dest4);
+	printf("\"%s\"\n", ft_strcat(dest4, src4));
+	printf("\"%s\" concatene a \"%s\" donne :\n", src5, dest5);
+	printf("\"%s\"\n", ft_strcat(dest5, src5));
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strcat ft_strcat.c test_ft_strcat.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 17 09:42 .
+drwxr-xr-x 6 hauerbac 2023_paris  4096 Feb 17 08:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1134 Feb 17 09:06 ft_strcat.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16080 Feb 17 09:42 test_ft_strcat
+-rw-r--r-- 1 hauerbac 2023_paris  1756 Feb 17 09:42 test_ft_strcat.c
+e3r11p9% ./test_ft_strcat                                                      
+"" concatene a "" donne :
+""
+"ABC" concatene a "" donne :
+"ABC"
+"Toto Tata" concatene a "Titi" donne :
+"TitiToto Tata"
+"Tuto Tata" concatene a "Toiti           " donne :
+"Toiti           Tuto Tata"
+"BC" concatene a "C" donne :
+zsh: segmentation fault (core dumped)  ./test_ft_strcat
+e3r11p9% cd ..
+e3r11p9% cp ex02/ft_strcat.c git_c_03/ex02/ft_strcat.c
+e3r11p9% cd git_c_03 
+e3r11p9% git add ex02/ft_strcat.c
+e3r11p9% git commit -m "Addition of ex02 file"
+[master f29da12] Addition of ex02 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 33 insertions(+)
+ create mode 100644 ex02/ft_strcat.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 655 bytes | 655.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-e6c1503e-5b4e-46b2-8237-9210f88d952c-4698556-hauerbac
+   8481fb3..f29da12  master -> master
+e3r11p9% cd ..
+e3r11p9% mkdir ex03
+e3r11p9% mkdir git_c_03/ex03
+e3r11p9% cd ex03
+e3r11p9% cp ../ex02/ft_strcat.c ft_strncat.c
+e3r11p9% vi ft_strncat.c 
+e3r11p9% cat ft_strncat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 09:55:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 09:55:33 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strncat(char *dest, char *src, unsigned int nb)
+{
+	int		i;
+	int		j;
+
+	if (dest && src && nb > 0)
+	{
+		i = 0;
+		while (dest[i] != '\0')
+			i++;
+		j = 0;
+		while ((unsigned int) j < nb && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strncat.c                   
+ft_strncat.c: OK!
+e3r11p9% cp ../ex02/test_ft_strcat.c test_ft_strncat.c      
+e3r11p9% vi test_ft_strncat.c 
+e3r11p9% cat test_ft_strncat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strncat.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 10:01:25 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 10:01:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strncat(char *dest, char *src, unsigned int nb);
+
+int	main(void)
+{
+	char	src1[] = "";
+	char	dest1[] = "";
+	char	src2[] = "ABC";
+	char	dest2[] = "";
+	char	src3[] = "Toto Tata";
+	char	dest3[] = "Titi";
+	char	src4[] = "Tuto Tata";
+	char	dest4[] = "Toiti           ";
+	char	src5[1] = "2";
+	char	dest5[1] = "H";
+
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src1, dest1, 0);
+	printf("\"%s\"\n", ft_strncat(dest1, src1, 0));
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src2, dest2, 3);
+	printf("\"%s\"\n", ft_strncat(dest2, src2, 3));
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 12);
+	printf("\"%s\"\n", ft_strncat(dest3, src3, 12));
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src4, dest4, 9);
+	printf("\"%s\"\n", ft_strncat(dest4, src4, 9));
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src5, dest5, 1);
+	printf("\"%s\"\n", ft_strncat(dest5, src5, 1));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strncat.c 
+test_ft_strncat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  20, col:  21):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  21):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  24, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  21):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  22):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strncat ft_strncat.c test_ft_strncat.c 
+e3r11p9% ./test_ft_strncat 
+"" concatene a "" pour n = 0 donne :
+""
+"ABC" concatene a "" pour n = 3 donne :
+"ABC"
+"Toto Tata" concatene a "Titi" pour n = 12 donne :
+"TitiToto Tata"
+"Tuto Tata" concatene a "Toiti           " pour n = 9 donne :
+"Toiti           Tuto Tata"
+"BC" concatene a "C" pour n = 1 donne :
+"CB"
+*** stack smashing detected ***: terminated
+zsh: IOT instruction (core dumped)  ./test_ft_strncat
+e3r11p9% cd ..
+e3r11p9% cp ex03/ft_strncat.c git_c_03/ex03/ft_strncat.c
+e3r11p9% cd g
+cd: no such file or directory: g
+e3r11p9% cd git_c_03 
+e3r11p9% git add ex03/ft_strncat.c
+e3r11p9% git commit -m "Addition of ex03 file"
+[master a30eb70] Addition of ex03 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 33 insertions(+)
+ create mode 100644 ex03/ft_strncat.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 658 bytes | 658.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-e6c1503e-5b4e-46b2-8237-9210f88d952c-4698556-hauerbac
+   f29da12..a30eb70  master -> master
+e3r11p9% cd ..
+e3r11p9% mkdir ex04
+e3r11p9% mkdir git_c_03/ex04
+e3r11p9% cd ex04
+e3r11p9% vi ft_strstr.c
+e3r11p9% cat ft_strstr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 10:21:08 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 10:21:14 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	int		result;
+	int		i;
+	int		j;
+
+	result = 0;
+	if (s1 && s2 && n > 0)
+	{
+		i = 0;
+		j = 0;
+		while ((s1[i] != '\0' || s2[j] != '\0')
+			&& ((unsigned int) i < n || (unsigned int) j < n))
+		{
+			result = (unsigned char) s1[i] - (unsigned char) s2[j];
+			if (result != 0)
+				return (result);
+			if (s1[i] != '\0')
+				i++;
+			if (s2[j] != '\0')
+				j++;
+		}
+	}
+	return (result);
+}
+
+char	*ft_strstr(char *str, char *to_find)
+{
+	int	i;
+	int	size;
+
+	if (str && to_find)
+	{
+		i = 0;
+		while (to_find[i] != '\0')
+			i++;
+		size = i;
+		if (size > 0)
+		{
+			i = 0;
+			while (str[i] != '\0' && ft_strncmp(&str[i], to_find, size) != 0)
+				i++;
+			if (str[i] != '\0')
+				return (&str[i]);
+		}
+	}
+	return (NULL);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strstr.c                       
+ft_strstr.c: OK!
+e3r11p9% vi ft_strstr.c                                     
+e3r11p9% cat ft_strstr.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 10:21:08 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 10:26:01 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	int		result;
+	int		i;
+	int		j;
+
+	result = 0;
+	if (s1 && s2 && n > 0)
+	{
+		i = 0;
+		j = 0;
+		while ((s1[i] != '\0' || s2[j] != '\0')
+			&& ((unsigned int) i < n || (unsigned int) j < n))
+		{
+			result = (unsigned char) s1[i] - (unsigned char) s2[j];
+			if (result != 0)
+				return (result);
+			if (s1[i] != '\0')
+				i++;
+			if (s2[j] != '\0')
+				j++;
+		}
+	}
+	return (result);
+}
+
+char	*ft_strstr(char *str, char *to_find)
+{
+	int	i;
+	int	size;
+
+	if (str && to_find)
+	{
+		i = 0;
+		while (to_find[i] != '\0')
+			i++;
+		size = i;
+		if (size == 0)
+			return (str);
+		else
+		{
+			i = 0;
+			while (str[i] != '\0' && ft_strncmp(&str[i], to_find, size) != 0)
+				i++;
+			if (str[i] != '\0')
+				return (&str[i]);
+		}
+	}
+	return (NULL);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strstr.c
+ft_strstr.c: OK!
+e3r11p9% cp ../ex02/test_ft_strcat.c test_ft_strstr.c 
+e3r11p9% vi test_ft_strstr.c 
+e3r11p9% cat test_ft_strstr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strstr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 10:40:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 10:40:32 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strstr(char *str, char *to_find);
+
+int	main(void)
+{
+	char	src1[] = "";
+	char	to_find1[] = "";
+	char	src2[] = "ABC";
+	char	to_find2[] = "";
+	char	src3[] = "Toto Tata";
+	char	to_find3[] = "Toto";
+	char	src4[] = "Tuto Tata";
+	char	ito_find4[] = " Ta";
+	char	src5[] = "H";
+	char	to_find5[] = "J";
+
+	printf("\"%s\" contient \"%s\" depuis :\n", src1, to_find1);
+	printf("\"%s\"\n", ft_strstr(src1, to_find1));
+	printf("\"%s\" contient \"%s\" depuis :\n", src2, to_find2);
+	printf("\"%s\"\n", ft_strstr(src2, to_find2));
+	printf("\"%s\" contient \"%s\" depuis :\n", src3, to_find3);
+	printf("\"%s\"\n", ft_strstr(src3, to_find3));
+	printf("\"%s\" contient \"%s\" depuis :\n", src4, to_find4);
+	printf("\"%s\"\n", ft_strstr(src4, to_find4));
+	printf("\"%s\" contient \"%s\" depuis :\n", src5, to_find5);
+	printf("\"%s\"\n", ft_strstr(src5, to_find5));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strstr.c 
+test_ft_strstr.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  20, col:  24):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  24):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  24, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  25):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  24):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strstr ft_strstr.c test_ft_strstr.c   
+ft_strstr.c: In function ‘ft_strstr’:
+ft_strstr.c:61:10: error: ‘NULL’ undeclared (first use in this function)
+   61 |  return (NULL);
+      |          ^~~~
+ft_strstr.c:1:1: note: ‘NULL’ is defined in header ‘<stddef.h>’; did you forget to ‘#include <stddef.h>’?
+  +++ |+#include <stddef.h>
+    1 | /* ************************************************************************** */
+ft_strstr.c:61:10: note: each undeclared identifier is reported only once for each function it appears in
+   61 |  return (NULL);
+      |          ^~~~
+ft_strstr.c:62:1: error: control reaches end of non-void function [-Werror=return-type]
+   62 | }
+      | ^
+cc1: all warnings being treated as errors
+test_ft_strstr.c: In function ‘main’:
+test_ft_strstr.c:36:52: error: ‘to_find4’ undeclared (first use in this function); did you mean ‘to_find5’?
+   36 |  printf("\"%s\" contient \"%s\" depuis :\n", src4, to_find4);
+      |                                                    ^~~~~~~~
+      |                                                    to_find5
+test_ft_strstr.c:36:52: note: each undeclared identifier is reported only once for each function it appears in
+test_ft_strstr.c:26:7: error: unused variable ‘ito_find4’ [-Werror=unused-variable]
+   26 |  char ito_find4[] = " Ta";
+      |       ^~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strstr.c                                     
+e3r11p9% cat test_ft_strstr.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strstr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 10:40:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 10:42:10 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strstr(char *str, char *to_find);
+
+int	main(void)
+{
+	char	src1[] = "";
+	char	to_find1[] = "";
+	char	src2[] = "ABC";
+	char	to_find2[] = "";
+	char	src3[] = "Toto Tata";
+	char	to_find3[] = "Toto";
+	char	src4[] = "Tuto Tata";
+	char	to_find4[] = " Ta";
+	char	src5[] = "H";
+	char	to_find5[] = "J";
+
+	printf("\"%s\" contient \"%s\" depuis :\n", src1, to_find1);
+	printf("\"%s\"\n", ft_strstr(src1, to_find1));
+	printf("\"%s\" contient \"%s\" depuis :\n", src2, to_find2);
+	printf("\"%s\"\n", ft_strstr(src2, to_find2));
+	printf("\"%s\" contient \"%s\" depuis :\n", src3, to_find3);
+	printf("\"%s\"\n", ft_strstr(src3, to_find3));
+	printf("\"%s\" contient \"%s\" depuis :\n", src4, to_find4);
+	printf("\"%s\"\n", ft_strstr(src4, to_find4));
+	printf("\"%s\" contient \"%s\" depuis :\n", src5, to_find5);
+	printf("\"%s\"\n", ft_strstr(src5, to_find5));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strstr.c
+test_ft_strstr.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  20, col:  24):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  24):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  24, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  24):	Declaration and assignation on a single line
+e3r11p9% vi ft_strstr.c                                     
+e3r11p9% cat ft_strstr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 10:21:08 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 10:43:11 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	int		result;
+	int		i;
+	int		j;
+
+	result = 0;
+	if (s1 && s2 && n > 0)
+	{
+		i = 0;
+		j = 0;
+		while ((s1[i] != '\0' || s2[j] != '\0')
+			&& ((unsigned int) i < n || (unsigned int) j < n))
+		{
+			result = (unsigned char) s1[i] - (unsigned char) s2[j];
+			if (result != 0)
+				return (result);
+			if (s1[i] != '\0')
+				i++;
+			if (s2[j] != '\0')
+				j++;
+		}
+	}
+	return (result);
+}
+
+char	*ft_strstr(char *str, char *to_find)
+{
+	int	i;
+	int	size;
+
+	if (str && to_find)
+	{
+		i = 0;
+		while (to_find[i] != '\0')
+			i++;
+		size = i;
+		if (size == 0)
+			return (str);
+		else
+		{
+			i = 0;
+			while (str[i] != '\0' && ft_strncmp(&str[i], to_find, size) != 0)
+				i++;
+			if (str[i] != '\0')
+				return (&str[i]);
+		}
+	}
+	return (NULL);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strstr.c     
+ft_strstr.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strstr ft_strstr.c test_ft_strstr.c
+e3r11p9% ./test_ft_strstr 
+"" contient "" depuis :
+""
+"ABC" contient "" depuis :
+"ABC"
+"Toto Tata" contient "Toto" depuis :
+"Toto Tata"
+"Tuto Tata" contient " Ta" depuis :
+" Tata"
+"H" contient "J" depuis :
+"(null)"
+e3r11p9% cd ..
+e3r11p9% cp ex04/ft_strstr.c git_c_03/ex04/ft_strstr.c
+e3r11p9% cd git_c_03 
+e3r11p9% git add ex04/ft_strstr.c
+e3r11p9% git commit -m "Addition of ex04 file"
+[master b7d73fc] Addition of ex04 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 64 insertions(+)
+ create mode 100644 ex04/ft_strstr.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 825 bytes | 825.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-e6c1503e-5b4e-46b2-8237-9210f88d952c-4698556-hauerbac
+   a30eb70..b7d73fc  master -> master
+e3r11p9% cd ..
+e3r11p9% cp ex04/ft_strstr.c git_c_03/ex04/ft_strstr.c
+e3r11p9% cd git_c_03 
+e3r11p9% git add ex04/ft_strstr.c
+e3r11p9% git commit -m "Addition of ex04 file"
+[master b7d73fc] Addition of ex04 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 64 insertions(+)
+ create mode 100644 ex04/ft_strstr.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 825 bytes | 825.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-e6c1503e-5b4e-46b2-8237-9210f88d952c-4698556-hauerbac
+   a30eb70..b7d73fc  master -> master
+e3r11p9% cd ..
+e3r11p9% mkdir ex05
+e3r11p9% mkdir git_c_03/ex05
+e3r11p9% cd ex05
+e3r11p9% vi ft_strlcat.c
+e3r11p9% cat ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:11:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 11:12:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int		i;
+	int		j;
+	unsigned int	dest_len;
+
+	if (dest && src && size > 0)
+	{
+		i = 0;
+		while (dest[i] != '\0')
+			i++;
+		dest_len = (unsigned int) i;
+		j = 0;
+		while ((unsigned int) j + dest_len < size && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		if (i <= size)
+			dest[i] = '\0';
+		return((unsigned int) i);
+	}
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlcat.c 
+ft_strlcat.c: Error!
+Error: MISALIGNED_VAR_DECL  (line:  17, col:  21):	Misaligned variable declaration
+Error: SPACE_AFTER_KW       (line:  34, col:   9):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  34, col:  15):	Missing space before parenthesis (brace/bracket)
+e3r11p9% vi ft_strlcat.c                                     
+e3r11p9% cat ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:11:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 11:13:26 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int				i;
+	int				j;
+	unsigned int	dest_len;
+
+	if (dest && src && size > 0)
+	{
+		i = 0;
+		while (dest[i] != '\0')
+			i++;
+		dest_len = (unsigned int) i;
+		j = 0;
+		while ((unsigned int) j + dest_len < size && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		if (i <= size)
+			dest[i] = '\0';
+		return ((unsigned int) i);
+	}
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlcat.c
+ft_strlcat.c: OK!
+e3r11p9% vi test_ft_strlcat.c 
+e3r11p9% cat test_ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlcat.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:30:51 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 11:30:54 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+
+int	main(void)
+{
+	char	src1 = "defghijklmnopq";
+	char	dest1[5];
+	char	src2 = "defgh";
+	char	dest2[5];
+	char	src3 = "";
+	char	dest3[5];
+	char	src4 = "abcd";
+	char	dest4[5];
+
+	/* avec strlcpy et strlcat, on peut balancer tout ce
+	 * qu\'on veut dans le tableau, on sait qu'on ne déborde pas.
+	 * C'est ça qui est bien.
+	*/
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src1, dest1, sizeof(dest1));
+	ft_strlcat(dest1, src1, sizeof(dest1));
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src2, dest2, 5);
+	ft_strlcat(dest2, src2, 5);
+	rintf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+	ft_strlcat(dest3, src3, 1);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src4, dest4, 9);
+	ft_strlcat(dest4, src4, 9);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlcat.c 
+test_ft_strlcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  18):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  18):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: WRONG_SCOPE_COMMENT  (line:  28, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  32, col:  83):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c 
+ft_strlcat.c: In function ‘ft_strlcat’:
+ft_strlcat.c:32:9: error: comparison of integer expressions of different signedness: ‘int’ and ‘unsigned int’ [-Werror=sign-compare]
+   32 |   if (i <= size)
+      |         ^~
+cc1: all warnings being treated as errors
+test_ft_strlcat.c: In function ‘main’:
+test_ft_strlcat.c:19:14: error: initialization of ‘char’ from ‘char *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   19 |  char src1 = "defghijklmnopq";
+      |              ^~~~~~~~~~~~~~~~
+test_ft_strlcat.c:21:14: error: initialization of ‘char’ from ‘char *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   21 |  char src2 = "defgh";
+      |              ^~~~~~~
+test_ft_strlcat.c:23:14: error: initialization of ‘char’ from ‘char *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   23 |  char src3 = "";
+      |              ^~
+test_ft_strlcat.c:25:14: error: initialization of ‘char’ from ‘char *’ makes integer from pointer without a cast [-Werror=int-conversion]
+   25 |  char src4 = "abcd";
+      |              ^~~~~~
+test_ft_strlcat.c:32:13: error: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘int’ [-Werror=format=]
+   32 |  printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src1, dest1, sizeof(dest1));
+      |            ~^                                              ~~~~
+      |             |                                              |
+      |             char *                                         int
+      |            %d
+test_ft_strlcat.c:32:46: error: format ‘%d’ expects argument of type ‘int’, but argument 4 has type ‘long unsigned int’ [-Werror=format=]
+   32 |  printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src1, dest1, sizeof(dest1));
+      |                                             ~^                          ~~~~~~~~~~~~~
+      |                                              |                          |
+      |                                              int                        long unsigned int
+      |                                             %ld
+test_ft_strlcat.c:33:20: error: passing argument 2 of ‘ft_strlcat’ makes pointer from integer without a cast [-Werror=int-conversion]
+   33 |  ft_strlcat(dest1, src1, sizeof(dest1));
+      |                    ^~~~
+      |                    |
+      |                    char
+test_ft_strlcat.c:15:43: note: expected ‘char *’ but argument is of type ‘char’
+   15 | unsigned int ft_strlcat(char *dest, char *src, unsigned int size);
+      |                                     ~~~~~~^~~
+test_ft_strlcat.c:34:13: error: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘int’ [-Werror=format=]
+   34 |  printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src2, dest2, 5);
+      |            ~^                                              ~~~~
+      |             |                                              |
+      |             char *                                         int
+      |            %d
+test_ft_strlcat.c:35:20: error: passing argument 2 of ‘ft_strlcat’ makes pointer from integer without a cast [-Werror=int-conversion]
+   35 |  ft_strlcat(dest2, src2, 5);
+      |                    ^~~~
+      |                    |
+      |                    char
+test_ft_strlcat.c:15:43: note: expected ‘char *’ but argument is of type ‘char’
+   15 | unsigned int ft_strlcat(char *dest, char *src, unsigned int size);
+      |                                     ~~~~~~^~~
+test_ft_strlcat.c:36:2: error: implicit declaration of function ‘rintf’ [-Werror=implicit-function-declaration]
+   36 |  rintf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+      |  ^~~~~
+test_ft_strlcat.c:36:2: error: incompatible implicit declaration of built-in function ‘rintf’ [-Werror]
+test_ft_strlcat.c:14:1: note: include ‘<math.h>’ or provide a declaration of ‘rintf’
+   13 | #include <stdio.h>
+  +++ |+#include <math.h>
+   14 | 
+test_ft_strlcat.c:36:8: error: incompatible type for argument 1 of ‘rintf’
+   36 |  rintf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |        |
+      |        char *
+test_ft_strlcat.c:36:8: note: expected ‘float’ but argument is of type ‘char *’
+test_ft_strlcat.c:36:2: error: too many arguments to function ‘rintf’
+   36 |  rintf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+      |  ^~~~~
+test_ft_strlcat.c:37:20: error: passing argument 2 of ‘ft_strlcat’ makes pointer from integer without a cast [-Werror=int-conversion]
+   37 |  ft_strlcat(dest3, src3, 1);
+      |                    ^~~~
+      |                    |
+      |                    char
+test_ft_strlcat.c:15:43: note: expected ‘char *’ but argument is of type ‘char’
+   15 | unsigned int ft_strlcat(char *dest, char *src, unsigned int size);
+      |                                     ~~~~~~^~~
+test_ft_strlcat.c:38:13: error: format ‘%s’ expects argument of type ‘char *’, but argument 2 has type ‘int’ [-Werror=format=]
+   38 |  printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src4, dest4, 9);
+      |            ~^                                              ~~~~
+      |             |                                              |
+      |             char *                                         int
+      |            %d
+test_ft_strlcat.c:39:20: error: passing argument 2 of ‘ft_strlcat’ makes pointer from integer without a cast [-Werror=int-conversion]
+   39 |  ft_strlcat(dest4, src4, 9);
+      |                    ^~~~
+      |                    |
+      |                    char
+test_ft_strlcat.c:15:43: note: expected ‘char *’ but argument is of type ‘char’
+   15 | unsigned int ft_strlcat(char *dest, char *src, unsigned int size);
+      |                                     ~~~~~~^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_strlcat.c                                     
+e3r11p9% cat ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:11:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 11:33:01 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int				i;
+	int				j;
+	unsigned int	dest_len;
+
+	if (dest && src && size > 0)
+	{
+		i = 0;
+		while (dest[i] != '\0')
+			i++;
+		dest_len = (unsigned int) i;
+		j = 0;
+		while ((unsigned int) j + dest_len < size && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		if ((unsigned int) i <= size)
+			dest[i] = '\0';
+		return ((unsigned int) i);
+	}
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlcat.c                 
+ft_strlcat.c: OK!
+e3r11p9% vi test_ft_strlcat.c                                     
+e3r11p9% cat test_ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlcat.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:30:51 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 11:44:12 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+
+int	main(void)
+{
+	char	*src1 = "defghijklmnopq";
+	char	dest1[5];
+	char	*src2 = "defgh";
+	char	dest2[5];
+	char	*src3 = "";
+	char	dest3[5];
+	char	*src4 = "abcd";
+	char	dest4[5];
+
+	/* avec strlcpy et strlcat, on peut balancer tout ce
+	 * qu\'on veut dans le tableau, on sait qu'on ne déborde pas.
+	 * C'est ça qui est bien.
+	*/
+	printf("\"%s\" concatene a \"%s\" pour n = %ld donne :\n", src1, dest1, sizeof(dest1));
+	ft_strlcat(dest1, src1, (unsigned int) sizeof(dest1));
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src2, dest2, 5);
+	ft_strlcat(dest2, src2, 5);
+	rintf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+	ft_strlcat(dest3, src3, 1);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src4, dest4, 9);
+	ft_strlcat(dest4, src4, 9);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlcat.c
+test_ft_strlcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: WRONG_SCOPE_COMMENT  (line:  28, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  32, col:  84):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c
+test_ft_strlcat.c: In function ‘main’:
+test_ft_strlcat.c:36:2: error: implicit declaration of function ‘rintf’ [-Werror=implicit-function-declaration]
+   36 |  rintf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+      |  ^~~~~
+test_ft_strlcat.c:36:2: error: incompatible implicit declaration of built-in function ‘rintf’ [-Werror]
+test_ft_strlcat.c:14:1: note: include ‘<math.h>’ or provide a declaration of ‘rintf’
+   13 | #include <stdio.h>
+  +++ |+#include <math.h>
+   14 | 
+test_ft_strlcat.c:36:8: error: incompatible type for argument 1 of ‘rintf’
+   36 |  rintf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |        |
+      |        char *
+test_ft_strlcat.c:36:8: note: expected ‘float’ but argument is of type ‘char *’
+test_ft_strlcat.c:36:2: error: too many arguments to function ‘rintf’
+   36 |  rintf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+      |  ^~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strlcat.c                                     
+e3r11p9% cat test_ft_strlcat.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlcat.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:30:51 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 11:44:57 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+
+int	main(void)
+{
+	char	*src1 = "defghijklmnopq";
+	char	dest1[5];
+	char	*src2 = "defgh";
+	char	dest2[5];
+	char	*src3 = "";
+	char	dest3[5];
+	char	*src4 = "abcd";
+	char	dest4[5];
+
+	/* avec strlcpy et strlcat, on peut balancer tout ce
+	 * qu\'on veut dans le tableau, on sait qu'on ne déborde pas.
+	 * C'est ça qui est bien.
+	*/
+	printf("\"%s\" concatene a \"%s\" pour n = %ld donne :\n", src1, dest1, sizeof(dest1));
+	ft_strlcat(dest1, src1, (unsigned int) sizeof(dest1));
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src2, dest2, 5);
+	ft_strlcat(dest2, src2, 5);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+	ft_strlcat(dest3, src3, 1);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src4, dest4, 9);
+	ft_strlcat(dest4, src4, 9);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlcat.c                 
+test_ft_strlcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: WRONG_SCOPE_COMMENT  (line:  28, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  32, col:  84):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c
+e3r11p9% ./test_ft_strlcat                                     
+"defghijklmnopq" concatene a "" pour n = 5 donne :
+"defgh" concatene a "" pour n = 5 donne :
+"" concatene a "" pour n = 1 donne :
+"abcd" concatene a "" pour n = 9 donne :
+e3r11p9% vi test_ft_strlcat.c                                     
+e3r11p9% cat test_ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlcat.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:30:51 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 11:48:36 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+
+int	main(void)
+{
+	char	*src1 = "defghijklmnopq";
+	char	dest1[5];
+	char	*src2 = "defgh";
+	char	dest2[5];
+	char	*src3 = "";
+	char	dest3[5];
+	char	*src4 = "abcd";
+	char	dest4[5];
+
+	/* avec strlcpy et strlcat, on peut balancer tout ce
+	 * qu\'on veut dans le tableau, on sait qu'on ne déborde pas.
+	 * C'est ça qui est bien.
+	*/
+	printf("\"%s\" concatene a \"%s\" pour n = %ld donne :\n", src1, dest1, sizeof(dest1));
+	printf("%d (\"%s\")", ft_strlcat(dest1, src1, (unsigned int) sizeof(dest1)), dest1);;
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src2, dest2, 5);
+	printf("%d (\"%s\")", ft_strlcat(dest2, src2, 5), dest2);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+	printf("%d (\"%s\")", ft_strlcat(dest3, src3, 1), dest3);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src4, dest4, 9);
+	printf("%d (\"%s\")", ft_strlcat(dest4, src4, 9), dest4);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlcat.c                 
+test_ft_strlcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: WRONG_SCOPE_COMMENT  (line:  28, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  32, col:  84):	line too long
+Error: LINE_TOO_LONG        (line:  33, col:  85):	line too long
+Error: LINE_TOO_LONG        (line:  33, col:  87):	line too long
+Error: TOO_FEW_TAB          (line:  33, col:  87):	Missing tabs for indent level
+Error: EMPTY_LINE_FUNCTION  (line:  33, col:  88):	Empty line in function
+Error: LINE_TOO_LONG        (line:  33, col:  88):	line too long
+e3r11p9% vi test_ft_strlcat.c                                     
+e3r11p9% cat test_ft_strlcat.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlcat.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:30:51 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 11:49:18 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+
+int	main(void)
+{
+	char	*src1 = "defghijklmnopq";
+	char	dest1[5];
+	char	*src2 = "defgh";
+	char	dest2[5];
+	char	*src3 = "";
+	char	dest3[5];
+	char	*src4 = "abcd";
+	char	dest4[5];
+
+	/* avec strlcpy et strlcat, on peut balancer tout ce
+	 * qu\'on veut dans le tableau, on sait qu'on ne déborde pas.
+	 * C'est ça qui est bien.
+	*/
+	printf("\"%s\" concatene a \"%s\" pour n = %ld donne :\n", src1, dest1, sizeof(dest1));
+	printf("%d (\"%s\")", ft_strlcat(dest1, src1, (unsigned int) sizeof(dest1)), dest1);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src2, dest2, 5);
+	printf("%d (\"%s\")", ft_strlcat(dest2, src2, 5), dest2);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+	printf("%d (\"%s\")", ft_strlcat(dest3, src3, 1), dest3);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src4, dest4, 9);
+	printf("%d (\"%s\")", ft_strlcat(dest4, src4, 9), dest4);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlcat.c
+test_ft_strlcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: WRONG_SCOPE_COMMENT  (line:  28, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  32, col:  84):	line too long
+Error: LINE_TOO_LONG        (line:  33, col:  85):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c
+e3r11p9% ./test_ft_strlcat                                       
+"defghijklmnopq" concatene a "" pour n = 5 donne :
+5 ("defgh")"defgh" concatene a "" pour n = 5 donne :
+5 ("defgh")"" concatene a "" pour n = 1 donne :
+0 ("")"abcd" concatene a "" pour n = 9 donne :
+4 ("abcd")%                                                                                                     e3r11p9% vi test_ft_strlcat.c                                     
+e3r11p9% cat test_ft_strlcat.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlcat.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:30:51 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 11:50:19 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+
+int	main(void)
+{
+	char	*src1 = "defghijklmnopq";
+	char	dest1[5];
+	char	*src2 = "defgh";
+	char	dest2[5];
+	char	*src3 = "";
+	char	dest3[5];
+	char	*src4 = "abcd";
+	char	dest4[5];
+
+	/* avec strlcpy et strlcat, on peut balancer tout ce
+	 * qu\'on veut dans le tableau, on sait qu'on ne déborde pas.
+	 * C'est ça qui est bien.
+	*/
+	printf("\"%s\" concatene a \"%s\" pour n = %ld donne :\n", src1, dest1, sizeof(dest1));
+	printf("%d (\"%s\")\n", ft_strlcat(dest1, src1, (unsigned int) sizeof(dest1)), dest1);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src2, dest2, 5);
+	printf("%d (\"%s\")\n", ft_strlcat(dest2, src2, 5), dest2);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+	printf("%d (\"%s\")\n", ft_strlcat(dest3, src3, 1), dest3);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src4, dest4, 9);
+	printf("%d (\"%s\")\n", ft_strlcat(dest4, src4, 9), dest4);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlcat.c                 
+test_ft_strlcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  24, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: WRONG_SCOPE_COMMENT  (line:  28, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  32, col:  84):	line too long
+Error: LINE_TOO_LONG        (line:  33, col:  86):	line too long
+e3r11p9% ./test_ft_strlcat                                       
+"defghijklmnopq" concatene a "" pour n = 5 donne :
+5 ("defgh")"defgh" concatene a "" pour n = 5 donne :
+5 ("defgh")"" concatene a "" pour n = 1 donne :
+0 ("")"abcd" concatene a "" pour n = 9 donne :
+4 ("abcd")%                                                                                                     e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c
+e3r11p9% ./test_ft_strlcat                                         
+"defghijklmnopq" concatene a "" pour n = 5 donne :
+5 ("defgh")
+"defgh" concatene a "" pour n = 5 donne :
+5 ("defgh")
+"" concatene a "" pour n = 1 donne :
+0 ("")
+"abcd" concatene a "" pour n = 9 donne :
+4 ("abcd")
+e3r11p9% cd ..
+e3r11p9% cp ex05/ft_strlcat.c git_c_03/ex05/ft_strlcat.c
+e3r11p9% cd git_c_03 
+e3r11p9% git add ex05/ft_strlcat.c
+e3r11p9% git commit -m "Addition of ex05 file"
+[master a8524d9] Addition of ex05 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 37 insertions(+)
+ create mode 100644 ex05/ft_strlcat.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 696 bytes | 696.00 KiB/s, done.
+Total 4 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-e6c1503e-5b4e-46b2-8237-9210f88d952c-4698556-hauerbac
+   b7d73fc..a8524d9  master -> master
+e3r11p9% cd ..
+-------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd c_03
+e3r11p9% cd ex04
+e3r11p9% ls
+ft_strstr.c  test_ft_strstr  test_ft_strstr.c
+e3r11p9% ./test_ft_strstr 
+"" contient "" depuis :
+""
+"ABC" contient "" depuis :
+"ABC"
+"Toto Tata" contient "Toto" depuis :
+"Toto Tata"
+"Tuto Tata" contient " Ta" depuis :
+" Tata"
+"H" contient "J" depuis :
+"(null)"
+e3r11p9% vi test_ft_strstr.c
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strstr.c
+test_ft_strstr.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  20, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  24):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  24):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  24, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  29, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  29, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  30, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  30, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  31, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  31, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  32, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  32, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  33, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  33, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_LINES       (line:  50, col:   1):	Function has more than 25 lines
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strstr ft_strstr.c test_ft_strstr.c 
+test_ft_strstr.c: In function ‘main’:
+test_ft_strstr.c:36:30: error: unknown escape sequence: '\)' [-Werror]
+   36 |  printf("\"%s\" \(\"%s\"\)\n", ft_strstr(src1, to_find1), strstr(src1, to_find1));
+      |                              ^
+test_ft_strstr.c:38:29: error: unknown escape sequence: '\040' [-Werror]
+   38 |  printf("\"%s\ \(\"%s\"\)\n", ft_strstr(src2, to_find2), ft_strstr(src2, to_find2));
+      |                             ^
+test_ft_strstr.c:38:29: error: unknown escape sequence: '\)' [-Werror]
+test_ft_strstr.c:40:29: error: unknown escape sequence: '\040' [-Werror]
+   40 |  printf("\"%s\ \(\"%s\"\)\n", ft_strstr(src3, to_find3), ft_strstr(src3, to_find3));
+      |                             ^
+test_ft_strstr.c:40:29: error: unknown escape sequence: '\)' [-Werror]
+test_ft_strstr.c:42:29: error: unknown escape sequence: '\040' [-Werror]
+   42 |  printf("\"%s\ \(\"%s\"\)\n", ft_strstr(src4, to_find4), ft_strstr(src4, to_find4));
+      |                             ^
+test_ft_strstr.c:42:29: error: unknown escape sequence: '\)' [-Werror]
+test_ft_strstr.c:44:29: error: unknown escape sequence: '\040' [-Werror]
+   44 |  printf("\"%s\ \(\"%s\"\)\n", ft_strstr(src5, to_find5), ft_strstr(src5, to_find5));
+      |                             ^
+test_ft_strstr.c:44:29: error: unknown escape sequence: '\)' [-Werror]
+test_ft_strstr.c:46:29: error: unknown escape sequence: '\040' [-Werror]
+   46 |  printf("\"%s\ \(\"%s\"\)\n", ft_strstr(src6, to_find6), ft_strstr(src6, to_find6));
+      |                             ^
+test_ft_strstr.c:46:29: error: unknown escape sequence: '\)' [-Werror]
+test_ft_strstr.c:48:29: error: unknown escape sequence: '\040' [-Werror]
+   48 |  printf("\"%s\ \(\"%s\"\)\n", ft_strstr(src7, to_find7), ft_strstr(src7, to_find7));
+      |                             ^
+test_ft_strstr.c:48:29: error: unknown escape sequence: '\)' [-Werror]
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strstr.c                                      
+e3r11p9% vi test_ft_strstr.c
+e3r11p9% vi test_ft_strstr.c
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strstr.c               
+test_ft_strstr.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  20, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  21, col:  24):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  20):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  23, col:  24):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  24, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  25, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  27, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  28, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  28, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  29, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  29, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  30, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  30, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  31, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  31, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  32, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  32, col:  20):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  33, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  33, col:  24):	Declaration and assignation on a single line
+Error: TOO_MANY_LINES       (line:  50, col:   1):	Function has more than 25 lines
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strstr ft_strstr.c test_ft_strstr.c
+test_ft_strstr.c: In function ‘main’:
+test_ft_strstr.c:38:27: error: unknown escape sequence: '\040' [-Werror]
+   38 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src2, to_find2), ft_strstr(src2, to_find2));
+      |                           ^
+test_ft_strstr.c:40:27: error: unknown escape sequence: '\040' [-Werror]
+   40 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src3, to_find3), ft_strstr(src3, to_find3));
+      |                           ^
+test_ft_strstr.c:42:27: error: unknown escape sequence: '\040' [-Werror]
+   42 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src4, to_find4), ft_strstr(src4, to_find4));
+      |                           ^
+test_ft_strstr.c:44:27: error: unknown escape sequence: '\040' [-Werror]
+   44 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src5, to_find5), ft_strstr(src5, to_find5));
+      |                           ^
+test_ft_strstr.c:46:27: error: unknown escape sequence: '\040' [-Werror]
+   46 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src6, to_find6), ft_strstr(src6, to_find6));
+      |                           ^
+test_ft_strstr.c:48:27: error: unknown escape sequence: '\040' [-Werror]
+   48 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src7, to_find7), ft_strstr(src7, to_find7));
+      |                           ^
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strstr.c                                      
+e3r11p9% gcc -o test_ft_strstr ft_strstr.c test_ft_strstr.c 
+test_ft_strstr.c: In function ‘main’:
+test_ft_strstr.c:38:27: warning: unknown escape sequence: '\040'
+   38 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src2, to_find2), ft_strstr(src2, to_find2));
+      |                           ^
+test_ft_strstr.c:40:27: warning: unknown escape sequence: '\040'
+   40 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src3, to_find3), ft_strstr(src3, to_find3));
+      |                           ^
+test_ft_strstr.c:42:27: warning: unknown escape sequence: '\040'
+   42 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src4, to_find4), ft_strstr(src4, to_find4));
+      |                           ^
+test_ft_strstr.c:44:27: warning: unknown escape sequence: '\040'
+   44 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src5, to_find5), ft_strstr(src5, to_find5));
+      |                           ^
+test_ft_strstr.c:46:27: warning: unknown escape sequence: '\040'
+   46 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src6, to_find6), ft_strstr(src6, to_find6));
+      |                           ^
+test_ft_strstr.c:48:27: warning: unknown escape sequence: '\040'
+   48 |  printf("\"%s\ (\"%s\")\n", ft_strstr(src7, to_find7), ft_strstr(src7, to_find7));
+      |                           ^
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 18 12:28 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 17 10:57 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1696 Feb 17 10:43 ft_strstr.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16160 Feb 18 12:28 test_ft_strstr
+-rw-r--r-- 1 hauerbac 2023_paris  2358 Feb 18 12:27 test_ft_strstr.c
+e3r11p9% ./test_ft_strstr 
+"" contient "" depuis :
+"" ("")
+"ABC" contient "" depuis :
+"ABC ("ABC")
+"Toto Tata" contient "Toto" depuis :
+"Toto Tata ("Toto Tata")
+"Tuto Tata" contient " Ta" depuis :
+" Tata (" Tata")
+"H" contient "J" depuis :
+"(null) ("(null)")
+"uto Tata" contient "ta" depuis :
+"ta ("ta")
+"" contient "42" depuis :
+"(null) ("(null)")
+e3r11p9% cat test_ft_strstr.c                            
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strstr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 10:40:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/18 12:27:59 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <string.h>
+
+char	*ft_strstr(char *str, char *to_find);
+
+int	main(void)
+{
+	char	src1[] = "";
+	char	to_find1[] = "";
+	char	src2[] = "ABC";
+	char	to_find2[] = "";
+	char	src3[] = "Toto Tata";
+	char	to_find3[] = "Toto";
+	char	src4[] = "Tuto Tata";
+	char	to_find4[] = " Ta";
+	char	src5[] = "H";
+	char	to_find5[] = "J";
+	char	src6[] = "uto Tata";
+	char	to_find6[] = "ta";
+	char	src7[] = "";
+	char	to_find7[] = "42";
+
+	printf("\"%s\" contient \"%s\" depuis :\n", src1, to_find1);
+	printf("\"%s\" (\"%s\")\n", ft_strstr(src1, to_find1), strstr(src1, to_find1));
+	printf("\"%s\" contient \"%s\" depuis :\n", src2, to_find2);
+	printf("\"%s\ (\"%s\")\n", ft_strstr(src2, to_find2), ft_strstr(src2, to_find2));
+	printf("\"%s\" contient \"%s\" depuis :\n", src3, to_find3);
+	printf("\"%s\ (\"%s\")\n", ft_strstr(src3, to_find3), ft_strstr(src3, to_find3));
+	printf("\"%s\" contient \"%s\" depuis :\n", src4, to_find4);
+	printf("\"%s\ (\"%s\")\n", ft_strstr(src4, to_find4), ft_strstr(src4, to_find4));
+	printf("\"%s\" contient \"%s\" depuis :\n", src5, to_find5);
+	printf("\"%s\ (\"%s\")\n", ft_strstr(src5, to_find5), ft_strstr(src5, to_find5));
+	printf("\"%s\" contient \"%s\" depuis :\n", src6, to_find6);
+	printf("\"%s\ (\"%s\")\n", ft_strstr(src6, to_find6), ft_strstr(src6, to_find6));
+	printf("\"%s\" contient \"%s\" depuis :\n", src7, to_find7);
+	printf("\"%s\ (\"%s\")\n", ft_strstr(src7, to_find7), ft_strstr(src7, to_find7));
+	return (0);
+}
+e3r11p9% cat ft_strstr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 10:21:08 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/17 10:43:11 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+
+int	ft_strncmp(char *s1, char *s2, unsigned int n)
+{
+	int		result;
+	int		i;
+	int		j;
+
+	result = 0;
+	if (s1 && s2 && n > 0)
+	{
+		i = 0;
+		j = 0;
+		while ((s1[i] != '\0' || s2[j] != '\0')
+			&& ((unsigned int) i < n || (unsigned int) j < n))
+		{
+			result = (unsigned char) s1[i] - (unsigned char) s2[j];
+			if (result != 0)
+				return (result);
+			if (s1[i] != '\0')
+				i++;
+			if (s2[j] != '\0')
+				j++;
+		}
+	}
+	return (result);
+}
+
+char	*ft_strstr(char *str, char *to_find)
+{
+	int	i;
+	int	size;
+
+	if (str && to_find)
+	{
+		i = 0;
+		while (to_find[i] != '\0')
+			i++;
+		size = i;
+		if (size == 0)
+			return (str);
+		else
+		{
+			i = 0;
+			while (str[i] != '\0' && ft_strncmp(&str[i], to_find, size) != 0)
+				i++;
+			if (str[i] != '\0')
+				return (&str[i]);
+		}
+	}
+	return (NULL);
+}
+-------------------------------------------------------------------------------------------------------------------
+ 		logo42 		
+	You have been graded by Moulinette 	
+		
+	
+		
+	
+
+Hi,
+
+You have been graded 75 on C Piscine C 03:
+
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: KO
+
+= Host-specific information ====================================================
+$> hostname; uname -msr
+moulinette-vm9-light.int.42paris.fr
+Linux 5.15.0-60-generic x86_64
+$> date
+Sat Feb 18 02:07:29 PM UTC 2023
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: git@vogsphere.42paris.fr:vogsphere/intra-uuid-e6c1503e-5b4e-46b2-8237-9210f88d952c-4698556-hauerbac
+
+= Git history ==================================================================
+$> git -C /tmp/tmp63w03f4o/user log --pretty='%H - %an, %ad : %s'
+a8524d9d400a0dd75c5b281fa3b835559b12b244 - Helene Auerbach, Fri Feb 17 11:53:37 2023 +0100 : Addition of ex05 file
+b7d73fcd7b62c94bca0432fe1c32602f9897917a - Helene Auerbach, Fri Feb 17 10:45:41 2023 +0100 : Addition of ex04 file
+a30eb7031418851a220c9d8621c7b7c98cc3b58f - Helene Auerbach, Fri Feb 17 10:05:18 2023 +0100 : Addition of ex03 file
+f29da126e7177e50e47c206925341b075cf5e40c - Helene Auerbach, Fri Feb 17 09:44:13 2023 +0100 : Addition of ex02 file
+8481fb39ce47bcd8b668af1453b2dc3b2d56b487 - Helene Auerbach, Fri Feb 17 08:54:21 2023 +0100 : Addition of ex01 file
+86f4609bb289e5d0b9272393eaaa0647d0fe73c9 - Helene Auerbach, Fri Feb 17 08:29:27 2023 +0100 : Addition of ex00 file
+
+= Collected files ==========================================
+$> ls -lAR /tmp/tmp63w03f4o/user
+/tmp/tmp63w03f4o/user:
+total 28
+drwxr-xr-x 2 root root 4096 Feb 18 14:07 ex00
+drwxr-xr-x 2 root root 4096 Feb 18 14:07 ex01
+drwxr-xr-x 2 root root 4096 Feb 18 14:07 ex02
+drwxr-xr-x 2 root root 4096 Feb 18 14:07 ex03
+drwxr-xr-x 2 root root 4096 Feb 18 14:07 ex04
+drwxr-xr-x 2 root root 4096 Feb 18 14:07 ex05
+-rw-r--r-- 1 root root 1656 Feb 18 14:07 __GIT_HISTORY
+
+/tmp/tmp63w03f4o/user/ex00:
+total 4
+-rw-r--r-- 1 root root 1244 Feb 18 14:07 ft_strcmp.c
+
+/tmp/tmp63w03f4o/user/ex01:
+total 4
+-rw-r--r-- 1 root root 1325 Feb 18 14:07 ft_strncmp.c
+
+/tmp/tmp63w03f4o/user/ex02:
+total 4
+-rw-r--r-- 1 root root 1134 Feb 18 14:07 ft_strcat.c
+
+/tmp/tmp63w03f4o/user/ex03:
+total 4
+-rw-r--r-- 1 root root 1187 Feb 18 14:07 ft_strncat.c
+
+/tmp/tmp63w03f4o/user/ex04:
+total 4
+-rw-r--r-- 1 root root 1696 Feb 18 14:07 ft_strstr.c
+
+/tmp/tmp63w03f4o/user/ex05:
+total 4
+-rw-r--r-- 1 root root 1329 Feb 18 14:07 ft_strlcat.c
+
+= ex00 =========================================================================
+$> cc -Wextra -Wall -Werror main.c ft_strcmp.c -o user_exe
+
+= Test 1 ===================================================
+$> ./dgkcicgfx98imijqnyldjuw9
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 10
+
+= ex01 =========================================================================
+$> cc -Wextra -Wall -Werror main.c ft_strncmp.c -o user_exe
+
+= Test 1 ===================================================
+$> ./7g9matdlx2tv1jf7mb2voud4
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 10
+
+= ex02 =========================================================================
+$> cc -Wextra -Wall -Werror main.c ft_strcat.c -o user_exe
+
+= Test 1 ===================================================
+$> ./xvo4u91g2ybh7d6j02sgx1vy
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 10
+
+= ex03 =========================================================================
+$> cc -Wextra -Wall -Werror main.c ft_strncat.c -o user_exe
+
+= Test 1 ===================================================
+$> ./7gzokbp15hl2mfoy1ri7h92m
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 20
+
+= ex04 =========================================================================
+$> cc -Wextra -Wall -Werror main.c ft_strstr.c -o user_exe
+
+= Test 1 ===================================================
+$> ./5pjo9fs0wrf3nhxk61h3rf68
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 25
+
+= ex05 =========================================================================
+$> cc -Wextra -Wall -Werror main.c ft_strlcat.c -o user_exe
+
+= Test 1 ===================================================
+$> ./sy6o6a1suys9672i3ud2cbsk
+$> diff -U 3 user_output_test1 test1.output | cat -e
+--- user_output_test1    2023-02-18 14:07:33.987367859 +0000$
++++ test1.output    2023-02-18 14:07:33.947367908 +0000$
+@@ -4,29 +4,29 @@$
+54 PPOFFdqaPwBFjlHXYfVGDmABuBOLszyFiiqHFAvVsUcxCAoUktYvYR lHXYfVGDmABuBOLszyFiiqHFAvVsUcxCAoUktYvYR$
+39 ixCGNeFRtMGhzTIwDQeeikRUwVKzsTbNxomyUcl UwVKzsTbNxomyUcl$
+52 DIGSToAoHmlPnPyiKnIUlsoWffJPvWhuHNCHWjFjKwqjVdSZTjAx ffJPvWhuHNCHWjFjKwqjVdSZTjAx$
+-57 gXZuDmovfvDPqjmLCRUCTKgWzfqarAKsbmbvWpdNQxMjyxuhXNlmSZrJo xMjyxuhXNlmSZrJoO$
++58 gXZuDmovfvDPqjmLCRUCTKgWzfqarAKsbmbvWpdNQxMjyxuhXNlmSZrJ xMjyxuhXNlmSZrJoO$
+28 bolLaVvWnFEYFDplfpwQHnerSxYt fpwQHnerSxYt$
+14 PkYoGXIMkdWTCb kdWTCb$
+0  $
+0 toto $
+4 toto $
+-4 toto $
+-0 42dfgd l33r$
+-10 42dfgdl33r l33r$
++2 toto $
++4 42dfgd l33r$
++10 42dfgdl33 l33r$
+10 42dfgdl33r l33r$
+6 42dfgd l33r$
+-0  pouic$
++5  pouic$
+5 pouic pouic$
+-2 po pouic$
++5 p pouic$
+5 pouic pouic$
+-0 toto bla$
+-4 toto bla$
++3 toto bla$
+4 toto bla$
+-4 toto bla$
+-4 toto bla$
+-5 totob bla$
+-6 totobl bla$
+-7 totobla bla$
++5 toto bla$
++6 toto bla$
++7 toto bla$
++7 toto bla$
++7 totob bla$
++7 totobl bla$
+7 totobla bla$
+7 totobla bla$
+7 totobla bla$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 75 ==============================================================
+
+

@@ -1,0 +1,418 @@
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% ls
+c_00  c_02  Desktop    Downloads  Pictures  rush_00  sgoinfre  shell_01   Videos
+c_01  c_03  Documents  Music	  Public    samed    shell_00  Templates
+e3r11p9% mkdir c_04
+e3r11p9% cd c_04
+e3r11p9% mkdir ex00
+e3r11p9% cd ex00 
+e3r11p9% vi ft_strlen.c
+e3r11p9% cat ft_strlen.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 19:07:36 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/18 19:07:41 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlen.c 
+ft_strlen.c: OK!
+e3r11p9% cp ft_strlen.c test_ft_strlen.c 
+e3r11p9% vi test_ft_strlen.c 
+e3r11p9% cat test_ft_strlen.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlen.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 19:15:44 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/18 19:15:46 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <stddef.h>
+
+int	ft_strlen(char *str);
+
+int	main(void)
+{
+	printf("La taille d'une chaine \"NULL\" est :\t%d\n", ft_strlen(NULL));
+	printf("La taille d'une chaine \"vide\" est :\t%d\n", ft_strlen(""));
+	printf("La taille de la chaine \"Piscine de fevrier 2023\" est :\t%d\n", ft_strlen("Piscine de fevrier 2023"));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlen.c 
+test_ft_strlen.c: Error!
+Error: LINE_TOO_LONG        (line:  22, col:  83):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlen ft_strlen.c test_ft_strlen.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 18 19:16 .
+drwxr-xr-x 3 hauerbac 2023_paris  4096 Feb 18 18:39 ..
+-rw-r--r-- 1 hauerbac 2023_paris   995 Feb 18 19:07 ft_strlen.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16032 Feb 18 19:16 test_ft_strlen
+-rw-r--r-- 1 hauerbac 2023_paris  1248 Feb 18 19:15 test_ft_strlen.c
+e3r11p9% ./test_ft_strlen 
+La taille d'une chaine "NULL" est :	0
+La taille d'une chaine "vide" est :	0
+La taille de la chaine "Piscine de fevrier 2023" est :	23
+e3r11p9% cd ..
+e3r11p9% ls
+ex00
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-d4eec565-5aac-454b-bfc9-f23dd065ac43-4702036-hauerbac git_c_04
+Cloning into 'git_c_04'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% ls
+ex00  git_c_04
+e3r11p9% mkdir git_c_04/ex00
+e3r11p9% ls                   
+ex00  git_c_04
+e3r11p9% cp ex00/ft_strlen.c git_c_04/ex00/ft_strlen.c      
+e3r11p9% cd git_c_04 
+e3r11p9% git add ex00/ft_strlen.c
+e3r11p9% git commit -m "Addition of ex00 file"
+[master (root-commit) 8998a82] Addition of ex00 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 23 insertions(+)
+ create mode 100644 ex00/ft_strlen.c
+e3r11p9% git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (4/4), 527 bytes | 527.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-d4eec565-5aac-454b-bfc9-f23dd065ac43-4702036-hauerbac
+ * [new branch]      master -> master
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  git_c_04
+e3r11p9% mkdir ex01
+e3r11p9% mkdir git_c_04/ex01
+e3r11p9% cd ex01
+e3r11p9% vi ft_putstr.c
+e3r11p9% cat ft_putstr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 19:24:14 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/18 19:24:17 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
+e3r11p9% vi test_ft_putstr.c 
+e3r11p9% cat test_ft_putstr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putstr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 19:25:38 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/18 19:25:40 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+
+void	ft_putstr(char *str);
+
+int	main(void)
+{
+	ft_putstr(NULL);
+	ft_putstr("La chaine qui suit est vide.\n");
+	ft_putstr("");
+	ft_putstr(" ~\n  !@42\\'`\";:.,/?+-()*&^%$#=[]{}\vest trop\tbIZaRRE");
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putstr.c     
+ft_putstr.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putstr.c 
+test_ft_putstr.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putstr ft_putstr.c test_ft_putstr.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 18 19:26 .
+drwxr-xr-x 5 hauerbac 2023_paris  4096 Feb 18 19:22 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1028 Feb 18 19:24 ft_putstr.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16032 Feb 18 19:26 test_ft_putstr
+-rw-r--r-- 1 hauerbac 2023_paris  1125 Feb 18 19:25 test_ft_putstr.c
+e3r11p9% ./test_ft_putstr 
+La chaine qui suit est vide.
+ ~
+  !@42\'`";:.,/?+-()*&^%$#=[]{}
+                               est trop	bIZaRRE%                                                                   e3r11p9% vi test_ft_putstr.c                                
+e3r11p9% cat test_ft_putstr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putstr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 19:25:38 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/18 19:27:55 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stddef.h>
+
+void	ft_putstr(char *str);
+
+int	main(void)
+{
+	ft_putstr(NULL);
+	ft_putstr("La chaine qui suit est vide.\n");
+	ft_putstr("");
+	ft_putstr("\n");
+	ft_putstr(" ~\n  !@42\\'`\";:.,/?+-()*&^%$#=[]{}\vest trop\tbIZaRRE");
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putstr.c               
+test_ft_putstr.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putstr ft_putstr.c test_ft_putstr.c
+e3r11p9% ls -al                                                 
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 18 19:28 .
+drwxr-xr-x 5 hauerbac 2023_paris  4096 Feb 18 19:22 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1028 Feb 18 19:24 ft_putstr.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16032 Feb 18 19:28 test_ft_putstr
+-rw-r--r-- 1 hauerbac 2023_paris  1143 Feb 18 19:27 test_ft_putstr.c
+e3r11p9% ./test_ft_putstr                                       
+La chaine qui suit est vide.
+
+ ~
+  !@42\'`";:.,/?+-()*&^%$#=[]{}
+                               est trop	bIZaRRE%                                                                   e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  git_c_04
+e3r11p9% cp ex01/ft_putstr.c git_c_04/ex01/ft_putstr.c
+e3r11p9% cd git_c_04 
+e3r11p9% git add ex01/ft_putstr.c
+e3r11p9% git commit -m "Addition of ex01 file"
+[master 01ec028] Addition of ex01 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 25 insertions(+)
+ create mode 100644 ex01/ft_putstr.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 607 bytes | 607.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-d4eec565-5aac-454b-bfc9-f23dd065ac43-4702036-hauerbac
+   8998a82..01ec028  master -> master
+e3r11p9% cd ..
+e3r11p9% mkdir ex02
+e3r11p9% mkdir git_c_04/ex02
+e3r11p9% cd ex02
+e3r11p9% vi ft_putnbr.c
+e3r11p9% cat ft_putnbr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 19:35:58 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/18 19:36:00 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putnbr.c                    
+ft_putnbr.c: OK!
+e3r11p9% vi test_ft_putnbr.c 
+e3r11p9% cat test_ft_putnbr.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putnbr.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/18 19:37:17 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/18 19:37:19 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+#include <unistd.h>
+
+void	ft_putnbr(int nb);
+
+int	main(void)
+{
+	ft_putnbr(INT_MIN);
+	write(1, "\n", 1);
+	ft_putnbr(INT_MAX);
+	write(1, "\n", 1);
+	ft_putnbr(-42);
+	write(1, "\n", 1);
+	ft_putnbr(0);
+	write(1, "\n", 1);
+	ft_putnbr(42);
+	write(1, "\nFin Test\n", 10);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_putnbr.c 
+test_ft_putnbr.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putnbr ft_putnbr.c test_ft_putnbr.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 18 19:37 .
+drwxr-xr-x 6 hauerbac 2023_paris  4096 Feb 18 19:30 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1244 Feb 18 19:36 ft_putnbr.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16080 Feb 18 19:37 test_ft_putnbr
+-rw-r--r-- 1 hauerbac 2023_paris  1191 Feb 18 19:37 test_ft_putnbr.c
+e3r11p9% ./test_ft_putnbr 
+-2147483648
+2147483647
+-42
+0
+42
+Fin Test
+e3r11p9% cd ..
+e3r11p9% cp ex02/ft_putnbr.c git_c_04/ex02/ft_putnbr.c
+e3r11p9% cd git_c_04 
+e3r11p9% git add ex02/ft_putnbr.c
+e3r11p9% git commit -m "Addition of ex02 file"
+[master f253524] Addition of ex02 file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 36 insertions(+)
+ create mode 100644 ex02/ft_putnbr.c
+e3r11p9% git push
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 687 bytes | 687.00 KiB/s, done.
+Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-d4eec565-5aac-454b-bfc9-f23dd065ac43-4702036-hauerbac
+   01ec028..f253524  master -> master
+e3r11p9% git log
+commit f253524d685a858acde2277e6c6543306ffabc9a (HEAD -> master, origin/master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Sat Feb 18 19:39:09 2023 +0100
+
+    Addition of ex02 file
+
+commit 01ec02880ad6675ccd5d50765208c6633aa88fb0
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Sat Feb 18 19:29:25 2023 +0100
+
+    Addition of ex01 file
+
+commit 8998a821c841421d295279d659ea4dc28bc10278
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Sat Feb 18 19:20:49 2023 +0100
+
+    Addition of ex00 file
+
+
+
