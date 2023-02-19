@@ -6572,7 +6572,127 @@ e3r11p9% ./test_ft_print_combn
 n = 2 :
 01, 02, 03, 04, 05, 06, 07, 08, 09zsh: segmentation fault (core dumped)  ./test_ft_print_combn
 e3r11p9% vi ft_print_combn.c                                                                   
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd c_00/ex06
+e3r11p9% ls -al
+total 156
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 13 12:22  .
+drwxr-xr-x 14 hauerbac 2023_paris  4096 Feb 13 13:21  ..
+-rw-r--r--  1 hauerbac 2023_paris  3155 Feb 13 11:00  ft_print_comb2.c
+-rw-r--r--  1 hauerbac 2023_paris 34648 Feb 13 10:08 'message(1).txt'
+-rw-r--r--  1 hauerbac 2023_paris 44629 Feb 13 11:09  result1.txt
+-rw-r--r--  1 hauerbac 2023_paris 44548 Feb 13 11:09  result2.txt
+-rwxr-xr-x  1 hauerbac 2023_paris 16200 Feb 13 11:08  test_ft_print_comb2
+-rw-r--r--  1 hauerbac 2023_paris   971 Feb 12 13:19  test_ft_print_comb2.c
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  git_c_00	git_c_00_2  notamr-a
+e3r11p9% cd git_c_00_2
+e3r11p9% git log
+fatal: your current branch 'master' does not have any commits yet
+e3r11p9% ls -aR ex*
+ex00:
+.  ..  ft_putchar.c
 
+ex01:
+.  ..  ft_print_alphabet.c
+
+ex02:
+.  ..  ft_print_reverse_alphabet.c
+
+ex03:
+.  ..  ft_print_numbers.c
+
+ex04:
+.  ..  ft_is_negative.c
+
+ex05:
+.  ..  ft_print_comb.c
+
+ex06:
+.  ..  ft_print_comb2.c
+
+ex07:
+.  ..  ft_putnbr.c
+e3r11p9% ls -alR ex*
+ex00:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 13 13:23 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 13 13:29 ..
+-rw-r--r--  1 hauerbac 2023_paris  959 Feb 13 13:23 ft_putchar.c
+
+ex01:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 13 13:24 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 13 13:29 ..
+-rw-r--r--  1 hauerbac 2023_paris 1016 Feb 13 13:24 ft_print_alphabet.c
+
+ex02:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 13 13:25 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 13 13:29 ..
+-rw-r--r--  1 hauerbac 2023_paris 1024 Feb 13 13:25 ft_print_reverse_alphabet.c
+
+ex03:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 13 13:26 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 13 13:29 ..
+-rw-r--r--  1 hauerbac 2023_paris 1015 Feb 13 13:26 ft_print_numbers.c
+
+ex04:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 13 13:27 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 13 13:29 ..
+-rw-r--r--  1 hauerbac 2023_paris 1059 Feb 13 13:27 ft_is_negative.c
+
+ex05:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 13 13:28 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 13 13:29 ..
+-rw-r--r--  1 hauerbac 2023_paris 1588 Feb 13 13:28 ft_print_comb.c
+
+ex06:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 13 13:28 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 13 13:29 ..
+-rw-r--r--  1 hauerbac 2023_paris 3155 Feb 13 13:28 ft_print_comb2.c
+
+ex07:
+total 12
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 13 13:29 .
+drwxr-xr-x 11 hauerbac 2023_paris 4096 Feb 13 13:29 ..
+-rw-r--r--  1 hauerbac 2023_paris 1244 Feb 13 13:29 ft_putnbr.c
+---------------------------------------------------------------------------------------------------
+e3r11p9% cd  
+e3r11p9% cd sgoinfre 
+e3r11p9% ls
+adzinabi  chae		  corr_jihalee	ekanegaw  evalj    shell01
+astephan  correctionThib  dlac		eval	  shell00  swc02
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-fbf85395-b4ec-489f-a43a-9f6b4a646454-4686096-hauerbac octoross
+Cloning into 'octoross'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% cd octoross 
+e3r11p9% ls     
+e3r11p9% cd ./
+e3r11p9% cd ../
+e3r11p9% ls
+adzinabi  chae		  corr_jihalee	ekanegaw  evalj     shell00  swc02
+astephan  correctionThib  dlac		eval	  octoross  shell01
+e3r11p9% rm -rf octoross 
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-fbf85395-b4ec-489f-a43a-9f6b4a646454-4686096-hauerbac octoross
+Cloning into 'octoross'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% 
+---------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/c_02/ex11
+e3r11p9% cd
+e3r11p9% cd sgoinfre 
+e3r11p9% ls 
+adzinabi  astephan  chae  correctionThib  corr_jihalee	dlac  ekanegaw	eval  evalj  octoross  shell00	shell01  swc02
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-fbf85395-b4ec-489f-a43a-9f6b4a646454-4686096-hauerbac test_c00_2_H
+Cloning into 'test_c00_2_H'...
+warning: You appear to have cloned an empty repository.
 
 
 

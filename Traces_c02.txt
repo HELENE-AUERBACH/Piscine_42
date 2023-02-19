@@ -6837,5 +6837,1228 @@ Diff KO :(
 Grade: 0
 
 = Final grade: 55 ==============================================================
+-------------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd c_02
+e3r11p9% cd ex09
+e3r11p9% cat ft_strcapitalize.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcapitalize.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 11:56:16 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 10:32:31 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include <stdio.h>
+
+char	*ft_strcapitalize(char *str)
+{
+	int	i;
+
+	if (str)
+	{
+		i = 0;
+		while (str[i] != '\0')
+		{
+			if ((i == 0
+					|| (i > 0
+						&& (str[i - 1] < 48
+							|| (str[i - 1] > 57 && str[i - 1] < 65)
+							|| (str[i - 1] > 90 && str[i - 1] < 97)
+							|| str[i - 1] > 122)))
+				&& (str[i] >= 'a' && str[i] <= 'z'))
+				str[i] = str[i] - 32;
+			else if (i > 0
+				&& ((str[i - 1] >= 48 && str[i - 1] <= 57)
+					|| (str[i - 1] >= 65 && str[i - 1] <= 90)
+					|| (str[i - 1] >= 97 && str[i - 1] <= 122))
+				&& (str[i] >= 'A' && str[i] <= 'Z'))
+				str[i] = str[i] + 32;
+			i++;
+		}
+	}
+	return (str);
+}
+e3r11p9% cat test_ft_strcapitalize.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strcapitalize.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 11:40:53 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 10:43:13 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strcapitalize(char *str);
+
+int	main(void)
+{
+	char	*empty_str;
+	char	str1[] = "c3PO";
+	char	str1_1[] = "c3PO";
+	char	str2[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+	char	str2_1[] = "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un";
+	char	str3[] = "._=e')Roaak:]Ea9";
+	char	str3_1[] = "._=e')Roaak:]Ea9";
+	char	str4[] = ")r/slzf@}n@*e&!e4m36@#}< w2#Hjr?`{J4";
+	char	str4_1[] = ")r/slzf@}n@*e&!e4m36@#}< w2#Hjr?`{J4";
+	char	str5[] = "9fi~C{!9 f7l=:H";
+	char	str5_1[] = "9fi~C{!9 f7l=:H";
+	char	str6[] = ")wx*{!:W3q2*}g5h6cz{+X>Y";
+	char	str6_1[] = ")wx*{!:W3q2*}g5h6cz{+X>Y";
+	char	str7[] = "7$$}$'2#b+V@)7j>";
+	char	str7_1[] = "7$$}$'2#b+V@)7j>";
+	char	str8[] = "h@t}on> yij/c)Vuztktpg}t'Zi-_Bbuna?K{wn";
+	char	str8_1[] = "h@t}on> yij/c)Vuztktpg}t'Zi-_Bbuna?K{wn";
+	char	str9[] = "]Y/Cbvoy;=sa,Srp6m7{4f09yhl24i+Ux.&";
+	char	str9_1[] = "]Y/Cbvoy;=sa,Srp6m7{4f09yhl24i+Ux.&";
+	char	str10[] = "0>5hy9'bkmya^S$1x)~K}6{";
+	char	str10_1[] = "0>5hy9'bkmya^S$1x)~K}6{";
+	char	str11[] = "null";
+	char	str11_1[] = "null";
+	char	str12[] = "Rekt17+Lol mdr Mdr 4242l42";
+	char	str12_1[] = "Rekt17+Lol mdr Mdr 4242l42";
+
+	empty_str = "";
+	printf("La chaine \"vide\" donne :\n\"%s\"\n", ft_strcapitalize(empty_str));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str1_1, ft_strcapitalize(str1));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str2_1, ft_strcapitalize(str2));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str3_1, ft_strcapitalize(str3));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str4_1, ft_strcapitalize(str4));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str5_1, ft_strcapitalize(str5));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str6_1, ft_strcapitalize(str6));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str7_1, ft_strcapitalize(str7));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str8_1, ft_strcapitalize(str8));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str9_1, ft_strcapitalize(str9));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str10_1, ft_strcapitalize(str10));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str11_1, ft_strcapitalize(str11));
+	printf("La chaine \"%s\" donne :\n\"%s\"\n", str12_1, ft_strcapitalize(str12));
+	return (0);
+}
+e3r11p9% ls -al
+total 56
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 19 10:44 .
+drwxr-xr-x 17 hauerbac 2023_paris  4096 Feb 18 16:23 ..
+-rw-r--r--  1 hauerbac 2023_paris  1515 Feb 19 10:32 ft_strcapitalize.c
+-rw-r--r--  1 hauerbac 2023_paris  1595 Feb 16 12:12 ft_strcapitalize_with_malloc.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16096 Feb 19 10:44 test_ft_strcapitalize
+-rw-r--r--  1 hauerbac 2023_paris  3132 Feb 19 10:43 test_ft_strcapitalize.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16112 Feb 16 12:16 test_ft_strcapitalize_with_malloc
+-rw-r--r--  1 hauerbac 2023_paris  1390 Feb 16 12:16 test_ft_strcapitalize_with_malloc.c
+e3r11p9% ./test_ft_strcapitalize
+La chaine "vide" donne :
+""
+La chaine "c3PO" donne :
+"C3po"
+La chaine "salut, comment tu vas ? 42mots quarante-deux; cinquante+et+un" donne :
+"Salut, Comment Tu Vas ? 42mots Quarante-Deux; Cinquante+Et+Un"
+La chaine "._=e')Roaak:]Ea9" donne :
+"._=E')Roaak:]Ea9"
+La chaine ")r/slzf@}n@*e&!e4m36@#}< w2#Hjr?`{J4" donne :
+")R/Slzf@}N@*E&!E4m36@#}< W2#Hjr?`{J4"
+La chaine "9fi~C{!9 f7l=:H" donne :
+"9fi~C{!9 F7l=:H"
+La chaine ")wx*{!:W3q2*}g5h6cz{+X>Y" donne :
+")Wx*{!:W3q2*}G5h6cz{+X>Y"
+La chaine "7$$}$'2#b+V@)7j>" donne :
+"7$$}$'2#B+V@)7j>"
+La chaine "h@t}on> yij/c)Vuztktpg}t'Zi-_Bbuna?K{wn" donne :
+"H@T}On> Yij/C)Vuztktpg}T'Zi-_Bbuna?K{Wn"
+La chaine "]Y/Cbvoy;=sa,Srp6m7{4f09yhl24i+Ux.&" donne :
+"]Y/Cbvoy;=Sa,Srp6m7{4f09yhl24i+Ux.&"
+La chaine "0>5hy9'bkmya^S$1x)~K}6{" donne :
+"0>5hy9'Bkmya^S$1x)~K}6{"
+La chaine "null" donne :
+"Null"
+La chaine "Rekt17+Lol mdr Mdr 4242l42" donne :
+"Rekt17+Lol Mdr Mdr 4242l42"
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex02  ex04  ex06	ex08  ex10  ex12      git_c_02_2
+ex01  ex03  ex05  ex07	ex09  ex11  git_c_02
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-0f5d1fd9-37ac-4871-8c83-69ac9f5976d2-4703117-hauerbac git_c_02_3
+Cloning into 'git_c_02_3'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% cp ex00/ft_strcpy.c git_c_02_3/ex00/ft_strcpy.c
+cp: cannot create regular file 'git_c_02_3/ex00/ft_strcpy.c': No such file or directory
+e3r11p9% mkdir git_c_02_3/ex00
+e3r11p9% mkdir git_c_02_3/ex01
+e3r11p9% mkdir git_c_02_3/ex02
+e3r11p9% mkdir git_c_02_3/ex03
+e3r11p9% mkdir git_c_02_3/ex04
+e3r11p9% mkdir git_c_02_3/ex05
+e3r11p9% mkdir git_c_02_3/ex06
+e3r11p9% mkdir git_c_02_3/ex07
+e3r11p9% mkdir git_c_02_3/ex08
+e3r11p9% mkdir git_c_02_3/ex09
+e3r11p9% mkdir git_c_02_3/ex10
+e3r11p9% mkdir git_c_02_3/ex11
+e3r11p9% cp ex00/ft_strcpy.c git_c_02_3/ex00/ft_strcpy.c
+e3r11p9% cp ex01/ft_strncpy.c git_c_02_3/ex01/ft_strncpy.c
+e3r11p9% cp ex02/ft_str_is_alpha.c git_c_02_3/ex02/ft_str_is_alpha.c
+e3r11p9% cp ex03/ft_str_is_numeric.c git_c_02_3/ex03/ft_str_is_numeric.c
+e3r11p9% cp ex04/ft_str_is_lowercase.c git_c_02_3/ex04/ft_str_is_lowercase.c
+e3r11p9% cp ex05/ft_str_is_uppercase.c git_c_02_3/ex05/ft_str_is_uppercase.c
+e3r11p9% cp ex06/ft_str_is_printable.c git_c_02_3/ex06/ft_str_is_printable.c
+e3r11p9% cp ex07/ft_strupcase.c git_c_02_3/ex07/ft_strupcase.c
+e3r11p9% cp ex08/ft_strlowcase.c git_c_02_3/ex08/ft_strlowcase.c
+e3r11p9% cp ex09/ft_strcapitalize.c git_c_02_3/ex09/ft_strcapitalize.c
+e3r11p9% cd git_c_02_3
+e3r11p9% git add ex00/ft_strcpy.c
+e3r11p9% git add ex01/ft_strncpy.c
+e3r11p9% git add 
+e3r11p9% git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   ex00/ft_strcpy.c
+	new file:   ex01/ft_strncpy.c
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	ex02/
+	ex03/
+	ex04/
+	ex05/
+	ex06/
+	ex07/
+	ex08/
+	ex09/
+
+e3r11p9% git add ex02/ft_str_is_alpha.c
+e3r11p9% git add ex03/ft_str_is_numeric.c
+e3r11p9% git add ex04/ft_str_is_lowercase.c
+e3r11p9% git add ex05/ft_str_is_uppercase.c
+e3r11p9% git add ex06/ft_str_is_printable.c
+e3r11p9% git add ex07/ft_strupcase.c
+e3r11p9% git add ex08/ft_strlowcase.c
+e3r11p9% git add ex09/ft_strcapitalize.c
+e3r11p9% cd ../ex10
+e3r11p9% ls
+ft_strlcpy.c  test_ft_strlcpy  test_ft_strlcpy.c
+e3r11p9% cat test_ft_strlcpy.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlcpy.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 13:30:21 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 13:44:35 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*
+ * La fonction ﻿strlcpy permet de copier une chaîne de caractères dans une autre chaîne en limitant le nombre de caractères copiés.
+ * Pour utiliser la fonction strlcpy , il faut inclure la bibliothèque bsd/string.h
+ * Notez enfin que pour utiliser cette bibliothèque, vous devez ajouter l'option -lbsd à la compilation :
+ * gcc -o main main.c -lbsd
+ * Notez que la fonction strlcpy n'appartient pas au C standard, alors que strncpy appartient à string.h.
+ */
+
+#include <stdio.h>
+#include <bsd/string.h>
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size);
+
+int	main(void)
+{
+	unsigned int	n;
+	char			dest1_0[25];
+	char			dest1[25];
+	char			dest1_1[25];
+	unsigned int	result_1;
+	char			*src1;
+	char			*src2;
+	char			dest2_0[5] = "M";
+	char			dest2[5] = "M";
+	char			dest2_1[5] = "M";
+	unsigned int	result_2;
+
+	src1 = "Toto Titi";
+	n = 10;
+	result_1 = ft_strlcpy(dest1, src1, n);
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" : \"%s\"\n", src1, dest1_0, dest1);
+	printf("%d (avec strlcpy et n == %d : %ld) se termine par '%c' (%d)\n", result_1, n, strlcpy(dest1_1, src1, n), dest1[n -1], dest1[n -1]);
+	src2 = "Tuut";
+	n = 5;
+	result_2 = ft_strlcpy(dest2, src2, n);
+	printf("Voici la chaine \"%s\" copiee dans la chaine \"%s\" : \"%s\"\n", src2, dest2_0, dest2);
+	printf("%d (avec strlcpy et n == %d : %ld) se termine par '%c' (%d)\n", result_2, n, strlcpy(dest2_1, src2, n), dest2[n -1], dest2[n -1]);
+	
+	char src1a[] = "abcde";
+	char dest1a[] = "1234567";
+	char src1b[] = "abcde";
+	char dest1b[] = "1234567";
+	char src2a[] = "abcd";
+	char dest2a[] = "123";
+	char src2b[] = "abcd";
+	char dest2b[] = "123";
+	char src3a[] = "";
+	char dest3a[] = "";
+	char src3b[] = "";
+	char dest3b[] = "";
+	char src4a[] = "12345";
+	char dest4a[] = "abc";
+	char src4b[] = "12345";
+	char dest4b[] = "abc";
+	
+	printf("%s\n%s\n%d %ld %d\n\"%s\"\n\"%s\"\n%s\n%s\n%d %ld %d\n\"%s\"\n\"%s\"\n%s\n%s\n%d %ld %d\n\"%s\"\n\"%s\"\n%s\n%s\n%d %ld %d\n\"%s\"\n\"%s\"\n",
+			"abcde", "1234567", 0, strlcpy(dest1b, src1b, 0), ft_strlcpy(dest1a, src1a, 0), dest1b, dest1a,
+			"abcd", "123", 3, strlcpy(dest2a, src2a, 3), ft_strlcpy(dest2b, src2b, 3), dest2a, dest2b,
+			"", "", 0, strlcpy(dest3a, src3a, 0), ft_strlcpy(dest3b, src3b, 0), dest3a, dest3b,
+			"12345", "abc", 2, strlcpy(dest4a, src4a, 2), ft_strlcpy(dest4b, src4b, 2), dest4a, dest4b);
+	/*printf("%s\n%s\n%s\n%s\n%s\n%s\n%s\n%s\n",
+			ft_strlcpy(dest1a, src1a, 0) == strlcpy(dest1b, src1b, 0) ? "Pass" : "Fail",
+			strcmp(dest1a, dest1b) == 0 && strcmp(src1a, src1b) == 0 ? "Pass" : "Fail",
+			ft_strlcpy(dest2a, src2a, 3) == strlcpy(dest2b, src2b, 3) ? "Pass" : "Fail",
+			strcmp(dest2a, dest2b) == 0 && strcmp(src2a, src2b) == 0 ? "Pass" : "Fail",
+			ft_strlcpy(dest3a, src3a, 0) == strlcpy(dest3b, src3b, 0) ? "Pass" : "Fail",
+			strcmp(dest3a, dest3b) == 0 && strcmp(src3a, src3b) == 0 ? "Pass" : "Fail",
+			ft_strlcpy(dest4a, src4a, 2) == strlcpy(dest4b, src4b, 2) ? "Pass" : "Fail",
+			strcmp(dest4a, dest4b) == 0 && strcmp(src4a, src4b) == 0 ? "Pass" : "Fail");*/
+	return (0);
+}
+e3r11p9% vi ft_strlcpy.c 
+e3r11p9% cat ft_strlcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 13:08:52 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 13:48:54 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (src && dest && size > 0)
+	{
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (i);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlcpy.c 
+ft_strlcpy.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcpy ft_strlcpy.c test_ft_strlcpy.c 
+/usr/bin/ld: /tmp/ccl6JP5i.o: in function `main':
+test_ft_strlcpy.c:(.text+0xf9): undefined reference to `strlcpy'
+/usr/bin/ld: test_ft_strlcpy.c:(.text+0x1d3): undefined reference to `strlcpy'
+/usr/bin/ld: test_ft_strlcpy.c:(.text+0x307): undefined reference to `strlcpy'
+/usr/bin/ld: test_ft_strlcpy.c:(.text+0x349): undefined reference to `strlcpy'
+/usr/bin/ld: test_ft_strlcpy.c:(.text+0x38b): undefined reference to `strlcpy'
+/usr/bin/ld: /tmp/ccl6JP5i.o:test_ft_strlcpy.c:(.text+0x3d0): more undefined references to `strlcpy' follow
+collect2: error: ld returned 1 exit status
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcpy ft_strlcpy.c test_ft_strlcpy.c -lbsd
+e3r11p9% ./test_ft_strlcpy 
+Voici la chaine "Toto Titi" copiee dans la chaine "" : "Toto Titi"
+9 (avec strlcpy et n == 10 : 9) se termine par '' (0)
+Voici la chaine "Tuut" copiee dans la chaine "M" : "Tuut"
+4 (avec strlcpy et n == 5 : 4) se termine par '' (0)
+abcde
+1234567
+0 5 0
+"1234567"
+"1234567"
+abcd
+123
+3 4 2
+"ab"
+"ab"
+
+
+0 0 0
+""
+""
+12345
+abc
+2 5 1
+"1"
+"1"
+e3r11p9% vi ft_strlcpy.c                                     
+e3r11p9% cat ft_strlcpy.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 13:08:52 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 13:55:55 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (src && dest && size > 0)
+	{
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+		while (src[i++] != '\0')
+			;
+	}
+	return (i);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcpy ft_strlcpy.c test_ft_strlcpy.c -lbsd
+e3r11p9% ./test_ft_strlcpy                                                               
+Voici la chaine "Toto Titi" copiee dans la chaine "" : "Toto Titi"
+10 (avec strlcpy et n == 10 : 9) se termine par '' (0)
+Voici la chaine "Tuut" copiee dans la chaine "M" : "Tuut"
+5 (avec strlcpy et n == 5 : 4) se termine par '' (0)
+abcde
+1234567
+0 5 0
+"1234567"
+"1234567"
+abcd
+123
+3 4 5
+"ab"
+"ab"
+
+
+0 0 0
+""
+""
+12345
+abc
+2 5 6
+"1"
+"1"
+e3r11p9% vi ft_strlcpy.c                                                                 
+e3r11p9% cat ft_strlcpy.c                                                                 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 13:08:52 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 13:57:44 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (src && dest)
+	{
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+		while (src[i++] != '\0')
+			;
+	}
+	return (i);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcpy ft_strlcpy.c test_ft_strlcpy.c -lbsd
+e3r11p9% ./test_ft_strlcpy                                                               
+Voici la chaine "Toto Titi" copiee dans la chaine "" : "Toto Titi"
+10 (avec strlcpy et n == 10 : 9) se termine par '' (0)
+Voici la chaine "Tuut" copiee dans la chaine "M" : "Tuut"
+5 (avec strlcpy et n == 5 : 4) se termine par '' (0)
+abcde
+1234567
+0 5 6
+"1234567"
+"abcde"
+abcd
+123
+3 4 5
+"ab"
+"ab"
+
+
+0 0 1
+""
+""
+12345
+abc
+2 5 6
+"1"
+"1"
+e3r11p9% vi ft_strlcpy.c                                                                 
+e3r11p9% cat ft_strlcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 13:08:52 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 14:05:36 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (src && dest)
+	{
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+		i = 0;
+		while (src[i] != '\0')
+			i++;
+	}
+	return (i);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcpy ft_strlcpy.c test_ft_strlcpy.c -lbsd
+e3r11p9% ./test_ft_strlcpy                                                               
+Voici la chaine "Toto Titi" copiee dans la chaine "" : "Toto Titi"
+9 (avec strlcpy et n == 10 : 9) se termine par '' (0)
+Voici la chaine "Tuut" copiee dans la chaine "M" : "Tuut"
+4 (avec strlcpy et n == 5 : 4) se termine par '' (0)
+abcde
+1234567
+0 5 5
+"1234567"
+"abcde"
+abcd
+123
+3 4 4
+"ab"
+"ab"
+
+
+0 0 0
+""
+""
+12345
+abc
+2 5 5
+"1"
+"1"
+e3r11p9% cd ..                                                                           
+e3r11p9% git status
+fatal: not a git repository (or any parent up to mount point /mnt)
+Stopping at filesystem boundary (GIT_DISCOVERY_ACROSS_FILESYSTEM not set).
+e3r11p9% cd git_c_02_3
+e3r11p9% git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   ex00/ft_strcpy.c
+	new file:   ex01/ft_strncpy.c
+	new file:   ex02/ft_str_is_alpha.c
+	new file:   ex03/ft_str_is_numeric.c
+	new file:   ex04/ft_str_is_lowercase.c
+	new file:   ex05/ft_str_is_uppercase.c
+	new file:   ex06/ft_str_is_printable.c
+	new file:   ex07/ft_strupcase.c
+	new file:   ex08/ft_strlowcase.c
+	new file:   ex09/ft_strcapitalize.c
+
+e3r11p9% cd ..
+e3r11p9% cp ex10/ft_strlcpy.c git_c_02_3/ex10/ft_strlcpy.c
+e3r11p9% cd git_c_02_3
+e3r11p9% git add ex10/ft_strlcpy.c
+e3r11p9% cd ..
+e3r11p9% cd ex11
+e3r11p9% ls
+ft_putstr_non_printable.c  test_ft_putstr_non_printable  test_ft_putstr_non_printable.c
+e3r11p9% vi ft_putstr_non_printable.c 
+e3r11p9% cat ft_putstr_non_printable.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 14:27:22 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 15:18:14 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+char	code_in_10_to_16(unsigned int value_in_10)
+{
+	if (value_in_10 <= 9)
+		return (value_in_10 + '0');
+	else
+		return ((value_in_10 % 10) + 'a');
+}
+
+void	ft_putstr_non_printable(char *str)
+{
+	int		i;
+	char	ascii_code_into_16[4];
+
+	if (str)
+	{
+		i = 0;
+		while (str[i] != '\0')
+		{
+			if (str[i] < 32 || str[i] > 126)
+			{
+				ascii_code_into_16[0] = '\\';
+				ascii_code_into_16[1] = code_in_10_to_16((unsigned char) str[i] / 16);
+				ascii_code_into_16[2] = code_in_10_to_16((unsigned char) str[i] % 16);
+				ascii_code_into_16[3] = '\0';
+				write(1, ascii_code_into_16, 3);
+			}
+			else
+				write(1, &str[i], 1);
+			i++;
+		}
+	}
+}
+e3r11p9% cat test_ft_putstr_non_printable.c               
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_putstr_non_printable.c                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 15:08:08 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 15:20:30 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+void	ft_putstr_non_printable(char *str);
+
+int	main(void)
+{
+	char	*empty_str;
+	char	*str1;
+	char	*str2;
+	char	*str3;
+
+	empty_str = "";
+	printf("La chaine \"vide\" donne :\n");
+	ft_putstr_non_printable(empty_str);
+	printf("\n");
+	str1 = "Tab\tLF\nVT\vUS\037Not complete list";
+	printf("La chaine \"%s\" donne :\n", str1);
+	ft_putstr_non_printable(str1);
+	printf("\n");
+	str2 = "1 !\"#$%&'()*+,-./023456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~";
+	printf("La chaine \"%s\" donne :\n", str2);
+	ft_putstr_non_printable(str2);
+	printf("\n");
+	str3 = "Coucou\ntu vas bien ?";
+	printf("La chaine \"%s\" donne :\n", str3);
+	ft_putstr_non_printable(str3);
+	printf("\n");
+
+	char d[] = "\x81\xbe";
+	printf("La chaine \"%s\" donne :\n", "\x81\xbe");
+	ft_putstr_non_printable(d);
+	printf("\n");
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putstr_non_printable ft_putstr_non_printable.c test_ft_putstr_non_printable.c
+e3r11p9% ./test_ft_putstr_non_printable 
+La chaine "vide" donne :
+
+La chaine "Tab	LF
+VT
+  USNot complete list" donne :
+Tab\09LF\0aVT\0bUS\1fNot complete list
+La chaine "1 !"#$%&'()*+,-./023456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~" donne :
+1 !"#$%&'()*+,-./023456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+La chaine "Coucou
+tu vas bien ?" donne :
+Coucou\0atu vas bien ?
+La chaine "��" donne :
+\81\be
+e3r11p9% cd ..
+e3r11p9% cp ex11/ft_putstr_non_printable.c git_c_02_3/ex11/ft_putstr_non_printable.c
+e3r11p9% cd git_c_02_3
+e3r11p9% git add ex11/ft_putstr_non_printable.c
+e3r11p9% git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+	new file:   ex00/ft_strcpy.c
+	new file:   ex01/ft_strncpy.c
+	new file:   ex02/ft_str_is_alpha.c
+	new file:   ex03/ft_str_is_numeric.c
+	new file:   ex04/ft_str_is_lowercase.c
+	new file:   ex05/ft_str_is_uppercase.c
+	new file:   ex06/ft_str_is_printable.c
+	new file:   ex07/ft_strupcase.c
+	new file:   ex08/ft_strlowcase.c
+	new file:   ex09/ft_strcapitalize.c
+	new file:   ex10/ft_strlcpy.c
+	new file:   ex11/ft_putstr_non_printable.c
+
+e3r11p9% git commit -m "Retry 3 for ex09, ex10 and ex11"
+[master (root-commit) d87f8dc] Retry 3 for ex09, ex10 and ex11
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 12 files changed, 402 insertions(+)
+ create mode 100644 ex00/ft_strcpy.c
+ create mode 100644 ex01/ft_strncpy.c
+ create mode 100644 ex02/ft_str_is_alpha.c
+ create mode 100644 ex03/ft_str_is_numeric.c
+ create mode 100644 ex04/ft_str_is_lowercase.c
+ create mode 100644 ex05/ft_str_is_uppercase.c
+ create mode 100644 ex06/ft_str_is_printable.c
+ create mode 100644 ex07/ft_strupcase.c
+ create mode 100644 ex08/ft_strlowcase.c
+ create mode 100644 ex09/ft_strcapitalize.c
+ create mode 100644 ex10/ft_strlcpy.c
+ create mode 100644 ex11/ft_putstr_non_printable.c
+e3r11p9% git push
+Enumerating objects: 26, done.
+Counting objects: 100% (26/26), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (15/15), done.
+Writing objects: 100% (26/26), 3.17 KiB | 811.00 KiB/s, done.
+Total 26 (delta 11), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-0f5d1fd9-37ac-4871-8c83-69ac9f5976d2-4703117-hauerbac
+ * [new branch]      master -> master
+----------------------------------------------------------------------------------------------------------
+e3r11p9% cd
+e3r11p9% cd sgoinfre 
+e3r11p9% ls
+astephan  chae	correctionThib	corr_jihalee  ekanegaw	eval  evalj  shell00  shell01  swc02
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-0f5d1fd9-37ac-4871-8c83-69ac9f5976d2-4703117-hauerbac dlac
+Cloning into 'dlac'...
+cd dremote: Enumerating objects: 26, done.
+remote: Counting objects: 100% (26/26), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 26 (delta 11), reused 0 (delta 0)
+Receiving objects: 100% (26/26), done.
+Resolving deltas: 100% (11/11), done.
+e3r11p9% cd dlac
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09  ex10  ex11
+e3r11p9% bat */*
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09  ex10  ex11
+e3r11p9% cd ex09
+e3r11p9% ls
+ft_strcapitalize.c
+e3r11p9% vim ft_strcapitalize.c 
+e3r11p9% ls
+ft_strcapitalize.c
+e3r11p9% norm
+zsh: command not found: norm
+e3r11p9% norminette 
+ft_strcapitalize.c: Error!
+	Error: Unexpected EOF l.52
+e3r11p9% fg
+fg: no current job
+e3r11p9% vim ft_strcapitalize.c 
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% norminette            
+ft_strcapitalize.c: OK!
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% ls
+ft_strcapitalize.c
+e3r11p9% gcc ft_strcapitalize.c 
+ft_strcapitalize.c: In function ‘main’:
+ft_strcapitalize.c:48:45: error: expected ‘;’ before ‘ft_strcapitalize’
+   48 |  str = "oui, oooOOOooo OOOoooOOO oOo Oo O o"
+      |                                             ^
+      |                                             ;
+   49 |  ft_strcapitalize(str);
+      |  ~~~~~~~~~~~~~~~~                            
+ft_strcapitalize.c:50:15: error: expected ‘)’ before ‘str’
+   50 |  printf("%s\n" str);
+      |               ^~~~
+      |               )
+ft_strcapitalize.c:50:11: warning: format ‘%s’ expects a matching ‘char *’ argument [-Wformat=]
+   50 |  printf("%s\n" str);
+      |          ~^
+      |           |
+      |           char *
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% gcc ft_strcapitalize.c
+ft_strcapitalize.c: In function ‘main’:
+ft_strcapitalize.c:50:15: error: expected ‘)’ before ‘str’
+   50 |  printf("%s\n" str);
+      |               ^~~~
+      |               )
+ft_strcapitalize.c:50:11: warning: format ‘%s’ expects a matching ‘char *’ argument [-Wformat=]
+   50 |  printf("%s\n" str);
+      |          ~^
+      |           |
+      |           char *
+e3r11p9% 
+e3r11p9% gcc ft_strcapitalize.c
+ft_strcapitalize.c: In function ‘main’:
+ft_strcapitalize.c:50:15: error: expected ‘)’ before ‘str’
+   50 |  printf("%s\n" str);
+      |               ^~~~
+      |               )
+ft_strcapitalize.c:50:11: warning: format ‘%s’ expects a matching ‘char *’ argument [-Wformat=]
+   50 |  printf("%s\n" str);
+      |          ~^
+      |           |
+      |           char *
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% gcc ft_strcapitalize.c
+e3r11p9% ./a.out 
+zsh: segmentation fault (core dumped)  ./a.out
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% ./a.out 
+zsh: segmentation fault (core dumped)  ./a.out
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% fg     
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% gcc ft_strcapitalize.c
+ft_strcapitalize.c: In function ‘main’:
+ft_strcapitalize.c:48:6: error: assignment to expression with array type
+   48 |  str = "oui, oooOOOooo OOOoooOOO oOo Oo O o";
+      |      ^
+e3r11p9% gcc ft_strcapitalize.c
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% gcc ft_strcapitalize.c
+e3r11p9% ./a.out 
+Oui, Ooooooooo Ooooooooo Ooo Oo O O
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% gcc ft_strcapitalize.c
+e3r11p9% ./a.out               
+Oui, 42kwrjjdfkhsf21434rjkjk32jk12;Dfd		Oooooooooooo Ooooooooo Ooo Oo O O
+e3r11p9% fg
+[1]  + continued  vim ft_strcapitalize.c
+
+zsh: suspended  vim ft_strcapitalize.c
+e3r11p9% gcc ft_strcapitalize.c
+e3r11p9% ./a.out               
+Oui+Oui-Ok
+e3r11p9% ls
+a.out  ft_strcapitalize.c
+e3r11p9% cd..
+zsh: command not found: cd..
+e3r11p9% cd ..
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07	ex08  ex09  ex10  ex11
+e3r11p9% cd ex10
+e3r11p9% ls
+ft_strlcpy.c
+e3r11p9% vim ft_strlcpy.c 
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% com ft_strlcpy.c -lbsd
+zsh: command not found: com
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+ft_strlcpy.c:45:17: error: format specifies type 'int' but the argument has type 'size_t' (aka 'unsigned long') [-Werror,-Wformat]
+        printf("%d\n", strlcpy(str3, str4, 4));
+                ~~     ^~~~~~~~~~~~~~~~~~~~~~
+                %zu
+1 error generated.
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+ft_strlcpy.c:40:18: error: format specifies type 'long' but the argument has type 'unsigned int' [-Werror,-Wformat]
+        printf("%ld\n", ft_strlcpy(str1, str2, 4));
+                ~~~     ^~~~~~~~~~~~~~~~~~~~~~~~~
+                %u
+1 error generated.
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+ft_strlcpy.c:45:17: error: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Werror,-Wformat]
+        printf("%u\n", strlcpy(str3, str4, 4));
+                ~~     ^~~~~~~~~~~~~~~~~~~~~~
+                %zu
+1 error generated.
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+ft_strlcpy.c:40:18: error: format specifies type 'size_t' (aka 'unsigned long') but the argument has type 'unsigned int' [-Werror,-Wformat]
+        printf("%zu\n", ft_strlcpy(str1, str2, 4));
+                ~~~     ^~~~~~~~~~~~~~~~~~~~~~~~~
+                %u
+ft_strlcpy.c:45:17: error: format specifies type 'unsigned int' but the argument has type 'size_t' (aka 'unsigned long') [-Werror,-Wformat]
+        printf("%u\n", strlcpy(str3, str4, 4));
+                ~~     ^~~~~~~~~~~~~~~~~~~~~~
+                %zu
+2 errors generated.
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+e3r11p9% ./a.out 
+29
+ALO
+ALORS JE REMPLACE LA PREMIERE
+29
+ALO
+ALORS JE REMPLACE LA PREMIERE
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+e3r11p9% ./a.out                                       
+29
+ALORS JE REMPLACE LA PREMIERE
+ALORS JE REMPLACE LA PREMIERE
+29
+ALORS JE REMPLACE LA PREMIERE
+ALORS JE REMPLACE LA PREMIERE
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+e3r11p9% fg                                            
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% ./a.out                                       
+29
+ALORS JE REMPLACE LA PREMIERE
+ALORS JE REMPLACE LA PREMIERE
+29
+ALORS JE REMPLACE LA PREMIERE
+ALORS JE REMPLACE LA PREMIERE
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+e3r11p9% ./a.out                                       
+29
+ALORS JE REMPLACE LA PREMIERE
+ALORS JE REMPLACE LA PREMIERE
+29
+oui bonjour bonsoir
+ALORS JE REMPLACE LA PREMIERE
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+e3r11p9% ./a.out                                       
+e3r11p9% ./a.out
+29
+
+ALORS JE REMPLACE LA PREMIERE
+29
+
+ALORS JE REMPLACE LA PREMIERE
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+e3r11p9% ./a.out                                       
+29
+
+ALORS JE REMPLACE LA PREMIERE
+29
+ALORS JE 
+ALORS JE REMPLACE LA PREMIERE
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+e3r11p9% ./a.out                                       
+29
+ALORS JE 
+ALORS JE REMPLACE LA PREMIERE
+29
+ALORS JE 
+ALORS JE REMPLACE LA PREMIERE
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+
+zsh: suspended  vim ft_strlcpy.c
+e3r11p9% clang -Wextra -Werror -Wall ft_strlcpy.c -lbsd
+e3r11p9% ./a.out                                       
+29
+ALORS JE REMPLACE LA PREMIERE
+ALORS JE REMPLACE LA PREMIERE
+29
+oui bonjour bonsoir
+ALORS JE REMPLACE LA PREMIERE
+e3r11p9% fg
+[2]  - continued  vim ft_strlcpy.c
+e3r11p9% ls
+a.out  ft_strlcpy.c
+e3r11p9% cat ft_strlcpy.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 13:08:52 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 16:20:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_strlcpy(char *dest, char *src, unsigned int size)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (src && dest)
+	{
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+		i = 0;
+		while (src[i] != '\0')
+			i++;
+	}
+	return (i);
+}
+
+#include <stdio.h>
+#include <bsd/string.h>
+
+int main()
+{
+	char str1[1000] = "oui bonjour bonsoir";
+	char str2[1000] = "ALORS JE REMPLACE LA PREMIERE";
+	printf("%u\n", ft_strlcpy(str1, str2, 0));
+	printf("%s\n", str1);
+	printf("%s\n", str2);
+	char str3[1000] = "oui bonjour bonsoir";
+	char str4[1000] = "ALORS JE REMPLACE LA PREMIERE";
+	printf("%zu\n", strlcpy(str3, str4, 0));
+	printf("%s\n", str3);
+	printf("%s\n", str4);
+	return 0;
+}
+e3r11p9% 
+------------------------------------------------------------
+
+ 		logo42 		
+	You have been graded by Moulinette 	
+		
+	
+		
+	
+
+Hi,
+
+You have been graded 65 on C Piscine C 02:
+
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: OK | ex09: OK | ex10: KO | ex11: Norme error | ex12: Nothing turned in
+------------------------------------------------------------
+= ex10 =========================================================================
+$> cc -Wextra -Wall -Werror main.c ft_strlcpy.c -o user_exe
+
+= Test 1 ===================================================
+$> ./vrnbj93ym73zw6oykdrad4ev
+$> diff -U 3 user_output_test1 test1.output | cat -e
+--- user_output_test1    2023-02-19 16:17:30.201920765 +0000$
++++ test1.output    2023-02-19 16:17:30.149920735 +0000$
+@@ -1 +1 @@$
+-zZTJnZdLAROuutF <=> 15u <=> 1oDrSKG <=> 19OWwoWi <=> 6uzjKMLshTCd <=> 11TShxdHiVwFhZW <=> 13IYF <=> 3rhJFDXyWqweKMFLnwAYB <=> 20sUyy <=> 4vPheZb <=> 6cJ <=> 2uA <=> 2ZMUJwAuSWHzT <=> 17FgIYlK <=> 6sJfyjffz <=> 8AENE <=> 4ALUvCGSBAHagPq <=> 14 <=> 16aZmsohlSCcdWuPstDn <=> 18hqPNhbaVZrfAYw <=> 14qoYkB <=> 5axeg <=> 4sLZYgImmivhqLdgSIbh <=> 19lugLcVBHHPqf <=> 12MyfCsAtGQjGQLbRR <=> 18cuABZadDNR <=> 12XeBoXCUeiCnpBP <=> 14sNcdBKfod <=> 15etcnCeNVfVpvj <=> 13rUkG <=> 4WWv <=> 3 <=> 13rWy <=> 3hSVu <=> 4fXWfWBONMIotj <=> 13WZOttLyW <=> 8UuYc <=> 4JTwvlRNcIpHefjBGIeo <=> 19tVsJUZNdnxYxFT <=> 14rAccxRhrkeTPcaBgpn <=> 18UieJisSMHl <=> 10SsaRuvvBTcxCAR <=> 14uRaAgMtFMtQRw <=> 13OgnRSAvsUhc <=> 11jUFtTftuoySdaV <=> 14tiRVTgWwwrdhDCvnITFi <=> 20sdmCCSvzRyNzyTKm <=> 16iINiTsfUFPuIB <=> 13NVnjLpiPBIRqZSr <=> 15PB <=> 8SMW <=> 3MOgcgQiWAUBvAA <=> 14Hol <=> 8FTlBb <=> 5X <=> 11MLfACyXMBqYUNGUPaW <=> 18BHznIu <=> 6mleewfLJuP <=> 10QMUQ <=> 4BahopY <=> 6PFWMrrTh <=> 8HXYbZ <=> 5lZrl <=> 8tZxRMsUx <=>
+  8FTirjixdTRGsu <=> 20wPqaYz <=> 6STvEFHRjjKbarS <=> 14mEJRfXHQpIcddz <=> 14nwwaYPofobSZNYrlyI <=> 18UkStUVXHeeKe <=> 12fBammLUykYWJYf <=> 14FZWHjZMwnK <=> 18XaAifYvpYRcvmhaFCMF <=> 19fsKUFSKstBpmcuf <=> 15CU <=> 2RP <=> 2TnjMJUgAUMyHba <=> 14LCZVW <=> 5ehfJjPEXBzILngqh <=> 16ogObpbgX <=> 8GEHVVIsPkoCbJ <=> 13fAxTJJ <=> 6AKLQYyMEdUhXfs <=> 14BwOAbgURJqrKJybrkH <=> 18hWY <=> 3g <=> 3eMnSoAQAEc <=> 10Voic <=> 4krbKArIRGTykacZBD <=> 17icnMNrRpphLp <=> 12nEFSessBImeNUMVU <=> 16pvRhBaPBwvTzGBGXJq <=> 18IHxXksuAVG <=> 10GKixwGGhw <=> 9XphAVsqEfjMLIQf <=> 15kfvOVHPtnuFKFegYPawr <=> 20cbkBbdvccG <=> 10ggX <=> 11oeKNHAaZ <=> 14012345678 <=> 10abcdefgh <=> 10;[]'/.,_-) <=> 10 <=> 0dcbsidwhiu <=> 10$
+\ No newline at end of file$
++zZTJnZdLAROuutF <=> 15u <=> 1oDrSKG <=> 19OWwoWi <=> 6uzjKMLshTCd <=> 11TShxdHiVwFhZW <=> 13IYF <=> 3rhJFDXyWqweKMFLnwAYB <=> 20sUyy <=> 4vPheZb <=> 6cJ <=> 2uA <=> 2ZMUJwAuSWHzT <=> 17FgIYlK <=> 6sJfyjffz <=> 8AENE <=> 4ALUvCGSBAHagPq <=> 14 <=> 16aZmsohlSCcdWuPstDn <=> 18hqPNhbaVZrfAYw <=> 14qoYkB <=> 5axeg <=> 4sLZYgImmivhqLdgSIbh <=> 19lugLcVBHHPqf <=> 12MyfCsAtGQjGQLbRR <=> 18cuABZadDNR <=> 12XeBoXCUeiCnpBP <=> 14sNcdBKfod <=> 15etcnCeNVfVpvj <=> 13rUkG <=> 4WWv <=> 3 <=> 13rWy <=> 3hSVu <=> 4fXWfWBONMIotj <=> 13WZOttLyW <=> 8UuYc <=> 4JTwvlRNcIpHefjBGIeo <=> 19tVsJUZNdnxYxFT <=> 14rAccxRhrkeTPcaBgpn <=> 18UieJisSMHl <=> 10SsaRuvvBTcxCAR <=> 14uRaAgMtFMtQRw <=> 13OgnRSAvsUhc <=> 11jUFtTftuoySdaV <=> 14tiRVTgWwwrdhDCvnITFi <=> 20sdmCCSvzRyNzyTKm <=> 16iINiTsfUFPuIB <=> 13NVnjLpiPBIRqZSr <=> 15PB <=> 8SMW <=> 3MOgcgQiWAUBvAA <=> 14Hol <=> 8FTlBb <=> 5X <=> 11MLfACyXMBqYUNGUPaW <=> 18BHznIu <=> 6mleewfLJuP <=> 10QMUQ <=> 4BahopY <=> 6PFWMrrTh <=> 8HXYbZ <=> 5lZrl <=> 8tZxRMsUx <=>
+  8FTirjixdTRGsu <=> 20wPqaYz <=> 6STvEFHRjjKbarS <=> 14mEJRfXHQpIcddz <=> 14nwwaYPofobSZNYrlyI <=> 18UkStUVXHeeKe <=> 12fBammLUykYWJYf <=> 14FZWHjZMwnK <=> 18XaAifYvpYRcvmhaFCMF <=> 19fsKUFSKstBpmcuf <=> 15CU <=> 2RP <=> 2TnjMJUgAUMyHba <=> 14LCZVW <=> 5ehfJjPEXBzILngqh <=> 16ogObpbgX <=> 8GEHVVIsPkoCbJ <=> 13fAxTJJ <=> 6AKLQYyMEdUhXfs <=> 14BwOAbgURJqrKJybrkH <=> 18hWY <=> 3g <=> 3eMnSoAQAEc <=> 10Voic <=> 4krbKArIRGTykacZBD <=> 17icnMNrRpphLp <=> 12nEFSessBImeNUMVU <=> 16pvRhBaPBwvTzGBGXJq <=> 18IHxXksuAVG <=> 10GKixwGGhw <=> 9XphAVsqEfjMLIQf <=> 15kfvOVHPtnuFKFegYPawr <=> 20cbkBbdvccG <=> 10ggX <=> 11oeKNHAaZ <=> 14012345678 <=> 10abcdefgh <=> 10;[]'/.,_-) <=> 10 <=> 0 <=> 10$
+\ No newline at end of file$
+
+Diff KO :(
+Grade: 0
+
+= Final grade: 65 ==============================================================
+------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd ../../c_02/ex11
+e3r11p9% ls
+ft_putstr_non_printable.c  test_ft_putstr_non_printable  test_ft_putstr_non_printable.c
+e3r11p9% vi ft_putstr_non_printable.c 
+e3r11p9% norminette ft_putstr_non_printable.c 
+ft_putstr_non_printable.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putstr_non_printable ft_putstr_non_printable.c test_ft_putstr_non_printable.c
+e3r11p9% ./test_ft_putstr_non_printable 
+La chaine "vide" donne :
+
+La chaine "Tab	LF
+VT
+  USNot complete list" donne :
+Tab\09LF\0aVT\0bUS\1fNot complete list
+La chaine "1 !"#$%&'()*+,-./023456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~" donne :
+1 !"#$%&'()*+,-./023456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+La chaine "Coucou
+tu vas bien ?" donne :
+Coucou\0atu vas bien ?
+La chaine "��" donne :
+\81\be
+e3r11p9% cat ft_putstr_non_printable.c     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_non_printable.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/16 14:27:22 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/19 18:00:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+char	code_in_10_to_16(unsigned int value_in_10)
+{
+	if (value_in_10 <= 9)
+		return (value_in_10 + '0');
+	else
+		return ((value_in_10 % 10) + 'a');
+}
+
+void	ft_putstr_non_printable(char *str)
+{
+	int				i;
+	char			ascii_code_into_16[4];
+	unsigned char	c;
+
+	if (str)
+	{
+		i = 0;
+		while (str[i] != '\0')
+		{
+			if (str[i] < 32 || str[i] > 126)
+			{
+				ascii_code_into_16[0] = '\\';
+				c = (unsigned char) str[i];
+				ascii_code_into_16[1] = code_in_10_to_16(c / 16);
+				ascii_code_into_16[2] = code_in_10_to_16(c % 16);
+				ascii_code_into_16[3] = '\0';
+				write(1, ascii_code_into_16, 3);
+			}
+			else
+				write(1, &str[i], 1);
+			i++;
+		}
+	}
+}
 
