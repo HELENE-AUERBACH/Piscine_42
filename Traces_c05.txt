@@ -1,0 +1,89 @@
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/c_04/ex05
+e3r11p9% cd       
+e3r11p9% ls
+c_00  c_02  c_04     Documents	Music	  Public   samed     shell_00  Templates
+c_01  c_03  Desktop  Downloads	Pictures  rush_00  sgoinfre  shell_01  Videos
+e3r11p9% mkdir c_05
+e3r11p9% cd c_05   
+e3r11p9% mkdir ex00
+e3r11p9% cd ex00
+e3r11p9% vi ft_iterative_factorial.c
+e3r11p9% cat ft_iterative_factorial.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 18:05:27 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 18:05:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_iterative_factorial(int nb)
+{
+	int	fact;
+	int	i;
+
+	fact = 0;
+	if (nb == 0 || nb == 1)
+		fact = 1;
+	else if (nb > 1)
+	{
+		fact = 1;
+		i = 2;
+		while (i <= nb)
+			fact *= i++;
+	}
+	return (fact);
+}
+e3r11p9% vi test_ft_iterative_factorial.c 
+e3r11p9% cat test_ft_iterative_factorial.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_iterative_factorial.c                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 18:09:42 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 18:09:46 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_iterative_factorial(int nb);
+
+int	main(void)
+{
+	printf("ft_iterative_factorial(-10) == 0:%d\n", ft_iterative_factorial(-10));
+	printf("ft_iterative_factorial(-1) == 0:%d\n", ft_iterative_factorial(-1));
+	printf("ft_iterative_factorial(0) == 1:%d\n", ft_iterative_factorial(0));
+	printf("ft_iterative_factorial(1) == 1:%d\n", ft_iterative_factorial(1));
+	printf("ft_iterative_factorial(10) == 3628800:%d\n", ft_iterative_factorial(10));
+	printf("ft_iterative_factorial(3) == 6:%d\n", ft_iterative_factorial(3));
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_iterative_factorial.c 
+ft_iterative_factorial.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_iterative_factorial.c 
+test_ft_iterative_factorial.c: Error!
+Error: LINE_TOO_LONG        (line:  23, col:  82):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_iterative_factorial ft_iterative_factorial.c test_ft_iterative_factorial.c
+e3r11p9% ls -al 
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 20 18:11 .
+drwxr-xr-x 3 hauerbac 2023_paris  4096 Feb 20 17:42 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1094 Feb 20 18:05 ft_iterative_factorial.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16056 Feb 20 18:11 test_ft_iterative_factorial
+-rw-r--r-- 1 hauerbac 2023_paris  1432 Feb 20 18:09 test_ft_iterative_factorial.c
+e3r11p9% ./test_ft_iterative_factorial 
+ft_iterative_factorial(-10) == 0:0
+ft_iterative_factorial(-1) == 0:0
+ft_iterative_factorial(0) == 1:1
+ft_iterative_factorial(1) == 1:1
+ft_iterative_factorial(10) == 3628800:3628800
+ft_iterative_factorial(3) == 6:6
+
