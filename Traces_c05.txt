@@ -86,4 +86,481 @@ ft_iterative_factorial(0) == 1:1
 ft_iterative_factorial(1) == 1:1
 ft_iterative_factorial(10) == 3628800:3628800
 ft_iterative_factorial(3) == 6:6
+e3r11p9% cd ..
+e3r11p9% mkdir ex01
+e3r11p9% cd ex01
+e3r11p9% vi ft_recursive_factorial.c
+e3r11p9% cat ft_recursive_factorial.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 18:23:48 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 18:23:55 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_recursive_factorial(int nb)
+{
+	int	fact;
+
+	fact = 0;
+	if (nb == 0 || nb == 1)
+		fact = 1;
+	else if (nb > 1)
+		fact = nb * fact(nb - 1);
+	return (fact);
+}
+e3r11p9% vi test_ft_recursive_factorial.c 
+e3r11p9% cat test_ft_recursive_factorial.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_recursive_factorial.c                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 18:31:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 18:31:26 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_recursive_factorial(int nb);
+
+int	main(void)
+{
+	printf("ft_recursive_factorial(-10) == 0:%d\n", ft_recursive_factorial(-10));
+	printf("ft_recursive_factorial(-1) == 0:%d\n", ft_recursive_factorial(-1));
+	printf("ft_recursive_factorial(0) == 1:%d\n", ft_recursive_factorial(0));
+	printf("ft_recursive_factorial(1) == 1:%d\n", ft_recursive_factorial(1));
+	printf("ft_recursive_factorial(10) == 3628800:%d\n", ft_recursive_factorial(10));
+	printf("ft_recursive_factorial(3) == 6:%d\n", ft_recursive_factorial(3));
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_recursive_factorial.c     
+ft_recursive_factorial.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_recursive_factorial.c 
+test_ft_recursive_factorial.c: Error!
+Error: LINE_TOO_LONG        (line:  23, col:  82):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_recursive_factorial ft_recursive_factorial.c test_ft_recursive_factorial.c
+ft_recursive_factorial.c: In function ‘ft_recursive_factorial’:
+ft_recursive_factorial.c:21:15: error: called object ‘fact’ is not a function or function pointer
+   21 |   fact = nb * fact(nb - 1);
+      |               ^~~~
+ft_recursive_factorial.c:15:6: note: declared here
+   15 |  int fact;
+      |      ^~~~
+e3r11p9% vi ft_recursive_factorial.c                                
+e3r11p9% cat ft_recursive_factorial.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 18:23:48 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 18:32:50 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_recursive_factorial(int nb)
+{
+	int	fact;
+
+	fact = 0;
+	if (nb == 0 || nb == 1)
+		fact = 1;
+	else if (nb > 1)
+		fact = nb * ft_recursive_factorial(nb - 1);
+	return (fact);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_recursive_factorial.c     
+ft_recursive_factorial.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_recursive_factorial ft_recursive_factorial.c test_ft_recursive_factorial.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 20 18:33 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 20 18:17 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1071 Feb 20 18:32 ft_recursive_factorial.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16056 Feb 20 18:33 test_ft_recursive_factorial
+-rw-r--r-- 1 hauerbac 2023_paris  1432 Feb 20 18:31 test_ft_recursive_factorial.c
+e3r11p9% ./test_ft_recursive_factorial 
+ft_recursive_factorial(-10) == 0:0
+ft_recursive_factorial(-1) == 0:0
+ft_recursive_factorial(0) == 1:1
+ft_recursive_factorial(1) == 1:1
+ft_recursive_factorial(10) == 3628800:3628800
+ft_recursive_factorial(3) == 6:6
+e3r11p9% cd ..
+e3r11p9% mkdir ex02
+e3r11p9% cd ex02
+e3r11p9% vi ft_iterative_power.c
+e3r11p9% cat ft_iterative_power.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_iterative_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 18:51:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 18:51:31 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_iterative_power(int nb, int power)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (power < 0)
+		result = 0;
+	else if (power == 0)
+		result = 1;
+	else if (power == 1)
+		result = nb;
+	else if (nb == 0)
+		result = 0;
+	else if (nb == 1)
+		result = 1;
+	else
+	{
+		result = 1;
+		i = 1;
+		while (i <= power)
+		{
+			result *= nb;
+			i++;
+		}
+	}
+	return (result);
+}
+e3r11p9% vi test_ft_iterative_power.c 
+e3r11p9% cat test_ft_iterative_power.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_iterative_power.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 19:03:10 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 19:03:12 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_iterative_power(int nb, int power);
+
+int	main(void)
+{
+	printf("ft_iterative_power(1, -10)) == 0:%d\n", ft_iterative_power(1, -10));
+	printf("ft_iterative_power(1, -1)) == 0:%d\n", ft_iterative_power(1, -1));
+	printf("ft_iterative_power(0, 0)) == 1:%d\n", ft_iterative_power(0, 0));
+	printf("ft_iterative_power(10, 0)) == 1:%d\n", ft_iterative_power(10, 0));
+	printf("ft_iterative_power(0, 3)) == 0:%d\n", ft_iterative_power(0, 3));
+	printf("ft_iterative_power(1, 5)) == 1:%d\n", ft_iterative_power(1, 5));
+	printf("ft_iterative_power(10, 1)) == 10:%d\n", ft_iterative_power(10, 1));
+	printf("ft_iterative_power(10, 2)) == 100:%d\n", ft_iterative_power(10, 2));
+	printf("ft_iterative_power(6, 3)) == 216:%d\n", ft_iterative_power(6, 3));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_iterative_power.c     
+ft_iterative_power.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_iterative_power.c 
+test_ft_iterative_power.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_iterative_power ft_iterative_power.c test_ft_iterative_power.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 20 19:04 .
+drwxr-xr-x 5 hauerbac 2023_paris  4096 Feb 20 18:34 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1249 Feb 20 18:51 ft_iterative_power.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16048 Feb 20 19:04 test_ft_iterative_power
+-rw-r--r-- 1 hauerbac 2023_paris  1671 Feb 20 19:03 test_ft_iterative_power.c
+e3r11p9% ./test_ft_iterative_power 
+ft_iterative_power(1, -10)) == 0:0
+ft_iterative_power(1, -1)) == 0:0
+ft_iterative_power(0, 0)) == 1:1
+ft_iterative_power(10, 0)) == 1:1
+ft_iterative_power(0, 3)) == 0:0
+ft_iterative_power(1, 5)) == 1:1
+ft_iterative_power(10, 1)) == 10:10
+ft_iterative_power(10, 2)) == 100:100
+ft_iterative_power(6, 3)) == 216:216
+e3r11p9% cd ../ex00
+e3r11p9% vi test_ft_iterative_factorial.c
+e3r11p9% cat test_ft_iterative_factorial.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_iterative_factorial.c                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 18:09:42 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 19:06:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_iterative_factorial(int nb);
+
+int	main(void)
+{
+	printf("ft_iterative_factorial(-10) == 0:%d\n", ft_iterative_factorial(-10));
+	printf("ft_iterative_factorial(-1) == 0:%d\n", ft_iterative_factorial(-1));
+	printf("ft_iterative_factorial(0) == 1:%d\n", ft_iterative_factorial(0));
+	printf("ft_iterative_factorial(1) == 1:%d\n", ft_iterative_factorial(1));
+	printf("ft_iterative_factorial(10) == 3628800:%d\n", ft_iterative_factorial(10));
+	printf("ft_iterative_factorial(3) == 6:%d\n", ft_iterative_factorial(3));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_iterative_factorial.c
+test_ft_iterative_factorial.c: Error!
+Error: LINE_TOO_LONG        (line:  23, col:  82):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_iterative_factorial ft_iterative_factorial.c test_ft_iterative_factorial.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 20 19:07 .
+drwxr-xr-x 5 hauerbac 2023_paris  4096 Feb 20 18:34 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1094 Feb 20 18:05 ft_iterative_factorial.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16056 Feb 20 19:07 test_ft_iterative_factorial
+-rw-r--r-- 1 hauerbac 2023_paris  1445 Feb 20 19:06 test_ft_iterative_factorial.c
+e3r11p9% ./test_ft_iterative_factorial 
+ft_iterative_factorial(-10) == 0:0
+ft_iterative_factorial(-1) == 0:0
+ft_iterative_factorial(0) == 1:1
+ft_iterative_factorial(1) == 1:1
+ft_iterative_factorial(10) == 3628800:3628800
+ft_iterative_factorial(3) == 6:6
+e3r11p9% cd ../ex01                                                           
+e3r11p9% vi test_ft_recursive_factorial.c                                     
+e3r11p9% cat test_ft_recursive_factorial.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_recursive_factorial.c                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 18:31:23 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 19:08:26 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_recursive_factorial(int nb);
+
+int	main(void)
+{
+	printf("ft_recursive_factorial(-10) == 0:%d\n", ft_recursive_factorial(-10));
+	printf("ft_recursive_factorial(-1) == 0:%d\n", ft_recursive_factorial(-1));
+	printf("ft_recursive_factorial(0) == 1:%d\n", ft_recursive_factorial(0));
+	printf("ft_recursive_factorial(1) == 1:%d\n", ft_recursive_factorial(1));
+	printf("ft_recursive_factorial(10) == 3628800:%d\n", ft_recursive_factorial(10));
+	printf("ft_recursive_factorial(3) == 6:%d\n", ft_recursive_factorial(3));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_recursive_factorial.c
+test_ft_recursive_factorial.c: Error!
+Error: LINE_TOO_LONG        (line:  23, col:  82):	line too long
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_recursive_factorial ft_recursive_factorial.c test_ft_recursive_factorial.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 20 19:09 .
+drwxr-xr-x 5 hauerbac 2023_paris  4096 Feb 20 18:34 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1071 Feb 20 18:32 ft_recursive_factorial.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16056 Feb 20 19:09 test_ft_recursive_factorial
+-rw-r--r-- 1 hauerbac 2023_paris  1445 Feb 20 19:08 test_ft_recursive_factorial.c
+e3r11p9% ./test_ft_recursive_factorial 
+ft_recursive_factorial(-10) == 0:0
+ft_recursive_factorial(-1) == 0:0
+ft_recursive_factorial(0) == 1:1
+ft_recursive_factorial(1) == 1:1
+ft_recursive_factorial(10) == 3628800:3628800
+ft_recursive_factorial(3) == 6:6
+e3r11p9% cd ..
+e3r11p9% mkdir ex03
+e3r11p9% cd ex03
+e3r11p9% vi ft_recursive_power.c
+e3r11p9% cat ft_recursive_power.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 19:22:15 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 19:22:19 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_recursive_power(int nb, int power)
+{
+	if (power < 0)
+		return(0);
+	else if (power == 0)
+		return(1);
+	else if (power == 1)
+		return(nb);
+	else if (nb == 0)
+		return(0);
+	else if (nb == 1)
+		return(1);
+	else
+		return(nb * ft_recursive_power(nb, power - 1));
+}
+e3r11p9% vi test_ft_recursive_power.c 
+e3r11p9% cat test_ft_recursive_power.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_recursive_power.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 19:29:17 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 19:29:20 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_recursive_power(int nb, int power)
+{
+	printf("ft_recursive_power(1, -10)) == 0:%d\n", ft_recursive_power(1, -10));
+	printf("ft_recursive_power(1, -1)) == 0:%d\n", ft_recursive_power(1, -1));
+	printf("ft_recursive_power(0, 0)) == 1:%d\n", ft_recursive_power(0, 0));
+	printf("ft_recursive_power(10, 0)) == 1:%d\n", ft_recursive_power(10, 0));
+	printf("ft_recursive_power(0, 3)) == 0:%d\n", ft_recursive_power(0, 3));
+	printf("ft_recursive_power(1, 5)) == 1:%d\n", ft_recursive_power(1, 5));
+	printf("ft_recursive_power(10, 1)) == 10:%d\n", ft_recursive_power(10, 1));
+	printf("ft_recursive_power(10, 2)) == 100:%d\n", ft_recursive_power(10, 2));
+	printf("ft_recursive_power(6, 3)) == 216:%d\n", ft_recursive_power(6, 3));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_recursive_power.c         
+ft_recursive_power.c: Error!
+Error: SPACE_AFTER_KW       (line:  16, col:   9):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  16, col:  15):	Missing space before parenthesis (brace/bracket)
+Error: SPACE_AFTER_KW       (line:  18, col:   9):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  18, col:  15):	Missing space before parenthesis (brace/bracket)
+Error: SPACE_AFTER_KW       (line:  20, col:   9):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  20, col:  15):	Missing space before parenthesis (brace/bracket)
+Error: SPACE_AFTER_KW       (line:  22, col:   9):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  22, col:  15):	Missing space before parenthesis (brace/bracket)
+Error: SPACE_AFTER_KW       (line:  24, col:   9):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  24, col:  15):	Missing space before parenthesis (brace/bracket)
+Error: SPACE_AFTER_KW       (line:  26, col:   9):	Missing space after keyword
+Error: SPC_BFR_PAR          (line:  26, col:  15):	Missing space before parenthesis (brace/bracket)
+e3r11p9% vi ft_recursive_power.c                                
+e3r11p9% cat ft_recursive_power.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 19:22:15 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 19:31:42 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_recursive_power(int nb, int power)
+{
+	if (power < 0)
+		return (0);
+	else if (power == 0)
+		return (1);
+	else if (power == 1)
+		return (nb);
+	else if (nb == 0)
+		return (0);
+	else if (nb == 1)
+		return (1);
+	else
+		return (nb * ft_recursive_power(nb, power - 1));
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_recursive_power.c 
+ft_recursive_power.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_recursive_power.c 
+test_ft_recursive_power.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_recursive_power ft_recursive_power.c test_ft_recursive_power.c
+test_ft_recursive_power.c: In function ‘ft_recursive_power’:
+test_ft_recursive_power.c:15:28: error: unused parameter ‘nb’ [-Werror=unused-parameter]
+   15 | int ft_recursive_power(int nb, int power)
+      |                        ~~~~^~
+test_ft_recursive_power.c:15:36: error: unused parameter ‘power’ [-Werror=unused-parameter]
+   15 | int ft_recursive_power(int nb, int power)
+      |                                ~~~~^~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_recursive_power.c                                     
+e3r11p9% vi ft_recursive_power.c
+e3r11p9% clang -Wall -Wextra -Werror -o test_ft_recursive_power ft_recursive_power.c test_ft_recursive_power.c
+test_ft_recursive_power.c:15:28: error: unused parameter 'nb' [-Werror,-Wunused-parameter]
+int     ft_recursive_power(int nb, int power)
+                               ^
+test_ft_recursive_power.c:15:36: error: unused parameter 'power' [-Werror,-Wunused-parameter]
+int     ft_recursive_power(int nb, int power)
+                                       ^
+test_ft_recursive_power.c:16:1: error: all paths through this function will call itself [-Werror,-Winfinite-recursion]
+{
+^
+3 errors generated.
+e3r11p9% vi ft_recursive_power.c 
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_recursive_power.c 
+ft_recursive_power.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_recursive_power ft_recursive_power.c test_ft_recursive_power.c  
+test_ft_recursive_power.c: In function ‘ft_recursive_power’:
+test_ft_recursive_power.c:15:28: error: unused parameter ‘nb’ [-Werror=unused-parameter]
+   15 | int ft_recursive_power(int nb, int power)
+      |                        ~~~~^~
+test_ft_recursive_power.c:15:36: error: unused parameter ‘power’ [-Werror=unused-parameter]
+   15 | int ft_recursive_power(int nb, int power)
+      |                                ~~~~^~~~~
+cc1: all warnings being treated as errors
+e3r11p9% cat ft_recursive_power.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 19:22:15 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 20:21:34 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_recursive_power(int nb, int power)
+{
+	int	result;
+
+	result = 0;
+	if (power < 0)
+		result = 0;
+	else if (power == 0)
+		result = 1;
+	else if (power == 1)
+		result = nb;
+	else if (nb == 0)
+		result = 0;
+	else if (nb == 1)
+		result = 1;
+	else
+		result = nb * ft_recursive_power(nb, power - 1);
+	return (result);
+}
+
 
