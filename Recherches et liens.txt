@@ -1,0 +1,232 @@
+Slack pour le programme 42i :
+https://programme42i.slack.com/?redir=%2Fgantry%2Fclient
+----------------------------------------------------------------------------------------------------------------------
+La rémunération de formation Pôle Emploi :
+https://www.aide-sociale.fr/pole-emploi-rfpe/#Peut-on_cumuler_RSA_et_formation_r%C3%A9mun%C3%A9r%C3%A9e_RFPE_
+----------------------------------------------------------------------------------------------------------------------
+Incubateur :
+https://matrice.io/
+----------------------------------------------------------------------------------------------------------------------
+Wifi at 42 :
+https://wifi.42paris.fr/
+----------------------------------------------------------------------------------------------------------------------
+https://git-scm.com/docs
+https://git-scm.com/docs/git-ls-files
+https://git-scm.com/docs/git-check-ignore
+----------------------------------------------------------------------------------------------------------------------
+https://www.hostinger.fr/tutoriels/commandes-git
+----------------------------------------------------------------------------------------------------------------------
+https://stackoverflow.com/questions/16853624/git-discovery-across-filesystem-not-set
+----------------------------------------------------------------------------------------------------------------------
+https://www.atlassian.com/git/tutorials/setting-up-a-repository
+----------------------------------------------------------------------------------------------------------------------
+https://man7.org/linux/man-pages/man3/strstr.3.html
+----------------------------------------------------------------------------------------------------------------------
+http://norvig.com/sudoku.html
+----------------------------------------------------------------------------------------------------------------------
+https://stackoverflow.com/questions/3638851/why-does-writing-to-a-string-literal-in-this-c-program-segfault#3638867 :
+#include<stdio.h>
+
+void main()
+{
+    char *p="nyks";
+    p[2]='n';
+    printf("%s",p);
+}
+
+This crashes with a SEGMENTATION FAULT. Can someone explain why?
+---
+That translates to (essentially):
+
+ #include<stdio.h>  
+ const char privatestring[5] = {"nyks"};
+
+ void main()  
+ {  
+    char *p = const_cast<char*>(privatestring); 
+    p[2]='n';        
+    printf("%s",p);        
+ }        
+
+The compiler is allowed to put privatestring somewhere where you only have read access. It does the const_cast for backward compatibility with programs written before that was a const keyword.
+---
+answered Sep 3, 2010 at 19:23
+The value is a string literal which cannot be modified because literals are stored in read only memory, try p[] instead.segmentation errors generally occur due to wrong use of pointers.
+---
+String literals are not modifiable... The ability to write char *p="nyks"; is actually a type system hole in C.
+----------------------------------------------------------------------------------------------------------------------
+https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/
+----------------------------------------------------------------------------------------------------------------------
+Videos PEDAGO@42 - C-00 :
+https://www.youtube.com/playlist?list=PLVQYiy6xNUxz5wbzZn4tfUhF4djgzscB-
+----------------------------------------------------------------------------------------------------------------------
+Free & Updated Actual Exam Material :
+https://www.examtopics.com/?utm_source=adwords&utm_medium=youtube&utm_campaign=youtube&gclid=EAIaIQobChMImeWRnNGe_QIVfYVoCR3uOgT4EAEYAiAAEgKUY_D_BwE
+----------------------------------------------------------------------------------------------------------------------
+Video Piscine C - C00 - The C coding language :
+ https://www.youtube.com/watch?v=zPK1idZuVlM&list=PLxeKVrYoZO6DNJxUBWIiTO-B6X62SMHVo&index=3
+
+Video Piscine C - C01 :
+https://www.youtube.com/playlist?list=PLxeKVrYoZO6CZlYBPJVZQ_n4AulUhjV4p
+
+Video Piscine C - C05 :
+https://www.youtube.com/playlist?list=PLxeKVrYoZO6CKf2YJ3uiQN6aSzAeqLYlu
+----------------------------------------------------------------------------------------------------------------------
+Traductions :
+A very kind person and she asked for explanations.
+He's very kind and he really tries to understand the algorithm of the one he corrects.
+
+Files to turn in = Fichiers à rendre
+----------------------------------------------------------------------------------------------------------------------
+https://cheatography.com/davechild/cheat-sheets/regular-expressions/
+----------------------------------------------------------------------------------------------------------------------
+Videos PEDAGO@42 - S-00 :
+https://www.youtube.com/playlist?list=PLVQYiy6xNUxxhvwi0PGmXb5isUdVwmsg8
+
+Videos Piscine C - Shell00 :
+https://www.youtube.com/playlist?list=PLxeKVrYoZO6B64HVamfG1d8Jb2XIrNuRO
+
+
+----------------------------------------------------------------------------------------------------------------------
+Codes des Caractères ASCII avec les Caractères étendus (ANSI) :
+https://www.autoitscript.fr/autoit3/docs/appendix/ascii.htm
+
+https://fr.wikibooks.org/wiki/Les_ASCII_de_0_%C3%A0_127/La_table_ASCII
+
+https://www.positron-libre.com/robotique/robots/boe-shield-bot/notice/annexes/table-caracteres-ascii-0-127.php
+
+https://www.google.com/search?q=extended+ascii&client=ubuntu&channel=fs&tbm=isch&source=iu&ictx=1&vet=1&fir=MM0X0wHxDRAq_M%252CbmiHR7kswTGQMM%252C%252Fm%252F02jl6%253BF9Rkw1LyIp0CeM%252CUJxKxKs5nu4ujM%252C_%253BEGSqV8GG3NamYM%252CKeQ77-Fso6lRzM%252C_%253Be7RruIO7NG2m2M%252C5M0tVWEM3m53-M%252C_%253BujDtYOI3FP6gmM%252C3KlbzSYlSt7qnM%252C_%253B25Ww2dAuseYLhM%252Cs6QpsDsMeJrYgM%252C_%253BhUmy8OYGTvCeTM%252CvgzS4wOHso7c5M%252C_&usg=AI4_-kTXhSkkSGQvOE6RaTiTKWzMcFHvQg&sa=X&ved=2ahUKEwj0z-Lp3qH9AhUVUqQEHcuDAx8Q_B16BAhZEAE#imgrc=MM0X0wHxDRAq_M
+----------------------------------------------------------------------------------------------------------------------
+https://www.geeksforgeeks.org/int_max-int_min-cc-applications/
+
+http://www.eskimo.com/~scs/cclass/int/sx8.html
+
+https://stackoverflow.com/questions/21273486/what-does-ampersand-do-in-front-of-pointers
+
+http://www.ee.ncu.edu.tw/~jimmy/courses/PRG10/unit_10.pdf
+
+https://www.simplilearn.com/tutorials/c-tutorial/array-in-c
+
+https://www.techiedelight.com/implement-strcpy-function-c/
+
+https://koor.fr/C/cstring/strncpy.wp
+
+https://www.geeksforgeeks.org/commonly-used-string-functions-in-c-c-with-examples/?ref=rp
+
+https://www.geeksforgeeks.org/isalpha-isdigit-functions-c-example/
+
+
+----------------------------------------------------------------------------------------------------------------------
+Séquences d’échappement en C :
+https://learn.microsoft.com/fr-fr/cpp/c-language/escape-sequences?view=msvc-170
+----------------------------------------------------------------------------------------------------------------------
+https://chmod-calculator.com/
+----------------------------------------------------------------------------------------------------------------------
+https://www.garron.me/en/go2linux/ls-file-permissions.html
+----------------------------------------------------------------------------------------------------------------------
+https://www.malekal.com/comment-utiliser-la-commande-awk-avec-des-exemples/
+
+https://www.hostinger.fr/tutoriels/commande-touch-de-linux-avec-exemples
+
+https://stackoverflow.com/questions/53879302/how-can-i-cause-ls-l-output-to-be-comma-separated
+
+https://www.redhat.com/sysadmin/hard-links-linux
+----------------------------------------------------------------------------------------------------------------------
+Video Magic File Format in Linux Unix Shell Explained and Simplified ;
+ https://www.youtube.com/watch?v=fVOd3Dxifms
+ 
+ n Unix un fichier n'est qu'une séquence d'octets, cependant certains fichiers ont plus de structure. La commande file peut regarder la séquence d'octets et vous dire des choses. Par exemple, si les 4 premiers octets sont \177 E L F, elle vous dira qu'il s'agit d'un fichier elf. Il examinera ensuite plus d'octets et vous dira s'il s'agit d'un fichier principal, d'un exécutable ou d'un fichier objet. Si les octets 6 à 9 sont au format JFIF, il s'agit alors d'un fichier image et encore une fois, le programme peut en lire plus et vous en parler.
+
+Une grande partie de cela est pilotée par des tableaux de données plutôt que d'être compilée dans le programme. Ces tables de données sont ce qui se trouve dans les fichiers magiques.
+
+Donc, la raison pour laquelle vous avez des fichiers magiques est de vous permettre de dire fichier * et de faire en sorte que le programme vous dise ce que vous avez dans le répertoire courant.
+
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types
+----------------------------------------------------------------------------------------------------------------------
+Cécile Boxberger
+cecile.boxberger@gmail.com
+Déconnecté
+----------------------------------------------------------------------------------------------------------------------
+https://doc.ubuntu-fr.org/patch
+https://forum-debian.fr/wiki/Utiliser_diff_et_patch
+----------------------------------------------------------------------------------------------------------------------
+https://stackoverflow.com/questions/3162385/how-to-split-a-string-in-shell-and-get-the-last-field
+
+https://www.redhat.com/sysadmin/regular-expressions-pulling-it-all-together
+
+https://www.redhat.com/sysadmin/manipulating-text-sed-grep
+
+http://www.corporesano.org/doc-site/grepawksed.html
+
+https://www.redhat.com/sysadmin/linux-find-command
+
+https://askubuntu.com/questions/161345/what-does-paths-must-precede-expression-mean-when-using-find
+
+https://www.digitalocean.com/community/tutorials/grep-command-in-linux-unix
+
+https://linuxize.com/post/linux-tr-command/
+
+https://fr.wikipedia.org/wiki/Shebang
+
+https://unix.stackexchange.com/questions/53734/how-to-find-both-regular-files-and-directories
+
+https://forum.ubuntu-fr.org/viewtopic.php?id=1328001
+
+https://azurplus.fr/comment-utiliser-la-commande-rev-sous-linux/
+
+https://www.malekal.com/la-commande-sort-linux-utilisations-et-exemples/
+
+https://stackoverflow.com/questions/12218609/passing-variable-to-nr-in-awk-command-not-working
+
+https://www.linuxshelltips.com/join-multiple-lines-into-one-line-linux/
+
+https://www.developpez.net/forums/d600887/general-developpement/programmation-systeme/linux/operations-nombres-bases-differentes/
+
+http://www.linuxcertif.com/man/1/ls/
+
+http://www.linuxcertif.com/doc/keyword/ls/
+
+http://www.quesaco.org/vim-afficher-caracteres-invisibles
+
+https://www.baeldung.com/linux/vi-change-indentation-size
+
+
+
+https://www.educative.io/answers/what-is-the-git-push---force--u-origin-command
+
+https://openclassrooms.com/forum/sujet/fonction-write-pointeur-et-chaine-de-caractere
+
+https://www.malekal.com/la-commande-tr-utilisations-et-exemples/
+
+https://stackoverflow.com/questions/25589830/c-create-a-function-to-diplay-number-just-with-write-function
+
+https://waytolearnx.com/2019/09/convertir-une-chaine-de-caractere-en-majuscule-en-c.html
+
+https://www.qnx.com/developers/docs/7.1/#com.qnx.doc.neutrino.lib_ref/topic/s/strlcat.html
+
+https://forums.commentcamarche.net/forum/affich-23124355-conversion-de-la-base-10-vers-la-base-16
+
+https://koor.fr/C/cstdlib/atoi.wp
+
+https://stackoverflow.com/questions/3735299/unit-separator-in-c
+
+https://codebrowser.dev/glibc/glibc/string/strcmp.c.html
+
+https://openclassrooms.com/forum/sujet/une-explication-precise-de-strlcat
+
+https://www.gladir.com/CODER/C/strstr.htm
+
+https://fr.puzzle-skyscrapers.com/
+
+https://www.wikihow.com/Check-Null-in-C
+
+https://openclassrooms.com/forum/sujet/puissance-langage-c
+
+https://www.developpez.net/forums/d983729/c-cpp/c/dichotomie-racine-carree/
+
+https://www.google.com/search?q=nombres+premiers&client=ubuntu&channel=fs&tbm=isch&source=iu&ictx=1&vet=1&fir=p0XvR1OWwJ3aCM%252C9rqoVj_cdp8WrM%252C%252Fm%252F05x5j%253BiHJEdgyCpEZlwM%252CXZK-JTKBR22XWM%252C_%253BblM2QgB-BitfRM%252CIbCHx9ennuDuMM%252C_%253BbpQNtF7FN3ULkM%252CXZK-JTKBR22XWM%252C_%253BCjgYI1o54oKroM%252CgKyppXDSLhZ2zM%252C_%253BClftKTnqzZsSDM%252CzQnsKqEjcCjxKM%252C_&usg=AI4_-kTaCvFe0412p1Yf7zJAIwXHrj9_eQ&sa=X&ved=2ahUKEwih4dSh3Kb9AhVQecAKHUgBCM8Q_B16BAhjEAE#imgrc=p0XvR1OWwJ3aCM
+
+https://www.google.com/search?channel=fs&client=ubuntu&q=valgrind+c
+
+
+

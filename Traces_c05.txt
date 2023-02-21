@@ -562,5 +562,4344 @@ int	ft_recursive_power(int nb, int power)
 		result = nb * ft_recursive_power(nb, power - 1);
 	return (result);
 }
+-------------------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd c_05
+e3r11p9% cd ex03
+e3r11p9% ls
+ft_recursive_power.c  test_ft_recursive_power.c
+e3r11p9% vi ft_recursive_power.c 
+e3r11p9% cat ft_recursive_power.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_recursive_power.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 19:22:15 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 07:43:16 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_recursive_power(int nb, int power)
+{
+	if (power < 0)
+		return (0);
+	else if (power == 0)
+		return (1);
+	else if (power == 1)
+		return (nb);
+	else if (nb == 0)
+		return (0);
+	else if (nb == 1)
+		return (1);
+	else
+		return (nb * ft_recursive_power(nb, power - 1));
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_recursive_power.c 
+ft_recursive_power.c: OK!
+e3r11p9% cat test_ft_recursive_power.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_recursive_power.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 19:29:17 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 19:29:20 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_recursive_power(int nb, int power)
+{
+	printf("ft_recursive_power(1, -10)) == 0:%d\n", ft_recursive_power(1, -10));
+	printf("ft_recursive_power(1, -1)) == 0:%d\n", ft_recursive_power(1, -1));
+	printf("ft_recursive_power(0, 0)) == 1:%d\n", ft_recursive_power(0, 0));
+	printf("ft_recursive_power(10, 0)) == 1:%d\n", ft_recursive_power(10, 0));
+	printf("ft_recursive_power(0, 3)) == 0:%d\n", ft_recursive_power(0, 3));
+	printf("ft_recursive_power(1, 5)) == 1:%d\n", ft_recursive_power(1, 5));
+	printf("ft_recursive_power(10, 1)) == 10:%d\n", ft_recursive_power(10, 1));
+	printf("ft_recursive_power(10, 2)) == 100:%d\n", ft_recursive_power(10, 2));
+	printf("ft_recursive_power(6, 3)) == 216:%d\n", ft_recursive_power(6, 3));
+	return (0);
+}
+e3r11p9% vi test_ft_recursive_power.c                              
+e3r11p9% cat test_ft_recursive_power.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_recursive_power.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 19:29:17 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 07:59:11 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_recursive_power(int nb, int power);
+
+int	main(void)
+{
+	printf("ft_recursive_power(1, -10)) == 0:%d\n", ft_recursive_power(1, -10));
+	printf("ft_recursive_power(1, -1)) == 0:%d\n", ft_recursive_power(1, -1));
+	printf("ft_recursive_power(0, 0)) == 1:%d\n", ft_recursive_power(0, 0));
+	printf("ft_recursive_power(10, 0)) == 1:%d\n", ft_recursive_power(10, 0));
+	printf("ft_recursive_power(0, 3)) == 0:%d\n", ft_recursive_power(0, 3));
+	printf("ft_recursive_power(1, 5)) == 1:%d\n", ft_recursive_power(1, 5));
+	printf("ft_recursive_power(10, 1)) == 10:%d\n", ft_recursive_power(10, 1));
+	printf("ft_recursive_power(10, 2)) == 100:%d\n", ft_recursive_power(10, 2));
+	printf("ft_recursive_power(6, 3)) == 216:%d\n", ft_recursive_power(6, 3));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_recursive_power.c 
+test_ft_recursive_power.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_recursive_power ft_recursive_power.c test_ft_recursive_power.c
+e3r11p9% ./test_ft_recursive_power 
+ft_recursive_power(1, -10)) == 0:0
+ft_recursive_power(1, -1)) == 0:0
+ft_recursive_power(0, 0)) == 1:1
+ft_recursive_power(10, 0)) == 1:1
+ft_recursive_power(0, 3)) == 0:0
+ft_recursive_power(1, 5)) == 1:1
+ft_recursive_power(10, 1)) == 10:10
+ft_recursive_power(10, 2)) == 100:100
+ft_recursive_power(6, 3)) == 216:216
+e3r11p9% cd ..
+e3r11p9% mkdir ex04
+e3r11p9% cd ex04
+e3r11p9% vi ft_fibonacci.c
+e3r11p9% cat ft_fibonacci.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 08:17:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 08:17:37 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_fibonacci(int index)
+{
+	if (index < 0)
+		return (-1);
+	else if (index == 0)
+		return (0);
+	else if (index == 1)
+		return (1);
+	else
+		return ft_fibonacci(index - 2) + ft_fibonacci(n - 1);
+}
+e3r11p9% vi test_ft_fibonacci.c 
+e3r11p9% cat test_ft_fibonacci.c 
+#include <stdio.h>
+
+int	ft_fibonacci(int index);
+
+int	main(void)
+{
+	printf("ft_fibonacci(-42) == -1:%d\n", ft_fibonacci(-42));
+	printf("ft_fibonacci(0) == 0:%d\n", ft_fibonacci(0));
+	printf("ft_fibonacci(1) == 1:%d\n", ft_fibonacci(1));
+	printf("ft_fibonacci(2) == 1:%d\n", ft_fibonacci(2));
+	printf("ft_fibonacci(3) == 2:%d\n", ft_fibonacci(3));
+	printf("ft_fibonacci(10) == 55:%d\n", ft_fibonacci(10));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_fibonacci.c           
+ft_fibonacci.c: Error!
+Error: RETURN_PARENTHESIS   (line:  22, col:  16):	Return value must be in parenthesis
+e3r11p9% vi ft_fibonacci.c                                
+e3r11p9% cat ft_fibonacci.c                                
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 08:17:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 08:34:36 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_fibonacci(int index)
+{
+	if (index < 0)
+		return (-1);
+	else if (index == 0)
+		return (0);
+	else if (index == 1)
+		return (1);
+	else
+		return (ft_fibonacci(index - 2) + ft_fibonacci(n - 1));
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_fibonacci.c
+ft_fibonacci.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_fibonacci.c 
+test_ft_fibonacci.c: Error!
+Error: INVALID_HEADER       (line:   1, col:   1):	Missing or invalid 42 header
+e3r11p9% vi test_ft_fibonacci.c                                
+e3r11p9% cat test_ft_fibonacci.c                               
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_fibonacci.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 08:35:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 08:35:06 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_fibonacci(int index);
+
+int	main(void)
+{
+	printf("ft_fibonacci(-42) == -1:%d\n", ft_fibonacci(-42));
+	printf("ft_fibonacci(0) == 0:%d\n", ft_fibonacci(0));
+	printf("ft_fibonacci(1) == 1:%d\n", ft_fibonacci(1));
+	printf("ft_fibonacci(2) == 1:%d\n", ft_fibonacci(2));
+	printf("ft_fibonacci(3) == 2:%d\n", ft_fibonacci(3));
+	printf("ft_fibonacci(10) == 55:%d\n", ft_fibonacci(10));
+	return (0);
+}
+e3r11p9% ./test_ft_fibonacci.c                                    
+zsh: permission denied: ./test_ft_fibonacci.c
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_fibonacci ft_fibonacci.c test_ft_fibonacci.c 
+ft_fibonacci.c: In function ‘ft_fibonacci’:
+ft_fibonacci.c:22:50: error: ‘n’ undeclared (first use in this function)
+   22 |   return (ft_fibonacci(index - 2) + ft_fibonacci(n - 1));
+      |                                                  ^
+ft_fibonacci.c:22:50: note: each undeclared identifier is reported only once for each function it appears in
+ft_fibonacci.c:23:1: error: control reaches end of non-void function [-Werror=return-type]
+   23 | }
+      | ^
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_fibonacci.c                                                          
+e3r11p9% vi ft_fibonacci.c                                     
+e3r11p9% cat ft_fibonacci.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_fibonacci.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 08:17:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 08:36:44 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_fibonacci(int index)
+{
+	if (index < 0)
+		return (-1);
+	else if (index == 0)
+		return (0);
+	else if (index == 1)
+		return (1);
+	else
+		return (ft_fibonacci(index - 2) + ft_fibonacci(index - 1));
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_fibonacci.c                    
+ft_fibonacci.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_fibonacci ft_fibonacci.c test_ft_fibonacci.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 08:37 .
+drwxr-xr-x 7 hauerbac 2023_paris  4096 Feb 21 08:14 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1095 Feb 21 08:36 ft_fibonacci.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16032 Feb 21 08:37 test_ft_fibonacci
+-rw-r--r-- 1 hauerbac 2023_paris  1312 Feb 21 08:35 test_ft_fibonacci.c
+e3r11p9% ./test_ft_fibonacci 
+ft_fibonacci(-42) == -1:-1
+ft_fibonacci(0) == 0:0
+ft_fibonacci(1) == 1:1
+ft_fibonacci(2) == 1:1
+ft_fibonacci(3) == 2:2
+ft_fibonacci(10) == 55:55
+e3r11p9% cd ..
+-----------------------------------------------------------------------------------------------------------------------
+
+Pour accélérer la recherche de la racine d'un carré parfait, on peut faire appel à la dichotomie. Voici donc la version rapide de l'algorithme sus-cité :
+dd
+Lire(nombre);
+ 
+racineGauche = 0;
+racineDroite = nombre / 2;
+carreTrouve = FAUX;
+Tant que (racineGauche < racineDroite) et (!carreTrouve)
+  racineMilieu = (racineGauche + racineDroite) / 2;
+  carreParfait = racineMilieu * racineMilieu;
+  Si nombre == carreParfait
+    carreTrouve = VRAI;
+  Sinon
+    Si nombre > carreParfait
+      racineGauche = racineMilieu + 1;
+    Sinon
+      racineDroite = racineMilieu - 1;
+    Fin Si
+  Fin Si
+Fin Tant que
+ 
+Si carreParfait alors
+  Afficher(racine);
+Sinon
+  Afficher(le nombre n'est pas un carré parfait !);
+
+e3r11p9% mkdir ex05
+e3r11p9% cd ex05
+e3r11p9% vi ft_sqrt.c
+e3r11p9% cat ft_sqrt.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 09:16:40 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int	i;
+	float	sqrt;
+
+	if (nb <= 0)
+		return (0);
+	else
+	{
+		i = 1;
+		sqrt = 1.0;
+		while (i <= nb)
+		{
+			sqrt = (sqrt + nb / sqrt) / 2.0;
+			i = (int) (sqrt * sqrt);
+		}
+		if (i == nb)
+			return ((int) sqrt);
+		else
+			return (0);
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c                               
+ft_sqrt.c: Error!
+Error: MISALIGNED_VAR_DECL  (line:  16, col:  13):	Misaligned variable declaration
+Error: NO_SPC_AFR_PAR       (line:  27, col:  21):	Extra space after parenthesis (brace/bracket)
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% cat ft_sqrt.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 09:18:19 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		i;
+	float	sqrt;
+
+	if (nb <= 0)
+		return (0);
+	else
+	{
+		i = 1;
+		sqrt = 1.0;
+		while (i <= nb)
+		{
+			sqrt = (sqrt + nb / sqrt) / 2.0;
+			i = (int)(sqrt * sqrt);
+		}
+		if (i == nb)
+			return ((int) sqrt);
+		else
+			return (0);
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c
+ft_sqrt.c: OK!
+e3r11p9% vi test_ft_sqrt.c 
+e3r11p9% cat test_ft_sqrt.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_sqrt.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:21:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 09:21:37 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb);
+
+int	main(void)
+{
+	printf("ft_sqrt(100) == 10:%d\n", ft_sqrt(100));
+	printf("ft_sqrt(36) == 6:%d\n", ft_sqrt(36));
+	printf("ft_sqrt(37) == 0:%d\n", ft_sqrt(37));
+	printf("ft_sqrt(10000) == 100:%d\n", ft_sqrt(10000));
+	printf("ft_sqrt(10001) == 0:%d\n", ft_sqrt(10001));
+	printf("ft_sqrt(4000000) == 2000:%d\n", ft_sqrt(4000000));
+	printf("ft_sqrt(-36) == 0:%d\n", ft_sqrt(-36));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_sqrt.c 
+test_ft_sqrt.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c               
+test_ft_sqrt.c: In function ‘main’:
+test_ft_sqrt.c:17:2: error: implicit declaration of function ‘printf’ [-Werror=implicit-function-declaration]
+   17 |  printf("ft_sqrt(100) == 10:%d\n", ft_sqrt(100));
+      |  ^~~~~~
+test_ft_sqrt.c:17:2: error: incompatible implicit declaration of built-in function ‘printf’ [-Werror]
+test_ft_sqrt.c:1:1: note: include ‘<stdio.h>’ or provide a declaration of ‘printf’
+  +++ |+#include <stdio.h>
+    1 | /* ************************************************************************** */
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_sqrt.c                                     
+e3r11p9% cat test_ft_sqrt.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_sqrt.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:21:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 09:22:47 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb);
+
+int	main(void)
+{
+	printf("ft_sqrt(100) == 10:%d\n", ft_sqrt(100));
+	printf("ft_sqrt(36) == 6:%d\n", ft_sqrt(36));
+	printf("ft_sqrt(37) == 0:%d\n", ft_sqrt(37));
+	printf("ft_sqrt(10000) == 100:%d\n", ft_sqrt(10000));
+	printf("ft_sqrt(10001) == 0:%d\n", ft_sqrt(10001));
+	printf("ft_sqrt(4000000) == 2000:%d\n", ft_sqrt(4000000));
+	printf("ft_sqrt(-36) == 0:%d\n", ft_sqrt(-36));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_sqrt.c           
+test_ft_sqrt.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 09:23 .
+drwxr-xr-x 8 hauerbac 2023_paris  4096 Feb 21 08:37 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1152 Feb 21 09:18 ft_sqrt.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb 21 09:23 test_ft_sqrt
+-rw-r--r-- 1 hauerbac 2023_paris  1327 Feb 21 09:22 test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt 
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% cat ft_sqrt.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 09:44:47 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+	float	perfect_square;
+
+	if (nb <= 0)
+		return (0);
+	else
+	{
+		is_found =0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			perfect_square = middle_sqrt * middle_sqrt;
+			if (nb == perfect_square)
+				is_found = 1;
+			else
+			{
+				if (nb > perfect_square)
+					left_square = middle_square + 1;
+				else
+					right_sqrt = middle_square - 1;
+			}
+		}
+		if (nb == perfect_square)
+			return ((int) middle_sqrt);
+		else
+			return (0);
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c 
+ft_sqrt.c: Error!
+Error: SPC_AFTER_OPERATOR   (line:  25, col:  18):	missing space after operator
+Error: TOO_MANY_LINES       (line:  47, col:   1):	Function has more than 25 lines
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% vi ft_sqrt.c                                      
+e3r11p9% cat ft_sqrt.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 09:49:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb <= 0)
+		return (0);
+	else
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb == middle_sqrt * middle_sqrt)
+				is_found = 1;
+			else
+			{
+				if (nb > middle_sqrt * middle_sqrt)
+					left_square = middle_square + 1;
+				else
+					right_sqrt = middle_square - 1;
+			}
+		}
+		if (nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+		else
+			return (0);
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c
+ft_sqrt.c: Error!
+Error: TOO_MANY_LINES       (line:  45, col:   1):	Function has more than 25 lines
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% cat ft_sqrt.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 09:56:22 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > middle_sqrt * middle_sqrt)
+				left_square = middle_square + 1;
+			else if (nb < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_square - 1;
+			else
+				is_found = 1;
+		}
+		if (nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c
+ft_sqrt.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+ft_sqrt.c: In function ‘ft_sqrt’:
+ft_sqrt.c:29:5: error: ‘left_square’ undeclared (first use in this function); did you mean ‘left_sqrt’?
+   29 |     left_square = middle_square + 1;
+      |     ^~~~~~~~~~~
+      |     left_sqrt
+ft_sqrt.c:29:5: note: each undeclared identifier is reported only once for each function it appears in
+ft_sqrt.c:29:19: error: ‘middle_square’ undeclared (first use in this function); did you mean ‘middle_sqrt’?
+   29 |     left_square = middle_square + 1;
+      |                   ^~~~~~~~~~~~~
+      |                   middle_sqrt
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c                
+ft_sqrt.c: OK!
+e3r11p9% cat ft_sqrt.c                                   
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 09:58:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt + 1;
+			else if (nb < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt - 1;
+			else
+				is_found = 1;
+		}
+		if (nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 09:58 .
+drwxr-xr-x 8 hauerbac 2023_paris  4096 Feb 21 08:37 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1431 Feb 21 09:58 ft_sqrt.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb 21 09:58 test_ft_sqrt
+-rw-r--r-- 1 hauerbac 2023_paris  1327 Feb 21 09:22 test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt 
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                      
+e3r11p9% cat ft_sqrt.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:03:35 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if ((float) nb > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if ((float) nb < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if ((float) nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c                
+ft_sqrt.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ls -al                                           
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 10:03 .
+drwxr-xr-x 8 hauerbac 2023_paris  4096 Feb 21 08:37 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1459 Feb 21 10:03 ft_sqrt.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb 21 10:03 test_ft_sqrt
+-rw-r--r-- 1 hauerbac 2023_paris  1327 Feb 21 09:22 test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% cat ft_sqrt.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:06:00 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		printf("right_sqrt = %.2f\n", right_sqrt);
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			printf("middle_sqrt = %.2f\n", middle_sqrt);
+			if ((float) nb > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if ((float) nb < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if ((float) nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+right_sqrt = 50.00
+middle_sqrt = 25.00
+middle_sqrt = 12.00
+middle_sqrt = 5.50
+middle_sqrt = 8.75
+middle_sqrt = 10.38
+ft_sqrt(100) == 10:0
+right_sqrt = 18.00
+middle_sqrt = 9.00
+middle_sqrt = 4.00
+middle_sqrt = 6.50
+middle_sqrt = 5.25
+ft_sqrt(36) == 6:0
+right_sqrt = 18.50
+middle_sqrt = 9.25
+middle_sqrt = 4.12
+middle_sqrt = 6.69
+middle_sqrt = 5.41
+ft_sqrt(37) == 0:0
+right_sqrt = 5000.00
+middle_sqrt = 2500.00
+middle_sqrt = 1249.50
+middle_sqrt = 624.25
+middle_sqrt = 311.62
+middle_sqrt = 155.31
+middle_sqrt = 77.16
+middle_sqrt = 116.23
+middle_sqrt = 96.70
+middle_sqrt = 106.46
+middle_sqrt = 101.58
+middle_sqrt = 99.14
+middle_sqrt = 100.36
+ft_sqrt(10000) == 100:0
+right_sqrt = 5000.50
+middle_sqrt = 2500.25
+middle_sqrt = 1249.62
+middle_sqrt = 624.31
+middle_sqrt = 311.66
+middle_sqrt = 155.33
+middle_sqrt = 77.16
+middle_sqrt = 116.25
+middle_sqrt = 96.71
+middle_sqrt = 106.48
+middle_sqrt = 101.59
+middle_sqrt = 99.15
+middle_sqrt = 100.37
+ft_sqrt(10001) == 0:0
+right_sqrt = 2000000.00
+middle_sqrt = 1000000.00
+middle_sqrt = 499999.50
+middle_sqrt = 249999.25
+middle_sqrt = 124999.12
+middle_sqrt = 62499.06
+middle_sqrt = 31249.03
+middle_sqrt = 15624.02
+middle_sqrt = 7811.51
+middle_sqrt = 3905.25
+middle_sqrt = 1952.13
+middle_sqrt = 2928.69
+middle_sqrt = 2440.41
+middle_sqrt = 2196.27
+middle_sqrt = 2074.20
+middle_sqrt = 2013.16
+middle_sqrt = 1982.64
+middle_sqrt = 1997.90
+middle_sqrt = 2005.53
+middle_sqrt = 2001.72
+middle_sqrt = 1999.81
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:08:45 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			printf("left_sqrt = %.2f\n", left_sqrt);
+			printf("right_sqrt = %.2f\n", right_sqrt);
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			printf("middle_sqrt = %.2f\n", middle_sqrt);
+			if ((float) nb > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if ((float) nb < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		printf("middle_sqrt * middle_sqrt = %.2f\n", middle_sqrt * middle_sqrt);
+		if ((float) nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+left_sqrt = 0.00
+right_sqrt = 50.00
+middle_sqrt = 25.00
+left_sqrt = 0.00
+right_sqrt = 24.00
+middle_sqrt = 12.00
+left_sqrt = 0.00
+right_sqrt = 11.00
+middle_sqrt = 5.50
+left_sqrt = 6.50
+right_sqrt = 11.00
+middle_sqrt = 8.75
+left_sqrt = 9.75
+right_sqrt = 11.00
+middle_sqrt = 10.38
+middle_sqrt * middle_sqrt = 107.64
+ft_sqrt(100) == 10:0
+left_sqrt = 0.00
+right_sqrt = 18.00
+middle_sqrt = 9.00
+left_sqrt = 0.00
+right_sqrt = 8.00
+middle_sqrt = 4.00
+left_sqrt = 5.00
+right_sqrt = 8.00
+middle_sqrt = 6.50
+left_sqrt = 5.00
+right_sqrt = 5.50
+middle_sqrt = 5.25
+middle_sqrt * middle_sqrt = 27.56
+ft_sqrt(36) == 6:0
+left_sqrt = 0.00
+right_sqrt = 18.50
+middle_sqrt = 9.25
+left_sqrt = 0.00
+right_sqrt = 8.25
+middle_sqrt = 4.12
+left_sqrt = 5.12
+right_sqrt = 8.25
+middle_sqrt = 6.69
+left_sqrt = 5.12
+right_sqrt = 5.69
+middle_sqrt = 5.41
+middle_sqrt * middle_sqrt = 29.23
+ft_sqrt(37) == 0:0
+left_sqrt = 0.00
+right_sqrt = 5000.00
+middle_sqrt = 2500.00
+left_sqrt = 0.00
+right_sqrt = 2499.00
+middle_sqrt = 1249.50
+left_sqrt = 0.00
+right_sqrt = 1248.50
+middle_sqrt = 624.25
+left_sqrt = 0.00
+right_sqrt = 623.25
+middle_sqrt = 311.62
+left_sqrt = 0.00
+right_sqrt = 310.62
+middle_sqrt = 155.31
+left_sqrt = 0.00
+right_sqrt = 154.31
+middle_sqrt = 77.16
+left_sqrt = 78.16
+right_sqrt = 154.31
+middle_sqrt = 116.23
+left_sqrt = 78.16
+right_sqrt = 115.23
+middle_sqrt = 96.70
+left_sqrt = 97.70
+right_sqrt = 115.23
+middle_sqrt = 106.46
+left_sqrt = 97.70
+right_sqrt = 105.46
+middle_sqrt = 101.58
+left_sqrt = 97.70
+right_sqrt = 100.58
+middle_sqrt = 99.14
+left_sqrt = 100.14
+right_sqrt = 100.58
+middle_sqrt = 100.36
+middle_sqrt * middle_sqrt = 10071.91
+ft_sqrt(10000) == 100:0
+left_sqrt = 0.00
+right_sqrt = 5000.50
+middle_sqrt = 2500.25
+left_sqrt = 0.00
+right_sqrt = 2499.25
+middle_sqrt = 1249.62
+left_sqrt = 0.00
+right_sqrt = 1248.62
+middle_sqrt = 624.31
+left_sqrt = 0.00
+right_sqrt = 623.31
+middle_sqrt = 311.66
+left_sqrt = 0.00
+right_sqrt = 310.66
+middle_sqrt = 155.33
+left_sqrt = 0.00
+right_sqrt = 154.33
+middle_sqrt = 77.16
+left_sqrt = 78.16
+right_sqrt = 154.33
+middle_sqrt = 116.25
+left_sqrt = 78.16
+right_sqrt = 115.25
+middle_sqrt = 96.71
+left_sqrt = 97.71
+right_sqrt = 115.25
+middle_sqrt = 106.48
+left_sqrt = 97.71
+right_sqrt = 105.48
+middle_sqrt = 101.59
+left_sqrt = 97.71
+right_sqrt = 100.59
+middle_sqrt = 99.15
+left_sqrt = 100.15
+right_sqrt = 100.59
+middle_sqrt = 100.37
+middle_sqrt * middle_sqrt = 10073.94
+ft_sqrt(10001) == 0:0
+left_sqrt = 0.00
+right_sqrt = 2000000.00
+middle_sqrt = 1000000.00
+left_sqrt = 0.00
+right_sqrt = 999999.00
+middle_sqrt = 499999.50
+left_sqrt = 0.00
+right_sqrt = 499998.50
+middle_sqrt = 249999.25
+left_sqrt = 0.00
+right_sqrt = 249998.25
+middle_sqrt = 124999.12
+left_sqrt = 0.00
+right_sqrt = 124998.12
+middle_sqrt = 62499.06
+left_sqrt = 0.00
+right_sqrt = 62498.06
+middle_sqrt = 31249.03
+left_sqrt = 0.00
+right_sqrt = 31248.03
+middle_sqrt = 15624.02
+left_sqrt = 0.00
+right_sqrt = 15623.02
+middle_sqrt = 7811.51
+left_sqrt = 0.00
+right_sqrt = 7810.51
+middle_sqrt = 3905.25
+left_sqrt = 0.00
+right_sqrt = 3904.25
+middle_sqrt = 1952.13
+left_sqrt = 1953.13
+right_sqrt = 3904.25
+middle_sqrt = 2928.69
+left_sqrt = 1953.13
+right_sqrt = 2927.69
+middle_sqrt = 2440.41
+left_sqrt = 1953.13
+right_sqrt = 2439.41
+middle_sqrt = 2196.27
+left_sqrt = 1953.13
+right_sqrt = 2195.27
+middle_sqrt = 2074.20
+left_sqrt = 1953.13
+right_sqrt = 2073.20
+middle_sqrt = 2013.16
+left_sqrt = 1953.13
+right_sqrt = 2012.16
+middle_sqrt = 1982.64
+left_sqrt = 1983.64
+right_sqrt = 2012.16
+middle_sqrt = 1997.90
+left_sqrt = 1998.90
+right_sqrt = 2012.16
+middle_sqrt = 2005.53
+left_sqrt = 1998.90
+right_sqrt = 2004.53
+middle_sqrt = 2001.72
+left_sqrt = 1998.90
+right_sqrt = 2000.72
+middle_sqrt = 1999.81
+middle_sqrt * middle_sqrt = 3999242.75
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:12:14 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = (float) nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			printf("left_sqrt = %.2f\n", left_sqrt);
+			printf("right_sqrt = %.2f\n", right_sqrt);
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			printf("middle_sqrt = %.2f\n", middle_sqrt);
+			if ((float) nb > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if ((float) nb < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		printf("middle_sqrt * middle_sqrt = %.2f\n", middle_sqrt * middle_sqrt);
+		if ((float) nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+left_sqrt = 0.00
+right_sqrt = 50.00
+middle_sqrt = 25.00
+left_sqrt = 0.00
+right_sqrt = 24.00
+middle_sqrt = 12.00
+left_sqrt = 0.00
+right_sqrt = 11.00
+middle_sqrt = 5.50
+left_sqrt = 6.50
+right_sqrt = 11.00
+middle_sqrt = 8.75
+left_sqrt = 9.75
+right_sqrt = 11.00
+middle_sqrt = 10.38
+middle_sqrt * middle_sqrt = 107.64
+ft_sqrt(100) == 10:0
+left_sqrt = 0.00
+right_sqrt = 18.00
+middle_sqrt = 9.00
+left_sqrt = 0.00
+right_sqrt = 8.00
+middle_sqrt = 4.00
+left_sqrt = 5.00
+right_sqrt = 8.00
+middle_sqrt = 6.50
+left_sqrt = 5.00
+right_sqrt = 5.50
+middle_sqrt = 5.25
+middle_sqrt * middle_sqrt = 27.56
+ft_sqrt(36) == 6:0
+left_sqrt = 0.00
+right_sqrt = 18.50
+middle_sqrt = 9.25
+left_sqrt = 0.00
+right_sqrt = 8.25
+middle_sqrt = 4.12
+left_sqrt = 5.12
+right_sqrt = 8.25
+middle_sqrt = 6.69
+left_sqrt = 5.12
+right_sqrt = 5.69
+middle_sqrt = 5.41
+middle_sqrt * middle_sqrt = 29.23
+ft_sqrt(37) == 0:0
+left_sqrt = 0.00
+right_sqrt = 5000.00
+middle_sqrt = 2500.00
+left_sqrt = 0.00
+right_sqrt = 2499.00
+middle_sqrt = 1249.50
+left_sqrt = 0.00
+right_sqrt = 1248.50
+middle_sqrt = 624.25
+left_sqrt = 0.00
+right_sqrt = 623.25
+middle_sqrt = 311.62
+left_sqrt = 0.00
+right_sqrt = 310.62
+middle_sqrt = 155.31
+left_sqrt = 0.00
+right_sqrt = 154.31
+middle_sqrt = 77.16
+left_sqrt = 78.16
+right_sqrt = 154.31
+middle_sqrt = 116.23
+left_sqrt = 78.16
+right_sqrt = 115.23
+middle_sqrt = 96.70
+left_sqrt = 97.70
+right_sqrt = 115.23
+middle_sqrt = 106.46
+left_sqrt = 97.70
+right_sqrt = 105.46
+middle_sqrt = 101.58
+left_sqrt = 97.70
+right_sqrt = 100.58
+middle_sqrt = 99.14
+left_sqrt = 100.14
+right_sqrt = 100.58
+middle_sqrt = 100.36
+middle_sqrt * middle_sqrt = 10071.91
+ft_sqrt(10000) == 100:0
+left_sqrt = 0.00
+right_sqrt = 5000.50
+middle_sqrt = 2500.25
+left_sqrt = 0.00
+right_sqrt = 2499.25
+middle_sqrt = 1249.62
+left_sqrt = 0.00
+right_sqrt = 1248.62
+middle_sqrt = 624.31
+left_sqrt = 0.00
+right_sqrt = 623.31
+middle_sqrt = 311.66
+left_sqrt = 0.00
+right_sqrt = 310.66
+middle_sqrt = 155.33
+left_sqrt = 0.00
+right_sqrt = 154.33
+middle_sqrt = 77.16
+left_sqrt = 78.16
+right_sqrt = 154.33
+middle_sqrt = 116.25
+left_sqrt = 78.16
+right_sqrt = 115.25
+middle_sqrt = 96.71
+left_sqrt = 97.71
+right_sqrt = 115.25
+middle_sqrt = 106.48
+left_sqrt = 97.71
+right_sqrt = 105.48
+middle_sqrt = 101.59
+left_sqrt = 97.71
+right_sqrt = 100.59
+middle_sqrt = 99.15
+left_sqrt = 100.15
+right_sqrt = 100.59
+middle_sqrt = 100.37
+middle_sqrt * middle_sqrt = 10073.94
+ft_sqrt(10001) == 0:0
+left_sqrt = 0.00
+right_sqrt = 2000000.00
+middle_sqrt = 1000000.00
+left_sqrt = 0.00
+right_sqrt = 999999.00
+middle_sqrt = 499999.50
+left_sqrt = 0.00
+right_sqrt = 499998.50
+middle_sqrt = 249999.25
+left_sqrt = 0.00
+right_sqrt = 249998.25
+middle_sqrt = 124999.12
+left_sqrt = 0.00
+right_sqrt = 124998.12
+middle_sqrt = 62499.06
+left_sqrt = 0.00
+right_sqrt = 62498.06
+middle_sqrt = 31249.03
+left_sqrt = 0.00
+right_sqrt = 31248.03
+middle_sqrt = 15624.02
+left_sqrt = 0.00
+right_sqrt = 15623.02
+middle_sqrt = 7811.51
+left_sqrt = 0.00
+right_sqrt = 7810.51
+middle_sqrt = 3905.25
+left_sqrt = 0.00
+right_sqrt = 3904.25
+middle_sqrt = 1952.13
+left_sqrt = 1953.13
+right_sqrt = 3904.25
+middle_sqrt = 2928.69
+left_sqrt = 1953.13
+right_sqrt = 2927.69
+middle_sqrt = 2440.41
+left_sqrt = 1953.13
+right_sqrt = 2439.41
+middle_sqrt = 2196.27
+left_sqrt = 1953.13
+right_sqrt = 2195.27
+middle_sqrt = 2074.20
+left_sqrt = 1953.13
+right_sqrt = 2073.20
+middle_sqrt = 2013.16
+left_sqrt = 1953.13
+right_sqrt = 2012.16
+middle_sqrt = 1982.64
+left_sqrt = 1983.64
+right_sqrt = 2012.16
+middle_sqrt = 1997.90
+left_sqrt = 1998.90
+right_sqrt = 2012.16
+middle_sqrt = 2005.53
+left_sqrt = 1998.90
+right_sqrt = 2004.53
+middle_sqrt = 2001.72
+left_sqrt = 1998.90
+right_sqrt = 2000.72
+middle_sqrt = 1999.81
+middle_sqrt * middle_sqrt = 3999242.75
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:30:10 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			printf("left_sqrt = %.2f\n", left_sqrt);
+			printf("right_sqrt = %.2f\n", right_sqrt);
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			printf("middle_sqrt = %.2f\n", middle_sqrt);
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		printf("middle_sqrt * middle_sqrt = %.2f\n", middle_sqrt * middle_sqrt);
+		if ((float) nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+left_sqrt = 0.00
+right_sqrt = 50.00
+middle_sqrt = 25.00
+left_sqrt = 0.00
+right_sqrt = 24.00
+middle_sqrt = 12.00
+left_sqrt = 0.00
+right_sqrt = 11.00
+middle_sqrt = 5.50
+left_sqrt = 6.50
+right_sqrt = 11.00
+middle_sqrt = 8.75
+left_sqrt = 9.75
+right_sqrt = 11.00
+middle_sqrt = 10.38
+middle_sqrt * middle_sqrt = 107.64
+ft_sqrt(100) == 10:0
+left_sqrt = 0.00
+right_sqrt = 18.00
+middle_sqrt = 9.00
+left_sqrt = 0.00
+right_sqrt = 8.00
+middle_sqrt = 4.00
+left_sqrt = 5.00
+right_sqrt = 8.00
+middle_sqrt = 6.50
+middle_sqrt * middle_sqrt = 42.25
+ft_sqrt(36) == 6:0
+left_sqrt = 0.00
+right_sqrt = 18.50
+middle_sqrt = 9.25
+left_sqrt = 0.00
+right_sqrt = 8.25
+middle_sqrt = 4.12
+left_sqrt = 5.12
+right_sqrt = 8.25
+middle_sqrt = 6.69
+left_sqrt = 7.69
+right_sqrt = 8.25
+middle_sqrt = 7.97
+middle_sqrt * middle_sqrt = 63.50
+ft_sqrt(37) == 0:0
+left_sqrt = 0.00
+right_sqrt = 5000.00
+middle_sqrt = 2500.00
+left_sqrt = 0.00
+right_sqrt = 2499.00
+middle_sqrt = 1249.50
+left_sqrt = 0.00
+right_sqrt = 1248.50
+middle_sqrt = 624.25
+left_sqrt = 0.00
+right_sqrt = 623.25
+middle_sqrt = 311.62
+left_sqrt = 0.00
+right_sqrt = 310.62
+middle_sqrt = 155.31
+left_sqrt = 0.00
+right_sqrt = 154.31
+middle_sqrt = 77.16
+left_sqrt = 78.16
+right_sqrt = 154.31
+middle_sqrt = 116.23
+left_sqrt = 78.16
+right_sqrt = 115.23
+middle_sqrt = 96.70
+left_sqrt = 97.70
+right_sqrt = 115.23
+middle_sqrt = 106.46
+left_sqrt = 97.70
+right_sqrt = 105.46
+middle_sqrt = 101.58
+left_sqrt = 97.70
+right_sqrt = 100.58
+middle_sqrt = 99.14
+left_sqrt = 100.14
+right_sqrt = 100.58
+middle_sqrt = 100.36
+middle_sqrt * middle_sqrt = 10071.91
+ft_sqrt(10000) == 100:0
+left_sqrt = 0.00
+right_sqrt = 5000.50
+middle_sqrt = 2500.25
+left_sqrt = 0.00
+right_sqrt = 2499.25
+middle_sqrt = 1249.62
+left_sqrt = 0.00
+right_sqrt = 1248.62
+middle_sqrt = 624.31
+left_sqrt = 0.00
+right_sqrt = 623.31
+middle_sqrt = 311.66
+left_sqrt = 0.00
+right_sqrt = 310.66
+middle_sqrt = 155.33
+left_sqrt = 0.00
+right_sqrt = 154.33
+middle_sqrt = 77.16
+left_sqrt = 78.16
+right_sqrt = 154.33
+middle_sqrt = 116.25
+left_sqrt = 78.16
+right_sqrt = 115.25
+middle_sqrt = 96.71
+left_sqrt = 97.71
+right_sqrt = 115.25
+middle_sqrt = 106.48
+left_sqrt = 97.71
+right_sqrt = 105.48
+middle_sqrt = 101.59
+left_sqrt = 97.71
+right_sqrt = 100.59
+middle_sqrt = 99.15
+left_sqrt = 100.15
+right_sqrt = 100.59
+middle_sqrt = 100.37
+middle_sqrt * middle_sqrt = 10073.94
+ft_sqrt(10001) == 0:0
+left_sqrt = 0.00
+right_sqrt = 2000000.00
+middle_sqrt = 1000000.00
+left_sqrt = 1000001.00
+right_sqrt = 2000000.00
+middle_sqrt = 1500000.50
+left_sqrt = 1500001.50
+right_sqrt = 2000000.00
+middle_sqrt = 1750000.75
+left_sqrt = 1500001.50
+right_sqrt = 1749999.75
+middle_sqrt = 1625000.62
+left_sqrt = 1625001.62
+right_sqrt = 1749999.75
+middle_sqrt = 1687500.75
+left_sqrt = 1625001.62
+right_sqrt = 1687499.75
+middle_sqrt = 1656250.75
+left_sqrt = 1656251.75
+right_sqrt = 1687499.75
+middle_sqrt = 1671875.75
+left_sqrt = 1671876.75
+right_sqrt = 1687499.75
+middle_sqrt = 1679688.25
+left_sqrt = 1679689.25
+right_sqrt = 1687499.75
+middle_sqrt = 1683594.50
+left_sqrt = 1683595.50
+right_sqrt = 1687499.75
+middle_sqrt = 1685547.62
+left_sqrt = 1683595.50
+right_sqrt = 1685546.62
+middle_sqrt = 1684571.00
+left_sqrt = 1684572.00
+right_sqrt = 1685546.62
+middle_sqrt = 1685059.25
+left_sqrt = 1684572.00
+right_sqrt = 1685058.25
+middle_sqrt = 1684815.12
+left_sqrt = 1684816.12
+right_sqrt = 1685058.25
+middle_sqrt = 1684937.25
+left_sqrt = 1684816.12
+right_sqrt = 1684936.25
+middle_sqrt = 1684876.25
+left_sqrt = 1684877.25
+right_sqrt = 1684936.25
+middle_sqrt = 1684906.75
+left_sqrt = 1684907.75
+right_sqrt = 1684936.25
+middle_sqrt = 1684922.00
+left_sqrt = 1684923.00
+right_sqrt = 1684936.25
+middle_sqrt = 1684929.62
+left_sqrt = 1684923.00
+right_sqrt = 1684928.62
+middle_sqrt = 1684925.75
+left_sqrt = 1684926.75
+right_sqrt = 1684928.62
+middle_sqrt = 1684927.75
+middle_sqrt * middle_sqrt = 2838981509120.00
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:32:06 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			printf("left_sqrt = %.2f\n", left_sqrt);
+			printf("right_sqrt = %.2f\n", right_sqrt);
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			printf("middle_sqrt = %.2f\n", middle_sqrt);
+			printf("(int) middle_sqrt * (int) middle_sqrt = %.2f\n", (int) middle_sqrt * (int) middle_sqrt);
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		printf("middle_sqrt * middle_sqrt = %.2f\n", middle_sqrt * middle_sqrt);
+		if ((float) nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+ft_sqrt.c: In function ‘ft_sqrt’:
+ft_sqrt.c:33:55: error: format ‘%f’ expects argument of type ‘double’, but argument 2 has type ‘int’ [-Werror=format=]
+   33 |    printf("(int) middle_sqrt * (int) middle_sqrt = %.2f\n", (int) middle_sqrt * (int) middle_sqrt);
+      |                                                    ~~~^     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                       |                       |
+      |                                                       double                  int
+      |                                                    %.2d
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:32:45 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			printf("left_sqrt = %.2f\n", left_sqrt);
+			printf("right_sqrt = %.2f\n", right_sqrt);
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			printf("middle_sqrt = %.2f\n", middle_sqrt);
+			printf("(int) middle_sqrt * (int) middle_sqrt = %.2d\n", (int) middle_sqrt * (int) middle_sqrt);
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		printf("middle_sqrt * middle_sqrt = %.2f\n", middle_sqrt * middle_sqrt);
+		if ((float) nb == middle_sqrt * middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+left_sqrt = 0.00
+right_sqrt = 50.00
+middle_sqrt = 25.00
+(int) middle_sqrt * (int) middle_sqrt = 625
+left_sqrt = 0.00
+right_sqrt = 24.00
+middle_sqrt = 12.00
+(int) middle_sqrt * (int) middle_sqrt = 144
+left_sqrt = 0.00
+right_sqrt = 11.00
+middle_sqrt = 5.50
+(int) middle_sqrt * (int) middle_sqrt = 25
+left_sqrt = 6.50
+right_sqrt = 11.00
+middle_sqrt = 8.75
+(int) middle_sqrt * (int) middle_sqrt = 64
+left_sqrt = 9.75
+right_sqrt = 11.00
+middle_sqrt = 10.38
+(int) middle_sqrt * (int) middle_sqrt = 100
+middle_sqrt * middle_sqrt = 107.64
+ft_sqrt(100) == 10:0
+left_sqrt = 0.00
+right_sqrt = 18.00
+middle_sqrt = 9.00
+(int) middle_sqrt * (int) middle_sqrt = 81
+left_sqrt = 0.00
+right_sqrt = 8.00
+middle_sqrt = 4.00
+(int) middle_sqrt * (int) middle_sqrt = 16
+left_sqrt = 5.00
+right_sqrt = 8.00
+middle_sqrt = 6.50
+(int) middle_sqrt * (int) middle_sqrt = 36
+middle_sqrt * middle_sqrt = 42.25
+ft_sqrt(36) == 6:0
+left_sqrt = 0.00
+right_sqrt = 18.50
+middle_sqrt = 9.25
+(int) middle_sqrt * (int) middle_sqrt = 81
+left_sqrt = 0.00
+right_sqrt = 8.25
+middle_sqrt = 4.12
+(int) middle_sqrt * (int) middle_sqrt = 16
+left_sqrt = 5.12
+right_sqrt = 8.25
+middle_sqrt = 6.69
+(int) middle_sqrt * (int) middle_sqrt = 36
+left_sqrt = 7.69
+right_sqrt = 8.25
+middle_sqrt = 7.97
+(int) middle_sqrt * (int) middle_sqrt = 49
+middle_sqrt * middle_sqrt = 63.50
+ft_sqrt(37) == 0:0
+left_sqrt = 0.00
+right_sqrt = 5000.00
+middle_sqrt = 2500.00
+(int) middle_sqrt * (int) middle_sqrt = 6250000
+left_sqrt = 0.00
+right_sqrt = 2499.00
+middle_sqrt = 1249.50
+(int) middle_sqrt * (int) middle_sqrt = 1560001
+left_sqrt = 0.00
+right_sqrt = 1248.50
+middle_sqrt = 624.25
+(int) middle_sqrt * (int) middle_sqrt = 389376
+left_sqrt = 0.00
+right_sqrt = 623.25
+middle_sqrt = 311.62
+(int) middle_sqrt * (int) middle_sqrt = 96721
+left_sqrt = 0.00
+right_sqrt = 310.62
+middle_sqrt = 155.31
+(int) middle_sqrt * (int) middle_sqrt = 24025
+left_sqrt = 0.00
+right_sqrt = 154.31
+middle_sqrt = 77.16
+(int) middle_sqrt * (int) middle_sqrt = 5929
+left_sqrt = 78.16
+right_sqrt = 154.31
+middle_sqrt = 116.23
+(int) middle_sqrt * (int) middle_sqrt = 13456
+left_sqrt = 78.16
+right_sqrt = 115.23
+middle_sqrt = 96.70
+(int) middle_sqrt * (int) middle_sqrt = 9216
+left_sqrt = 97.70
+right_sqrt = 115.23
+middle_sqrt = 106.46
+(int) middle_sqrt * (int) middle_sqrt = 11236
+left_sqrt = 97.70
+right_sqrt = 105.46
+middle_sqrt = 101.58
+(int) middle_sqrt * (int) middle_sqrt = 10201
+left_sqrt = 97.70
+right_sqrt = 100.58
+middle_sqrt = 99.14
+(int) middle_sqrt * (int) middle_sqrt = 9801
+left_sqrt = 100.14
+right_sqrt = 100.58
+middle_sqrt = 100.36
+(int) middle_sqrt * (int) middle_sqrt = 10000
+middle_sqrt * middle_sqrt = 10071.91
+ft_sqrt(10000) == 100:0
+left_sqrt = 0.00
+right_sqrt = 5000.50
+middle_sqrt = 2500.25
+(int) middle_sqrt * (int) middle_sqrt = 6250000
+left_sqrt = 0.00
+right_sqrt = 2499.25
+middle_sqrt = 1249.62
+(int) middle_sqrt * (int) middle_sqrt = 1560001
+left_sqrt = 0.00
+right_sqrt = 1248.62
+middle_sqrt = 624.31
+(int) middle_sqrt * (int) middle_sqrt = 389376
+left_sqrt = 0.00
+right_sqrt = 623.31
+middle_sqrt = 311.66
+(int) middle_sqrt * (int) middle_sqrt = 96721
+left_sqrt = 0.00
+right_sqrt = 310.66
+middle_sqrt = 155.33
+(int) middle_sqrt * (int) middle_sqrt = 24025
+left_sqrt = 0.00
+right_sqrt = 154.33
+middle_sqrt = 77.16
+(int) middle_sqrt * (int) middle_sqrt = 5929
+left_sqrt = 78.16
+right_sqrt = 154.33
+middle_sqrt = 116.25
+(int) middle_sqrt * (int) middle_sqrt = 13456
+left_sqrt = 78.16
+right_sqrt = 115.25
+middle_sqrt = 96.71
+(int) middle_sqrt * (int) middle_sqrt = 9216
+left_sqrt = 97.71
+right_sqrt = 115.25
+middle_sqrt = 106.48
+(int) middle_sqrt * (int) middle_sqrt = 11236
+left_sqrt = 97.71
+right_sqrt = 105.48
+middle_sqrt = 101.59
+(int) middle_sqrt * (int) middle_sqrt = 10201
+left_sqrt = 97.71
+right_sqrt = 100.59
+middle_sqrt = 99.15
+(int) middle_sqrt * (int) middle_sqrt = 9801
+left_sqrt = 100.15
+right_sqrt = 100.59
+middle_sqrt = 100.37
+(int) middle_sqrt * (int) middle_sqrt = 10000
+middle_sqrt * middle_sqrt = 10073.94
+ft_sqrt(10001) == 0:0
+left_sqrt = 0.00
+right_sqrt = 2000000.00
+middle_sqrt = 1000000.00
+(int) middle_sqrt * (int) middle_sqrt = -727379968
+left_sqrt = 1000001.00
+right_sqrt = 2000000.00
+middle_sqrt = 1500000.50
+(int) middle_sqrt * (int) middle_sqrt = -562863104
+left_sqrt = 1500001.50
+right_sqrt = 2000000.00
+middle_sqrt = 1750000.75
+(int) middle_sqrt * (int) middle_sqrt = 188317952
+left_sqrt = 1500001.50
+right_sqrt = 1749999.75
+middle_sqrt = 1625000.62
+(int) middle_sqrt * (int) middle_sqrt = -779887040
+left_sqrt = 1625001.62
+right_sqrt = 1749999.75
+middle_sqrt = 1687500.75
+(int) middle_sqrt * (int) middle_sqrt = 92932752
+left_sqrt = 1625001.62
+right_sqrt = 1687499.75
+middle_sqrt = 1656250.75
+(int) middle_sqrt * (int) middle_sqrt = -1320039644
+left_sqrt = 1656251.75
+right_sqrt = 1687499.75
+middle_sqrt = 1671875.75
+(int) middle_sqrt * (int) middle_sqrt = -857694071
+left_sqrt = 1671876.75
+right_sqrt = 1687499.75
+middle_sqrt = 1679688.25
+(int) middle_sqrt * (int) middle_sqrt = -441736128
+left_sqrt = 1679689.25
+right_sqrt = 1687499.75
+middle_sqrt = 1683594.50
+(int) middle_sqrt * (int) middle_sqrt = -189658524
+left_sqrt = 1683595.50
+right_sqrt = 1687499.75
+middle_sqrt = 1685547.62
+(int) middle_sqrt * (int) middle_sqrt = 2095306553
+left_sqrt = 1683595.50
+right_sqrt = 1685546.62
+middle_sqrt = 1684571.00
+(int) middle_sqrt * (int) middle_sqrt = -1193928615
+left_sqrt = 1684572.00
+right_sqrt = 1685546.62
+middle_sqrt = 1685059.25
+(int) middle_sqrt * (int) middle_sqrt = 450450825
+left_sqrt = 1684572.00
+right_sqrt = 1685058.25
+middle_sqrt = 1684815.12
+(int) middle_sqrt * (int) middle_sqrt = -371798431
+left_sqrt = 1684816.12
+right_sqrt = 1685058.25
+middle_sqrt = 1684937.25
+(int) middle_sqrt * (int) middle_sqrt = 39311313
+left_sqrt = 1684816.12
+right_sqrt = 1684936.25
+middle_sqrt = 1684876.25
+(int) middle_sqrt * (int) middle_sqrt = -166247280
+left_sqrt = 1684877.25
+right_sqrt = 1684936.25
+middle_sqrt = 1684906.75
+(int) middle_sqrt * (int) middle_sqrt = -65153820
+left_sqrt = 1684907.75
+right_sqrt = 1684936.25
+middle_sqrt = 1684922.00
+(int) middle_sqrt * (int) middle_sqrt = -11236572
+left_sqrt = 1684923.00
+right_sqrt = 1684936.25
+middle_sqrt = 1684929.62
+(int) middle_sqrt * (int) middle_sqrt = 12352385
+left_sqrt = 1684923.00
+right_sqrt = 1684928.62
+middle_sqrt = 1684925.75
+(int) middle_sqrt * (int) middle_sqrt = -1127031
+left_sqrt = 1684926.75
+right_sqrt = 1684928.62
+middle_sqrt = 1684927.75
+(int) middle_sqrt * (int) middle_sqrt = 5612673
+middle_sqrt * middle_sqrt = 2838981509120.00
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:36:35 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	float	left_sqrt;
+	float	right_sqrt;
+	float	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			printf("left_sqrt = %.2f\n", left_sqrt);
+			printf("right_sqrt = %.2f\n", right_sqrt);
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			printf("middle_sqrt = %.2f\n", middle_sqrt);
+			printf("(int) middle_sqrt * (int) middle_sqrt = %.2d\n", (int) middle_sqrt * (int) middle_sqrt);
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		printf("middle_sqrt * middle_sqrt = %.2f\n", middle_sqrt * middle_sqrt);
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+left_sqrt = 0.00
+right_sqrt = 50.00
+middle_sqrt = 25.00
+(int) middle_sqrt * (int) middle_sqrt = 625
+left_sqrt = 0.00
+right_sqrt = 24.00
+middle_sqrt = 12.00
+(int) middle_sqrt * (int) middle_sqrt = 144
+left_sqrt = 0.00
+right_sqrt = 11.00
+middle_sqrt = 5.50
+(int) middle_sqrt * (int) middle_sqrt = 25
+left_sqrt = 6.50
+right_sqrt = 11.00
+middle_sqrt = 8.75
+(int) middle_sqrt * (int) middle_sqrt = 64
+left_sqrt = 9.75
+right_sqrt = 11.00
+middle_sqrt = 10.38
+(int) middle_sqrt * (int) middle_sqrt = 100
+middle_sqrt * middle_sqrt = 107.64
+ft_sqrt(100) == 10:10
+left_sqrt = 0.00
+right_sqrt = 18.00
+middle_sqrt = 9.00
+(int) middle_sqrt * (int) middle_sqrt = 81
+left_sqrt = 0.00
+right_sqrt = 8.00
+middle_sqrt = 4.00
+(int) middle_sqrt * (int) middle_sqrt = 16
+left_sqrt = 5.00
+right_sqrt = 8.00
+middle_sqrt = 6.50
+(int) middle_sqrt * (int) middle_sqrt = 36
+middle_sqrt * middle_sqrt = 42.25
+ft_sqrt(36) == 6:6
+left_sqrt = 0.00
+right_sqrt = 18.50
+middle_sqrt = 9.25
+(int) middle_sqrt * (int) middle_sqrt = 81
+left_sqrt = 0.00
+right_sqrt = 8.25
+middle_sqrt = 4.12
+(int) middle_sqrt * (int) middle_sqrt = 16
+left_sqrt = 5.12
+right_sqrt = 8.25
+middle_sqrt = 6.69
+(int) middle_sqrt * (int) middle_sqrt = 36
+left_sqrt = 7.69
+right_sqrt = 8.25
+middle_sqrt = 7.97
+(int) middle_sqrt * (int) middle_sqrt = 49
+middle_sqrt * middle_sqrt = 63.50
+ft_sqrt(37) == 0:0
+left_sqrt = 0.00
+right_sqrt = 5000.00
+middle_sqrt = 2500.00
+(int) middle_sqrt * (int) middle_sqrt = 6250000
+left_sqrt = 0.00
+right_sqrt = 2499.00
+middle_sqrt = 1249.50
+(int) middle_sqrt * (int) middle_sqrt = 1560001
+left_sqrt = 0.00
+right_sqrt = 1248.50
+middle_sqrt = 624.25
+(int) middle_sqrt * (int) middle_sqrt = 389376
+left_sqrt = 0.00
+right_sqrt = 623.25
+middle_sqrt = 311.62
+(int) middle_sqrt * (int) middle_sqrt = 96721
+left_sqrt = 0.00
+right_sqrt = 310.62
+middle_sqrt = 155.31
+(int) middle_sqrt * (int) middle_sqrt = 24025
+left_sqrt = 0.00
+right_sqrt = 154.31
+middle_sqrt = 77.16
+(int) middle_sqrt * (int) middle_sqrt = 5929
+left_sqrt = 78.16
+right_sqrt = 154.31
+middle_sqrt = 116.23
+(int) middle_sqrt * (int) middle_sqrt = 13456
+left_sqrt = 78.16
+right_sqrt = 115.23
+middle_sqrt = 96.70
+(int) middle_sqrt * (int) middle_sqrt = 9216
+left_sqrt = 97.70
+right_sqrt = 115.23
+middle_sqrt = 106.46
+(int) middle_sqrt * (int) middle_sqrt = 11236
+left_sqrt = 97.70
+right_sqrt = 105.46
+middle_sqrt = 101.58
+(int) middle_sqrt * (int) middle_sqrt = 10201
+left_sqrt = 97.70
+right_sqrt = 100.58
+middle_sqrt = 99.14
+(int) middle_sqrt * (int) middle_sqrt = 9801
+left_sqrt = 100.14
+right_sqrt = 100.58
+middle_sqrt = 100.36
+(int) middle_sqrt * (int) middle_sqrt = 10000
+middle_sqrt * middle_sqrt = 10071.91
+ft_sqrt(10000) == 100:100
+left_sqrt = 0.00
+right_sqrt = 5000.50
+middle_sqrt = 2500.25
+(int) middle_sqrt * (int) middle_sqrt = 6250000
+left_sqrt = 0.00
+right_sqrt = 2499.25
+middle_sqrt = 1249.62
+(int) middle_sqrt * (int) middle_sqrt = 1560001
+left_sqrt = 0.00
+right_sqrt = 1248.62
+middle_sqrt = 624.31
+(int) middle_sqrt * (int) middle_sqrt = 389376
+left_sqrt = 0.00
+right_sqrt = 623.31
+middle_sqrt = 311.66
+(int) middle_sqrt * (int) middle_sqrt = 96721
+left_sqrt = 0.00
+right_sqrt = 310.66
+middle_sqrt = 155.33
+(int) middle_sqrt * (int) middle_sqrt = 24025
+left_sqrt = 0.00
+right_sqrt = 154.33
+middle_sqrt = 77.16
+(int) middle_sqrt * (int) middle_sqrt = 5929
+left_sqrt = 78.16
+right_sqrt = 154.33
+middle_sqrt = 116.25
+(int) middle_sqrt * (int) middle_sqrt = 13456
+left_sqrt = 78.16
+right_sqrt = 115.25
+middle_sqrt = 96.71
+(int) middle_sqrt * (int) middle_sqrt = 9216
+left_sqrt = 97.71
+right_sqrt = 115.25
+middle_sqrt = 106.48
+(int) middle_sqrt * (int) middle_sqrt = 11236
+left_sqrt = 97.71
+right_sqrt = 105.48
+middle_sqrt = 101.59
+(int) middle_sqrt * (int) middle_sqrt = 10201
+left_sqrt = 97.71
+right_sqrt = 100.59
+middle_sqrt = 99.15
+(int) middle_sqrt * (int) middle_sqrt = 9801
+left_sqrt = 100.15
+right_sqrt = 100.59
+middle_sqrt = 100.37
+(int) middle_sqrt * (int) middle_sqrt = 10000
+middle_sqrt * middle_sqrt = 10073.94
+ft_sqrt(10001) == 0:0
+left_sqrt = 0.00
+right_sqrt = 2000000.00
+middle_sqrt = 1000000.00
+(int) middle_sqrt * (int) middle_sqrt = -727379968
+left_sqrt = 1000001.00
+right_sqrt = 2000000.00
+middle_sqrt = 1500000.50
+(int) middle_sqrt * (int) middle_sqrt = -562863104
+left_sqrt = 1500001.50
+right_sqrt = 2000000.00
+middle_sqrt = 1750000.75
+(int) middle_sqrt * (int) middle_sqrt = 188317952
+left_sqrt = 1500001.50
+right_sqrt = 1749999.75
+middle_sqrt = 1625000.62
+(int) middle_sqrt * (int) middle_sqrt = -779887040
+left_sqrt = 1625001.62
+right_sqrt = 1749999.75
+middle_sqrt = 1687500.75
+(int) middle_sqrt * (int) middle_sqrt = 92932752
+left_sqrt = 1625001.62
+right_sqrt = 1687499.75
+middle_sqrt = 1656250.75
+(int) middle_sqrt * (int) middle_sqrt = -1320039644
+left_sqrt = 1656251.75
+right_sqrt = 1687499.75
+middle_sqrt = 1671875.75
+(int) middle_sqrt * (int) middle_sqrt = -857694071
+left_sqrt = 1671876.75
+right_sqrt = 1687499.75
+middle_sqrt = 1679688.25
+(int) middle_sqrt * (int) middle_sqrt = -441736128
+left_sqrt = 1679689.25
+right_sqrt = 1687499.75
+middle_sqrt = 1683594.50
+(int) middle_sqrt * (int) middle_sqrt = -189658524
+left_sqrt = 1683595.50
+right_sqrt = 1687499.75
+middle_sqrt = 1685547.62
+(int) middle_sqrt * (int) middle_sqrt = 2095306553
+left_sqrt = 1683595.50
+right_sqrt = 1685546.62
+middle_sqrt = 1684571.00
+(int) middle_sqrt * (int) middle_sqrt = -1193928615
+left_sqrt = 1684572.00
+right_sqrt = 1685546.62
+middle_sqrt = 1685059.25
+(int) middle_sqrt * (int) middle_sqrt = 450450825
+left_sqrt = 1684572.00
+right_sqrt = 1685058.25
+middle_sqrt = 1684815.12
+(int) middle_sqrt * (int) middle_sqrt = -371798431
+left_sqrt = 1684816.12
+right_sqrt = 1685058.25
+middle_sqrt = 1684937.25
+(int) middle_sqrt * (int) middle_sqrt = 39311313
+left_sqrt = 1684816.12
+right_sqrt = 1684936.25
+middle_sqrt = 1684876.25
+(int) middle_sqrt * (int) middle_sqrt = -166247280
+left_sqrt = 1684877.25
+right_sqrt = 1684936.25
+middle_sqrt = 1684906.75
+(int) middle_sqrt * (int) middle_sqrt = -65153820
+left_sqrt = 1684907.75
+right_sqrt = 1684936.25
+middle_sqrt = 1684922.00
+(int) middle_sqrt * (int) middle_sqrt = -11236572
+left_sqrt = 1684923.00
+right_sqrt = 1684936.25
+middle_sqrt = 1684929.62
+(int) middle_sqrt * (int) middle_sqrt = 12352385
+left_sqrt = 1684923.00
+right_sqrt = 1684928.62
+middle_sqrt = 1684925.75
+(int) middle_sqrt * (int) middle_sqrt = -1127031
+left_sqrt = 1684926.75
+right_sqrt = 1684928.62
+middle_sqrt = 1684927.75
+(int) middle_sqrt * (int) middle_sqrt = 5612673
+middle_sqrt * middle_sqrt = 2838981509120.00
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:40:41 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			printf("left_sqrt = %.2d\n", left_sqrt);
+			printf("right_sqrt = %.2d\n", right_sqrt);
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			printf("middle_sqrt = %.2d\n", middle_sqrt);
+			printf("(int) middle_sqrt * (int) middle_sqrt = %.2d\n", (int) middle_sqrt * (int) middle_sqrt);
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		printf("middle_sqrt * middle_sqrt = %.2d\n", middle_sqrt * middle_sqrt);
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+ft_sqrt.c: In function ‘ft_sqrt’:
+ft_sqrt.c:29:27: error: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Werror=format=]
+   29 |    printf("left_sqrt = %.2d\n", left_sqrt);
+      |                        ~~~^     ~~~~~~~~~
+      |                           |     |
+      |                           int   double
+      |                        %.2f
+ft_sqrt.c:30:28: error: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Werror=format=]
+   30 |    printf("right_sqrt = %.2d\n", right_sqrt);
+      |                         ~~~^     ~~~~~~~~~~
+      |                            |     |
+      |                            int   double
+      |                         %.2f
+ft_sqrt.c:32:29: error: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Werror=format=]
+   32 |    printf("middle_sqrt = %.2d\n", middle_sqrt);
+      |                          ~~~^     ~~~~~~~~~~~
+      |                             |     |
+      |                             int   double
+      |                          %.2f
+ft_sqrt.c:41:42: error: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘double’ [-Werror=format=]
+   41 |   printf("middle_sqrt * middle_sqrt = %.2d\n", middle_sqrt * middle_sqrt);
+      |                                       ~~~^     ~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                          |                 |
+      |                                          int               double
+      |                                       %.2f
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:41:48 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			printf("left_sqrt = %.2f\n", left_sqrt);
+			printf("right_sqrt = %.2f\n", right_sqrt);
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			printf("middle_sqrt = %.2f\n", middle_sqrt);
+			printf("(int) middle_sqrt * (int) middle_sqrt = %.2d\n", (int) middle_sqrt * (int) middle_sqrt);
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		printf("middle_sqrt * middle_sqrt = %.2f\n", middle_sqrt * middle_sqrt);
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+left_sqrt = 0.00
+right_sqrt = 50.00
+middle_sqrt = 25.00
+(int) middle_sqrt * (int) middle_sqrt = 625
+left_sqrt = 0.00
+right_sqrt = 24.00
+middle_sqrt = 12.00
+(int) middle_sqrt * (int) middle_sqrt = 144
+left_sqrt = 0.00
+right_sqrt = 11.00
+middle_sqrt = 5.50
+(int) middle_sqrt * (int) middle_sqrt = 25
+left_sqrt = 6.50
+right_sqrt = 11.00
+middle_sqrt = 8.75
+(int) middle_sqrt * (int) middle_sqrt = 64
+left_sqrt = 9.75
+right_sqrt = 11.00
+middle_sqrt = 10.38
+(int) middle_sqrt * (int) middle_sqrt = 100
+middle_sqrt * middle_sqrt = 107.64
+ft_sqrt(100) == 10:10
+left_sqrt = 0.00
+right_sqrt = 18.00
+middle_sqrt = 9.00
+(int) middle_sqrt * (int) middle_sqrt = 81
+left_sqrt = 0.00
+right_sqrt = 8.00
+middle_sqrt = 4.00
+(int) middle_sqrt * (int) middle_sqrt = 16
+left_sqrt = 5.00
+right_sqrt = 8.00
+middle_sqrt = 6.50
+(int) middle_sqrt * (int) middle_sqrt = 36
+middle_sqrt * middle_sqrt = 42.25
+ft_sqrt(36) == 6:6
+left_sqrt = 0.00
+right_sqrt = 18.50
+middle_sqrt = 9.25
+(int) middle_sqrt * (int) middle_sqrt = 81
+left_sqrt = 0.00
+right_sqrt = 8.25
+middle_sqrt = 4.12
+(int) middle_sqrt * (int) middle_sqrt = 16
+left_sqrt = 5.12
+right_sqrt = 8.25
+middle_sqrt = 6.69
+(int) middle_sqrt * (int) middle_sqrt = 36
+left_sqrt = 7.69
+right_sqrt = 8.25
+middle_sqrt = 7.97
+(int) middle_sqrt * (int) middle_sqrt = 49
+middle_sqrt * middle_sqrt = 63.50
+ft_sqrt(37) == 0:0
+left_sqrt = 0.00
+right_sqrt = 5000.00
+middle_sqrt = 2500.00
+(int) middle_sqrt * (int) middle_sqrt = 6250000
+left_sqrt = 0.00
+right_sqrt = 2499.00
+middle_sqrt = 1249.50
+(int) middle_sqrt * (int) middle_sqrt = 1560001
+left_sqrt = 0.00
+right_sqrt = 1248.50
+middle_sqrt = 624.25
+(int) middle_sqrt * (int) middle_sqrt = 389376
+left_sqrt = 0.00
+right_sqrt = 623.25
+middle_sqrt = 311.62
+(int) middle_sqrt * (int) middle_sqrt = 96721
+left_sqrt = 0.00
+right_sqrt = 310.62
+middle_sqrt = 155.31
+(int) middle_sqrt * (int) middle_sqrt = 24025
+left_sqrt = 0.00
+right_sqrt = 154.31
+middle_sqrt = 77.16
+(int) middle_sqrt * (int) middle_sqrt = 5929
+left_sqrt = 78.16
+right_sqrt = 154.31
+middle_sqrt = 116.23
+(int) middle_sqrt * (int) middle_sqrt = 13456
+left_sqrt = 78.16
+right_sqrt = 115.23
+middle_sqrt = 96.70
+(int) middle_sqrt * (int) middle_sqrt = 9216
+left_sqrt = 97.70
+right_sqrt = 115.23
+middle_sqrt = 106.46
+(int) middle_sqrt * (int) middle_sqrt = 11236
+left_sqrt = 97.70
+right_sqrt = 105.46
+middle_sqrt = 101.58
+(int) middle_sqrt * (int) middle_sqrt = 10201
+left_sqrt = 97.70
+right_sqrt = 100.58
+middle_sqrt = 99.14
+(int) middle_sqrt * (int) middle_sqrt = 9801
+left_sqrt = 100.14
+right_sqrt = 100.58
+middle_sqrt = 100.36
+(int) middle_sqrt * (int) middle_sqrt = 10000
+middle_sqrt * middle_sqrt = 10071.91
+ft_sqrt(10000) == 100:100
+left_sqrt = 0.00
+right_sqrt = 5000.50
+middle_sqrt = 2500.25
+(int) middle_sqrt * (int) middle_sqrt = 6250000
+left_sqrt = 0.00
+right_sqrt = 2499.25
+middle_sqrt = 1249.62
+(int) middle_sqrt * (int) middle_sqrt = 1560001
+left_sqrt = 0.00
+right_sqrt = 1248.62
+middle_sqrt = 624.31
+(int) middle_sqrt * (int) middle_sqrt = 389376
+left_sqrt = 0.00
+right_sqrt = 623.31
+middle_sqrt = 311.66
+(int) middle_sqrt * (int) middle_sqrt = 96721
+left_sqrt = 0.00
+right_sqrt = 310.66
+middle_sqrt = 155.33
+(int) middle_sqrt * (int) middle_sqrt = 24025
+left_sqrt = 0.00
+right_sqrt = 154.33
+middle_sqrt = 77.16
+(int) middle_sqrt * (int) middle_sqrt = 5929
+left_sqrt = 78.16
+right_sqrt = 154.33
+middle_sqrt = 116.25
+(int) middle_sqrt * (int) middle_sqrt = 13456
+left_sqrt = 78.16
+right_sqrt = 115.25
+middle_sqrt = 96.71
+(int) middle_sqrt * (int) middle_sqrt = 9216
+left_sqrt = 97.71
+right_sqrt = 115.25
+middle_sqrt = 106.48
+(int) middle_sqrt * (int) middle_sqrt = 11236
+left_sqrt = 97.71
+right_sqrt = 105.48
+middle_sqrt = 101.59
+(int) middle_sqrt * (int) middle_sqrt = 10201
+left_sqrt = 97.71
+right_sqrt = 100.59
+middle_sqrt = 99.15
+(int) middle_sqrt * (int) middle_sqrt = 9801
+left_sqrt = 100.15
+right_sqrt = 100.59
+middle_sqrt = 100.37
+(int) middle_sqrt * (int) middle_sqrt = 10000
+middle_sqrt * middle_sqrt = 10073.94
+ft_sqrt(10001) == 0:0
+left_sqrt = 0.00
+right_sqrt = 2000000.00
+middle_sqrt = 1000000.00
+(int) middle_sqrt * (int) middle_sqrt = -727379968
+left_sqrt = 1000001.00
+right_sqrt = 2000000.00
+middle_sqrt = 1500000.50
+(int) middle_sqrt * (int) middle_sqrt = -562863104
+left_sqrt = 1500001.50
+right_sqrt = 2000000.00
+middle_sqrt = 1750000.75
+(int) middle_sqrt * (int) middle_sqrt = 188317952
+left_sqrt = 1500001.50
+right_sqrt = 1749999.75
+middle_sqrt = 1625000.62
+(int) middle_sqrt * (int) middle_sqrt = -779887040
+left_sqrt = 1625001.62
+right_sqrt = 1749999.75
+middle_sqrt = 1687500.69
+(int) middle_sqrt * (int) middle_sqrt = 92932752
+left_sqrt = 1625001.62
+right_sqrt = 1687499.69
+middle_sqrt = 1656250.66
+(int) middle_sqrt * (int) middle_sqrt = -1320039644
+left_sqrt = 1656251.66
+right_sqrt = 1687499.69
+middle_sqrt = 1671875.67
+(int) middle_sqrt * (int) middle_sqrt = -857694071
+left_sqrt = 1671876.67
+right_sqrt = 1687499.69
+middle_sqrt = 1679688.18
+(int) middle_sqrt * (int) middle_sqrt = -441736128
+left_sqrt = 1679689.18
+right_sqrt = 1687499.69
+middle_sqrt = 1683594.43
+(int) middle_sqrt * (int) middle_sqrt = -189658524
+left_sqrt = 1683595.43
+right_sqrt = 1687499.69
+middle_sqrt = 1685547.56
+(int) middle_sqrt * (int) middle_sqrt = 2095306553
+left_sqrt = 1683595.43
+right_sqrt = 1685546.56
+middle_sqrt = 1684571.00
+(int) middle_sqrt * (int) middle_sqrt = -1197297756
+left_sqrt = 1684572.00
+right_sqrt = 1685546.56
+middle_sqrt = 1685059.28
+(int) middle_sqrt * (int) middle_sqrt = 450450825
+left_sqrt = 1684572.00
+right_sqrt = 1685058.28
+middle_sqrt = 1684815.14
+(int) middle_sqrt * (int) middle_sqrt = -371798431
+left_sqrt = 1684816.14
+right_sqrt = 1685058.28
+middle_sqrt = 1684937.21
+(int) middle_sqrt * (int) middle_sqrt = 39311313
+left_sqrt = 1684816.14
+right_sqrt = 1684936.21
+middle_sqrt = 1684876.17
+(int) middle_sqrt * (int) middle_sqrt = -166247280
+left_sqrt = 1684877.17
+right_sqrt = 1684936.21
+middle_sqrt = 1684906.69
+(int) middle_sqrt * (int) middle_sqrt = -65153820
+left_sqrt = 1684907.69
+right_sqrt = 1684936.21
+middle_sqrt = 1684921.95
+(int) middle_sqrt * (int) middle_sqrt = -14606415
+left_sqrt = 1684922.95
+right_sqrt = 1684936.21
+middle_sqrt = 1684929.58
+(int) middle_sqrt * (int) middle_sqrt = 12352385
+left_sqrt = 1684922.95
+right_sqrt = 1684928.58
+middle_sqrt = 1684925.76
+(int) middle_sqrt * (int) middle_sqrt = -1127031
+left_sqrt = 1684926.76
+right_sqrt = 1684928.58
+middle_sqrt = 1684927.67
+(int) middle_sqrt * (int) middle_sqrt = 5612673
+middle_sqrt * middle_sqrt = 2838981258595.25
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:45:12 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c                
+ft_sqrt.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 10:46 .
+drwxr-xr-x 8 hauerbac 2023_paris  4096 Feb 21 08:37 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1474 Feb 21 10:45 ft_sqrt.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb 21 10:46 test_ft_sqrt
+-rw-r--r-- 1 hauerbac 2023_paris  1327 Feb 21 09:22 test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt 
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% cat ft_sqrt.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:51:27 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  (nb / 2.0) - 1;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:52:21 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  (nb / 2.0) - 0.5;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:54:30 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt <= right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 10:58:48 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) (middle_sqrt * middle_sqrt))
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) (middle_sqrt * middle_sqrt))
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) (middle_sqrt * middle_sqrt))
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 11:02:13 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb * 1.0 > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb * 1.0 < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 11:04:00 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (middle_sqrt / 1) * (middle_sqrt / 1))
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (middle_sqrt / 1) * (middle_sqrt / 1))
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 11:05:55 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (middle_sqrt / 1) * (middle_sqrt / 1))
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (middle_sqrt / 1) * (middle_sqrt / 1))
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (middle_sqrt / 1) * (middle_sqrt / 1))
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 11:11:56 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (middle_sqrt / 1) * (middle_sqrt / 1))
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (middle_sqrt / 1) * (middle_sqrt / 1))
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 11:16:41 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = (int) middle_sqrt + 1;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = (int) middle_sqrt - 1;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 11:31:07 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if ((double) nb > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if ((double) nb < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 11:40:25 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt =  0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c                
+ft_sqrt.c: Error!
+Error: CONSECUTIVE_SPC      (line:  25, col:  20):	Two or more consecutives spaces
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 11:41:56 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	int		is_found;
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 0)
+	{
+		is_found = 0;
+		left_sqrt = 0.0;
+		right_sqrt = nb / 2.0;
+		while (left_sqrt < right_sqrt && !is_found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt + 1.0;
+			else if (nb < (int) middle_sqrt * (int) middle_sqrt)
+				right_sqrt = middle_sqrt - 1.0;
+			else
+				is_found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c
+ft_sqrt.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ls -al                                           
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 11:42 .
+drwxr-xr-x 8 hauerbac 2023_paris  4096 Feb 21 08:37 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1495 Feb 21 11:41 ft_sqrt.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb 21 11:42 test_ft_sqrt
+-rw-r--r-- 1 hauerbac 2023_paris  1327 Feb 21 09:22 test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt 
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% cat ft_sqrt.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:00:03 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb / 2.0;
+		while (right_sqrt - left_sqrt > 1)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else
+				right_sqrt = middle_sqrt;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c                
+ft_sqrt.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ls -al                                           
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 12:00 .
+drwxr-xr-x 8 hauerbac 2023_paris  4096 Feb 21 08:37 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1368 Feb 21 12:00 ft_sqrt.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb 21 12:00 test_ft_sqrt
+-rw-r--r-- 1 hauerbac 2023_paris  1327 Feb 21 09:22 test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% cat ft_sqrt.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:03:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		while (right_sqrt - left_sqrt > 1.0)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb > (int) middle_sqrt * (int) middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else
+				right_sqrt = middle_sqrt;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:05:26 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		while (right_sqrt - left_sqrt > 0.1)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (nb * 1.0 > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else
+				right_sqrt = middle_sqrt;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:06:59 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		while (right_sqrt - left_sqrt > 0.1)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else
+				right_sqrt = middle_sqrt;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:0
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:0
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:08:00 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		while (right_sqrt - left_sqrt > 0.1)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else
+				right_sqrt = middle_sqrt;
+		}
+		//if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:9
+ft_sqrt(36) == 6:5
+ft_sqrt(37) == 0:6
+ft_sqrt(10000) == 100:99
+ft_sqrt(10001) == 0:99
+ft_sqrt(4000000) == 2000:1999
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:08:50 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		while (right_sqrt - left_sqrt > 1)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else
+				right_sqrt = middle_sqrt;
+		}
+		//if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:9
+ft_sqrt(36) == 6:5
+ft_sqrt(37) == 0:6
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:100
+ft_sqrt(4000000) == 2000:2000
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:09:33 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		while (right_sqrt - left_sqrt > 1)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else
+				right_sqrt = middle_sqrt;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:2000
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:13:30 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	int		found;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		found = 0;
+		while (right_sqrt - left_sqrt > 1i && !found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else if (((double) nb) < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt;
+			else
+				found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+ft_sqrt.c: In function ‘ft_sqrt’:
+ft_sqrt.c:27:33: error: invalid operands to binary > (have ‘double’ and ‘complex int’)
+   27 |   while (right_sqrt - left_sqrt > 1i && !found)
+      |          ~~~~~~~~~~~~~~~~~~~~~~ ^
+      |                     |
+      |                     double
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:13:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	int		found;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		found = 0;
+		while (right_sqrt - left_sqrt > 1 && !found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else if (((double) nb) < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt;
+			else
+				found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:0
+ft_sqrt(36) == 6:0
+ft_sqrt(37) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:0
+ft_sqrt(4000000) == 2000:2000
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:14:24 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	int		found;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		found = 0;
+		while (right_sqrt - left_sqrt > 1 && !found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else if (((double) nb) < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt;
+			else
+				found = 1;
+		}
+		//if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:9
+ft_sqrt(36) == 6:5
+ft_sqrt(37) == 0:6
+ft_sqrt(10000) == 100:100
+ft_sqrt(10001) == 0:100
+ft_sqrt(4000000) == 2000:2000
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:15:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	int		found;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		found = 0;
+		while (right_sqrt - left_sqrt > 0.01 && !found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else if (((double) nb) < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt;
+			else
+				found = 1;
+		}
+		//if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:9
+ft_sqrt(36) == 6:5
+ft_sqrt(37) == 0:6
+ft_sqrt(10000) == 100:99
+ft_sqrt(10001) == 0:100
+ft_sqrt(4000000) == 2000:1999
+ft_sqrt(-36) == 0:0
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:16:15 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	int		found;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		found = 0;
+		while (!found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else if (((double) nb) < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt;
+			else
+				found = 1;
+		}
+		//if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+^C
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:18:37 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	int		found;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		found = 0;
+		while (left_sqrt < right_sqrt && !found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else if (((double) nb) < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt;
+			else
+				found = 1;
+		}
+		//if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+^C
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c                                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:20:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	double	left_sqrt;
+	double	right_sqrt;
+	int		found;
+	double	middle_sqrt;
+
+	if (nb > 1)
+	{
+		left_sqrt = 1.0;
+		right_sqrt = nb;
+		found = 0;
+		while (left_sqrt < right_sqrt && !found)
+		{
+			middle_sqrt = (left_sqrt + right_sqrt) / 2.0;
+			if (((double) nb) > middle_sqrt * middle_sqrt)
+				left_sqrt = middle_sqrt;
+			else if (((double) nb) < middle_sqrt * middle_sqrt)
+				right_sqrt = middle_sqrt;
+			else
+				found = 1;
+		}
+		if (nb == (int) middle_sqrt * (int) middle_sqrt)
+			return ((int) middle_sqrt);
+	}
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                                   
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+^C
+e3r11p9% vi test_ft_sqrt.c
+e3r11p9% cat test_ft_sqrt.c                                             
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_sqrt.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:21:34 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 12:22:11 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_sqrt(int nb);
+
+int	main(void)
+{
+	printf("ft_sqrt(100) == 10:%d\n", ft_sqrt(100));
+	printf("ft_sqrt(36) == 6:%d\n", ft_sqrt(36));
+	printf("ft_sqrt(7) == 0:%d\n", ft_sqrt(7));
+	printf("ft_sqrt(10000) == 100:%d\n", ft_sqrt(10000));
+	printf("ft_sqrt(101) == 0:%d\n", ft_sqrt(101));
+	printf("ft_sqrt(4000000) == 2000:%d\n", ft_sqrt(4000000));
+	printf("ft_sqrt(-36) == 0:%d\n", ft_sqrt(-36));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c                
+ft_sqrt.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_sqrt.c
+test_ft_sqrt.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ls -al                                                            
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 12:23 .
+drwxr-xr-x 8 hauerbac 2023_paris  4096 Feb 21 08:37 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1463 Feb 21 12:20 ft_sqrt.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb 21 12:23 test_ft_sqrt
+-rw-r--r-- 1 hauerbac 2023_paris  1321 Feb 21 12:22 test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt                                  
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+^C
+e3r11p9% vi ft_sqrt.c                                                     
+e3r11p9% cat ft_sqrt.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 13:45:48 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+			i++;
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_sqrt.c                
+ft_sqrt.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 13:46 .
+drwxr-xr-x 8 hauerbac 2023_paris  4096 Feb 21 08:37 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1098 Feb 21 13:45 ft_sqrt.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16024 Feb 21 13:46 test_ft_sqrt
+-rw-r--r-- 1 hauerbac 2023_paris  1321 Feb 21 12:22 test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt 
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+ft_sqrt(7) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(101) == 0:0
+ft_sqrt(4000000) == 2000:2000
+ft_sqrt(-36) == 0:0
+e3r11p9% cd ..
+e3r11p9% mkdir ex06
+e3r11p9% cd ex06
+e3r11p9% vi ft_is_prime.c 
+e3r11p9% cat ft_is_prime.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 14:40:12 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while (nb % i != 0)
+			i++;
+		if (i == nb)
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% vi test_ft_is_prime.c 
+e3r11p9% cat test_ft_is_prime.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_is_prime.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 17:08:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 17:08:13 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_is_prime(int nb);
+
+int	main(void)
+{
+	printf("%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n",
+		"ft_is_prime(-1) == 0", ft_is_prime(-1) == 0 ? "OK" : "Fail",
+		"ft_is_prime(-3) == 0", ft_is_prime(-3) == 0 ? "OK" : "Fail",
+		"ft_is_prime(0) == 0", ft_is_prime(0) == 0 ? "OK" : "Fail",
+		"ft_is_prime(1) == 0", ft_is_prime(1) == 0 ? "OK" : "Fail",
+		"ft_is_prime(2) == 1", ft_is_prime(2) == 1 ? "OK" : "Fail",
+		"ft_is_prime(3) == 1", ft_is_prime(3) == 1 ? "OK" : "Fail",
+		"ft_is_prime(4) == 0", ft_is_prime(4) == 0 ? "OK" : "Fail",
+		"ft_is_prime(5) == 1", ft_is_prime(5) == 1 ? "OK" : "Fail",
+		"ft_is_prime(6) == 0", ft_is_prime(6) == 0 ? "OK" : "Fail",
+		"ft_is_prime(7) == 1", ft_is_prime(7) == 1 ? "OK" : "Fail",
+		"ft_is_prime(10) == 0", ft_is_prime(10) == 0 ? "OK" : "Fail",
+		"ft_is_prime(11) == 1", ft_is_prime(11) == 1 ? "OK" : "Fail",
+		"ft_is_prime(13) == 1", ft_is_prime(13) == 1 ? "OK" : "Fail",
+		"ft_is_prime(19) == 1", ft_is_prime(19) == 1 ? "OK" : "Fail",
+		"ft_is_prime(42) == 0", ft_is_prime(42) == 0 ? "OK" : "Fail",
+		"ft_is_prime(20) == 0", ft_is_prime(20) == 0 ? "OK" : "Fail"
+		  );
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_is_prime.c 
+ft_is_prime.c: OK!
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_is_prime.c 
+test_ft_is_prime.c: Error!
+Error: LABEL_FBIDDEN        (line:  19, col:   1):	Label statements are forbidden
+Error: LINE_TOO_LONG        (line:  19, col: 142):	line too long
+Error: TERNARY_FBIDDEN      (line:  20, col:  54):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  21, col:  54):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  22, col:  52):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  23, col:  52):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  24, col:  52):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  25, col:  52):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  26, col:  52):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  27, col:  52):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  28, col:  52):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  29, col:  52):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  30, col:  54):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  31, col:  54):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  32, col:  54):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  33, col:  54):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  34, col:  54):	Ternaries are forbidden
+Error: TERNARY_FBIDDEN      (line:  35, col:  54):	Ternaries are forbidden
+Error: MIXED_SPACE_TAB      (line:  36, col:   5):	Mixed spaces and tabs
+Error: CONSECUTIVE_SPC      (line:  36, col:   9):	Two or more consecutives spaces
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 17:10 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 21 13:50 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1062 Feb 21 14:40 ft_is_prime.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16032 Feb 21 17:10 test_ft_is_prime
+-rw-r--r-- 1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime 
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : OK
+ft_is_prime(4) == 0 : OK
+ft_is_prime(5) == 1 : OK
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : OK
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : OK
+ft_is_prime(13) == 1 : OK
+ft_is_prime(19) == 1 : OK
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% cd ..
+e3r11p9% mkdir ex07
+e3r11p9% cd ex07
+e3r11p9% vi ft_find_next_prime.c
+e3r11p9% cat ft_find_next_prime.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 17:39:57 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 17:40:02 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_find_next_prime(int nb)
+{
+	int	result;
+	int	i;
+	int	j;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		result = 2;
+		i = 2;
+		j = nb;
+		while (i < j)
+		{
+			while (j % i != 0)
+				i++;
+			if (i == j)
+				result = i;
+			else
+				j++;
+		}
+	}
+	return (result);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_find_next_prime.c                 
+ft_find_next_prime.c: OK!
+e3r11p9% vi test_ft_find_next_prime.c 
+e3r11p9% cat test_ft_find_next_prime.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_find_next_prime.c                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 18:02:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 18:11:02 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_find_next_prime(int nb);
+
+int	main(void)
+{
+	printf("%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n%s : %s\n",
+		"ft_find_next_prime(-1) == 2", ft_find_next_prime(-1) == 2 ? "OK" : "Fail",
+		"ft_find_next_prime(-3) == 2", ft_find_next_prime(-3) == 2 ? "OK" : "Fail",
+		"ft_find_next_prime(0) == 2", ft_find_next_prime(0) == 2 ? "OK" : "Fail",
+		"ft_find_next_prime(1) == 2", ft_find_next_prime(1) == 2 ? "OK" : "Fail",
+		"ft_find_next_prime(2) == 2", ft_find_next_prime(2) == 2 ? "OK" : "Fail",
+		"ft_find_next_prime(3) == 3", ft_find_next_prime(3) == 3 ? "OK" : "Fail",
+		"ft_find_next_prime(4) == 5", ft_find_next_prime(4) == 5 ? "OK" : "Fail",
+		"ft_find_next_prime(5) == 5", ft_find_next_prime(5) == 5 ? "OK" : "Fail",
+		"ft_find_next_prime(6) == 7", ft_find_next_prime(6) == 7 ? "OK" : "Fail",
+		"ft_find_next_prime(7) == 7", ft_find_next_prime(7) == 7 ? "OK" : "Fail",
+		"ft_find_next_prime(10) == 11", ft_find_next_prime(10) == 11 ? "OK" : "Fail",
+		"ft_find_next_prime(11) == 11", ft_find_next_prime(11) == 11 ? "OK" : "Fail",
+		"ft_find_next_prime(13) == 13", ft_find_next_prime(13) == 13 ? "OK" : "Fail",
+		"ft_find_next_prime(19) == 19", ft_find_next_prime(19) == 19 ? "OK" : "Fail",
+		"ft_find_next_prime(42) == 43", ft_find_next_prime(42) == 43 ? "OK" : "Fail",
+		"ft_find_next_prime(20) == 23", ft_find_next_prime(20) == 23 ? "OK" : "Fail"
+		  );
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_find_next_prime.c 
+test_ft_find_next_prime.c: Error!
+Error: LABEL_FBIDDEN        (line:  19, col:   1):	Label statements are forbidden
+Error: LINE_TOO_LONG        (line:  19, col: 142):	line too long
+Error: TERNARY_FBIDDEN      (line:  20, col:  68):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  20, col:  83):	line too long
+Error: TERNARY_FBIDDEN      (line:  21, col:  68):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  21, col:  83):	line too long
+Error: TERNARY_FBIDDEN      (line:  22, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  22, col:  82):	line too long
+Error: TERNARY_FBIDDEN      (line:  23, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  23, col:  82):	line too long
+Error: TERNARY_FBIDDEN      (line:  24, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  24, col:  82):	line too long
+Error: TERNARY_FBIDDEN      (line:  25, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  25, col:  82):	line too long
+Error: TERNARY_FBIDDEN      (line:  26, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  26, col:  82):	line too long
+Error: TERNARY_FBIDDEN      (line:  27, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  27, col:  82):	line too long
+Error: TERNARY_FBIDDEN      (line:  28, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  28, col:  82):	line too long
+Error: TERNARY_FBIDDEN      (line:  29, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  29, col:  82):	line too long
+Error: TERNARY_FBIDDEN      (line:  30, col:  70):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  30, col:  85):	line too long
+Error: TERNARY_FBIDDEN      (line:  31, col:  70):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  31, col:  85):	line too long
+Error: TERNARY_FBIDDEN      (line:  32, col:  70):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  32, col:  85):	line too long
+Error: TERNARY_FBIDDEN      (line:  33, col:  70):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  33, col:  85):	line too long
+Error: TERNARY_FBIDDEN      (line:  34, col:  70):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  34, col:  85):	line too long
+Error: TERNARY_FBIDDEN      (line:  35, col:  70):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  35, col:  85):	line too long
+Error: MIXED_SPACE_TAB      (line:  36, col:   5):	Mixed spaces and tabs
+Error: CONSECUTIVE_SPC      (line:  36, col:   9):	Two or more consecutives spaces
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_find_next_prime ft_find_next_prime.c test_ft_find_next_prime.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 21 18:13 .
+drwxr-xr-x 10 hauerbac 2023_paris  4096 Feb 21 17:12 ..
+-rw-r--r--  1 hauerbac 2023_paris  1144 Feb 21 17:40 ft_find_next_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16048 Feb 21 18:13 test_ft_find_next_prime
+-rw-r--r--  1 hauerbac 2023_paris  2383 Feb 21 18:11 test_ft_find_next_prime.c
+e3r11p9% ./test_ft_find_next_prime 
+ft_find_next_prime(-1) == 2 : Fail
+ft_find_next_prime(-3) == 2 : Fail
+ft_find_next_prime(0) == 2 : Fail
+ft_find_next_prime(1) == 2 : Fail
+ft_find_next_prime(2) == 2 : OK
+ft_find_next_prime(3) == 3 : OK
+ft_find_next_prime(4) == 5 : OK
+ft_find_next_prime(5) == 5 : OK
+ft_find_next_prime(6) == 7 : OK
+ft_find_next_prime(7) == 7 : OK
+ft_find_next_prime(10) == 11 : OK
+ft_find_next_prime(11) == 11 : OK
+ft_find_next_prime(13) == 13 : OK
+ft_find_next_prime(19) == 19 : OK
+ft_find_next_prime(42) == 43 : OK
+ft_find_next_prime(20) == 23 : OK
+e3r11p9% vi test_ft_find_next_prime.c                                
+e3r11p9% vi ft_find_next_prime.c 
+e3r11p9% cat ft_find_next_prime.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_find_next_prime.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 17:39:57 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 18:17:06 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_find_next_prime(int nb)
+{
+	int	result;
+	int	i;
+	int	j;
+
+	result = 0;
+	if (nb < 2)
+		result = 2;
+	else
+	{
+		result = 2;
+		i = 2;
+		j = nb;
+		while (i < j)
+		{
+			while (j % i != 0)
+				i++;
+			if (i == j)
+				result = i;
+			else
+				j++;
+		}
+	}
+	return (result);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_find_next_prime.c                                 
+ft_find_next_prime.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_find_next_prime ft_find_next_prime.c test_ft_find_next_prime.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 21 18:18 .
+drwxr-xr-x 10 hauerbac 2023_paris  4096 Feb 21 17:12 ..
+-rw-r--r--  1 hauerbac 2023_paris  1163 Feb 21 18:17 ft_find_next_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16048 Feb 21 18:18 test_ft_find_next_prime
+-rw-r--r--  1 hauerbac 2023_paris  2383 Feb 21 18:11 test_ft_find_next_prime.c
+e3r11p9% ./test_ft_find_next_prime                                   
+ft_find_next_prime(-1) == 2 : OK
+ft_find_next_prime(-3) == 2 : OK
+ft_find_next_prime(0) == 2 : OK
+ft_find_next_prime(1) == 2 : OK
+ft_find_next_prime(2) == 2 : OK
+ft_find_next_prime(3) == 3 : OK
+ft_find_next_prime(4) == 5 : OK
+ft_find_next_prime(5) == 5 : OK
+ft_find_next_prime(6) == 7 : OK
+ft_find_next_prime(7) == 7 : OK
+ft_find_next_prime(10) == 11 : OK
+ft_find_next_prime(11) == 11 : OK
+ft_find_next_prime(13) == 13 : OK
+ft_find_next_prime(19) == 19 : OK
+ft_find_next_prime(42) == 43 : OK
+ft_find_next_prime(20) == 23 : OK
+e3r11p9% cd ..
 
 
