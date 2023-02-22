@@ -2477,16 +2477,28 @@ touch -hmt (ou peut-etre -h -a -m -t ?) pour le lien symbolique apres avoir mis 
 jeu. 9 févr. à 17:31
 		logo42 		
 	You have been graded by Moulinette 	
-		
-	
-		
-	
-
 Hi,
 
 You have been graded 85 on C Piscine Shell 00:
 
 ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: OK | ex09: KO
+
+Evaluated by moulinette 13 days ago
+85%
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: OK | ex09: KO
+Peer evaluations (2/2)
+Evaluated by ccarnot 13 days ago
+85%
+Code bien compris et explique, erreurs corrigees :) bon courage pour la suite !
+Your feedback, 13 days ago :
+La correctrice m'a explique tres gentiment mes erreurs sur le dernier exercice. Merci a elle!
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by mapoirie 13 days ago
+85%
+Bonnes explications!! merci beaucoup bon courage :)
+Your feedback, 13 days ago :
+Correctrice tres interessee par les details et qui donne de bonnes explications.
+4 / 4 4 / 4 4 / 4 4 / 4
 -------------------------------------------------------------------------
 e3r11p9% pwd
 /mnt/nfs/homes/hauerbac/shell_01

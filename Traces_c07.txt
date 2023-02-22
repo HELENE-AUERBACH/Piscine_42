@@ -1,0 +1,1033 @@
+e3r11p9% cd
+e3r11p9% cd c_07
+e3r11p9% ls
+ex00
+e3r11p9% cd ex00 
+e3r11p9% ls
+ft_strdup.c
+e3r11p9% cat ft_strdup.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 14:07:10 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 14:07:13 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	if (src && dest && n > 0)
+	{
+		i = 0;
+		while (i < n && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
+	return (dest);
+}
+
+char	*ft_strdup(char *src)
+{
+	int		src_len;
+	char	*ptr;
+
+	if (src)
+	{
+		src_len = ft_strlen(src);
+		ptr = (char *) malloc(src_len * sizeof(char));
+		if (ptr)
+		{
+			ft_strncpy(ptr, src, src_len + 1);
+			return (ptr);
+		}
+	}
+	return (NULL);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strdup.c 
+ft_strdup.c: OK!
+e3r11p9% vi test_ft_strdup.c 
+e3r11p9% cat test_ft_strdup.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strdup.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 16:07:32 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 16:07:35 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+char	*ft_strdup(char *src);
+
+int	main(void)
+{
+	printf("\"%s\" duplicated : \"%s\"\n", "Toto", ft_strdup("Toto"));
+	retrun (0);
+}
+e3r11p9% vi test_ft_strdup.c 
+e3r11p9% cat test_ft_strdup.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strdup.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 16:07:32 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 16:08:20 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strdup(char *src);
+
+int	main(void)
+{
+	printf("\"%s\" duplicated : \"%s\"\n", "Toto", ft_strdup("Toto"));
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strdup.c 
+test_ft_strdup.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strdup ft_strdup.c test_ft_strdup.c 
+ft_strdup.c: In function ‘ft_strdup’:
+ft_strdup.c:52:18: error: implicit declaration of function ‘malloc’ [-Werror=implicit-function-declaration]
+   52 |   ptr = (char *) malloc(src_len * sizeof(char));
+      |                  ^~~~~~
+ft_strdup.c:52:18: error: incompatible implicit declaration of built-in function ‘malloc’ [-Werror]
+ft_strdup.c:1:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+  +++ |+#include <stdlib.h>
+    1 | /* ************************************************************************** */
+ft_strdup.c:59:10: error: ‘NULL’ undeclared (first use in this function)
+   59 |  return (NULL);
+      |          ^~~~
+ft_strdup.c:1:1: note: ‘NULL’ is defined in header ‘<stddef.h>’; did you forget to ‘#include <stddef.h>’?
+  +++ |+#include <stddef.h>
+    1 | /* ************************************************************************** */
+ft_strdup.c:59:10: note: each undeclared identifier is reported only once for each function it appears in
+   59 |  return (NULL);
+      |          ^~~~
+ft_strdup.c:60:1: error: control reaches end of non-void function [-Werror=return-type]
+   60 | }
+      | ^
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_strdup.c                                   
+e3r11p9% cat ft_strdup.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 14:07:10 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 16:11:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	if (src && dest && n > 0)
+	{
+		i = 0;
+		while (i < n && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
+	return (dest);
+}
+
+char	*ft_strdup(char *src)
+{
+	int		src_len;
+	char	*ptr;
+
+	if (src)
+	{
+		src_len = ft_strlen(src);
+		ptr = (char *) malloc(src_len * sizeof(char));
+		if (ptr)
+		{
+			ft_strncpy(ptr, src, src_len + 1);
+			return (ptr);
+		}
+	}
+	return (NULL);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strdup.c                    
+ft_strdup.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strdup ft_strdup.c test_ft_strdup.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 16:12 .
+drwxr-xr-x 3 hauerbac 2023_paris  4096 Feb 22 13:57 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1512 Feb 22 16:11 ft_strdup.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16144 Feb 22 16:12 test_ft_strdup
+-rw-r--r-- 1 hauerbac 2023_paris  1041 Feb 22 16:08 test_ft_strdup.c
+e3r11p9% ./test_ft_strdup 
+"Toto" duplicated : "Toto"
+e3r11p9% vi test_ft_strdup.c                                                     
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strdup.c               
+test_ft_strdup.c: Error!
+Error: SPACE_EMPTY_LINE     (line:  20, col:   1):	Space on empty line
+e3r11p9% vi test_ft_strdup.c                                      
+e3r11p9% cat test_ft_strdup.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strdup.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 16:07:32 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 16:16:37 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strdup(char *src);
+
+int	main(void)
+{
+	char	*duplicated;
+
+	duplicated = ft_strdup("Toto");
+	printf("\"%s\" duplicated : \"%s\"\n", "Toto", duplicated);
+	free(duplicated);
+	duplicated = ft_strdup("");
+	printf("\"%s\" duplicated : \"%s\"\n", "", duplicated);
+	free(duplicated);
+	duplicated = ft_strdup("1");
+	printf("\"%s\" duplicated : \"%s\"\n", "", duplicated);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strdup.c
+test_ft_strdup.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strdup ft_strdup.c test_ft_strdup.c
+test_ft_strdup.c: In function ‘main’:
+test_ft_strdup.c:23:2: error: implicit declaration of function ‘free’ [-Werror=implicit-function-declaration]
+   23 |  free(duplicated);
+      |  ^~~~
+test_ft_strdup.c:23:2: error: incompatible implicit declaration of built-in function ‘free’ [-Werror]
+test_ft_strdup.c:14:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+   13 | #include <stdio.h>
+  +++ |+#include <stdlib.h>
+   14 | 
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strdup.c                                     
+e3r11p9% cat test_ft_strdup.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strdup.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 16:07:32 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 16:17:16 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+char	*ft_strdup(char *src);
+
+int	main(void)
+{
+	char	*duplicated;
+
+	duplicated = ft_strdup("Toto");
+	printf("\"%s\" duplicated : \"%s\"\n", "Toto", duplicated);
+	free(duplicated);
+	duplicated = ft_strdup("");
+	printf("\"%s\" duplicated : \"%s\"\n", "", duplicated);
+	free(duplicated);
+	duplicated = ft_strdup("1");
+	printf("\"%s\" duplicated : \"%s\"\n", "", duplicated);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strdup.c               
+test_ft_strdup.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strdup ft_strdup.c test_ft_strdup.c
+e3r11p9% ./test_ft_strdup                                        
+"Toto" duplicated : "Toto"
+"" duplicated : ""
+"" duplicated : "1"
+e3r11p9% vi test_ft_strdup.c                                     
+e3r11p9% cat test_ft_strdup.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strdup.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 16:07:32 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 16:17:59 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+char	*ft_strdup(char *src);
+
+int	main(void)
+{
+	char	*duplicated;
+
+	duplicated = ft_strdup("Toto");
+	printf("\"%s\" duplicated : \"%s\"\n", "Toto", duplicated);
+	free(duplicated);
+	duplicated = ft_strdup("");
+	printf("\"%s\" duplicated : \"%s\"\n", "", duplicated);
+	free(duplicated);
+	duplicated = ft_strdup("1");
+	printf("\"%s\" duplicated : \"%s\"\n", "1", duplicated);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strdup.c               
+test_ft_strdup.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strdup ft_strdup.c test_ft_strdup.c
+e3r11p9% ./test_ft_strdup                                       
+"Toto" duplicated : "Toto"
+"" duplicated : ""
+"1" duplicated : "1"
+e3r11p9% cd ..
+e3r11p9% mkdir ex01
+e3r11p9% cd ex01
+e3r11p9% vi ft_range.c
+e3r11p9% cat ft_range.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:26:36 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 17:26:46 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	if (src && dest && n > 0)
+	{
+		i = 0;
+		while (i < n && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
+	return (dest);
+}
+
+int	*ft_range(int min, int max)
+{
+	int	range_len;
+	int	*ptr;
+	int	i;
+	int	value;
+
+	if (min >= max)
+	{
+		range_len = max - min;
+		ptr = (int *) malloc(range_len * sizeof(int));
+		if (ptr)
+		{
+			value = min;
+			i = 0;
+			while (i < range_len && value < max)
+				ptr[i++] = value++;
+			return (ptr);
+		}
+	}
+	return (NULL);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_range.c                     
+ft_range.c: OK!
+e3r11p9% vi test_ft_range.c 
+e3r11p9% cat test_ft_range.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_range.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 17:56:03 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	*ft_range(int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab && size > 0)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (i == 0)
+				write(1, "[", 1);
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			if (i == size - 1)
+				write(1, "]", 1);
+			i++;
+		}
+	}
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab;
+
+	min = 3;
+	max = 8;
+	tab = ft_range(min, max);
+	printf("Pour min = %d et max = %d, tab =\n", min, max);
+	ft_print_int_tab(tab, max - min);
+	free(tab);
+	min = 42;
+	max = 42;
+	tab = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab =\n", min, max);
+	ft_print_int_tab(tab, max - min);
+	free(tab);
+	return (0);
+	min = -42;
+	max = 43;
+	tab = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab =\n", min, max);
+	ft_print_int_tab(tab, max - min);
+	free(tab);
+	min = 42;
+	max = -1;
+	tab = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab =\n", min, max);
+	ft_print_int_tab(tab, max - min);
+	free(tab);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_range.c 
+test_ft_range.c: Error!
+Error: CONSECUTIVE_NEWLINES (line:  19, col:   1):	Consecutive newlines
+Error: TOO_MANY_LINES       (line:  96, col:   1):	Function has more than 25 lines
+e3r11p9% vi test_ft_range.c                                     
+e3r11p9% cat test_ft_range.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_range.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 17:56:34 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	*ft_range(int min, int max);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab && size > 0)
+	{
+		i = 0;
+		while (i < size)
+		{
+			if (i == 0)
+				write(1, "[", 1);
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			if (i == size - 1)
+				write(1, "]", 1);
+			i++;
+		}
+	}
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab;
+
+	min = 3;
+	max = 8;
+	tab = ft_range(min, max);
+	printf("Pour min = %d et max = %d, tab =\n", min, max);
+	ft_print_int_tab(tab, max - min);
+	free(tab);
+	min = 42;
+	max = 42;
+	tab = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab =\n", min, max);
+	ft_print_int_tab(tab, max - min);
+	free(tab);
+	return (0);
+	min = -42;
+	max = 43;
+	tab = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab =\n", min, max);
+	ft_print_int_tab(tab, max - min);
+	free(tab);
+	min = 42;
+	max = -1;
+	tab = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab =\n", min, max);
+	ft_print_int_tab(tab, max - min);
+	free(tab);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_range.c
+test_ft_range.c: Error!
+Error: TOO_MANY_LINES       (line:  95, col:   1):	Function has more than 25 lines
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_range ft_range.c test_ft_range.c   
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 17:57 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 22 17:15 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1495 Feb 22 17:26 ft_range.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16312 Feb 22 17:57 test_ft_range
+-rw-r--r-- 1 hauerbac 2023_paris  2287 Feb 22 17:56 test_ft_range.c
+e3r11p9% ./test_ft_range 
+Pour min = 3 et max = 8, tab =
+
+Pour min = 42 et max = 42, tab =
+e3r11p9% vi test_ft_range.c                                     
+e3r11p9% cat test_ft_range.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_range.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 18:00:16 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	*ft_range(int min, int max);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1;
+	int	*tab2;
+	int	*tab3;
+	int	*tab4;
+
+	min = 3;
+	max = 8;
+	tab1 = ft_range(min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	ft_print_int_tab(tab1, max - min);
+	free(tab1);
+	min = 42;
+	max = 42;
+	tab2 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(tab2, max - min);
+	free(tab2);
+	return (0);
+	min = -42;
+	max = 43;
+	tab3 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(tab3, max - min);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(tab4, max - min);
+	free(tab4);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_range.c             
+test_ft_range.c: Error!
+Error: TOO_MANY_VARS_FUNC   (line:  68, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_LINES       (line:  96, col:   1):	Function has more than 25 lines
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_range ft_range.c test_ft_range.c
+e3r11p9% ls -al                                                               
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 18:00 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 22 17:15 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1495 Feb 22 17:26 ft_range.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16312 Feb 22 18:00 test_ft_range
+-rw-r--r-- 1 hauerbac 2023_paris  2299 Feb 22 18:00 test_ft_range.c
+e3r11p9% ./test_ft_range                                       
+Pour min = 3 et max = 8, tab1 =
+
+Pour min = 42 et max = 42, tab2 =
+e3r11p9% vi test_ft_range.c                                     
+e3r11p9% cat test_ft_range.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_range.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 18:58:36 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	*ft_range(int min, int max);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1;
+	int	*tab2;
+	int	*tab3;
+	int	*tab4;
+
+	min = 3;
+	max = 8;
+	tab1 = ft_range(min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	ft_print_int_tab(tab1, max - min);
+	free(tab1);
+	min = 42;
+	max = 42;
+	tab2 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(tab2, max - min);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(tab3, max - min);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(tab4, max - min);
+	free(tab4);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_range.c             
+test_ft_range.c: Error!
+Error: TOO_MANY_VARS_FUNC   (line:  68, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_LINES       (line:  95, col:   1):	Function has more than 25 lines
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_range ft_range.c test_ft_range.c
+e3r11p9% ls -al                                                
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 18:58 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 22 17:15 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1495 Feb 22 17:26 ft_range.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16312 Feb 22 18:58 test_ft_range
+-rw-r--r-- 1 hauerbac 2023_paris  2286 Feb 22 18:58 test_ft_range.c
+e3r11p9% ./test_ft_range                                       
+Pour min = 3 et max = 8, tab1 =
+
+Pour min = 42 et max = 42, tab2 =
+
+Pour min = -42 et max = 43, tab3 =
+
+Pour min = 42 et max = -1, tab4 =
+e3r11p9% vi test_ft_range.c                                     
+e3r11p9% cat test_ft_range.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_range.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 19:07:10 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	*ft_range(int min, int max);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1;
+	int	*tab2;
+	int	*tab3;
+	int	*tab4;
+
+	min = 3;
+	max = 8;
+	tab1 = ft_range(min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	ft_print_int_tab(tab1, max - min);
+	free(tab1);
+	min = 42;
+	max = 42;
+	tab2 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(tab2, max - min);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(tab3, max - min);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(tab4, max - min);
+	free(tab4);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_range.c             
+test_ft_range.c: Error!
+Error: TOO_MANY_VARS_FUNC   (line:  68, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_LINES       (line:  95, col:   1):	Function has more than 25 lines
+e3r11p9% vi ft_range.c                                     
+e3r11p9% cat ft_range.c                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:26:36 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 19:12:39 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
+{
+	unsigned int	i;
+
+	if (src && dest && n > 0)
+	{
+		i = 0;
+		while (i < n && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		while (i < n)
+		{
+			dest[i] = '\0';
+			i++;
+		}
+	}
+	return (dest);
+}
+
+int	*ft_range(int min, int max)
+{
+	int	range_len;
+	int	*ptr;
+	int	i;
+	int	value;
+
+	if (min < max)
+	{
+		range_len = max - min;
+		ptr = (int *) malloc(range_len * sizeof(int));
+		if (ptr)
+		{
+			value = min;
+			i = 0;
+			while (i < range_len && value < max)
+				ptr[i++] = value++;
+			return (ptr);
+		}
+	}
+	return (NULL);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_range.c
+ft_range.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_range ft_range.c test_ft_range.c
+e3r11p9% ls -al                                                
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 19:13 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 22 17:15 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1494 Feb 22 19:12 ft_range.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16312 Feb 22 19:13 test_ft_range
+-rw-r--r-- 1 hauerbac 2023_paris  2294 Feb 22 19:07 test_ft_range.c
+e3r11p9% ./test_ft_range                                       
+Pour min = 3 et max = 8, tab1 =
+[3, 4, 5, 6, 7]
+Pour min = 42 et max = 42, tab2 =
+
+Pour min = -42 et max = 43, tab3 =
+[-42, -41, -40, -39, -38, -37, -36, -35, -34, -33, -32, -31, -30, -29, -28, -27, -26, -25, -24, -23, -22, -21, -20, -19, -18, -17, -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]
+Pour min = 42 et max = -1, tab4 =
+e3r11p9% cd ..
+
+

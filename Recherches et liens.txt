@@ -71,6 +71,12 @@ https://www.youtube.com/playlist?list=PLxeKVrYoZO6CZlYBPJVZQ_n4AulUhjV4p
 
 Video Piscine C - C05 :
 https://www.youtube.com/playlist?list=PLxeKVrYoZO6CKf2YJ3uiQN6aSzAeqLYlu
+
+Video Piscine C -  C08 :
+https://www.youtube.com/playlist?list=PLxeKVrYoZO6C_4IgEopWvNCYMI1Po3dVY
+
+Video Piscine C - C09 - Makefile :
+https://www.youtube.com/watch?v=gtbmNNXcN3s
 ----------------------------------------------------------------------------------------------------------------------
 Traductions :
 A very kind person and she asked for explanations.

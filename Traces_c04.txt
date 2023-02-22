@@ -4224,6 +4224,1219 @@ e3r11p9% pwd
 e3r11p9% mkdir ex05
 e3r11p9% mkdir git_c_04/ex05
 e3r11p9% cd ex05
+--------------------------------------------------------------------------------------------------------------------------
+Evaluated by mhoyer an hour ago
+70%
+tout est super et tres bien explique. Juste dommage lutilisation de malloc dans lex04. Le meilleur c04 que jai corriger depuis le debut. Bon courage glhf
+Your feedback, 38 minutes ago :
+Correcteur tres gentil, qui a lu mon code dans les moindres details et qui s'est donc apercu que j'avais utilise malloc quelques jours trop tot. Merci pour tes remarques :-) 
+
+--------------------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd 
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd c_04
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  git_c_04
+e3r11p9% ls -aR git_c_04 
+git_c_04:
+.  ..  ex00  ex01  ex02  ex03  ex04  ex05  .git
+
+git_c_04/ex00:
+.  ..  ft_strlen.c
+
+git_c_04/ex01:
+.  ..  ft_putstr.c
+
+git_c_04/ex02:
+.  ..  ft_putnbr.c
+
+git_c_04/ex03:
+.  ..  ft_atoi.c
+
+git_c_04/ex04:
+.  ..  ft_putnbr_base.c
+
+git_c_04/ex05:
+.  ..
+
+git_c_04/.git:
+.  ..  branches  COMMIT_EDITMSG  config  description  HEAD  hooks  index  info	logs  objects  refs
+
+git_c_04/.git/branches:
+.  ..
+
+git_c_04/.git/hooks:
+.		       fsmonitor-watchman.sample  pre-merge-commit.sample    pre-receive.sample
+..		       post-update.sample	  prepare-commit-msg.sample  push-to-checkout.sample
+applypatch-msg.sample  pre-applypatch.sample	  pre-push.sample	     update.sample
+commit-msg.sample      pre-commit.sample	  pre-rebase.sample
+
+git_c_04/.git/info:
+.  ..  exclude
+
+git_c_04/.git/logs:
+.  ..  HEAD  refs
+
+git_c_04/.git/logs/refs:
+.  ..  heads  remotes
+
+git_c_04/.git/logs/refs/heads:
+.  ..  master
+
+git_c_04/.git/logs/refs/remotes:
+.  ..  origin
+
+git_c_04/.git/logs/refs/remotes/origin:
+.  ..  master
+
+git_c_04/.git/objects:
+.   01	14  27	32  57	66  89	bd  bf	ce  e1	f2    pack
+..  0f	1f  2a	34  5f	6d  8c	be  c8	da  e8	info
+
+git_c_04/.git/objects/01:
+.  ..  ec02880ad6675ccd5d50765208c6633aa88fb0
+
+git_c_04/.git/objects/0f:
+.  ..  81794c018d3bf628e9fa2718328b2e56754091
+
+git_c_04/.git/objects/14:
+.  ..  799e5bfd41727a711145c4dadc794dcc773ffb
+
+git_c_04/.git/objects/1f:
+.  ..  22e1efeccbfc99baca5765bc335af970bfed56
+
+git_c_04/.git/objects/27:
+.  ..  893828e30a5531c9d8cbec9148b6fafbcbcb59
+
+git_c_04/.git/objects/2a:
+.  ..  7315c474d7de65a1404feaed0c72ac11d7b70d  8583225cd51a19456650eeccd7586e4e962c5d
+
+git_c_04/.git/objects/32:
+.  ..  e02a3f93daa301b160b738c8fc4792d9cb3f54
+
+git_c_04/.git/objects/34:
+.  ..  14c60c3c8daf58ce5fbbe262d8fdbaf4cb092b
+
+git_c_04/.git/objects/57:
+.  ..  f557f8e8dd1f4efebf913bd8d0ee14d0775587
+
+git_c_04/.git/objects/5f:
+.  ..  fc6fa705a9ebf459e9ffe8a77569a7a5e4b265
+
+git_c_04/.git/objects/66:
+.  ..  2101a42365547380bd3f2750385df8c2c8c0cc
+
+git_c_04/.git/objects/6d:
+.  ..  d707d6d477124ca3b7f8c0803d3c17dfde0b3b
+
+git_c_04/.git/objects/89:
+.  ..  98a821c841421d295279d659ea4dc28bc10278
+
+git_c_04/.git/objects/8c:
+.  ..  e82cc482b5b0b802dd420f2f9fb89b6f4a5eb3
+
+git_c_04/.git/objects/bd:
+.  ..  5520e267d9f589e455eef58f00ba9c706fb4e9
+
+git_c_04/.git/objects/be:
+.  ..  03491a8dcc1877dc8f13af1a83bcd599161212
+
+git_c_04/.git/objects/bf:
+.  ..  c77787d80dce4be345807e23abc1b7a0434779
+
+git_c_04/.git/objects/c8:
+.  ..  64319085b2395eaa59087f1d51c3bf923efa48
+
+git_c_04/.git/objects/ce:
+.  ..  1022455e01b59ad4b6e306cdf93d9a02e7c40a
+
+git_c_04/.git/objects/da:
+.  ..  2d096ddbb60097881cafefebe02bfa409e7f82
+
+git_c_04/.git/objects/e1:
+.  ..  c25dd483d385110b09d262bf55ebf6d45bede2
+
+git_c_04/.git/objects/e8:
+.  ..  1eb9b04a329262f46fda1f3e63e69676d76f5f
+
+git_c_04/.git/objects/f2:
+.  ..  53524d685a858acde2277e6c6543306ffabc9a
+
+git_c_04/.git/objects/info:
+.  ..
+
+git_c_04/.git/objects/pack:
+.  ..
+
+git_c_04/.git/refs:
+.  ..  heads  remotes  tags
+
+git_c_04/.git/refs/heads:
+.  ..  master
+
+git_c_04/.git/refs/remotes:
+.  ..  origin
+
+git_c_04/.git/refs/remotes/origin:
+.  ..  master
+
+git_c_04/.git/refs/tags:
+.  ..
+e3r11p9% ls -alR git_c_04/ex*
+git_c_04/ex00:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 18 19:20 .
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris  995 Feb 18 19:20 ft_strlen.c
+
+git_c_04/ex01:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 18 19:28 .
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris 1028 Feb 18 19:28 ft_putstr.c
+
+git_c_04/ex02:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 18 19:38 .
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris 1244 Feb 18 19:38 ft_putnbr.c
+
+git_c_04/ex03:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 20 09:16 .
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris 2542 Feb 20 09:55 ft_atoi.c
+
+git_c_04/ex04:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 20 16:51 .
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris 2848 Feb 20 16:51 ft_putnbr_base.c
+
+git_c_04/ex05:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 20 16:58 .
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb 20 16:58 ..
+e3r11p9% ls -alR ex*
+ex00:
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 20 09:31 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris   995 Feb 18 19:07 ft_strlen.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16080 Feb 20 09:31 test_ft_strlen
+-rw-r--r-- 1 hauerbac 2023_paris  1650 Feb 20 09:30 test_ft_strlen.c
+
+ex01:
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 20 09:29 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1028 Feb 18 19:24 ft_putstr.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16080 Feb 20 09:29 test_ft_putstr
+-rw-r--r-- 1 hauerbac 2023_paris  1218 Feb 20 09:29 test_ft_putstr.c
+
+ex02:
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 18 19:37 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1244 Feb 18 19:36 ft_putnbr.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16080 Feb 18 19:37 test_ft_putnbr
+-rw-r--r-- 1 hauerbac 2023_paris  1191 Feb 18 19:37 test_ft_putnbr.c
+
+ex03:
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 20 09:52 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris  2542 Feb 20 09:52 ft_atoi.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16160 Feb 20 09:52 test_ft_atoi
+-rw-r--r-- 1 hauerbac 2023_paris  1718 Feb 20 09:48 test_ft_atoi.c
+
+ex04:
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 20 16:50 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris  2848 Feb 20 16:23 ft_putnbr_base.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16304 Feb 20 16:50 test_ft_putnbr_base
+-rw-r--r-- 1 hauerbac 2023_paris  2033 Feb 20 16:49 test_ft_putnbr_base.c
+
+ex05:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 20 16:58 .
+drwxr-xr-x 9 hauerbac 2023_paris 4096 Feb 20 16:58 ..
+e3r11p9% cd git_c_04 
+e3r11p9% git log
+commit 6dd707d6d477124ca3b7f8c0803d3c17dfde0b3b (HEAD -> master, origin/master)
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 20 16:53:04 2023 +0100
+
+    Addition of ex04 file
+
+commit e1c25dd483d385110b09d262bf55ebf6d45bede2
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 20 09:57:37 2023 +0100
+
+    Correction of ex03 file for cases where there are some other characters in front of spaces at the beginning of the string
+
+commit 2a7315c474d7de65a1404feaed0c72ac11d7b70d
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Mon Feb 20 09:16:30 2023 +0100
+
+    Addition of ex03 file
+
+commit f253524d685a858acde2277e6c6543306ffabc9a
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Sat Feb 18 19:39:09 2023 +0100
+
+    Addition of ex02 file
+
+commit 01ec02880ad6675ccd5d50765208c6633aa88fb0
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Sat Feb 18 19:29:25 2023 +0100
+
+    Addition of ex01 file
+
+commit 8998a821c841421d295279d659ea4dc28bc10278
+Author: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Date:   Sat Feb 18 19:20:49 2023 +0100
+
+    Addition of ex00 file
+e3r11p9% git status
+On branch master
+Your branch is up to date with 'origin/master'.
+
+nothing to commit, working tree clean
+e3r11p9% cd ..
+---------------------------------------------------------------------------------------------------------------------------------
+Evaluated by mhoyer 3 hours ago
+70%
+tout est super et tres bien explique. Juste dommage lutilisation de malloc dans lex04. Le meilleur c04 que jai corriger depuis le debut. Bon courage glhf
+Your feedback, 2 hours ago :
+Correcteur tres gentil, qui a lu mon code dans les moindres details et qui s'est donc apercu que j'avais utilise malloc quelques jours trop tot. Merci pour tes remarques :-)
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by apiotrau an hour ago
+70%
+Super comprehension, tres bonne logique et bon code, correction tres agreable, merci beaucoup et bon courage!!
+Your feedback, 15 minutes ago :
+Correcteur tres gentil et tres consciencieux. Merci beaucoup pour les encouragements!
+4 / 4 4 / 4 4 / 4 4 / 4
+
+Evaluated by moulinette 14 minutes ago
+-42%
+ex00: OK | ex01: OK | ex02: OK | ex03: KO | ex04: Cheating | ex05: Nothing turned in
+
+= ex03 =========================================================================
+$> cc -Wextra -Wall -Werror ft_atoi.c main.c -o user_exe
+
+= Test 1 ===================================================
+$> ./ihjwrwaw8sgi2ii2snf06ajw
+$> diff -U 3 user_output_test1 test1.output | cat -e
+--- user_output_test1    2023-02-22 10:06:23.505375145 +0000$
++++ test1.output    2023-02-22 10:06:23.473375145 +0000$
+@@ -22,22 +22,22 @@$
+175074925$
+-2147483648$
+-2147483647$
+-7$
+-7$
++0$
++0$
+1$
+-4$
+0$
+-5$
+-2$
+-5$
+-8$
+-4$
++0$
++0$
++0$
++0$
++0$
++0$
+9$
+-1$
++0$
+0$
+6$
+-5$
+-3$
+-1$
+-2$
++0$
++0$
++0$
++0$
+1$
+
+Diff KO :(
+Grade: 0
+---------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/c_04
+e3r11p9% cd ex04
+e3r11p9% ls
+ft_putnbr_base.c  test_ft_putnbr_base  test_ft_putnbr_base.c
+e3r11p9% cp ft_putnbr_base.c ft_putnbr_base_0.c
+e3r11p9% cp test_ft_putnbr_base test_ft_putnbr_base_0
+e3r11p9% vi ft_putnbr_base.c
+e3r11p9% cat ft_putnbr_base.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 14:09:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 09:03:17 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+#include <unistd.h>
+
+int	ft_error_or_strlen(const char *str)
+{
+	int	result;
+	int	i;
+
+	result = -1;
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		if (str[i] == ' ' || str[i] == '\f'
+			|| str[i] == '\n' || str[i] == '\r'
+			|| str[i] == '\t' || str[i] == '\v')
+			return (0);
+		i++;
+	}
+	result = i;
+	return (result);
+}
+
+int	ft_checked_into_base(char *characters_for_base, char c, int base_len)
+{
+	int	i;
+	int	result;
+
+	result = 0;
+	if (characters_for_base && c != '\0' && base_len > 0)
+	{
+		i = 0;
+		while (i < base_len && characters_for_base[i])
+		{
+			if (c == characters_for_base[i])
+				return (0);
+			i++;
+		}
+		result = i == base_len;
+	}
+	return (result);
+}
+
+int	ft_error_or_correct_base(const char *str, int base_len)
+{
+	int		i;
+	char	*characters_for_base;
+
+	if (str)
+	{
+		i = 0;
+		while (i < base_len)
+		{
+			if (str[i] == '+' || str[i] == '-'
+				|| (i > 0 && str[i]
+					&& !ft_checked_into_base(characters_for_base, str[i], i)))
+				return (0);
+			else if (str[i] != '\0')
+			{
+				characters_for_base[i] = str[i];
+				characters_for_base[i + 1] = '\0';
+				i++;
+			}
+		}
+		if (i == base_len)
+			return (base_len);
+	}
+	return (0);
+}
+
+int	ft_error_or_base(const char *str)
+{
+	int	base_len;
+
+	base_len = ft_error_or_strlen(str);
+	if (base_len < 2)
+		return (0);
+	return (ft_error_or_correct_base(str, base_len));
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int		base_len;
+	long	nbr_in_long;
+
+	base_len = ft_error_or_base(base);
+	if (base_len)
+	{
+		if (nbr >= INT_MIN && nbr <= INT_MAX)
+		{
+			nbr_in_long = nbr;
+			if (nbr_in_long < 0)
+			{
+				write(1, "-", 1);
+				nbr_in_long = nbr_in_long * -1;
+			}
+			if (nbr_in_long < base_len)
+			{
+				write(1, &base[nbr_in_long], 1);
+			}
+			else
+			{
+				ft_putnbr_base(nbr_in_long / base_len, base);
+				ft_putnbr_base(nbr_in_long % base_len, base);
+			}
+		}
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putnbr_base.c
+ft_putnbr_base.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putnbr_base ft_putnbr_base.c
+ft_putnbr_base.c: In function ‘ft_error_or_correct_base’:
+ft_putnbr_base.c:67:10: error: ‘characters_for_base’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   67 |      && !ft_checked_into_base(characters_for_base, str[i], i)))
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_putnbr_base.c                                     
+e3r11p9% cat ft_putnbr_base.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 14:09:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 09:23:05 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+#include <unistd.h>
+
+int	ft_error_or_strlen(const char *str)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (str)
+	{
+		i = 0;
+		while (str && str[i] != '\0')
+		{
+			if (str[i] == ' ' || str[i] == '\f'
+				|| str[i] == '\n' || str[i] == '\r'
+				|| str[i] == '\t' || str[i] == '\v')
+				return (0);
+			i++;
+		}
+		result = i;
+	}
+	return (result);
+}
+
+int	ft_error_or_correct_base(const char *str, int base_len)
+{
+	int		i;
+	int		j;
+	char	*charactrs_for_base;
+
+	i = 0;
+	while (i < base_len)
+	{
+		if (str[i] == '+' || str[i] == '-')
+			return (0);
+		else if (i > 0 && str[i])
+		{
+			j = 0;
+			while (j < base_len && characters_for_base[j])
+			{
+				if (characters_for_base[j] == str[i])
+					return (0);
+				j++;
+			}
+		}
+		characters_for_base[i] = str[i];
+		characters_for_base[++i] = '\0';
+	}
+	if (i == base_len)
+		return (base_len);
+	return (0);
+}
+
+int	ft_error_or_base(const char *str)
+{
+	int	base_len;
+
+	base_len = ft_error_or_strlen(str);
+	if (base_len < 2)
+		return (0);
+	return (ft_error_or_correct_base(str, base_len));
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int		base_len;
+	long	nbr_in_long;
+
+	base_len = ft_error_or_base(base);
+	if (base_len)
+	{
+		if (nbr >= INT_MIN && nbr <= INT_MAX)
+		{
+			nbr_in_long = nbr;
+			if (nbr_in_long < 0)
+			{
+				write(1, "-", 1);
+				nbr_in_long = nbr_in_long * -1;
+			}
+			if (nbr_in_long < base_len)
+			{
+				write(1, &base[nbr_in_long], 1);
+			}
+			else
+			{
+				ft_putnbr_base(nbr_in_long / base_len, base);
+				ft_putnbr_base(nbr_in_long % base_len, base);
+			}
+		}
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putnbr_base.c        
+ft_putnbr_base.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putnbr_base ft_putnbr_base.c
+ft_putnbr_base.c: In function ‘ft_error_or_correct_base’:
+ft_putnbr_base.c:52:27: error: ‘characters_for_base’ undeclared (first use in this function); did you mean ‘charactrs_for_base’?
+   52 |    while (j < base_len && characters_for_base[j])
+      |                           ^~~~~~~~~~~~~~~~~~~
+      |                           charactrs_for_base
+ft_putnbr_base.c:52:27: note: each undeclared identifier is reported only once for each function it appears in
+ft_putnbr_base.c:42:8: error: unused variable ‘charactrs_for_base’ [-Werror=unused-variable]
+   42 |  char *charactrs_for_base;
+      |        ^~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_putnbr_base.c                                     
+e3r11p9% cat ft_putnbr_base.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 14:09:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 09:24:53 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+#include <unistd.h>
+
+int	ft_error_or_strlen(const char *str)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (str)
+	{
+		i = 0;
+		while (str && str[i] != '\0')
+		{
+			if (str[i] == ' ' || str[i] == '\f'
+				|| str[i] == '\n' || str[i] == '\r'
+				|| str[i] == '\t' || str[i] == '\v')
+				return (0);
+			i++;
+		}
+		result = i;
+	}
+	return (result);
+}
+
+int	ft_error_or_correct_base(const char *str, int base_len)
+{
+	int		i;
+	int		j;
+	char	*characters_for_base;
+
+	i = 0;
+	while (i < base_len)
+	{
+		if (str[i] == '+' || str[i] == '-')
+			return (0);
+		else if (i > 0 && str[i])
+		{
+			j = 0;
+			while (j < base_len && characters_for_base[j])
+			{
+				if (characters_for_base[j] == str[i])
+					return (0);
+				j++;
+			}
+		}
+		characters_for_base[i] = str[i];
+		characters_for_base[++i] = '\0';
+	}
+	if (i == base_len)
+		return (base_len);
+	return (0);
+}
+
+int	ft_error_or_base(const char *str)
+{
+	int	base_len;
+
+	base_len = ft_error_or_strlen(str);
+	if (base_len < 2)
+		return (0);
+	return (ft_error_or_correct_base(str, base_len));
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int		base_len;
+	long	nbr_in_long;
+
+	base_len = ft_error_or_base(base);
+	if (base_len)
+	{
+		if (nbr >= INT_MIN && nbr <= INT_MAX)
+		{
+			nbr_in_long = nbr;
+			if (nbr_in_long < 0)
+			{
+				write(1, "-", 1);
+				nbr_in_long = nbr_in_long * -1;
+			}
+			if (nbr_in_long < base_len)
+			{
+				write(1, &base[nbr_in_long], 1);
+			}
+			else
+			{
+				ft_putnbr_base(nbr_in_long / base_len, base);
+				ft_putnbr_base(nbr_in_long % base_len, base);
+			}
+		}
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putnbr_base.c        
+ft_putnbr_base.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putnbr_base ft_putnbr_base.c
+ft_putnbr_base.c: In function ‘ft_error_or_correct_base’:
+ft_putnbr_base.c:54:28: error: ‘characters_for_base’ may be used uninitialized in this function [-Werror=maybe-uninitialized]
+   54 |     if (characters_for_base[j] == str[i])
+      |                            ^
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_putnbr_base.c                                     
+e3r11p9% cat ft_putnbr_base.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 14:09:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 09:28:23 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+#include <unistd.h>
+
+int	ft_error_or_strlen(const char *str)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (str)
+	{
+		i = 0;
+		while (str && str[i] != '\0')
+		{
+			if (str[i] == ' ' || str[i] == '\f'
+				|| str[i] == '\n' || str[i] == '\r'
+				|| str[i] == '\t' || str[i] == '\v')
+				return (0);
+			i++;
+		}
+		result = i;
+	}
+	return (result);
+}
+
+int	ft_error_or_correct_base(const char *str, int base_len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < base_len)
+	{
+		if (str[i] == '+' || str[i] == '-')
+			return (0);
+		else if (i > 0 && str[i])
+		{
+			j = 0;
+			while (j < i && str[j])
+			{
+				if (str[j] == str[i])
+					return (0);
+				j++;
+			}
+		}
+		i++;
+	}
+	if (i == base_len)
+		return (base_len);
+	return (0);
+}
+
+int	ft_error_or_base(const char *str)
+{
+	int	base_len;
+
+	base_len = ft_error_or_strlen(str);
+	if (base_len < 2)
+		return (0);
+	return (ft_error_or_correct_base(str, base_len));
+}
+
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int		base_len;
+	long	nbr_in_long;
+
+	base_len = ft_error_or_base(base);
+	if (base_len)
+	{
+		if (nbr >= INT_MIN && nbr <= INT_MAX)
+		{
+			nbr_in_long = nbr;
+			if (nbr_in_long < 0)
+			{
+				write(1, "-", 1);
+				nbr_in_long = nbr_in_long * -1;
+			}
+			if (nbr_in_long < base_len)
+			{
+				write(1, &base[nbr_in_long], 1);
+			}
+			else
+			{
+				ft_putnbr_base(nbr_in_long / base_len, base);
+				ft_putnbr_base(nbr_in_long % base_len, base);
+			}
+		}
+	}
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_putnbr_base.c        
+ft_putnbr_base.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putnbr_base ft_putnbr_base.c
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/10/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_putnbr_base ft_putnbr_base.c test_ft_putnbr_base.c 
+e3r11p9% ls -al
+total 52
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 09:28 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris  2848 Feb 22 08:57 ft_putnbr_base_0.c
+-rw-r--r-- 1 hauerbac 2023_paris  2297 Feb 22 09:28 ft_putnbr_base.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16168 Feb 22 09:28 test_ft_putnbr_base
+-rwxr-xr-x 1 hauerbac 2023_paris 16304 Feb 22 08:57 test_ft_putnbr_base_0
+-rw-r--r-- 1 hauerbac 2023_paris  2033 Feb 20 16:49 test_ft_putnbr_base.c
+e3r11p9% ./test_ft_putnbr_base
+42 en base 10:42
+2a == 42 en base 16:2a
+-2a == -42 en base 16:-2a
+ (42 en base vide):
+ (42 en base de taille 1):
+ (42 en base 16 avec + et -):
+ (42 en base 16 avec une tabulation):
+101010 == 42 en base 2:101010
+vn == 42 en base 8 ("poneyvif"):vn%                                                                   
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac/c_04/ex04
+e3r11p9% cd ../ex03
+e3r11p9% ls
+ft_atoi.c  test_ft_atoi  test_ft_atoi.c
+e3r11p9% vi ft_atoi.c 
+e3r11p9% cat ft_atoi.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 08:40:20 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 11:43:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_spaces_truncating(const char *str)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (str)
+	{
+		while (str[i]
+			&& (str[i] == ' ' || str[i] == '\f'
+				|| str[i] == '\n' || str[i] == '\r'
+				|| str[i] == '\t' || str[i] == '\v'))
+			i++;
+	}
+	return (i);
+}
+
+int	ft_error_or_sign(unsigned int boundaries[2], const char *str)
+{
+	int				result;
+	unsigned int	i;
+
+	result = 0;
+	boundaries[0] = -1;
+	boundaries[1] = -2;
+	if (str)
+	{
+		result = 1;
+		i = ft_spaces_truncating(str);
+		while (str[i] && (str[i] == '+' || str[i] == '-'))
+		{
+			if (str[i] == '-')
+				result = -1 * result;
+			i++;
+		}
+		if (str[i] && str[i] >= 48 && str[i] <= 57)
+			boundaries[0] = (unsigned int)i;
+		i++;
+		while (str[i] && str[i] >= 48 && str[i] <= 57)
+			boundaries[1] = (unsigned int)i++;
+		if (boundaries[0] > boundaries[1])
+			result = 0;
+	}
+	return (result);
+}
+
+int	ft_atoi(char *str)
+{
+	unsigned int	boundaries[2];
+	unsigned int	i;
+	int				error_or_sign;
+	int				result;
+
+	error_or_sign = ft_error_or_sign(boundaries, str);
+	result = 0;
+	if (error_or_sign == 0)
+		return (0);
+	else
+	{
+		i = boundaries[0];
+		result = str[i++] - 48;
+		while (i <= boundaries[1])
+			result = (result * 10) + (str[i++] - 48);
+		result *= error_or_sign;
+	}
+	return (result);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_atoi.c                             
+ft_atoi.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_atoi ft_atoi.c test_ft_atoi.c                     
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 11:44 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris  2129 Feb 22 11:43 ft_atoi.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16160 Feb 22 11:44 test_ft_atoi
+-rw-r--r-- 1 hauerbac 2023_paris  1718 Feb 20 09:48 test_ft_atoi.c
+e3r11p9% ./test_ft_atoi                                   
+We find the number -1234 into "    ---+--+1234ab567"
+We find the number 0 into " cvedrf   ----+---+1234ab567"
+We find the number 0 into "  sdfggf  -----+---+1234ab567"
+42:42
+-42:-42
+0:0
+zsh: segmentation fault (core dumped)  ./test_ft_atoi
+e3r11p9% cat test_ft_atoi.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_atoi.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 08:52:39 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/20 09:48:31 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+int	ft_atoi(char *str);
+
+int	main(void)
+{
+	char	str[] = "    ---+--+1234ab567";
+	char	str1[] = " cvedrf   ----+---+1234ab567";
+	char	str2[] = "  sdfggf  -----+---+1234ab567";
+
+	printf("We find the number %d into \"%s\"\n", ft_atoi(str), str);
+	printf("We find the number %d into \"%s\"\n", ft_atoi(str1), str1);
+	printf("We find the number %d into \"%s\"\n", ft_atoi(str2), str2);
+	printf("42:%d\n", ft_atoi("  \n  42t4457"));
+	printf("-42:%d\n", ft_atoi(" --+-42sfs:f545"));
+	printf("0:%d\n", ft_atoi("\0 1337"));
+	printf("0:%d\n", ft_atoi("-0"));
+	printf("0:%d\n", ft_atoi(" - 1 3 2 5 6 3 2 1 6 7"));
+	printf("-1325632167:%d\n", ft_atoi("-1325632167"));
+	printf("-100:%d\n", ft_atoi("-100"));
+	printf("min:%d\n", ft_atoi("\t---+2147483648"));
+	printf("max:%d\n", ft_atoi("\v2147483647"));
+	return (0);
+}
+e3r11p9% vi ft_atoi.c                                     
+e3r11p9% cat ft_atoi.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/20 08:40:20 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 11:48:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_spaces_truncating(const char *str)
+{
+	unsigned int	i;
+
+	i = 0;
+	if (str)
+	{
+		while (str[i]
+			&& (str[i] == ' ' || str[i] == '\f'
+				|| str[i] == '\n' || str[i] == '\r'
+				|| str[i] == '\t' || str[i] == '\v'))
+			i++;
+	}
+	return (i);
+}
+
+int	ft_error_or_sign(unsigned int boundaries[2], const char *str)
+{
+	int				result;
+	unsigned int	i;
+
+	result = 0;
+	boundaries[0] = -1;
+	boundaries[1] = -2;
+	if (str)
+	{
+		result = 1;
+		i = ft_spaces_truncating(str);
+		while (str[i] && (str[i] == '+' || str[i] == '-'))
+		{
+			if (str[i] == '-')
+				result = -1 * result;
+			i++;
+		}
+		if (str[i] && str[i] >= 48 && str[i] <= 57)
+			boundaries[0] = (unsigned int)i;
+		while (str[i] && str[i] >= 48 && str[i] <= 57)
+			boundaries[1] = (unsigned int)i++;
+		if (boundaries[0] > boundaries[1])
+			result = 0;
+	}
+	return (result);
+}
+
+int	ft_atoi(char *str)
+{
+	unsigned int	boundaries[2];
+	unsigned int	i;
+	int				error_or_sign;
+	int				result;
+
+	error_or_sign = ft_error_or_sign(boundaries, str);
+	result = 0;
+	if (error_or_sign == 0)
+		return (0);
+	else
+	{
+		i = boundaries[0];
+		result = str[i++] - 48;
+		while (i <= boundaries[1])
+			result = (result * 10) + (str[i++] - 48);
+		result *= error_or_sign;
+	}
+	return (result);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_atoi.c                
+ft_atoi.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_atoi ft_atoi.c test_ft_atoi.c
+e3r11p9% ls -al                                         
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 11:49 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 20 16:58 ..
+-rw-r--r-- 1 hauerbac 2023_paris  2122 Feb 22 11:48 ft_atoi.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16160 Feb 22 11:49 test_ft_atoi
+-rw-r--r-- 1 hauerbac 2023_paris  1718 Feb 20 09:48 test_ft_atoi.c
+e3r11p9% ./test_ft_atoi                                 
+We find the number -1234 into "    ---+--+1234ab567"
+We find the number 0 into " cvedrf   ----+---+1234ab567"
+We find the number 0 into "  sdfggf  -----+---+1234ab567"
+42:42
+-42:-42
+0:0
+0:0
+0:0
+-1325632167:-1325632167
+-100:-100
+min:-2147483648
+max:2147483647
+---------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd c_04
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  git_c_04
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-eff40e53-d2f1-4475-856d-1c9cd8636016-4713148-hauerbac git_c_04_2
+Cloning into 'git_c_04_2'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% ls -alR ex*
+ex00:
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 20 09:31 .
+drwxr-xr-x 10 hauerbac 2023_paris  4096 Feb 22 15:46 ..
+-rw-r--r--  1 hauerbac 2023_paris   995 Feb 18 19:07 ft_strlen.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16080 Feb 20 09:31 test_ft_strlen
+-rw-r--r--  1 hauerbac 2023_paris  1650 Feb 20 09:30 test_ft_strlen.c
+
+ex01:
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 20 09:29 .
+drwxr-xr-x 10 hauerbac 2023_paris  4096 Feb 22 15:46 ..
+-rw-r--r--  1 hauerbac 2023_paris  1028 Feb 18 19:24 ft_putstr.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16080 Feb 20 09:29 test_ft_putstr
+-rw-r--r--  1 hauerbac 2023_paris  1218 Feb 20 09:29 test_ft_putstr.c
+
+ex02:
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 18 19:37 .
+drwxr-xr-x 10 hauerbac 2023_paris  4096 Feb 22 15:46 ..
+-rw-r--r--  1 hauerbac 2023_paris  1244 Feb 18 19:36 ft_putnbr.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16080 Feb 18 19:37 test_ft_putnbr
+-rw-r--r--  1 hauerbac 2023_paris  1191 Feb 18 19:37 test_ft_putnbr.c
+
+ex03:
+total 44
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 22 13:41 .
+drwxr-xr-x 10 hauerbac 2023_paris  4096 Feb 22 15:46 ..
+-rw-r--r--  1 hauerbac 2023_paris  2122 Feb 22 11:48 ft_atoi.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16160 Feb 22 13:41 test_ft_atoi
+-rw-r--r--  1 hauerbac 2023_paris  1761 Feb 22 13:41 test_ft_atoi.c
+-rw-r--r--  1 hauerbac 2023_paris 12288 Feb 22 13:41 .test_ft_atoi.c.swp
+
+ex04:
+total 52
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 22 09:28 .
+drwxr-xr-x 10 hauerbac 2023_paris  4096 Feb 22 15:46 ..
+-rw-r--r--  1 hauerbac 2023_paris  2848 Feb 22 08:57 ft_putnbr_base_0.c
+-rw-r--r--  1 hauerbac 2023_paris  2297 Feb 22 09:28 ft_putnbr_base.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16168 Feb 22 09:28 test_ft_putnbr_base
+-rwxr-xr-x  1 hauerbac 2023_paris 16304 Feb 22 08:57 test_ft_putnbr_base_0
+-rw-r--r--  1 hauerbac 2023_paris  2033 Feb 20 16:49 test_ft_putnbr_base.c
+
+ex05:
+total 8
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Feb 20 16:58 .
+drwxr-xr-x 10 hauerbac 2023_paris 4096 Feb 22 15:46 ..
+e3r11p9% cp ex00/ft_strlen.c git_c_04_2/ex00/ft_strlen.c
+cp: cannot create regular file 'git_c_04_2/ex00/ft_strlen.c': No such file or directory
+e3r11p9% mkdir git_c_04_2/ex00      
+e3r11p9% cp ex00/ft_strlen.c git_c_04_2/ex00/ft_strlen.c
+e3r11p9% mkdir git_c_04_2/ex01                          
+e3r11p9% cp ex01/ft_putstr.c git_c_04_2/ex01/ft_putstr.c
+e3r11p9% mkdir git_c_04_2/ex02                          
+e3r11p9% cp ex02/ft_putnbr.c git_c_04_2/ex02/ft_putnbr.c
+e3r11p9% mkdir git_c_04_2/ex03                          
+e3r11p9% cp ex03/ft_atoi.c git_c_04_2/ex03/ft_atoi.c
+e3r11p9% mkdir git_c_04_2/ex04                      
+e3r11p9% cp ex04/ft_putnbr_base.c git_c_04_2/ex04/ft_putnbr_base.c
+e3r11p9% cd git_c_04_2
+e3r11p9% git add ex00/ft_strlen.c
+e3r11p9% git add ex01/ft_putstr.c
+e3r11p9% git add ex02/ft_putnbr.c
+e3r11p9% git add ex03/ft_atoi.c
+e3r11p9% git add ex04/ft_putnbr_base.c
+e3r11p9% git commit -m "Second retry for special cases into ft_atoi.c and not to use malloc into ft_putnbr_base.c"
+[master (root-commit) 6e7427c] Second retry for special cases into ft_atoi.c and not to use malloc into ft_putnbr_base.c
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 5 files changed, 263 insertions(+)
+ create mode 100644 ex00/ft_strlen.c
+ create mode 100644 ex01/ft_putstr.c
+ create mode 100644 ex02/ft_putnbr.c
+ create mode 100644 ex03/ft_atoi.c
+ create mode 100644 ex04/ft_putnbr_base.c
+e3r11p9% git push
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (12/12), 2.36 KiB | 1.18 MiB/s, done.
+Total 12 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-eff40e53-d2f1-4475-856d-1c9cd8636016-4713148-hauerbac
+ * [new branch]      master -> master
+--------------------------------------------------------------------------------------------------------------------------------
+
+Evaluated by moulinette 2 minutes ago
+85%
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: Nothing turned in
+Peer evaluations (2/2)
+Evaluated by bmoudach 2 hours ago
+85%
+tres bonne explication merci a toi pour le temps paae a m,expliauee et bon courage pour a suite.
+Your feedback, an hour ago :
+Correcteur tres gentil, qui fait des efforts pour comprendre mes explications. Merci beaucoup!
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by kboulkri 29 minutes ago
+85%
+Merci pour les explications sur la facon qui est differente de la mienne est ma apporter de nouvelles infos. bon courage pour la suite !
+Your feedback, 2 minutes ago :
+Correcteur tres gentil et qui s'est montre tres interesse par mon code. Merci beaucoup! :-)
+4 / 4 4 / 4 4 / 4 4 / 4
 
 
 

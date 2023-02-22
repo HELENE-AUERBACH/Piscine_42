@@ -2861,16 +2861,29 @@ ls -l | sed -n '1,${p;n;}'
 ------------------------------------------------------------------------------------------------------------------------------------------------------
 logo42 		
 	You have been graded by Moulinette 	
-		
-	
-		
-	
-
 Hi,
 
 You have been graded 85 on C Piscine Shell 01:
 
 ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: Nothing turned in
+
+
+Evaluated by moulinette 12 days ago
+85%
+ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: Nothing turned in
+Peer evaluations (2/2)
+Evaluated by ldoucour 12 days ago
+85%
+Bonnes explications des exercices du projet et de la methodologie employee. Cela m'a permis de mieux comprendre certaines commandes.
+Your feedback, 12 days ago :
+Merci
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by tmethia 12 days ago
+85%
+Tres investie explique bien les concepts, merci beaucoup! :)
+Your feedback, 12 days ago :
+Correcteur tres gentil et qui explique bien. Merci.
+4 / 4 4 / 4 4 / 4 4 / 4
 ---------------------------------------------------------------------------------------------------------------------------------------
 ptessier (Pierre)
  — 

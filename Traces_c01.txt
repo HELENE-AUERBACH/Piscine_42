@@ -4861,7 +4861,24 @@ e3r11p9% gcc -o  ~/c_01/ex00/test_ft_ft_2  ~/c_01/ex00/ft_ft.c  ~/c_01/ex00/test
 e3r11p9% ~/c_01/ex00/test_ft_ft_2                                                     
 42
 42%                                                                                                                                         
+-------------------------------------------------------------------------------------------------------------------------------
 
+Evaluated by moulinette 7 days ago
+100%
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: OK
+Peer evaluations (2/2)
+Evaluated by ekanegaw 7 days ago
+100%
+Elle est tres sympa et a bien explique son travail. Merci ! :)
+Your feedback, 7 days ago :
+A very kind person and meticulous. Thank you very much!
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by ebouvier 7 days ago
+100%
+Super travail. Tres tres complet, beaucoup de main de test. tout est maitrise ! Personne tres agreable Bon courage pour la suite de jours !
+Your feedback, 7 days ago :
+Correcteur tres gentil, qui connait les exercices presque pqr coeur et qui a controle les cas de tests "limite". Merci beaucoup et bon courage pour cette seconde piscine!
+4 / 4 4 / 4 4 / 4 4 / 4
 
 
 

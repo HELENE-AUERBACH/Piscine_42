@@ -5547,17 +5547,28 @@ e3r11p9% cd ex08
 e3r11p9% vi ft_print_combn.c
 -----------------------------------------------------------------------------------------------------------
 You have been graded by Moulinette 	
-		
-	
-		
-	
-
 Hi,
 
 You have been graded 60 on C Piscine C 00:
 
 ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: KO | ex07: OK | ex08: Nothing turned in
 
+Evaluated by moulinette 10 days ago
+60%
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: KO | ex07: OK | ex08: Nothing turned in
+Peer evaluations (2/2)
+Evaluated by jihalee 10 days ago
+85%
+thank you for the perfect explanation with full comprehension about the code. have a good piscine!!!
+Your feedback, 10 days ago :
+He's very kind and he really tries to understand the algorithm of the one he corrects. Thank you very much!
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by eltouma 10 days ago
+85%
+Super correction, tres instructif : j'ai decouvert d'autres manieres de faire, super interessantes ! Merci pour toustes ces explications !
+Your feedback, 10 days ago :
+Correctrice tres interessee par d'autres manieres de reflechir et tres gentille. De plus, elle prend le temps pour un echange complementaire apres la correction. Merci beaucoup!
+4 / 4 4 / 4 4 / 4 4 / 4
 ---------------------------------------------
 	
 = ex06 =========================================================================
@@ -6693,6 +6704,19 @@ adzinabi  astephan  chae  correctionThib  corr_jihalee	dlac  ekanegaw	eval  eval
 e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-fbf85395-b4ec-489f-a43a-9f6b4a646454-4686096-hauerbac test_c00_2_H
 Cloning into 'test_c00_2_H'...
 warning: You appear to have cloned an empty repository.
+---------------------------------------------------------------------------------------------------
+Evaluated by octoross 3 days ago
+0%
+Bon courage pour votre retry je suis sure qu'il passera :)
+Your feedback, 3 days ago :
+Je m'excuse de vous avoir fait perdre votre temps. Merci pour votre comprehension.
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by moulinette 2 days ago
+0%
+Missing peer-evaluation replaced by a 0
+Your feedback, 2 days ago :
+The Intranet is right ! I deserve this 0 !
+---------------------------------------------------------------------------------------------------
 
 
 

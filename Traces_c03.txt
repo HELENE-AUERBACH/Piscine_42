@@ -2479,13 +2479,26 @@ char	*ft_strstr(char *str, char *to_find)
 	return (NULL);
 }
 -------------------------------------------------------------------------------------------------------------------
+
+Evaluated by moulinette 4 days ago
+75%
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: KO
+Peer evaluations (2/2)
+Evaluated by kosipova 4 days ago
+100%
+Really good explanation, pretty interesting solution. Thank you for advice! Good luck with Moulinette!
+Your feedback, 4 days ago :
+A very kind person and she took a lot of time to understand what I did and what I'm not sure about. Thank you very much!
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by jdenis 4 days ago
+100%
+tres bon travail, avec une tres bonne comprehension de toutes les fonctions
+Your feedback, 4 days ago :
+Correcteur tres gentil, qui a cherche a comprendre mon code et m'a donne des conseils afin de le simplifier. Merci beaucoup!
+4 / 4 4 / 4 4 / 4 4 / 4
+
  		logo42 		
 	You have been graded by Moulinette 	
-		
-	
-		
-	
-
 Hi,
 
 You have been graded 75 on C Piscine C 03:
@@ -2655,4 +2668,570 @@ Grade: 0
 
 = Final grade: 75 ==============================================================
 
+-------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd
+e3r11p9% cd c_03
+e3r11p9% cd ex05
+e3r11p9% ls
+ft_strlcat.c  test_ft_strlcat  test_ft_strlcat.c
+e3r11p9% vi ft_strlcat.c 
+e3r11p9% cat ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:11:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 12:12:13 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int				i;
+	int				j;
+	unsigned int	dest_len;
+	unsigned int	src_len;
+
+	i = 0;
+	while (dest[i] != '\0')
+		i++;
+	dest_len = (unsigned int) i;
+	i = 0;
+	while (src[i] != '\0')
+		i++;
+	src_len = (unsigned int) i;
+	if (dest_len >= size)
+		return (size + src_len);
+	if (size > 0)
+	{
+		i = dest_len;
+		j = 0;
+		while ((unsigned int) j < size - 1)
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+		return (dest_len + src_len);
+	}
+	return (src_len);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlcat.c 
+ft_strlcat.c: Error!
+Error: TOO_MANY_LINES       (line:  44, col:   1):	Function has more than 25 lines
+e3r11p9% vi ft_strlcat.c                                     
+e3r11p9% cat ft_strlcat.c                                     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:11:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 12:17:23 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+		i++;
+	return (i);
+}
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int				i;
+	int				j;
+	unsigned int	dest_len;
+	unsigned int	src_len;
+
+	dest_len = (unsigned int) ft_strlen(dest);
+	src_len = (unsigned int) ft_strlen(src);
+	if (dest_len >= size)
+		return (size + src_len);
+	if (size > 0)
+	{
+		i = dest_len;
+		j = 0;
+		while ((unsigned int) j < size - 1)
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+		return (dest_len + src_len);
+	}
+	return (src_len);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlcat.c
+ft_strlcat.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c 
+/usr/bin/ld: /tmp/ccVWzjmj.o: in function `main':
+test_ft_strlcat.c:(.text+0x3f1): undefined reference to `strlcat'
+/usr/bin/ld: test_ft_strlcat.c:(.text+0x45a): undefined reference to `strlcat'
+/usr/bin/ld: test_ft_strlcat.c:(.text+0x4c0): undefined reference to `strlcat'
+/usr/bin/ld: test_ft_strlcat.c:(.text+0x523): undefined reference to `strlcat'
+collect2: error: ld returned 1 exit status
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c -lbsd
+e3r11p9% ls -al
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 12:17 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 17 10:57 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1463 Feb 22 12:17 ft_strlcat.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16200 Feb 22 12:17 test_ft_strlcat
+-rw-r--r-- 1 hauerbac 2023_paris  2861 Feb 19 15:51 test_ft_strlcat.c
+e3r11p9% ./test_ft_strlcat 
+"defghijklmnopq" concatene a "" pour n = 5 donne :
+14 ("defg")
+"defgh" concatene a "" pour n = 5 donne :
+5 ("defg")
+"" concatene a "
+                " pour n = 1 donne :
+1 ("
+    ")
+"abcd" concatene a "" pour n = 9 donne :
+4 ("abcd")
+
+
+Details:
+Test1:OK
+6
+Same:Size
+10
+Shorter:ThanMyself
+4
+Shorter:ThanMyself
+0
+7 7
+Test1OK
+
+8 8
+SameSize
+ize
+14 14
+Shorter
+Shorter
+10 10
+Shorter
+Shorter
+e3r11p9% vi test_ft_strlcat.c
+e3r11p9% cat test_ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strlcat.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:30:51 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 12:26:06 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <bsd/string.h>
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
+
+int	main(void)
+{
+	char	*src1 = "defghijklmnopq";
+	char	dest1[5];
+	char	*src2 = "defgh";
+	char	dest2[5];
+	char	*src3 = "";
+	char	dest3[5];
+	char	*src4 = "abcd";
+	char	dest4[5];
+
+	/* avec strlcpy et strlcat, on peut balancer tout ce
+	 * qu\'on veut dans le tableau, on sait qu'on ne déborde pas.
+	 * C'est ça qui est bien.
+	*/
+	printf("\"%s\" concatene a \"%s\" pour n = %ld donne :\n", src1, dest1, sizeof(dest1));
+	printf("%d (\"%s\")\n", ft_strlcat(dest1, src1, (unsigned int) sizeof(dest1)), dest1);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src2, dest2, 5);
+	printf("%d (\"%s\")\n", ft_strlcat(dest2, src2, 5), dest2);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src3, dest3, 1);
+	printf("%d (\"%s\")\n", ft_strlcat(dest3, src3, 1), dest3);
+	printf("\"%s\" concatene a \"%s\" pour n = %d donne :\n", src4, dest4, 9);
+	printf("%d (\"%s\")\n", ft_strlcat(dest4, src4, 9), dest4);
+
+	char s1a[10] = "Test1";
+	char s2a[] = "OK";
+	char s1b[10] = "Test1";
+	char s2b[] = "OK";
+	char s3a[10] = "Same";
+	char s4a[] = "Size";
+	char s3b[10] = "Same";
+	char s4b[] = "Size";
+	char s5a[20] = "Shorter";
+	char s6a[] = "ThanMyself";
+	char s5b[20] = "Shorter";
+	char s6b[] = "ThanMyself";
+	char s7a[20] = "Shorter";
+	char s8a[] = "ThanMyself";
+	char s7b[20] = "Shorter";
+	char s8b[] = "ThanMyself";
+
+	printf("%s\n", ft_strlcat(s1a, s2a, 6) == strlcat(s1b, s2b, 6) ? "Success" : "Fail");
+	printf("%s\n", strcmp(s1a, s1b) == 0 && strcmp(s2a, s2b) == 0 ? "Success" : "Fail");
+	printf("%s\n", ft_strlcat(s3a, s4a, 10) == strlcat(s3b, s4b, 10) ? "Success" : "Fail");
+	printf("%s\n", strcmp(s3a, s3b) == 0 && strcmp(s4a, s4b) == 0 ? "Success" : "Fail");
+	printf("%s\n", ft_strlcat(s5a, s6a, 4) == strlcat(s5b, s6b, 4) ? "Success" : "Fail");
+	printf("%s\n", strcmp(s5a, s5b) == 0 && strcmp(s6a, s6b) == 0 ? "Success" : "Fail");
+	printf("%s\n", ft_strlcat(s7a, s8a, 0) == strlcat(s7b, s8b, 0) ? "Success" : "Fail");
+	printf("%s\n", strcmp(s7a, s7b) == 0 && strcmp(s8a, s8b) == 0 ? "Success" : "Fail");
+	
+	printf("\n\nDetails:\n");
+	printf("%s:%s\n%s:%s\n", s1a, s1b, s2a, s2b);
+	printf("%s:%s\n%s:%s\n", s3a, s3b, s4a, s4b);
+	printf("%s:%s\n%s:%s\n", s5a, s5b, s6a, s6b);
+	printf("%s:%s\n%s:%s\n", s7a, s7b, s8a, s8b);
+	return (0);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlcat                     
+Error: test_ft_strlcat is not valid C or C header file
+e3r11p9% norminette -R CheckForbiddenSourceHeader test_ft_strlcat.c
+test_ft_strlcat.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  20, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  22, col:  19):	Declaration and assignation on a single line
+Error: DECL_ASSIGN_LINE     (line:  24, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  25, col:   1):	Too many variables declarations in a function
+Error: TOO_MANY_VARS_FUNC   (line:  26, col:   1):	Too many variables declarations in a function
+Error: DECL_ASSIGN_LINE     (line:  26, col:  19):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  27, col:   1):	Too many variables declarations in a function
+Error: WRONG_SCOPE_COMMENT  (line:  29, col:   5):	Comment is invalid in this scope
+Error: LINE_TOO_LONG        (line:  33, col:  84):	line too long
+Error: LINE_TOO_LONG        (line:  34, col:  86):	line too long
+Error: EMPTY_LINE_FUNCTION  (line:  41, col:   1):	Empty line in function
+Error: TOO_MANY_VARS_FUNC   (line:  42, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  42, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  42, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  42, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  42, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  43, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  43, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  43, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  43, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  43, col:  16):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  44, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  44, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  44, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  44, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  44, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  45, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  45, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  45, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  45, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  45, col:  16):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  46, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  46, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  46, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  46, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  46, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  47, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  47, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  47, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  47, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  47, col:  16):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  48, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  48, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  48, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  48, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  48, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  49, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  49, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  49, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  49, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  49, col:  16):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  50, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  50, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  50, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  50, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  50, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  51, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  51, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  51, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  51, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  51, col:  16):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  52, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  52, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  52, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  52, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  52, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  53, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  53, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  53, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  53, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  53, col:  16):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  54, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  54, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  54, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  54, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  54, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  55, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  55, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  55, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  55, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  55, col:  16):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  56, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  56, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  56, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  56, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  56, col:  18):	Declaration and assignation on a single line
+Error: TOO_MANY_VARS_FUNC   (line:  57, col:   1):	Too many variables declarations in a function
+Error: VAR_DECL_START_FUNC  (line:  57, col:   1):	Variable declaration not at start of function
+Error: SPACE_REPLACE_TAB    (line:  57, col:   9):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  57, col:  10):	Misaligned variable declaration
+Error: DECL_ASSIGN_LINE     (line:  57, col:  16):	Declaration and assignation on a single line
+Error: LABEL_FBIDDEN        (line:  59, col:   1):	Label statements are forbidden
+Error: TERNARY_FBIDDEN      (line:  59, col:  67):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  59, col:  87):	line too long
+Error: LABEL_FBIDDEN        (line:  60, col:   1):	Label statements are forbidden
+Error: TERNARY_FBIDDEN      (line:  60, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  60, col:  86):	line too long
+Error: LABEL_FBIDDEN        (line:  61, col:   1):	Label statements are forbidden
+Error: TERNARY_FBIDDEN      (line:  61, col:  69):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  61, col:  82):	line too long
+Error: LABEL_FBIDDEN        (line:  62, col:   1):	Label statements are forbidden
+Error: TERNARY_FBIDDEN      (line:  62, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  62, col:  86):	line too long
+Error: LABEL_FBIDDEN        (line:  63, col:   1):	Label statements are forbidden
+Error: TERNARY_FBIDDEN      (line:  63, col:  67):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  63, col:  87):	line too long
+Error: LABEL_FBIDDEN        (line:  64, col:   1):	Label statements are forbidden
+Error: TERNARY_FBIDDEN      (line:  64, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  64, col:  86):	line too long
+Error: LABEL_FBIDDEN        (line:  65, col:   1):	Label statements are forbidden
+Error: TERNARY_FBIDDEN      (line:  65, col:  67):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  65, col:  87):	line too long
+Error: LABEL_FBIDDEN        (line:  66, col:   1):	Label statements are forbidden
+Error: TERNARY_FBIDDEN      (line:  66, col:  66):	Ternaries are forbidden
+Error: LINE_TOO_LONG        (line:  66, col:  86):	line too long
+Error: EMPTY_LINE_FUNCTION  (line:  67, col:   1):	Empty line in function
+Error: SPACE_EMPTY_LINE     (line:  67, col:   1):	Space on empty line
+Error: TOO_MANY_LINES       (line:  74, col:   1):	Function has more than 25 lines
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c -lbsd
+e3r11p9% ls -al                                                
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 12:26 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 17 10:57 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1463 Feb 22 12:17 ft_strlcat.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16240 Feb 22 12:26 test_ft_strlcat
+-rw-r--r-- 1 hauerbac 2023_paris  3249 Feb 22 12:26 test_ft_strlcat.c
+e3r11p9% ./test_ft_strlcat                                     
+"defghijklmnopq" concatene a "" pour n = 5 donne :
+14 ("defg")
+"defgh" concatene a "" pour n = 5 donne :
+5 ("defg")
+"" concatene a "
+                " pour n = 1 donne :
+1 ("
+    ")
+"abcd" concatene a "" pour n = 9 donne :
+4 ("abcd")
+Fail
+Fail
+Fail
+Fail
+Success
+Success
+Success
+Success
+
+
+Details:
+Test1OK:OK
+OK:OK
+SameSize:izeSize
+Size:Size
+Shorter:Shorter
+ThanMyself:ThanMyself
+Shorter:Shorter
+ThanMyself:ThanMyself
+e3r11p9% vi test_ft_strlcat.c                                   
+e3r11p9% vi ft_strlcat.c 
+e3r11p9% cat ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:11:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 12:36:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+		i++;
+	return (i);
+}
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int				i;
+	int				j;
+	unsigned int	dest_len;
+	unsigned int	src_len;
+
+	dest_len = (unsigned int) ft_strlen(dest);
+	src_len = (unsigned int) ft_strlen(src);
+	if (dest_len >= size)
+		return (size + src_len);
+	if (size > 0)
+	{
+		i = dest_len;
+		j = 0;
+		while ((unsigned int) j < size - 1 && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+		return (dest_len + src_len);
+	}
+	return (src_len);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlcat.c                            
+ft_strlcat.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c -lbsd
+e3r11p9% ls -al                                             
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 22 12:37 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 17 10:57 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1481 Feb 22 12:36 ft_strlcat.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16240 Feb 22 12:37 test_ft_strlcat
+-rw-r--r-- 1 hauerbac 2023_paris  3249 Feb 22 12:26 test_ft_strlcat.c
+e3r11p9% ./test_ft_strlcat                                  
+"defghijklmnopq" concatene a "" pour n = 5 donne :
+14 ("defg")
+"defgh" concatene a "" pour n = 5 donne :
+5 ("defg")
+"" concatene a "
+                " pour n = 1 donne :
+1 ("
+    ")
+"abcd" concatene a "" pour n = 9 donne :
+4 ("abcd")
+Success
+Fail
+Success
+Success
+Success
+Success
+Success
+Success
+
+
+Details:
+Test1OK:Test1
+OK:OK
+SameSize:SameSize
+Size:Size
+Shorter:Shorter
+ThanMyself:ThanMyself
+Shorter:Shorter
+ThanMyself:ThanMyself
+e3r11p9% vi ft_strlcat.c                                     
+e3r11p9% cat ft_strlcat.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/17 11:11:29 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 12:41:30 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+		i++;
+	return (i);
+}
+
+unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
+{
+	int				i;
+	int				j;
+	unsigned int	dest_len;
+	unsigned int	src_len;
+
+	dest_len = (unsigned int) ft_strlen(dest);
+	src_len = (unsigned int) ft_strlen(src);
+	if (dest_len >= size)
+		return (size + src_len);
+	if (size > 0)
+	{
+		i = dest_len;
+		j = 0;
+		while ((unsigned int) j < size - 1 - dest_len && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+		return (dest_len + src_len);
+	}
+	return (src_len);
+}
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_strlcat.c                            
+ft_strlcat.c: OK!
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strlcat ft_strlcat.c test_ft_strlcat.c -lbsd
+e3r11p9% ./test_ft_strlcat                                   
+"defghijklmnopq" concatene a "" pour n = 5 donne :
+14 ("defg")
+"defgh" concatene a "" pour n = 5 donne :
+5 ("defg")
+"" concatene a "
+                " pour n = 1 donne :
+1 ("
+    ")
+"abcd" concatene a "" pour n = 9 donne :
+4 ("abcd")
+Success
+Success
+Success
+Success
+Success
+Success
+Success
+Success
+
+
+Details:
+Test1:Test1
+OK:OK
+SameSize:SameSize
+Size:Size
+Shorter:Shorter
+ThanMyself:ThanMyself
+Shorter:Shorter
+ThanMyself:ThanMyself
 
