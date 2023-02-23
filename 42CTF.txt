@@ -1,0 +1,32 @@
+February, 23rd :
+Association
+42CTF - Intro au CTF
+February 23, 2023 at 13:00
+in 44 minutes for environ 4 heures En cluster
+
+Marre de réparer les segfaults de votre code ? Venez vous amuser à casser des trucs !
+
+42CTF vous propose une intro au CTF entre piscineuses et piscineux :flag_black:
+
+Un CTF ? WTF ? CTF est l'acronyme de Capture The Flag. Il s'agit de challenges de sécurité informatique de types variés, où l'objectif est d'exploiter des failles pour récupérer le flag et valider le challenge.
+
+Mais j'y connais rien en cybersécurité ! Don't panic :) On vous propose une sélection de challenges très accessibles dans la catégorie Intro. Ensuite, libre à vous d'explorer le reste du site ! Des membres de l'asso seront en cluster pour vous guider ou échanger, dans l'esprit de la pédagogie 42.
+
+Super ! On signe où ? Il vous faut simplement créer un compte sur 42ctf.org, le reste des infos vous sera transmis sur discord. Il n'y a pas d'obligation de rester sur toute la durée de l’évent, 42CTF sera encore là après votre piscine ;)
+
+Tired of fixing the segfaults in your code? Come have fun breaking things!
+
+For pisciners only, 42CTF invites you to discover CTF challenges :flag_black:
+
+A CTF? WTF? CTF stands for Capture The Flag. It consists in various types of computer security challenges where the objective is to exploit vulnerabilities to retrieve a secret flag and validate the challenge.
+
+But I don't know anything about cybersecurity! Don't panic :) We've put together some beginner-friendly challenges in the Intro category. After that, you're free to explore the rest the site! 42CTF members will be there to help and share with you, in the spirit of the 42 method.
+
+Great! Where do I sign up? You just need to create an account on 42ctf.org, more information will be given later on discord. Don't feel obligated to stay for the entire event, 42CTF will still be there after your piscine ;)
+
+Sous https://www.42ctf.org/fr/ :
+login : hauerbac
+email : celui de au
+
+
+

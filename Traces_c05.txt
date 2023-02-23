@@ -4901,5 +4901,76 @@ ft_find_next_prime(19) == 19 : OK
 ft_find_next_prime(42) == 43 : OK
 ft_find_next_prime(20) == 23 : OK
 e3r11p9% cd ..
+-----------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd c_05
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05  ex06  ex07
+e3r11p9% mkdir git_c_05
+e3r11p9% rmdir git_c_05 
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-dcb18583-501e-44f5-b98f-51e2547a9f16-4713784-hauerbac git_c_05
+Cloning into 'git_c_05'...
+warning: You appear to have cloned an empty repository.
+e3r11p9% mkdir git_c_05/ex00
+e3r11p9% cp ex00/ft_iterative_factorial.c git_c_05/ex00/ft_iterative_factorial.c
+e3r11p9% mkdir git_c_05/ex01
+e3r11p9% cp ex01/ft_recursive_factorial.c git_c_05/ex01/ft_recursive_factorial.c
+e3r11p9% mkdir git_c_05/ex02
+e3r11p9% cp ex02/ft_iterative_power.c git_c_05/ex02/ft_iterative_power.c
+e3r11p9% mkdir git_c_05/ex03
+e3r11p9% cp ex03/ft_recursive_power.c git_c_05/ex03/ft_recursive_power.c
+e3r11p9% mkdir git_c_05/ex04
+e3r11p9% cp ex04/ft_fibonacci.c git_c_05/ex04/ft_fibonacci.c
+e3r11p9% mkdir git_c_05/ex05
+e3r11p9% cp ex05/ft_sqrt.c git_c_05/ex05/ft_sqrt.c
+e3r11p9% mkdir git_c_05/ex06
+e3r11p9% cp ex06/ft_is_prime.c git_c_05/ex06/ft_is_prime.c
+e3r11p9% mkdir git_c_05/ex07
+e3r11p9% cp ex07/ft_find_next_prime.c git_c_05/ex07/ft_find_next_prime.c
+e3r11p9% cd git_c_05 
+e3r11p9% git add ex00/ft_iterative_factorial.c
+e3r11p9% git add ex01/ft_recursive_factorial.c
+e3r11p9% git add ex02/ft_iterative_power.c
+e3r11p9% git add ex03/ft_recursive_power.c
+e3r11p9% git add ex04/ft_fibonacci.c
+e3r11p9% git add ex05/ft_sqrt.c
+e3r11p9% git add ex06/ft_is_prime.c
+e3r11p9% git add ex07/ft_find_next_prime.c
+e3r11p9% git commit -m "Addition of 8 files"
+[master (root-commit) a8cc550] Addition of 8 files
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 8 files changed, 236 insertions(+)
+ create mode 100644 ex00/ft_iterative_factorial.c
+ create mode 100644 ex01/ft_recursive_factorial.c
+ create mode 100644 ex02/ft_iterative_power.c
+ create mode 100644 ex03/ft_recursive_power.c
+ create mode 100644 ex04/ft_fibonacci.c
+ create mode 100644 ex05/ft_sqrt.c
+ create mode 100644 ex06/ft_is_prime.c
+ create mode 100644 ex07/ft_find_next_prime.c
+e3r11p9% git push
+Enumerating objects: 18, done.
+Counting objects: 100% (18/18), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (18/18), 2.29 KiB | 2.29 MiB/s, done.
+Total 18 (delta 7), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-dcb18583-501e-44f5-b98f-51e2547a9f16-4713784-hauerbac
+ * [new branch]      master -> master
 
 
