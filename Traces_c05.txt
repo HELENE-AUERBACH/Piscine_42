@@ -4972,5 +4972,978 @@ remote: . Processing 1 references
 remote: Processed 1 references in total
 To vogsphere.42paris.fr:vogsphere/intra-uuid-dcb18583-501e-44f5-b98f-51e2547a9f16-4713784-hauerbac
  * [new branch]      master -> master
+------------------------------------------------------------------------------------------------------------------------------
+Dans man limits.h : 
+	{INT_MAX}
+             Maximum value for an object of type int.
+             Minimum Acceptable Value: 2 147 483 647
+
+       {INT_MIN}
+             Minimum value for an object of type int.
+             Maximum Acceptable Value: -2 147 483 647
+
+La racine carree de 2 147 483 647 == 46340.950001052
+et 2 147 483 647 / 46340 == 46341.90002158
+
+Et les nombres non premiers et les racines carrees ont le meme comportement, donc il suffit de ne pas depasser la racine carree du nombre (i < sqrt(nb)) afin de tester (par la division entiere) si le nombre est bien premier.
+-------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd
+e3r11p9% cd c_05
+e3r11p9% cd ex02
+e3r11p9% ls
+ft_iterative_power.c  test_ft_iterative_power  test_ft_iterative_power.c
+e3r11p9% vi ft_iterative_power.c 
+e3r11p9% cd ../ex05
+e3r11p9% ls
+ft_sqrt.c  test_ft_sqrt  test_ft_sqrt.c
+e3r11p9% vi ft_sqrt.c 
+e3r11p9% cat ft_sqrt.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 09:16:03 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 12:31:20 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+e3r11p9% ls -al
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 12:31 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1181 Feb 24 12:31 ft_sqrt.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16024 Feb 21 13:46 test_ft_sqrt
+-rw-r--r--  1 hauerbac 2023_paris  1321 Feb 21 12:22 test_ft_sqrt.c
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_sqrt ft_sqrt.c test_ft_sqrt.c 
+e3r11p9% ls -al                                                            
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 12:32 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1181 Feb 24 12:31 ft_sqrt.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16024 Feb 24 12:32 test_ft_sqrt
+-rw-r--r--  1 hauerbac 2023_paris  1321 Feb 21 12:22 test_ft_sqrt.c
+e3r11p9% ./test_ft_sqrt 
+ft_sqrt(100) == 10:10
+ft_sqrt(36) == 6:6
+ft_sqrt(7) == 0:0
+ft_sqrt(10000) == 100:100
+ft_sqrt(101) == 0:0
+ft_sqrt(4000000) == 2000:2000
+ft_sqrt(-36) == 0:0
+e3r11p9% cd ..
+e3r11p9% ls -al git_c_05/ex05/ft_sqrt.c 
+-rw-r--r-- 1 hauerbac 2023_paris 1098 Feb 23 08:13 git_c_05/ex05/ft_sqrt.c
+e3r11p9% cp ex05/ft_sqrt.c git_c_05/ex05/ft_sqrt.c
+e3r11p9% ls -al git_c_05/ex05/ft_sqrt.c           
+-rw-r--r-- 1 hauerbac 2023_paris 1181 Feb 24 12:33 git_c_05/ex05/ft_sqrt.c
+e3r11p9% norminette -al git_c_05/ex05/ft_sqrt.c 
+usage: norminette [-h] [-d] [-o] [-v] [--cfile CFILE] [--hfile HFILE] [--filename FILENAME] [-R R] [file ...]
+norminette: error: unrecognized arguments: -al
+e3r11p9% norminette git_c_05/ex05/ft_sqrt.c 
+git_c_05/ex05/ft_sqrt.c: OK!
+e3r11p9% cd git_c_05 
+e3r11p9% git add ex05/ft_sqrt.c
+e3r11p9% git commit -m "Correction of ex05/ft_sqrt.c for the INT_MAX limitation"
+[master 57ab69f] Correction of ex05/ft_sqrt.c for the INT_MAX limitation
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+e3r11p9% git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 487 bytes | 487.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-dcb18583-501e-44f5-b98f-51e2547a9f16-4713784-hauerbac
+   a8cc550..57ab69f  master -> master
+e3r11p9% cd ../ex06
+e3r11p9% ls -al
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 21 17:10 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1062 Feb 21 14:40 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16032 Feb 21 17:10 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ls -al ../git_c_05/ex06/ft_is_prime.c 
+-rw-r--r-- 1 hauerbac 2023_paris 1062 Feb 23 08:14 ../git_c_05/ex06/ft_is_prime.c
+e3r11p9% vi ft_is_prime.c 
+e3r11p9% cat ft_is_prime.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 12:48:44 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while (i > 2 && i < ft_sqrt(nb) && nb % i != 0)
+			i++;
+		if (i == nb)
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c 
+e3r11p9% ls -al
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 12:49 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1380 Feb 24 12:48 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16064 Feb 24 12:49 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime 
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : Fail
+ft_is_prime(4) == 0 : OK
+ft_is_prime(5) == 1 : Fail
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : Fail
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : Fail
+ft_is_prime(13) == 1 : Fail
+ft_is_prime(19) == 1 : Fail
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% vi ft_is_prime.c                                                             
+e3r11p9% cat ft_is_prime.c                                                             
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 12:50:33 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while (i > 2 && i <= ft_sqrt(nb) && nb % i != 0)
+			i++;
+		if (i == nb)
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c
+e3r11p9% ls -al                                                                       
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 12:50 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1381 Feb 24 12:50 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16064 Feb 24 12:50 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime                                                           
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : Fail
+ft_is_prime(4) == 0 : OK
+ft_is_prime(5) == 1 : Fail
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : Fail
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : Fail
+ft_is_prime(13) == 1 : Fail
+ft_is_prime(19) == 1 : Fail
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% vi ft_is_prime.c                                                             
+e3r11p9% cat ft_is_prime.c                                                             
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 13:03:14 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while (i > 2 && i * i < nb && nb % i != 0)
+			i++;
+		if (i == nb)
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c
+e3r11p9% ls -al                                                                       
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 13:03 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1375 Feb 24 13:03 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16064 Feb 24 13:03 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime                                                           
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : Fail
+ft_is_prime(4) == 0 : OK
+ft_is_prime(5) == 1 : Fail
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : Fail
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : Fail
+ft_is_prime(13) == 1 : Fail
+ft_is_prime(19) == 1 : Fail
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% vi ft_is_prime.c                                                             
+e3r11p9% cat ft_is_prime.c                                                             
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 13:04:41 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while (i * i < nb && nb % i != 0)
+			i++;
+		if (i == nb)
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c
+e3r11p9% ls -al                                                                       
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 13:04 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1366 Feb 24 13:04 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16064 Feb 24 13:04 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime                                                           
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : Fail
+ft_is_prime(4) == 0 : OK
+ft_is_prime(5) == 1 : Fail
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : Fail
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : Fail
+ft_is_prime(13) == 1 : Fail
+ft_is_prime(19) == 1 : Fail
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% vi ft_is_prime.c                                                             
+e3r11p9% cat ft_is_prime.c                                                             
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 13:11:03 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while (i > 2 && i * i < nb && nb % i != 0)
+			i++;
+		if (i == nb || ((i + 1) >= nb / (nb + 1)))
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c
+e3r11p9% ls -al                                                                       
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 13:11 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1405 Feb 24 13:11 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16064 Feb 24 13:11 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime                                                           
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : OK
+ft_is_prime(4) == 0 : Fail
+ft_is_prime(5) == 1 : OK
+ft_is_prime(6) == 0 : Fail
+ft_is_prime(7) == 1 : OK
+ft_is_prime(10) == 0 : Fail
+ft_is_prime(11) == 1 : OK
+ft_is_prime(13) == 1 : OK
+ft_is_prime(19) == 1 : OK
+ft_is_prime(42) == 0 : Fail
+ft_is_prime(20) == 0 : Fail
+e3r11p9% vi ft_is_prime.c                                                             
+e3r11p9% cat ft_is_prime.c                                                             
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 13:16:18 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while ((i > 2) && (i * i < nb) && (nb % i != 0))
+			i++;
+		if ((i == nb) || (i * i == nb))
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c
+e3r11p9% ls -al                                                                       
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 13:16 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1400 Feb 24 13:16 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16064 Feb 24 13:16 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime                                                           
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : Fail
+ft_is_prime(4) == 0 : Fail
+ft_is_prime(5) == 1 : Fail
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : Fail
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : Fail
+ft_is_prime(13) == 1 : Fail
+ft_is_prime(19) == 1 : Fail
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% vi ft_is_prime.c                                                             
+e3r11p9% cat ft_is_prime.c                                                             
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 13:17:46 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while ((i > 2) && (i * i < nb) && (nb % i != 0))
+			i++;
+		if ((i == nb) || (i * i >= nb))
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c
+e3r11p9% ls -al                                                                       
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 13:17 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1400 Feb 24 13:17 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16064 Feb 24 13:17 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime                                                           
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : OK
+ft_is_prime(4) == 0 : Fail
+ft_is_prime(5) == 1 : Fail
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : Fail
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : Fail
+ft_is_prime(13) == 1 : Fail
+ft_is_prime(19) == 1 : Fail
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% vi ft_is_prime.c                                                             
+e3r11p9% cat ft_is_prime.c                                                             
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 13:21:22 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while ((i * i < nb) && (nb % i != 0))
+			i++;
+		if ((i == nb) || (i * i >= nb))
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c
+e3r11p9% ls -al                                                                       
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 13:21 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1389 Feb 24 13:21 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16064 Feb 24 13:21 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime                                                           
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : OK
+ft_is_prime(4) == 0 : Fail
+ft_is_prime(5) == 1 : OK
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : OK
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : OK
+ft_is_prime(13) == 1 : OK
+ft_is_prime(19) == 1 : OK
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% vi ft_is_prime.c                                                             
+e3r11p9% cat ft_is_prime.c                                                             
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 13:33:19 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <limits.h>
+
+int	ft_sqrt(int nb)
+{
+	long	i;
+	long	nb_into_long;
+
+	if (nb >= 1)
+	{
+		i = 1;
+		nb_into_long = nb;
+		while (nb_into_long > i * i)
+		{
+			if ((i + 1) > (INT_MAX / (i + 1)))
+				return (0);
+			i++;
+		}
+		if (nb_into_long == i * i)
+			return ((int) i);
+	}
+	return (0);
+}
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while ((i * i < nb) && (nb % i != 0))
+			i++;
+		if ((i == nb) || (i * i > nb))
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c
+e3r11p9% ls -al                                                                       
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 13:33 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1388 Feb 24 13:33 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16064 Feb 24 13:33 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime                                                           
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : OK
+ft_is_prime(4) == 0 : OK
+ft_is_prime(5) == 1 : OK
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : OK
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : OK
+ft_is_prime(13) == 1 : OK
+ft_is_prime(19) == 1 : OK
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% cd ..
+e3r11p9% cp ex06/ft_is_prime.c git_c_05/ex06/ft_is_prime.c
+e3r11p9% cd git_c_05 
+e3r11p9% ls -al ex06/ft_is_prime.c
+-rw-r--r-- 1 hauerbac 2023_paris 1388 Feb 24 13:43 ex06/ft_is_prime.c
+e3r11p9% git add ex06/ft_is_prime.c
+e3r11p9% git commit -m "Correction of ex06/ft_is_prime.c file for timeout"
+[master 884264d] Correction of ex06/ft_is_prime.c file for timeout
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 26 insertions(+), 3 deletions(-)
+e3r11p9% git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 626 bytes | 626.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-dcb18583-501e-44f5-b98f-51e2547a9f16-4713784-hauerbac
+   57ab69f..884264d  master -> master
+   ---------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd
+e3r11p9% cd c_05
+e3r11p9% cd ex06
+e3r11p9% ls
+ft_is_prime.c  test_ft_is_prime  test_ft_is_prime.c
+e3r11p9% vi ft_is_prime.c 
+e3r11p9% cat ft_is_prime.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 14:38:28 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/24 14:42:10 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_is_prime(int nb)
+{
+	int	result;
+	int	i;
+
+	result = 0;
+	if (nb >= 2)
+	{
+		i = 2;
+		while ((i * i < nb) && (nb % i != 0))
+			i++;
+		if ((i == nb) || (i * i > nb))
+			result = 1;
+	}
+	return (result);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_is_prime ft_is_prime.c test_ft_is_prime.c
+e3r11p9% ls -al
+total 32
+drwxr-xr-x  2 hauerbac 2023_paris  4096 Feb 24 14:42 .
+drwxr-xr-x 11 hauerbac 2023_paris  4096 Feb 23 07:57 ..
+-rw-r--r--  1 hauerbac 2023_paris  1098 Feb 24 14:42 ft_is_prime.c
+-rwxr-xr-x  1 hauerbac 2023_paris 16032 Feb 24 14:42 test_ft_is_prime
+-rw-r--r--  1 hauerbac 2023_paris  2140 Feb 21 17:08 test_ft_is_prime.c
+e3r11p9% ./test_ft_is_prime 
+ft_is_prime(-1) == 0 : OK
+ft_is_prime(-3) == 0 : OK
+ft_is_prime(0) == 0 : OK
+ft_is_prime(1) == 0 : OK
+ft_is_prime(2) == 1 : OK
+ft_is_prime(3) == 1 : OK
+ft_is_prime(4) == 0 : OK
+ft_is_prime(5) == 1 : OK
+ft_is_prime(6) == 0 : OK
+ft_is_prime(7) == 1 : OK
+ft_is_prime(10) == 0 : OK
+ft_is_prime(11) == 1 : OK
+ft_is_prime(13) == 1 : OK
+ft_is_prime(19) == 1 : OK
+ft_is_prime(42) == 0 : OK
+ft_is_prime(20) == 0 : OK
+e3r11p9% cd ..
+e3r11p9% cp ex06/ft_is_prime.c git_c_05/ex06/ft_is_prime.c
+e3r11p9% cd git_c_05 
+e3r11p9% norminette ex06/ft_is_prime.c
+ex06/ft_is_prime.c: OK!
+e3r11p9% git add ex06/ft_is_prime.c
+e3r11p9% git commit -m "Cleaning into ex06/ft_is_prime.c file"
+[master ad9ae88] Cleaning into ex06/ft_is_prime.c file
+ Committer: Helene Auerbach <hauerbac@e3r11p9.clusters.42paris.fr>
+Your name and email address were configured automatically based
+on your username and hostname. Please check that they are accurate.
+You can suppress this message by setting them explicitly. Run the
+following command and follow the instructions in your editor to edit
+your configuration file:
+
+    git config --global --edit
+
+After doing this, you may fix the identity used for this commit with:
+
+    git commit --amend --reset-author
+
+ 1 file changed, 1 insertion(+), 24 deletions(-)
+e3r11p9% git push
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (4/4), 388 bytes | 388.00 KiB/s, done.
+Total 4 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: . Processing 1 references
+remote: Processed 1 references in total
+To vogsphere.42paris.fr:vogsphere/intra-uuid-dcb18583-501e-44f5-b98f-51e2547a9f16-4713784-hauerbac
+   884264d..ad9ae88  master -> master
+e3r11p9% ls -al ex06/ft_is_prime.c
+-rw-r--r-- 1 hauerbac 2023_paris 1098 Feb 24 14:43 ex06/ft_is_prime.c
+e3r11p9% norminette ex*
+ex00/ft_iterative_factorial.c: OK!
+ex01/ft_recursive_factorial.c: OK!
+ex02/ft_iterative_power.c: OK!
+ex03/ft_recursive_power.c: OK!
+ex04/ft_fibonacci.c: OK!
+ex05/ft_sqrt.c: OK!
+ex06/ft_is_prime.c: OK!
+ex07/ft_find_next_prime.c: OK!
 
 

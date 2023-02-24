@@ -1203,6 +1203,343 @@ int	main(int argc, char **argv)
 	}
 	return (0);
 }
+--------------------------------------------------------------------------------------------------------------------------------
+You have been graded by Moulinette 	
 
+Hi,
 
+You have been graded 100 on C Piscine C 06:
+
+ex00: OK | ex01: OK | ex02: OK | ex03: OK
+
+Evaluated by moulinette a few seconds ago
+100%
+ex00: OK | ex01: OK | ex02: OK | ex03: OK
+Peer evaluations (2/2)
+Evaluated by sahadjal an hour ago
+100%
+tres bien code explique parfaitement continue comme ca bon courage pour l exam
+Your feedback, an hour ago :
+Correcteur tres gentil, qui verifie le code et les tests et qui cherche a comprendre l'algorithme choisi par celui ou celle qu'il corrige. Merci beaucoup, bon courage et bonne chance pour l'examen!
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by lucravoi 14 minutes ago
+100%
+Bon travail, bonne comprehension des arguments. Maniere interessante de traiter strlen et strncmp. Bonne continuation !
+Your feedback, a few seconds ago :
+Correcteur tres gentil, qui explique les differences entre notre algorithme et le sien et qui teste tres precisement les cas limites. Merci beaucoup et bonne chance pour l'examen!
+4 / 4 4 / 4 4 / 4 4 / 4
+--------------------------------------------------------------------------------------------------------------------------------
+Tests de :
+e3r11p9% cd
+e3r11p9% cd c_06/ex00
+e3r11p9% ls -al
+total 44
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 19:04 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 23 11:50 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16008 Feb 21 12:34 ft_print_program_name
+-rw-r--r-- 1 hauerbac 2023_paris  1122 Feb 21 19:02 ft_print_program_name.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16008 Feb 21 19:04 test_ft_print_program_name
+e3r11p9% ./test_ft_print_program_name 
+./test_ft_print_program_name%                                                                                                               e3r11p9% cd ../ex01
+e3r11p9% ls -al
+total 44
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 19:05 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 23 11:50 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16008 Feb 21 12:50 ft_print_params
+-rw-r--r-- 1 hauerbac 2023_paris  1204 Feb 21 19:04 ft_print_params.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16008 Feb 21 19:05 test_ft_print_params
+e3r11p9% ./test_ft_print_params 
+e3r11p9% ./test_ft_print_params hk hfk f
+hk
+hfk
+f
+e3r11p9% cd ../ex02
+e3r11p9% ls -al
+total 44
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 21 19:14 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 23 11:50 ..
+-rwxr-xr-x 1 hauerbac 2023_paris 16000 Feb 21 12:47 ft_rev_params
+-rw-r--r-- 1 hauerbac 2023_paris  1208 Feb 21 19:12 ft_rev_params.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16000 Feb 21 19:14 test_ft_rev_params
+e3r11p9% ./test_ft_rev_params 
+e3r11p9% ./test_ft_rev_params jh fi yi uy " "
+ 
+uy
+yi
+fi
+jh
+e3r11p9% cd ../ex03
+e3r11p9% ls -al
+total 48
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 23 11:29 .
+drwxr-xr-x 9 hauerbac 2023_paris  4096 Feb 23 11:50 ..
+-rw-r--r-- 1 hauerbac 2023_paris  2041 Feb 23 11:25 ft_sort_params_0.c
+-rw-r--r-- 1 hauerbac 2023_paris  2041 Feb 23 11:27 ft_sort_params.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16080 Feb 23 11:29 test_ft_sort_params
+-rwxr-xr-x 1 hauerbac 2023_paris 16080 Feb 23 11:26 test_ft_sort_params_0
+e3r11p9% ./test_ft_sort_params
+e3r11p9% ./test_ft_sort_params 54876687 48
+48
+54876687
+e3r11p9% ./test_ft_sort_params 01234567 14
+01234567
+14
+e3r11p9% ./test_ft_sort_params abcdef jhihgj 0123456 ABCDEF ABC 
+0123456
+ABC
+ABCDEF
+abcdef
+jhihgj
+e3r11p9% ./test_ft_sort_params abcdef jhihgj 0123456 ABBCDEF ABC 
+0123456
+ABBCDEF
+ABC
+abcdef
+jhihgj
+
+Tests de Ludovic :
+e3r11p9% cd
+e3r11p9% cd sgoinfre 
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-dfbcbfe5-5fcd-42ab-ba5f-6a143afc730c-4715536-hauerbac ludovic
+Cloning into 'ludovic'...
+remote: Enumerating objects: 10, done.
+remote: Counting objects: 100% (10/10), done.
+remote: Compressing objects: 100% (7/7), done.
+remote: Total 10 (delta 3), reused 0 (delta 0)
+Receiving objects: 100% (10/10), done.
+Resolving deltas: 100% (3/3), done.
+e3r11p9% cd ludovic 
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-dfbcbfe5-5fcd-42ab-ba5f-6a143afc730c-4715536-hauerbac ludovic
+e3r11p9% norminette
+ex03/ft_sort_params.c: OK!
+ex00/ft_print_program_name.c: OK!
+ex02/ft_rev_params.c: OK!
+ex01/ft_print_params.c: OK!
+e3r11p9%                                                                                                                      
+e3r11p9% for f in */*.c; do cc -Wall -Werror -Wextra $f;done
+e3r11p9% ls
+a.out  ex00  ex01  ex02  ex03
+e3r11p9% clang ex00/ft_print_program_name.c 
+e3r11p9% ./a.out 
+./a.out%                                                                                                                                    e3r11p9% cat ex00/ft_print_program_name.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 12:31:20 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 19:02:11 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc > 0)
+		write(1, argv[0], ft_strlen(argv[0]));
+	return (0);
+}
+e3r11p9% clang ex01/ft_print_params.c      
+e3r11p9% ./a.out 
+e3r11p9% ./a.out salut
+salut
+e3r11p9% ./a.out salut les
+salut
+les
+e3r11p9% ./a.out salut les amis
+salut
+les
+amis
+e3r11p9% cat ex01/ft_print_params.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 12:40:07 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 19:04:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+int	main(int argc, char **argv)
+{
+	int	i;
+
+	if (argc > 1)
+	{
+		i = 1;
+		while (i < argc)
+		{
+			write(1, argv[i], ft_strlen(argv[i]));
+			write(1, "\n", 1);
+			i++;
+		}
+	}
+	return (0);
+}
+e3r11p9% ./a.out                   
+e3r11p9% clang ex02/ft_rev_params.c 
+e3r11p9% ./a.out salut les
+les
+salut
+e3r11p9% cat ex02/ft_rev_params.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_rev_params.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/21 12:47:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/21 19:12:44 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}
+
+int	main(int argc, char **argv)
+{
+	int	i;
+
+	if (argc > 1)
+	{
+		i = argc - 1;
+		while (i > 0)
+		{
+			write(1, argv[i], ft_strlen(argv[i]));
+			write(1, "\n", 1);
+			i--;
+		}
+	}
+	return (0);
+}
+e3r11p9% clang ex02/ft_rev_params.c 
+e3r11p9% ./a.out salut les amis 0 "" " " | cat -e
+ $
+$
+0$
+amis$
+les$
+salut$
+e3r11p9% ./a.out salut les amis 0 "\0" " " | cat -e
+ $
+\0$
+0$
+amis$
+les$
+salut$
+e3r11p9% ./a.out salut les amis 0 "\" " " | cat -e 
+dquote> 
+e3r11p9% ./a.out salut les amis 0 "\\" " " | cat -e
+ $
+\$
+0$
+amis$
+les$
+salut$
+e3r11p9% vim ex02/ft_rev_params.c 
+e3r11p9% ls     
+a.out  ex00  ex01  ex02  ex03
+e3r11p9% clang ex03/ft_sort_params.c 
+e3r11p9% ./a.out salut les amis 0 "\\" " " | cat -e
+ $
+0$
+\$
+amis$
+les$
+salut$
+e3r11p9% ./a.out salut les amis 0 "" " " | cat -e 
+$
+ $
+0$
+amis$
+les$
+salut$
+e3r11p9% vim ex03/ft_sort_params.c 
+e3r11p9% ./a.out salut les amis 0 "" " " "salut" "salut "| cat -e
+$
+ $
+0$
+amis$
+les$
+salut$
+salut$
+salut $
+e3r11p9% ./a.out salut les amis 0 "" " " "salut" "salut " "         "| cat -e
+$
+ $
+         $
+0$
+amis$
+les$
+salut$
+salut$
+salut $
+e3r11p9% ./a.out salut les amis 0 "" " " "salut" "salut " "         " "0"| cat -e
+$
+ $
+         $
+0$
+0$
+amis$
+les$
+salut$
+salut$
+salut $
+e3r11p9% ./a.out salut les amis 0 "" " " "salut" "salut " "         " "0"  | cat -e
+$
+ $
+         $
+0$
+0$
+amis$
+les$
+salut$
+salut$
+salut $
+
+ 
 
