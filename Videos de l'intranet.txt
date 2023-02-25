@@ -1,0 +1,689 @@
+C Piscine - C 00 :
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 01 :
+
+1. Introduction to pointers :
+
+2. Assignment :
+int	*ptr; pour declarer un pointeur sur int
+int	a;
+ptr = &a; pour recuperer l'adresse de a dans ptr (emplacement memoire qui peut etre affichee)
+char	c;
+char	*ptr2;
+ptr2 = &c;
+
+3. Dereferencing (Déréférencer) :
+pour le deferencement (obtenir la valeur pointee) :
+int	a;
+int	*ptr;
+a = 3;
+ptr = &a;
+*ptr est un int
+*ptr = 42; pour modifier la valeur de a de 3 en 42
+int	**ptr2;
+ptr2 = &ptr;
+**ptr2 = -42; pour modifier la valeur de a de 42 en -42
+
+4. Pointer arithmetic :
+int	a;
+int	b;
+L'adresse de a est 4 octets plus bas dans la stack que l'adresse de b car un int fait 4 octets (l'adresse de b vient avant celle de a quand b vient "apres" a dans la stack)
+int	*ptr;
+ptr = &b;
+Donc l'adresse de a sera ptr + 4 octets, soit ptr + 1 (car le compilateur va multiplier la valeur 1 par la taille d'un int) permet d'aller de b vers a
+et *(ptr + 1) donnera la valeur de a
+
+char	ca;
+char	cb;
+char	*ptr2;
+ca = '3';
+cb = 'o';
+ptr2 = &cb;
+ptr2 + 1 est l'adresse du caractere ca (qui se trouve a 1 octet de l'adresse de cb)
+*(ptr2 + 1) donne le caractere ca
+On peut sommer une adresse avec la valeur d'une variable de type int
+
+5. Arrays (Les tableaux) :
+int	tab[10}; pour avoir un pointeur implicite nomme tab sur le 1er des dix int du tableau
+tab[0] pour acceder au 1er int car c'est equivalent a *(tab + 0)
+tab[n - 1] pour acceder a la valeur du dernier element (d'index n -1) du tableau tab de n elements
+
+int	*tabptr[2]; tabptr est un pointeur de pointeurs sur int
+tabptr[0] = tab;
+tabptr[0][3] = 42; est equivalent a tab[3] = 42; ou encore a *(tabptr[0] + 3) = 42; ou encore a *(*(tabptr + 0) + 3) = 42;
+
+Attention : int tab2[10][10]; tab2 est seulement un pointeur sur int
+
+6. Character string (Les chaines de caractères) :
+int	tab[10}; pour avoir un pointeur implicite nomme tab sur le 1er des dix int du tableau
+tab[0] pour acceder au 1er int car c'est equivalent a *(tab + 0)
+tab[n - 1] pour acceder a la valeur du dernier element (d'index n -1) du tableau tab de n elements
+
+int	*tabptr[2]; tabptr est un pointeur de pointeurs sur int
+tabptr[0] = tab;
+tabptr[0][3] = 42; est equivalent a tab[3] = 42; ou encore a *(tabptr[0] + 3) = 42; ou encore a *(*(tabptr + 0) + 3) = 42;
+
+Attention : int tab2[10][10]; tab2 est seulement un pointeur sur int
+
+7. Pointer usage (L'utilisation des pointeurs) :
+On passe les arguments par copie, donc on passe une copie dans les fonctions differente des variables du main
+Pour modifier la valeur d'une variable du main dans une fonction, il faut passer l'adresse de cette variable en argument a la fonction qui prend un pointeur en parametre
+
+8. void * :
+void	*superptr; declare un pointeur sur tout : il peut prendre n'importe quelle adresse pour passer l'adresse d'un pointeur a un autre sans connaitre le type, pour transporter des adresses
+int	a;
+int	*ptr;
+int	**ptr2;
+a = 3;
+ptr = &a;
+ptr2 = &ptr;
+superptr = &ptr2;
+ptr = superptr;
+Attention : On ne peut pas deferencer superptr
+---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 02, C 03, C 04 :
+
+---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 05 :
+
+1. Introduction :
+
+2. Recursion - Theory (Récursivité - Théorie) :
+
+3. Recursion - Practice (Récursivité - Pratique) :
+
+---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 06, C 07 :
+
+1. Compilation's steps :
+
+
+2. Dynamic memory allocation (Allocation dynamique de mémoire) :
+#include <stdlib.h>
+#define LEN	42
+
+int	main(void)
+{
+	int		i;
+	char	*str;
+
+	str = (char *) malloc(sizeof(*str) * (LEN + 1));
+	i = 0;
+	while (i < LEN)
+	{
+		str[i] = '0' + (i % 10); // genere la suite de caracteres constitues des chiffres de 0 a 9
+		i++;
+	}
+	str[i] = '\0';
+	free(str); // libere la memoire allouee
+	while (1)
+		;
+	return (0);
+}
+
+Compilation d'un seul fichier : gcc -c ft_putstr.c genere le ft_putstr.o
+Linkage avec : gcc ft_putstr.o main.o pour generer le a.out
+Lancement en tache de fond : ./a.out &
+afin de pouvoir inspecter avec la commande top
+---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 06, C 09 :
+
+1. Introduction :
+
+
+2. Librairies :
+ar rc libstr.a ft_putchar.o ft_putstr.o pour regrouper les fonctions presentes dans les fichiers ft_putchar.c et ft_putstr.c (fichiers deja compiles en objets .o) dans une librairie statique nommee libstr.a
+
+gcc main.c -L. -lstr pour compiler en recherchant une librairie dans le repertoire courant et dont le nom commence obligatoirement par lib
+
+ranlib libstr.a pour creer un index dans la librairie qui sera utilise par gcc afin de retrouver rapidement les fonctions appelees dans la librairie (d'ou une optimisation du temps de compilation)
+
+3. Main's argument (argc, argv) (Les paramètres (argv/argc))  :
+
+---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 08 :
+
+1. Preprocessing - Introduction (Préprocesseur - Introduction) :
+Le preprocesseur vient avant la compilation, qui vient ell-meme avant le link.
+Le preprocesseur permet de generer du code parfois, de faire des "define" de macros (comme il en existe sous Excel) et aussi de proteger nos fichiers contre plusieurs inclusions.
+Enfin, nous finirons par les structures qui sont un nouveau moyen de packager les donnees, et par les typedef qui permettent de creer nos propres types de variables.
+
+2. Preprocessing - #include (Préprocesseur - #include) :
+La commande du preprocesseur #include permet d'inclure un fichier dans un autre fichier avant la compilation, donc pendant la phase de pre-processeur.
+Par exemple, le prototype de write existe deja dans le fichier unistd.h.
+Entre chevrons <> signifie que l'on va aller chercher le fichier specifie entre les chevrons dans le path des fichiers que recherche le compilateur (ce path peut etre precise a partir des commandes du compilateur).
+L'autre ecriture entre guillemets permet d'inclure les fichiers qui sont en local dans notre dossier.
+
+En plus de nous eviter de rajouter le bon prototype de write a la main au debut de notre fichier main.c, cela permet d'etre portatif car, avec l'include, a chaque fois, unistd.h sera mis a jour en fonction de la distribution sur laquelle nous nous trouverons.
+
+La commande du preprocesseur cpp permet de voir ce qui se passe avant la compilation.
+Exemple : cpp main.c
+
+Il est deconseiller d'inclure d'autres fichiers que des .h.
+
+3. Preprocessing - file.h :
+L'interet de faire des .h est de proteger nos fonctions (et le reste) contre les erreurs de prototypes (et le reste).
+
+Par exemple, sans #include, si une dizaine de fichiers .c appellent tous une fonction ft_fct, nous serions obliges de mettre a jour a chaque fois le prototype dans chacun des 10 fichiers a chaque modification du prototype de ft_fct (au lieu de ne mettre a jour que le seul fichier .h), et, si nous oublions de mettre a jour l'un des fichiers, la compilation se passe quand meme bien, mais nous aurions fait un peu n'importe quoi.
+
+Par securite (afin que les erreurs de type soient detectees a la compilation), il faut inclure le fichier .h contenant les prototypes dans le(s) fichier(s) .c qui utilise(nt) les fonctions prototypees, ainsi que dans le fichier .c qui definit ces fonctions, et dans le fichier main.c s'il appelle ces fonctions.
+
+4. Preprocessing - #define :
+La commande du preprocesseur #define permet de definir des macros. Le nom de la macro sera remplace mot a mot (guillemets inclus) par ce qui a ete ecrit a droite de ce nom (a part quelques cas particuliers) au moment de la precompilation (c'est-a-dire pendant la phase du preprocesseur). Le nom d'une macro est en general en majuscules.
+L'interet est de modifier la definition de la macro dans le seul fichier .h afin de mettre automatiquement a jour toutes ses references dans les fichiers .c l'utilisant.
+
+#define TOTO int
+
+TOTO	main(void)
+{
+	return (0);
+}
+--------------------------------
+#define TOTO "Bonjour bievenue"
+
+int	main(void)
+{
+	char	*str;
+	
+	str = TOTO;
+	return (0);
+}
+
+Le second avantage est d'utiliser des parentheses afin de definir des macros "intelligentes" en passant des parametres (qui seront remplaces "betement") ; par exemple, pour declarer deux variables int a et b (mais, attention, le code sera beaucoup moins lisible avec cette macro!) :
+#define TOTO(x) int x;
+
+int main(void)
+{
+	TOTO(a)
+	TOTO(b)
+	return (0);
+}
+
+Remarque : il n'y a meme pas besoin de ; a la fin de l'instruction TOTO(a) dans l'exemple precedent.
+
+Le #define va aussi de nous permettre de faire des jointures avec des strings, par exemple :
+#define TOTO(x) #x
+#define TITI(x) TOTO(x); TOTO(x)
+
+int main(void)
+{
+	char *str;
+
+	str = TOTO(b);
+	write(1, str, 1); // affichera le caractere b
+	str = TITI(bonjour les amis); // sera remplace par le preprocesseur par str = #bonjour les amis; #bonjour les amis;
+	return (0);
+}
+
+5. Preprocessing - #ifdef/#ifndef :
+S'il existe un define TOTO, alors le main apparaitra, sinon le main n'apparaitra meme pas.
+
+#ifdef TOTO
+
+int main(void)
+{
+	return (0);
+}
+
+#endif
+--------------------
+S'il n'existe pas un define TOTO, alors le main apparaitra, sinon le main n'apparaitra meme pas.
+
+#ifndef TOTO
+
+int main(void)
+{
+	return (0);
+}
+
+#endif
+--------------------
+S'il existe un define TOTO, alors : s'il n'existe pas un define TITI, alors le main apparaitra, sinon le main n'apparaitra meme pas.
+Or, comme TOTO est defini (meme si c'est a rien comme dans l'exemple ci-dessous => cela veut dire que TOTO ne sera remplace par rien), cela revient a : s'il n'existe pas un define TITI, alors le main apparaitra, sinon le main n'apparaitra meme pas.
+
+#define TOTO
+
+#ifdef TOTO
+# ifndef TITI
+
+int main(void)
+{
+	return (0);
+}
+
+# endif
+#endif
+
+On peut ainsi proteger nos fichiers .h.
+
+Remarque : l'utilisation des elif (qui sont l'equivalent d'un "else if") n'est pas conseillee.
+
+6. Preprocessing - Multiple inclusions :
+Une inclusion multiple de fichiers .h :
+
+Dans le fichier test1.h : #include "test2.h"
+Dans le fichier test2.h : #include "test1.h"
+Dans le main.c : #include "test1.h" => on a un gros souci de boucle infinie!
+
+Avec le preprocesseur, on peut proteger nos fichiers .h contre les multiples inclusions :
+
+Dans le fichier test1.h : 
+#ifndef __FT_TEST1_H__
+#define __FT_TEST1_H__
+
+#include "test2.h"
+
+void	pouet1(void);
+
+#endif
+
+Dans le fichier test2.h :
+#include "test1.h"
+void	pouet2(void);
+
+donne le resultat :
+# 1 "main.c"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "main.c"
+
+
+
+# 1 "test1.h" 1
+
+
+# 1 "test2.h" 1
+
+# 1 "test1.h" 1
+# 2 "test2.h" 2
+void	pouet2(void);
+# 5 "test1.h" 2
+
+void	pouet1(void);
+
+# 14 "main.c" 2
+
+int	main(void)
+{
+	return (0);
+}
+
+
+On aurait aussi pu proteger le fichier test2.h avec dans le fichier test2.h :
+#ifndef __FT_TEST2_H__
+#define __FT_TEST2_H__
+
+#include "test1.h"
+void	pouet2(void);
+#endif
+
+Mais, attention, une fois qu'une macro est definie dans l'un des fichiers .h, elle est definie pour toujours dans le fichier .c par les includes des fichiers .h dans ce fichier .c. Et donc, si autre chose utilise la meme macro (c'est-a-dire le meme define), le ifndef ne fonctionnera pas et le ifdef fonctionnera.
+
+7. Data structures - Typedef :
+"typedef" est un mot clef du langage C qui permet de redefinir un type afin de creer son propre type. Comme ce n'est pas lie au preprocesseur, mais a l'executable, il faut un point virgule de fin d'instruction. Contrairement au #define (traite par le preprocesseur), c'est au moment de la compilation que le typedef est pris en compte. Donc, le typedef subit aussi le scope de l'"endroit" ou il est declare.
+
+typedef int*	int_p;
+#define INTP	int*
+
+typedef int cacahuete2;
+void	ft_fct(void)
+{
+	//cacahuete	a; // Ici, ft_fct ne peut pas etre compilee car cacahuete est declare dans le scope du main uniquement.
+	cacahuete2	a;
+	int			*b, c; // Ici, b est un pointeur sur int et c est un int.
+	INTP		d, e; // Ici, d est un pointeur sur int et e est un int.
+	int_p		f, g; // Ici, f et g sont tous les deux des pointeurs sur int
+
+	a = 10;
+}
+
+typedef int cacahuete;
+
+int main(void)
+{
+	cacahuete	a;
+
+	a = 10;
+	return (0);
+}
+
+Dans le fichier unistd.h se trouvent les typedef de ssize_t et size_t utilises dans le prototype de write :
+ssize_t	write(int fildes, const void *buf, size_t nbyte);
+Donc, si demain ils veulent changer pour faire en sorte que "size_t" ne soit plus un "unsigned int", mais un "long unsigned int" par exemple, il leur suffira de le changer a un seul endroit (dans le fichier unistd.h), et nous, nous n'aurons rien a modifier (si nous avons bien utilise des "size_t" dans notre code, cela deviendra automatiquement des "long unsigned int") et il y aura vraiment un controle a la compilation (et le nom du type "size_t" sera indique dans le message d'erreur du compilateur, ce qui permettra de retrouver plus facilement les variables du mauvais type).
+
+8. Data structures - Struct :
+"struct" est un mot clef du langage C qui permet de creer des ensembles de data (de n'importe quel type, y compris d'autres structures, du moment que les noms des variables "data" sont differents du nom de la structure "englobante", ainsi qu'entre elles) liees ensemble. Les structures sont tres utilisees en C.
+
+Exemple de calculs geometriques sur des points :
+/*
+struct	s_point; // simple declaration de l'existence de la structure
+*/
+//Definition de la structure (attention, cela se termine par un point-virgule) :
+struct	s_point
+{
+	int	x;
+	int	y;
+};
+
+typedef struct	s_point2
+{
+	int	x;
+	int	y;
+}			t_point2;
+
+int	main(void)
+{
+	struct s_point	a; // attention a ne pas oublier de remettre "struct" (en plus du nom de la structure) dans le type de la variable que l'on declare (contrairement a d'autres langages)
+	struct s_point	b;
+	t_point2		c; // Avantage du "typedef" avec les structures!
+	t_point2		*ptr;
+
+	a.x = 10; // la notation avec le point permet d'acceder a la variable x de la variable a qui est une structure
+	a.y = 42;
+	b = a; // b est une copie de a : donc, si l'on modifie a par la suite, b ne sera pas touchee (et vice-versa) car b.x == 10 et b.y == 42
+	c.x = 24;
+	c.y = 42;
+	ptr = &c;
+	(*ptr).x = 10; // revient a c.x = 10;
+	ptr->x = 24; // la notation -> est une seconde notation (qui remlace l'etoile et le point) pour deferencer un pointeur sur une structure, cela revient donc a c.x = 24;
+	return (0);
+}
+
+Attention, comme, lors d'un appel de fonction, on copie, si l'on met en parametre d'une fonction une structure, on aura le meme probleme de devoir copier (pour ce qui concerne l'exemple ci-dessus 2 "int") et cela risquera de prendre beaucoup de memoire si la structure est gigantesque!
+Donc, en general, on utilise souvent des pointeurs sur structures pour les passer en arguments a l'appel d'une fonction.
+
+9. Data structures - Enum :
+Les enums permettent de mettre des mots a la place de chiffres. Elles sont comme des listes de "int" dont les valeurs (qui commencent a 0 si l'on ne precise pas une valeur initiale, puis sont incrementees de 1 dans l'ordre de leur declaration) ont une certaine signification et cette serie de nombres sera generee a la compilation.
+Pour nommer des erreurs (codes numeriques : 0, 1, 2, 3, ...) (sans faire des "define" les uns en dessous des autres et sans risaue de se retrouver avec deux fois le meme "define" qui auraient le meme chiffre) , on utilise une enum :
+/*
+enum	e_list; // simple declaration
+*/
+enum	e_list
+{
+	val1,
+	val2,
+	val3
+};
+
+enum	e_list2
+{
+	e_list2_val1 = 4,
+	e_list2_val2 = 7, // Attention : le compilateur ne dira rien selon les versions si l'on remet la meme valeur 4 pour val2 que pour val1
+	e_list2_val3
+};
+
+int	main(void)
+{
+	enum e_list	a;
+	enum e_list2	b;
+
+	a = val1; // desormais, val1 qui faisait partie de l'enum est devenu une sorte de mot clef, c'est-a-dire que "val1" vaut actuellement "0", "val2 "1" et "val3" "2".
+	b = e_list2_val3;
+	return (b); //"e_list2_val3" vaut "8"
+}
+
+10. Data structures - Union (Structures de données - Les unions) :
+Les unions permettent d'acceder au meme espace memoire de plusieurs manieres differentes (alors que la structure positionne ses elements les uns a cote des autres).
+
+#include "tools.h"
+
+struct	s_test
+{
+	int		i;
+	char	c;
+	float	f;
+	char	tab[4];
+};
+
+union	u_test
+{
+	int		i;
+	char	c;
+	float	f;
+	char	tab[4];
+};
+
+int main(void)
+{
+	ft_putnbr(sizeof(struct s_test)); //16 octets (4 octets pour l'int + 1 octet pour le char + 4 octets pour le float + 4 octets pour le tableau de 4 chars) car le compilateur fait du padding entre le char et le float afin d'acceder plus rapidement : il positionne les elements a des adresses multiples de 4 car le processeur est "32 bits" (avec un processeur "purement 64 bits", on ferait des acces sur 8) => padding sur 4
+	ft_putnbr(sizeof(struct s_test)); //16 octets
+	return (0);
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 09, C 11 :
+
+---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 10  :
+
+1. Files - Introduction :
+Le systeme garde en memoire une sorte de table qui associe chaque (entier) file descriptor ouvert par un processus avec le fichier. Le file descriptor sert pour manipuler le fichier.
+Le set des file descriptors standards comprend : 
+* 0 ou "stdin" qui est l'entree standard (typiquement lorsque l'on utilise le clavier)
+* 1 ou "stdout" qui est la sortie standard (l'affichage sur le terminal)
+* 2 ou "stderr" qui est la sortie d'errreur
+
+2. File manipulation - Open :
+man 2 open :
+int open(char *path, int flags[, mode_t perm]);
+path : chemin relatif ou absolu du fichier a ouvrir
+flags : mode d'ouverture (lecture seule O_RDONLY, ecriture seule O_WRONLY, ou les deux O_RDWR, et O_CREAT pour creer le fichier s'il n'existe pas, O_TRUNC pour ecrire depuis le premier octet si le fichier existe, O_APPEND pour ecrire depuis le dernier octet si le fichier existe, etc.). Les flags peuvent etre additionnes avec un ou binaire.
+perm : permissions en cas de creation de fichier
+Valeur de retour : soit un entier int correspondant au file descriptor ouvert, soit -1 en cas d'erreur.
+
+man 2 close :
+int close(int fd);
+fd : file descriptor a fermer
+Valeur de retour : soit 0, soit -1 en cas d'erreur
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "j12.h"
+
+int main()
+{
+	int fd;
+
+	fd = open("alph", O_RDONLY); // Le fichier nomme "alph" contient quelques lettres
+	ft_putnbr(fd);
+	return (0);
+}
+
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "j12.h"
+
+int main()
+{
+	int fd;
+
+	fd = open("42", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR); // On ouvre le fichier nomme "42" en ecriture en le creant car il n'existe pas avec les droits d'ecriture et de lecture dessus
+	if (fd == -1)
+	{
+		ft_putstr("open() failed\n");
+		return (1);
+	}
+	ft_putnbr(fd);
+	if (close(fd) == -1)
+	{
+		ft_putstr("close() failed\n");
+		return (1);
+	}
+	return (0);
+}
+
+3. File manipulation - Write :
+man 2 write :
+int write(int fd, char *buf, int count);
+fd : file descriptor sur lequel ecrire
+buf : buffer source
+count : Nombre d'octets a ecrire
+valeur de retour : soit le nombre d'octets ecrits, soit -1 en cas d'erreur.
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "j12.h"
+
+void ft_putstr_fd(int fd, char *str)
+{
+	write(fd, str, ft_strlen(str));
+}
+
+int main()
+{
+	int fd;
+
+	fd = open("42", O_WRONLY | O_CREAT, S_IRUSR | S_IWUSR); // On ouvre le fichier nomme "42" en ecriture en le creant car il n'existe pas avec les droits d'ecriture et de lecture dessus, puis en mode append pour ecrire a la fin du fichier (depuis le dernier octet du fichier).
+	if (fd == -1)
+	{
+		ft_putstr("open() failed\n");
+		return (1);
+	}
+	ft_putnbr(fd);
+	ft_putstr_fd(fd, "Hello world!\n");
+	if (close(fd) == -1)
+	{
+		ft_putstr("close() failed\n");
+		return (1);
+	}
+	return (0);
+}
+
+4. File manipulation - Read :
+man 2 read :
+int read(int fd, char *buf, int count);
+fd : file descriptor depuis lequel lire
+buf : buffer de destination
+count : nombre d'octets a lire
+valeur de retour : soit le nombre d'octets lus, soit -1 en cas d'erreur
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "j12.h"
+
+#define BUF_SIZE 4096
+#define BUF_SIZE2 10
+int main()
+{
+	int fd;
+	int ret;
+	char buf[BUF_SIZE + 1]; // On peut aussi utiliser malloc
+
+	fd = open("42", O_RDONLY); // On ouvre le fichier nomme "42" en lecture seule
+	if (fd == -1)
+	{
+		ft_putstr("open() error\n");
+		return (1);
+	}
+	ret = read(fd, buf, BUF_SIZE); // on demande a read de lire 4096 octets depuis le fichier 42 et de les stocker dans buf
+/* Dans certains cas, on ne connait pas le nombre d'octets a lire a l'avance. Il faudra alors utiliser une imbrication de boucles de read car read renvoit 0 en fin de fichier.
+	while (ret = read(fd, buf, BUF_SIZE2))
+	{
+		buf[ret] = '\0';
+		ft_putnbr(ret); // on affiche le nombre de caracteres lus
+		ft_putstr(buf); // on affiche le buffer
+	}
+	ft_putnbr(ret); // on affiche le nombre de caracteres lus
+	if (close(fd) == -1)
+	{
+		ft_putstr("close() failed\n");
+		return (1);
+	}
+*/
+	buf[ret] = '\0'; // ne pas oublier le caractere NULL pour finir la chaine de caracteres
+	ft_putnbr(ret); // on affiche le nombre de caracteres lus
+	ft_putstr(buf); // on affiche le buffer
+	if (close(fd) == -1)
+	{
+		ft_putstr("close() failed\n");
+		return (1);
+	}
+	return (0);
+}
+
+5. File manipulation - Lseek :
+Lorsaue l'on effectue des operations sur un file descriptor et que celui-ci n'a pas ete ferme, il y a une sorte de tete de lecture qui pointe sur l'octet en cours. L'offset est la difference entre l'octet en cours et l'octet "0" (le premier).
+
+man 2 lseek : pour repositionner l'offset
+int lseek(int fd, int offset, int mode);
+fd : file descritor
+offset :offset de resultat ou de calcul
+mode : mode de calcul du nouvel offset
+valeur de retour : soit le nouvel offset, soit -1 en cas d'erreur.
+
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "j12.h"
+
+#define BUF_SIZE 10
+int main()
+{
+	int fd;
+	int ret;
+	char buf[BUF_SIZE + 1]; // On peut aussi utiliser malloc
+
+	fd = open("42", O_RDONLY); // On ouvre le fichier nomme "42" en lecture seule
+	if (fd == -1)
+	{
+		ft_putstr("open() error\n");
+		return (1);
+	}
+	while (ret = read(fd, buf, BUF_SIZE))
+	{
+		buf[ret] = '\0';
+		ft_putnbr(ret); // on affiche le nombre de caracteres lus
+		ft_putstr(buf); // on affiche le buffer
+		lseek(fd, -10, SEEK_END); // en revenant en arriere de 10 octets, on obtient une boucle infinie
+	}
+	ft_putnbr(ret); // on affiche le nombre de caracteres lus
+	if (close(fd) == -1)
+	{
+		ft_putstr("close() failed\n");
+		return (1);
+	}
+	buf[ret] = '\0'; // ne pas oublier le caractere NULL pour finir la chaine de caracteres
+	ft_putnbr(ret); // on affiche le nombre de caracteres lus
+	ft_putstr(buf); // on affiche le buffer
+	if (close(fd) == -1)
+	{
+		ft_putstr("close() failed\n");
+		return (1);
+	}
+	return (0);
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
