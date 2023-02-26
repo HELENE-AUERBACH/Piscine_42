@@ -447,12 +447,104 @@ union	u_test
 
 int main(void)
 {
+	union u_test	a;
+
+	a.i = 424242;
 	ft_putnbr(sizeof(struct s_test)); //16 octets (4 octets pour l'int + 1 octet pour le char + 4 octets pour le float + 4 octets pour le tableau de 4 chars) car le compilateur fait du padding entre le char et le float afin d'acceder plus rapidement : il positionne les elements a des adresses multiples de 4 car le processeur est "32 bits" (avec un processeur "purement 64 bits", on ferait des acces sur 8) => padding sur 4
-	ft_putnbr(sizeof(struct s_test)); //16 octets
+	ft_putnbr(sizeof(union u_test)); //4 octets car une union prend la taille du plus grand element (+ eventuellement du padding)
+	ft_putnbr(a.i); // 424242
+	ft_putnbr(a.tab[0]); // 50 car c'est le debut de la decomposition du int 424242 == 50 + (121 * 256) + (6 * 256 * 256) (car les octets vont pour le premier de 256 puissance 0, puis 256 puissance 1, ..., a 256 puissance 3 dans notre exemple)
+	ft_putchar('\n');
+	ft_putnbr(a.tab[1]); // 121
+	ft_putchar('\n');
+	ft_putnbr(a.tab[2]); // 6
+	ft_putchar('\n');
+	ft_putnbr(a.tab[3]); // 0
+	ft_putchar('\n');
 	return (0);
 }
 ---------------------------------------------------------------------------------------------------------------------------------------
 C Piscine - C 09, C 11 :
+
+1. Day 10 Introduction :
+
+
+2. Compilation Problematic :
+gcc est un compilateur complexe avec beaucoup d'options.
+Makefile est un outil qui permet de resoudre ce probleme avec une granularite fine afin de faire exactement ce dont nous avons besoin.
+
+3. Makefile - Introduction :
+Il existe des outils dont le role est de scripter notre compilation a l'aide d'un langage a domaine specifique.
+La commande make en fait partie. Elle s'utilise conjointement avec un ou plusieurs fichiers Makefile (fichiers nommes "Makefile") qui vont decrire, a l'aide d'un ensemble de regles et quelques variables, comment compiler notre programme. La commande make fait appel au Makefile, le lit et l'execute. Dans le Makefile, les regles vont pouvoir s'appeler entre elles, vont pouvoir faire reference a des variables, etc.. Toutes les regles qui se trouvent dqns le Makefile n'ont pas pour but d'etre executees a chaque fois qu'on va invoquerla commande "make". Bien au contraire, generalement c'est une seule de ces regles qui va etre executee, et ses dependances, afin de realiser les actions qu'on souhaitait faire avec cette regle en particulier.
+Par exemple :
+make clean fait appel a la regle clean decrite dans le Makefile.
+
+4. Makefile - Rules (Makefile - Les règles) :
+Les regles du Makefile sont composees d'un nom, d'une liste de dependances, et de la definition de la regle qui est en realite une succession de lignes de shell a executer, qui doivent toutes commencer par une tabulation. Lorsqu'une regle de Makefile est executee (dans l'exemple ci-dessous par la commande "make regle_a"), chaque ligne de shell va etre imprimee dans notre terminal avant d'etre executee. Il est possible d'inhiber ce comportement en faisant preceder la ligne de shell par le caractere @, ce qui permettra d'executer directement la ligne de shell sans affichage de cette ligne.
+
+Par exemple:
+regle_a:
+	echo "regle A"
+
+regle_b: regle_a
+	echo "regle B"
+
+Comme la regle regle_b a dans ses dependances la regle regle_a, la commande "make regle_b" donne le resultat suivant :
+echo "regle A"
+regle A
+echo "regle B"
+regle B
+
+5. Makefile - Variables :
+Les variables ont un nom en majuscules par convention, suivi du signe = (separe par des espaces), puis de la definition de la variable. Pour faire appel a une variable dans une regle, il faut utiliser la syntaxe $().
+
+Par exemple :
+TEXT = "42 is for the braves"
+
+regle_a:
+	echo $(TEXT)
+
+Attention : si l'on invoque make sans argument, la premiere regle rencontree dans le Makefile sera celle qui sera utilisee car elle est consideree comme etant la regle de compilation par defaut.
+Donc, nous aurons le resultat suivant dans notre exemple :
+>make
+echo "42 is for the braves"
+42 is for the braves
+
+6. Makefile - Example :
+Tout comme pour les macros du preprocesseur en C, si l'on a besoin de plusieurs lignes pour lister nos fichiers source, il faut les echapper avec le caractere \.
+Les regles standard sont all (par convention, elle est placee en premier afin d'appeler la regle qui va effectivement effectuer la compilation et qui, elle, portera le meme nom que le programme cible/le programme executable a generer avec l'option -o), et les regles utilitaires clean (qui se contente de supprimer tous les fichiers objet *.o generes par la compilation et eventuellement d'autres fichiers comme les ~), fclean (qui appelle clean en dependance, puis appelle la suppression de l'executable genere) et re (qui permet de reset la compilation, c'est-a-dire de reprendre tout a zero dans un environnement propre en appelant d'abord la regle fclean, puis la regle all).
+
+Exemple de Makefile insuffisant et incorrect pour rendre nos projets :
+NAME = awesomeprog
+
+SRC = source.c \
+	toto.c
+
+
+all: $(NAME)
+
+$(NAME):
+	gcc -o $(NAME) $(SRC)
+
+clean:
+	/bin/rm -f *.o
+
+fclean: clean
+	/bin/rm -f $(NAME)
+
+re: fclean all
+
+7. Pointers to functions - Introduction (Pointeurs sur fonction - Introduction) :
+
+
+8. Pointers to functions - Syntax (Pointeurs sur fonction - Syntaxe) :
+
+
+9. Pointers to functions - Example :
+
+
+10. Pointers to functions - Conclusion :
+
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 C Piscine - C 10  :

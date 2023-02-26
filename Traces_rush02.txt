@@ -1,0 +1,3053 @@
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% cd rush_02
+e3r11p9% ls
+ex00
+e3r11p9% cd ex00
+e3r11p9% ls
+ft_atois.c	 ft_free.c     ft_parser.c  ft_split.c	ft_write.c  numbers.dict
+ft_dict_manip.c  ft_library.h  ft_print.c   ft_utils.c	main.c
+e3r11p9% cat ft_atois.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_atois.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 14:13:08 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/25 19:58:24 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+long int	ft_atoi_arg(char *str);
+int			ft_atoi_dict(char *str);
+
+long int	ft_atoi_arg(char *str)
+{
+	long int	nbr;
+	int			i;
+
+	i = 0;
+	nbr = 0;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			return (-1);
+		i++;
+	}
+	while ('0' <= str[i] && str[i] <= '9')
+	{
+		nbr = nbr * 10 + (str[i] - '0');
+		i++;
+	}
+	if (nbr > UINT_MAX)
+		return (-1);
+	return (nbr);
+}
+
+int	ft_atoi_dict(char *str)
+{
+	int	nbr;
+	int	i;
+
+	i = 0;
+	nbr = 0;
+	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			return (-1);
+		i++;
+	}
+	while ('0' <= str[i] && str[i] <= '9')
+	{
+		nbr = nbr * 10 + (str[i] - '0');
+		i++;
+	}
+	if (nbr > INT_MAX)
+		return (-1);
+	return (nbr);
+}
+e3r11p9% cat ft_free.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 19:37:54 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/25 19:58:36 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+void	ft_free_dicts(t_dict *dicts);
+void	ft_free_tab(char **split, int to_free_until);
+
+void	ft_free_dicts(t_dict *dicts)
+{
+	int	i;
+
+	i = 0;
+	if (!dicts)
+		return ;
+	while (dicts[i].key != -1)
+	{
+		free(dicts[i].value);
+		i++;
+	}
+	free(dicts);
+}
+
+void	ft_free_tab(char **split, int to_free_until)
+{
+	int	i;
+
+	i = 0;
+	if (!split)
+		return ;
+	while (i < to_free_until)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+}
+e3r11p9% cat ft_parser.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 16:18:47 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/25 20:17:17 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+t_dict	*ft_parser(char *dict_name, int *win);
+
+int	ft_check_and_dict(char **entries, t_dict *dicts)
+{
+	int		i;
+	char	**entry;
+
+	i = 0;
+	while (entries[i])
+	{
+		entry = ft_split(entries[i], " :");
+		if (ft_strtablen(entry) != 2)
+			return (0);
+		if (ft_atoi_dict(entry[0]) == -1)
+			return (0);
+		if (!ft_is_printable(entry[1]))
+			return (0);
+		dicts[i].key = ft_atoi_dict(entry[0]);
+		dicts[i].value = entry[1];
+		i++;
+	}
+	dicts[i].key = -1;
+	dicts[i].value = "";
+	return (1);
+}
+
+t_dict	*ft_parser(char *dict_name, int *win)
+{
+	int		fd;
+	int		nb_bytes;
+	char	buffer[BUFF_SIZE + 1];
+	char	**entries;
+	t_dict	*dicts;
+
+	fd = open(dict_name, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	nb_bytes = read(fd, buffer, BUFF_SIZE);
+	if (close(fd) == -1)
+		return (0);
+	buffer[nb_bytes] = '\0';
+	entries = ft_split(buffer, "\n");
+	dicts = (t_dict *)malloc(sizeof(t_dict) * (ft_strtablen(entries) + 1));
+	if (!dicts)
+		*win = 0;
+	*win = ft_check_and_dict(entries, dicts);
+	return (dicts);
+}
+e3r11p9% cat ft_split.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 16:39:55 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/25 20:16:53 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+int	ft_nbr_words(char *str, char *sep)
+{
+	int	nbr_words;
+	int	i;
+
+	if (str[0])
+	{
+		i = 1;
+		nbr_words = 0;
+		while (str[i])
+		{
+			if (ft_char_is_sep(str[i], sep))
+			{
+				if (!ft_char_is_sep(str[i - 1], sep))
+					nbr_words++;
+			}
+			i++;
+		}
+		return (nbr_words + !ft_char_is_sep(str[i - 1], sep));
+	}
+	return (0);
+}
+
+char	*ft_word(char *str, int *i, char *sep)
+{
+	int		j;
+	char	*word;
+
+	j = *i;
+	while (str[j] && !ft_char_is_sep(str[j], sep))
+		j++;
+	word = (char *)malloc(sizeof(char) * (j + 1));
+	if (!word)
+		return (NULL);
+	j = 0;
+	while (str[*i] && !ft_char_is_sep(str[*i], sep))
+	{
+		word[j] = str[*i];
+		*i = *i + 1;
+		j++;
+	}
+	word[j] = '\0';
+	while (str[*i] && ft_char_is_sep(str[*i], sep))
+		*i = *i + 1;
+	return (word);
+}
+
+char	**ft_split(char *str, char *sep)
+{
+	int		nbr_words;
+	int		i;
+	int		index_char;
+	char	**split;
+
+	nbr_words = ft_nbr_words(str, sep);
+	split = (char **)malloc(sizeof(char *) * (nbr_words + 1));
+	if (!split)
+		return (NULL);
+	index_char = 0;
+	while (ft_char_is_sep(str[index_char], sep))
+		index_char++;
+	i = 0;
+	while (i < nbr_words)
+	{
+		split[i] = ft_word(str, &index_char, sep);
+		if (!split[i])
+		{
+			ft_free_tab(split, i);
+		}
+		i++;
+	}
+	split[i] = 0;
+	return (split);
+}
+e3r11p9% cat ft_write.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_write.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 20:00:52 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/25 20:06:59 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+int		ft_possible_write(unsigned int n, t_dict *dicts);
+void	ft_write_int(unsigned int n, t_dict *dicts);
+
+int	ft_possible_write(unsigned int n, t_dict *dicts)
+{
+	unsigned int	reste;
+	unsigned int	max;
+
+	reste = n;
+	if (n == 0)
+		return (ft_strlen(ft_value_of_key(0, dicts)) != 0);
+	while (reste > 0)
+	{
+		max = ft_max(reste, dicts);
+		if (reste >= 100)
+		{
+			if (ft_strlen(ft_value_of_key(reste / max, dicts)) == 0)
+				return (0);
+		}
+		else if (reste >= 10 && reste / max != 1)
+			return (0);
+		reste -= (reste / max) * max;
+	}
+	return (1);
+}
+
+void	ft_write_int(unsigned int n, t_dict *dicts)
+{
+	unsigned int	reste;
+	unsigned int	max;
+	int				len;
+
+	if (n == 0)
+	{
+		len = ft_strlen(ft_value_of_key(0, dicts));
+		write(1, ft_value_of_key(0, dicts), len);
+	}
+	reste = n;
+	while (reste > 0)
+	{
+		max = ft_max(reste, dicts);
+		if (reste >= 100)
+			ft_write_int(reste / max, dicts);
+		len = ft_strlen(ft_value_of_key(max, dicts));
+		write(1, ft_value_of_key(max, dicts), len);
+		write(1, " ", 1);
+		reste -= (reste / max) * max;
+	}
+}
+e3r11p9% 
+e3r11p9% cat numbers.dict
+0: zero
+1: one
+2: two
+3: three
+4: four
+5: five
+6: six
+7: seven
+8: eight
+9: nine
+10: ten
+11: eleven
+12: twelve
+13: thirteen
+14: fourteen
+15: fifteen
+16: sixteen
+17: seventeen
+18: eighteen
+19: nineteen
+20: twenty
+30: thirty
+40: forty
+50: fifty
+60: sixty
+70: seventy
+80: eighty
+90: ninety
+100: hundred
+1000: thousand
+1000000: million
+1000000000: billion
+e3r11p9% cat ft_dict_manip.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_dict_manip.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 19:08:15 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/25 20:05:01 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+char			*ft_value_of_key(unsigned int key, t_dict *dicts);
+unsigned int	ft_max(unsigned int n, t_dict *dicts);
+
+unsigned int	ft_max(unsigned int n, t_dict *dicts)
+{
+	int				i;
+	unsigned int	max;
+
+	i = 0;
+	max = 0;
+	while (dicts[i].key >= 0)
+	{
+		if ((unsigned int)dicts[i].key > max && (unsigned int)dicts[i].key <= n)
+			max = (unsigned int)dicts[i].key;
+		i++;
+	}
+	return (max);
+}
+
+char	*ft_value_of_key(unsigned int key, t_dict *dicts)
+{
+	int	i;
+
+	i = 0;
+	while (dicts[i].key >= 0 && (unsigned int)dicts[i].key != key)
+		i++;
+	if (dicts[i].key == -1)
+		return ("");
+	return (dicts[i].value);
+}
+e3r11p9% cat ft_library.h
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_library.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 16:21:53 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/25 20:13:28 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FT_LIBRARY_H
+
+# define FT_LIBRARY_H
+
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
+
+typedef struct s_dict
+{
+	int		key;
+	char	*value;
+}	t_dict;
+
+# define BUFF_SIZE 4096
+
+int				ft_possible_write(unsigned int n, t_dict *dicts);
+void			ft_write_int(unsigned int n, t_dict *dicts);
+char			**ft_split(char *str, char *sep);
+long int		ft_atoi_arg(char *str);
+int				ft_atoi_dict(char *str);
+t_dict			*ft_parser(char *dict_name, int *win);
+char			*ft_value_of_key(unsigned int key, t_dict *dicts);
+unsigned int	ft_max(unsigned int n, t_dict *dicts);
+void			ft_free_dicts(t_dict *dicts);
+void			ft_free_tab(char **split, int to_free_until);
+int				ft_is_printable(char *s);
+int				ft_strlen(char *s);
+int				ft_strtablen(char **s);
+int				ft_char_is_sep(char c, char *sep);
+void			print_dict(t_dict *dicts);
+void			print_split(char **split);
+
+#endif%                                                                                                                 e3r11p9% cat ft_print.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_print.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 19:48:07 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/25 20:00:06 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+void	print_dict(t_dict *dicts);
+void	print_split(char **split);
+
+void	print_dict(t_dict *dicts)
+{
+	int	i;
+
+	i = 0;
+	while (dicts[i].key >= 0)
+	{
+		printf("key : %d, value : %s\n", dicts[i].key, dicts[i].value);
+		i++;
+	}
+}
+
+void	print_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	while (split[i])
+	{
+		printf("%s\n", split[i]);
+		i++;
+	}
+}
+e3r11p9% cat ft_utils.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 19:47:04 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/25 19:58:51 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int	ft_strlen(char *s);
+int	ft_strtablen(char **s);
+int	ft_is_printable(char *s);
+int	ft_char_is_sep(char c, char *sep);
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+int	ft_strtablen(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+int	ft_is_printable(char *s)
+{
+	int				i;
+	unsigned char	c;
+
+	i = 0;
+	while (s[i])
+	{
+		c = (unsigned char)s[i];
+		if (c < 32 || c > 126)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+int	ft_char_is_sep(char c, char *sep)
+{
+	int	i;
+
+	i = 0;
+	while (sep[i] && sep[i] != c)
+		i++;
+	if (sep[i] == '\0')
+		return (0);
+	return (1);
+}
+e3r11p9% cat main.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: soutin <soutin@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 15:36:00 by octoross          #+#    #+#             */
+/*   Updated: 2023/02/25 20:09:38 by soutin           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+void	ft_test_arg(char *nbr, t_dict *dicts)
+{
+	unsigned int	n;
+
+	if (ft_atoi_arg(nbr) >= 0)
+	{
+		n = (unsigned int)ft_atoi_arg(nbr);
+		if (ft_possible_write(n, dicts))
+		{
+			ft_write_int(n, dicts);
+			write(1, "\n", 1);
+		}
+		else
+			write(1, "Dict error\n", 11);
+	}
+	else
+		write(1, "Error\n", 6);
+}
+
+void	ft_try(char *nbr, char *dict_name)
+{
+	int		win;
+	t_dict	*dicts;
+
+	win = 1;
+	dicts = ft_parser(dict_name, &win);
+	if (!dicts || !win)
+	{	
+		printf("We're here");
+		write(1, "Dict error\n", 11);
+		return ;
+	}
+	ft_test_arg(nbr, dicts);
+	ft_free_dicts(dicts);
+}
+
+int	main(int argc, char **argv)
+{
+	char	*nbr;
+	char	*dict_name;
+
+	if (argc == 2)
+	{
+		nbr = argv[1];
+		dict_name = "numbers.dict";
+	}
+	else if (argc == 3)
+	{
+		dict_name = argv[1];
+		nbr = argv[2];
+	}
+	if (argc == 2 || argc == 3)
+		ft_try(nbr, dict_name);
+	return (0);
+}
+e3r11p9% cc -Wall -Wextra -Werror -o rush-02 *.h *.c 
+clang: error: cannot specify -o when generating multiple output files
+e3r11p9% cc -Wall -Wextra -Werror -o rush-02 ft_library.h *.c
+clang: error: cannot specify -o when generating multiple output files
+e3r11p9% cc -Wall -Wextra -Werror -o rush-02 ft_library.h ft_atois.c ft_free.c ft_parser.c ft_print.c ft_utils.c ft_dict_manip.c ft_split.c ft_write.c main.c 
+clang: error: cannot specify -o when generating multiple output files
+e3r11p9% gcc -Wall -Wextra -Werror -o rush-02 *.h *.c        
+e3r11p9% ls -al
+total 76
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 26 10:05 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 25 20:33 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1583 Feb 25 20:33 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris  1513 Feb 25 20:33 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris  1330 Feb 25 20:33 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris  1798 Feb 25 20:33 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris  1894 Feb 25 20:33 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris  1252 Feb 25 20:33 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris  2137 Feb 25 20:33 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris  1500 Feb 25 20:33 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris  1950 Feb 25 20:33 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris  1754 Feb 25 20:33 main.c
+-rw-r--r-- 1 hauerbac 2023_paris   351 Feb 25 20:33 numbers.dict
+-rwxr-xr-x 1 hauerbac 2023_paris 21448 Feb 26 10:05 rush-02
+e3r11p9%  ./rush-02 42 | cat -e
+forty two $
+e3r11p9%  ./rush-02 0 | cat -e
+zero$
+e3r11p9%  ./rush-02 10.4 | cat -e
+ten $
+e3r11p9%  ./rush-02 100000 | cat -e
+one hundred thousand $
+e3r11p9%  grep "20" numbers.dict | cat -e
+20: twenty$
+e3r11p9%  ./rush-02 20 | cat -e
+twenty $
+-------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% ls 
+c_00  c_04  Desktop	    Music     rush_02	     shell_00
+c_01  c_05  Documents	    Pictures  rush_02_0.tar  shell_01
+c_02  c_06  Downloads	    Public    samed	     Templates
+c_03  c_07  fev2023_23.tar  rush_00   sgoinfre	     Videos
+e3r11p9% rm -R rush_02/*
+zsh: sure you want to delete the only file in /mnt/nfs/homes/hauerbac/rush_02 [yn]? n
+e3r11p9% ls -al rush_02/*
+total 76
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 26 10:05 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 25 20:33 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1583 Feb 25 20:33 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris  1513 Feb 25 20:33 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris  1330 Feb 25 20:33 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris  1798 Feb 25 20:33 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris  1894 Feb 25 20:33 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris  1252 Feb 25 20:33 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris  2137 Feb 25 20:33 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris  1500 Feb 25 20:33 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris  1950 Feb 25 20:33 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris  1754 Feb 25 20:33 main.c
+-rw-r--r-- 1 hauerbac 2023_paris   351 Feb 25 20:33 numbers.dict
+-rwxr-xr-x 1 hauerbac 2023_paris 21448 Feb 26 10:05 rush-02
+e3r11p9% rm rush_02/* 
+zsh: sure you want to delete the only file in /mnt/nfs/homes/hauerbac/rush_02 [yn]? n
+e3r11p9% 
+e3r11p9% rm rush_02/*.*
+zsh: no matches found: rush_02/*.*
+e3r11p9% rmdir -r rush_02
+rmdir: invalid option -- 'r'
+Try 'rmdir --help' for more information.
+e3r11p9% rmdir -R rush_02
+rmdir: invalid option -- 'R'
+Try 'rmdir --help' for more information.
+e3r11p9% rm rush_02/rush-02
+rm: cannot remove 'rush_02/rush-02': No such file or directory
+e3r11p9% rm rush_02/*.c    
+zsh: no matches found: rush_02/*.c
+e3r11p9% ls -al rush_02/*  
+total 76
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 26 10:05 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 25 20:33 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1583 Feb 25 20:33 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris  1513 Feb 25 20:33 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris  1330 Feb 25 20:33 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris  1798 Feb 25 20:33 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris  1894 Feb 25 20:33 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris  1252 Feb 25 20:33 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris  2137 Feb 25 20:33 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris  1500 Feb 25 20:33 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris  1950 Feb 25 20:33 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris  1754 Feb 25 20:33 main.c
+-rw-r--r-- 1 hauerbac 2023_paris   351 Feb 25 20:33 numbers.dict
+-rwxr-xr-x 1 hauerbac 2023_paris 21448 Feb 26 10:05 rush-02
+e3r11p9% rm rush_02/ft*.c
+zsh: no matches found: rush_02/ft*.c
+e3r11p9% rm rush_02/*c   
+zsh: no matches found: rush_02/*c
+e3r11p9% rm --help       
+Usage: rm [OPTION]... [FILE]...
+Remove (unlink) the FILE(s).
+
+  -f, --force           ignore nonexistent files and arguments, never prompt
+  -i                    prompt before every removal
+  -I                    prompt once before removing more than three files, or
+                          when removing recursively; less intrusive than -i,
+                          while still giving protection against most mistakes
+      --interactive[=WHEN]  prompt according to WHEN: never, once (-I), or
+                          always (-i); without WHEN, prompt always
+      --one-file-system  when removing a hierarchy recursively, skip any
+                          directory that is on a file system different from
+                          that of the corresponding command line argument
+      --no-preserve-root  do not treat '/' specially
+      --preserve-root[=all]  do not remove '/' (default);
+                              with 'all', reject any command line argument
+                              on a separate device from its parent
+  -r, -R, --recursive   remove directories and their contents recursively
+  -d, --dir             remove empty directories
+  -v, --verbose         explain what is being done
+      --help     display this help and exit
+      --version  output version information and exit
+
+By default, rm does not remove directories.  Use the --recursive (-r or -R)
+option to remove each listed directory, too, along with all of its contents.
+
+To remove a file whose name starts with a '-', for example '-foo',
+use one of these commands:
+  rm -- -foo
+
+  rm ./-foo
+
+Note that if you use rm to remove a file, it might be possible to recover
+some of its contents, given sufficient expertise and/or time.  For greater
+assurance that the contents are truly unrecoverable, consider using shred.
+
+GNU coreutils online help: <https://www.gnu.org/software/coreutils/>
+Full documentation <https://www.gnu.org/software/coreutils/rm>
+or available locally via: info '(coreutils) rm invocation'
+e3r11p9% rm -R rush_02
+rm: remove write-protected regular file 'rush_02/.git/objects/pack/pack-5def7b438ea3bf3fa39c9290426ab4f9dfd40b36.pack'? y
+rm: remove write-protected regular file 'rush_02/.git/objects/pack/pack-5def7b438ea3bf3fa39c9290426ab4f9dfd40b36.idx'? y
+e3r11p9% ls -al rush_02/*
+zsh: no matches found: rush_02/*
+e3r11p9% ls
+c_00  c_02  c_04  c_06	Desktop    Downloads	   Music     Public   rush_02_0.tar  sgoinfre  shell_01   Videos
+c_01  c_03  c_05  c_07	Documents  fev2023_23.tar  Pictures  rush_00  samed	     shell_00  Templates
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-7e7e0111-22b7-49b9-a22c-80b404a1157a-4719074-hauerbac rush_02 
+Cloning into 'rush_02'...
+remote: Enumerating objects: 53, done.
+remote: Counting objects: 100% (53/53), done.
+remote: Compressing objects: 100% (50/50), done.
+remote: Total 53 (delta 21), reused 0 (delta 0)
+Receiving objects: 100% (53/53), 10.49 KiB | 976.00 KiB/s, done.
+Resolving deltas: 100% (21/21), done.
+e3r11p9% ls -al rush_02/*                                                                                                     
+total 60
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 26 12:19 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 26 12:19 ..
+-rw-r--r-- 1 hauerbac 2023_paris 1601 Feb 26 12:19 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris 1513 Feb 26 12:19 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris 1330 Feb 26 12:19 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris 1835 Feb 26 12:19 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris 2436 Feb 26 12:19 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris 1252 Feb 26 12:19 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris 2137 Feb 26 12:19 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris 1665 Feb 26 12:19 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris 2015 Feb 26 12:19 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris 1729 Feb 26 12:19 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  383 Feb 26 12:19 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris  372 Feb 26 12:19 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris  351 Feb 26 12:19 numbers.dict
+e3r11p9% cd rush_02
+e3r11p9% make
+make: *** No targets specified and no makefile found.  Stop.
+e3r11p9% ls
+ex00
+e3r11p9% cd ex00
+e3r11p9% ls
+ft_atois.c	 ft_free.c     ft_parser.c  ft_split.c	ft_write.c  Makefile	  numbers.dict
+ft_dict_manip.c  ft_library.h  ft_print.c   ft_utils.c	main.c	    nombres.dict
+e3r11p9% make
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ls -al
+total 120
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 26 12:20 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 26 12:19 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1601 Feb 26 12:19 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris  1600 Feb 26 12:20 ft_atois.o
+-rw-r--r-- 1 hauerbac 2023_paris  1513 Feb 26 12:19 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris  1568 Feb 26 12:20 ft_dict_manip.o
+-rw-r--r-- 1 hauerbac 2023_paris  1330 Feb 26 12:19 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris  1480 Feb 26 12:20 ft_free.o
+-rw-r--r-- 1 hauerbac 2023_paris  1835 Feb 26 12:19 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris  2436 Feb 26 12:19 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris  3216 Feb 26 12:20 ft_parser.o
+-rw-r--r-- 1 hauerbac 2023_paris  1252 Feb 26 12:19 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris  1592 Feb 26 12:20 ft_print.o
+-rw-r--r-- 1 hauerbac 2023_paris  2137 Feb 26 12:19 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris  2560 Feb 26 12:20 ft_split.o
+-rw-r--r-- 1 hauerbac 2023_paris  1665 Feb 26 12:19 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris  1816 Feb 26 12:20 ft_utils.o
+-rw-r--r-- 1 hauerbac 2023_paris  2015 Feb 26 12:19 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris  2360 Feb 26 12:20 ft_write.o
+-rw-r--r-- 1 hauerbac 2023_paris  1729 Feb 26 12:19 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  2408 Feb 26 12:20 main.o
+-rw-r--r-- 1 hauerbac 2023_paris   383 Feb 26 12:19 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris   372 Feb 26 12:19 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris   351 Feb 26 12:19 numbers.dict
+-rwxr-xr-x 1 hauerbac 2023_paris 21448 Feb 26 12:20 rush-02
+e3r11p9%  ./rush-02 42 | cat -e
+forty two$
+e3r11p9%  ./rush-02 0 | cat -e
+zero$
+e3r11p9%  ./rush-02 10.4 | cat -e
+Error$
+e3r11p9%  ./rush-02 100000 | cat -e
+one hundred thousand$
+e3r11p9%  grep "20" nombres.dict | cat -e 
+20: vingt$
+e3r11p9%  ./rush-02 nombres.dict 20 | cat -e
+vingt$
+e3r11p9%  ./rush-02 nombres.dict 20,5 | cat -e 
+Error$
+e3r11p9%  ./rush-02 1000.00 | cat -e     
+Error$
+e3r11p9% vi nombres.dict 
+e3r11p9% cat nombres.dict 
+0: zero
+1: un
+2: deux
+3: trois
+4: quatre
+5: cinq
+6: six
+7: sept
+8: huit
+9: neuf   
+10: dix
+11: onze 
+12: douze
+13: treize
+14: quatorze
+15: quinze
+16: seize
+17: dix-sept
+18: dix-huit
+19: dix-neuf
+20: vingt
+30: trente
+40: quarante
+42  :   Only for the braves !   Are you sure ?
+50: cinquante
+60: soixante
+70: soixante-dix
+80: quatre-vingts
+90: quatre-vingt-dix
+100: cent
+1000: mille
+1000000: million
+1000000000: milliard
+e3r11p9%  ./rush-02 nombres.dict 42 | cat -e
+Dict error$
+e3r11p9% vi nombres.dict                   
+e3r11p9% bat */**
+zsh: no matches found: */**
+e3r11p9% bat */*
+zsh: no matches found: */*
+e3r11p9% ls
+ft_atois.c	 ft_dict_manip.o  ft_library.h	ft_print.c  ft_split.o	ft_write.c  main.o	  numbers.dict
+ft_atois.o	 ft_free.c	  ft_parser.c	ft_print.o  ft_utils.c	ft_write.o  Makefile	  rush-02
+ft_dict_manip.c  ft_free.o	  ft_parser.o	ft_split.c  ft_utils.o	main.c	    nombres.dict
+e3r11p9% make fclean
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% ls
+ft_atois.c	 ft_free.c     ft_parser.c  ft_split.c	ft_write.c  Makefile	  numbers.dict
+ft_dict_manip.c  ft_library.h  ft_print.c   ft_utils.c	main.c	    nombres.dict
+e3r11p9% cat ft_library.h 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_library.h                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: octoross <octoross@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 16:21:53 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/26 11:57:15 by octoross         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef FT_LIBRARY_H
+
+# define FT_LIBRARY_H
+
+# include <fcntl.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
+
+typedef struct s_dict
+{
+	int		key;
+	char	*value;
+}	t_dict;
+
+# define BUFF_SIZE 4096
+
+int				ft_possible_write(unsigned int n, t_dict *dicts);
+void			ft_write_int(unsigned int n, t_dict *dicts);
+char			**ft_split(char *str, char *sep);
+long int		ft_atoi_arg(char *str);
+int				ft_atoi_dict(char *str);
+t_dict			*ft_parser(char *dict_name, int *win);
+char			*ft_value_of_key(unsigned int key, t_dict *dicts);
+unsigned int	ft_max(unsigned int n, t_dict *dicts);
+void			ft_free_dicts(t_dict *dicts);
+void			ft_free_tab(char **split, int to_free_until);
+int				ft_is_printable(char *s);
+int				ft_char_is_printable(char s);
+int				ft_strlen(char *s);
+int				ft_strtablen(char **s);
+int				ft_char_is_sep(char c, char *sep);
+void			print_dict(t_dict *dicts);
+void			print_split(char **split);
+
+#endif%                                                                                                                           e3r11p9% cat Makefile 
+CFLAGS = -Wall -Wextra -Werror
+
+SRCS =  ft_dict_manip.c \
+	ft_parser.c \
+	ft_atois.c \
+	ft_print.c \
+	ft_split.c \
+	ft_write.c \
+	ft_utils.c \
+	ft_free.c \
+	main.c \
+
+OBJS = ${SRCS:.c=.o}
+
+NAME = rush-02
+
+%.o : %.c
+	cc ${CFLAGS} -c $< -o ${<:.c=.o}
+
+${NAME}: ${OBJS}
+	cc ${CFLAGS} -o ${NAME} ${OBJS}
+
+all : ${NAME}
+
+clean:
+	rm -f ${OBJS}
+
+fclean: clean
+	rm -f ${NAME}
+
+re: fclean all%                                                                                                                   e3r11p9% bat *.c
+e3r11p9% 
+e3r11p9% cat ft_parser.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: octoross <octoross@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 16:18:47 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/26 12:00:32 by octoross         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+t_dict	*ft_parser(char *dict_name, int *win);
+
+int	ft_check_format(char *entry)
+{
+	int	i;
+
+	i = 0;
+	while (entry[i] == ' ')
+		i++;
+	if (entry[i] == '+')
+		i++;
+	if ('0' > entry[i] || entry[i] > '9')
+		return (0);
+	i++;
+	while ('0' <= entry[i] && entry[i] <= '9')
+		i++;
+	while (entry[i] == ' ')
+		i++;
+	if (entry[i] != ':')
+		return (0);
+	i++;
+	while (entry[i] == ' ')
+		i++;
+	if (!ft_char_is_printable(entry[i]))
+		return (0);
+	while (ft_char_is_printable(entry[i]))
+		i++;
+	while (entry[i] == ' ')
+		i++;
+	return (entry[i] == '\0');
+}
+
+int	ft_check_and_dict(char **entries, t_dict *dicts)
+{
+	int		i;
+	char	**entry;
+
+	i = 0;
+	while (entries[i])
+	{
+		if (!ft_check_format(entries[i]))
+			return (0);
+		entry = ft_split(entries[i], " :");
+		if (ft_strtablen(entry) != 2)
+			return (0);
+		if (ft_atoi_dict(entry[0]) == -1)
+			return (0);
+		if (!ft_is_printable(entry[1]))
+			return (0);
+		dicts[i].key = ft_atoi_dict(entry[0]);
+		dicts[i].value = entry[1];
+		i++;
+	}
+	dicts[i].key = -1;
+	dicts[i].value = "";
+	return (1);
+}
+
+t_dict	*ft_parser(char *dict_name, int *win)
+{
+	int		fd;
+	int		nb_bytes;
+	char	buffer[BUFF_SIZE + 1];
+	char	**entries;
+	t_dict	*dicts;
+
+	fd = open(dict_name, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	nb_bytes = read(fd, buffer, BUFF_SIZE);
+	if (close(fd) == -1)
+		return (0);
+	buffer[nb_bytes] = '\0';
+	entries = ft_split(buffer, "\n");
+	dicts = (t_dict *)malloc(sizeof(t_dict) * (ft_strtablen(entries) + 1));
+	if (!dicts)
+		*win = 0;
+	*win = ft_check_and_dict(entries, dicts);
+	return (dicts);
+}
+e3r11p9% vi ft_parser.c 
+e3r11p9% norminette -R CheckForbiddenSourceHeader ft_parser.c
+ft_parser.c: OK!
+e3r11p9% norminette ft_parser.c 
+ft_parser.c: OK!
+e3r11p9% norminette *.c        
+ft_atois.c: OK!
+ft_dict_manip.c: OK!
+ft_free.c: OK!
+ft_parser.c: OK!
+ft_print.c: OK!
+ft_split.c: OK!
+ft_utils.c: OK!
+ft_write.c: OK!
+main.c: OK!
+e3r11p9% norminette *.h
+ft_library.h: OK!
+e3r11p9% cat ft_parser.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: octoross <octoross@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 16:18:47 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/26 12:40:02 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+t_dict	*ft_parser(char *dict_name, int *win);
+
+int	ft_check_format(char *entry)
+{
+	int	i;
+
+	i = 0;
+	while (entry[i] == ' ')
+		i++;
+	if (entry[i] == '+')
+		i++;
+	if ('0' > entry[i] || entry[i] > '9')
+		return (0);
+	i++;
+	while ('0' <= entry[i] && entry[i] <= '9')
+		i++;
+	while (entry[i] == ' ')
+		i++;
+	if (entry[i] != ':')
+		return (0);
+	i++;
+	while (entry[i] == ' ')
+		i++;
+	while (entry[i] != '\0')
+		if (!ft_char_is_printable(entry[i++]))
+			return (0);
+	return (1);
+}
+
+int	ft_check_and_dict(char **entries, t_dict *dicts)
+{
+	int		i;
+	char	**entry;
+
+	i = 0;
+	while (entries[i])
+	{
+		if (!ft_check_format(entries[i]))
+			return (0);
+		entry = ft_split(entries[i], " :");
+		if (ft_strtablen(entry) != 2)
+			return (0);
+		if (ft_atoi_dict(entry[0]) == -1)
+			return (0);
+		if (!ft_is_printable(entry[1]))
+			return (0);
+		dicts[i].key = ft_atoi_dict(entry[0]);
+		dicts[i].value = entry[1];
+		i++;
+	}
+	dicts[i].key = -1;
+	dicts[i].value = "";
+	return (1);
+}
+
+t_dict	*ft_parser(char *dict_name, int *win)
+{
+	int		fd;
+	int		nb_bytes;
+	char	buffer[BUFF_SIZE + 1];
+	char	**entries;
+	t_dict	*dicts;
+
+	fd = open(dict_name, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	nb_bytes = read(fd, buffer, BUFF_SIZE);
+	if (close(fd) == -1)
+		return (0);
+	buffer[nb_bytes] = '\0';
+	entries = ft_split(buffer, "\n");
+	dicts = (t_dict *)malloc(sizeof(t_dict) * (ft_strtablen(entries) + 1));
+	if (!dicts)
+		*win = 0;
+	*win = ft_check_and_dict(entries, dicts);
+	return (dicts);
+}
+e3r11p9% make
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ls -al
+total 120
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 26 12:41 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 26 12:19 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1601 Feb 26 12:19 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris  1600 Feb 26 12:41 ft_atois.o
+-rw-r--r-- 1 hauerbac 2023_paris  1513 Feb 26 12:19 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris  1568 Feb 26 12:41 ft_dict_manip.o
+-rw-r--r-- 1 hauerbac 2023_paris  1330 Feb 26 12:19 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris  1480 Feb 26 12:41 ft_free.o
+-rw-r--r-- 1 hauerbac 2023_paris  1835 Feb 26 12:19 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris  2372 Feb 26 12:40 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris  3128 Feb 26 12:41 ft_parser.o
+-rw-r--r-- 1 hauerbac 2023_paris  1252 Feb 26 12:19 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris  1592 Feb 26 12:41 ft_print.o
+-rw-r--r-- 1 hauerbac 2023_paris  2137 Feb 26 12:19 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris  2560 Feb 26 12:41 ft_split.o
+-rw-r--r-- 1 hauerbac 2023_paris  1665 Feb 26 12:19 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris  1816 Feb 26 12:41 ft_utils.o
+-rw-r--r-- 1 hauerbac 2023_paris  2015 Feb 26 12:19 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris  2360 Feb 26 12:41 ft_write.o
+-rw-r--r-- 1 hauerbac 2023_paris  1729 Feb 26 12:19 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  2408 Feb 26 12:41 main.o
+-rw-r--r-- 1 hauerbac 2023_paris   383 Feb 26 12:19 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris   419 Feb 26 12:28 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris   351 Feb 26 12:19 numbers.dict
+-rwxr-xr-x 1 hauerbac 2023_paris 21448 Feb 26 12:41 rush-02
+e3r11p9%  ./rush-02 nombres.dict 42 | cat -e                 
+Dict error$
+e3r11p9%  ./rush-02 100000 | cat -e          
+one hundred thousand$
+e3r11p9%  ./rush-02 1000.00 | cat -e                 
+Error$
+e3r11p9%  ./rush-02 42 | cat -e            
+forty two$
+e3r11p9% vi ft_parser.c                                      
+e3r11p9% make clean
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% make fclean
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% ls -al
+total 60
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 26 12:51 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 26 12:19 ..
+-rw-r--r-- 1 hauerbac 2023_paris 1601 Feb 26 12:19 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris 1513 Feb 26 12:19 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris 1330 Feb 26 12:19 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris 1835 Feb 26 12:19 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris 2372 Feb 26 12:40 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris 1252 Feb 26 12:19 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris 2137 Feb 26 12:19 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris 1665 Feb 26 12:19 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris 2015 Feb 26 12:19 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris 1729 Feb 26 12:19 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  383 Feb 26 12:19 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris  419 Feb 26 12:28 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris  351 Feb 26 12:19 numbers.dict
+e3r11p9% gcc -Wall -Wextra -Werror -o rush-02 -g3 *.c
+e3r11p9% ls -al                                      
+total 164
+drwxr-xr-x 2 hauerbac 2023_paris   4096 Feb 26 12:52 .
+drwxr-xr-x 4 hauerbac 2023_paris   4096 Feb 26 12:19 ..
+-rw-r--r-- 1 hauerbac 2023_paris   1601 Feb 26 12:19 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris   1513 Feb 26 12:19 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris   1330 Feb 26 12:19 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris   1835 Feb 26 12:19 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris   2372 Feb 26 12:40 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris   1252 Feb 26 12:19 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris   2137 Feb 26 12:19 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris   1665 Feb 26 12:19 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris   2015 Feb 26 12:19 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris   1729 Feb 26 12:19 main.c
+-rw-r--r-- 1 hauerbac 2023_paris    383 Feb 26 12:19 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris    419 Feb 26 12:28 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris    351 Feb 26 12:19 numbers.dict
+-rwxr-xr-x 1 hauerbac 2023_paris 105528 Feb 26 12:52 rush-02
+e3r11p9% lldb rush-02 nombres.dict 42 
+(lldb) target create "rush-02"
+Current executable set to '/mnt/nfs/homes/hauerbac/rush_02/ex00/rush-02' (x86_64).
+(lldb) settings set -- target.run-args  "nombres.dict" "42"
+(lldb) b ft_check_format
+Breakpoint 1: where = rush-02`ft_check_format + 16 at ft_parser.c:21:4, address = 0x00000000000015f1
+(lldb) run
+warning: (x86_64) /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 unsupported DW_FORM value: 0x1f
+Process 271697 launched: '/mnt/nfs/homes/hauerbac/rush_02/ex00/rush-02' (x86_64)
+warning: (x86_64) /lib64/ld-linux-x86-64.so.2 unsupported DW_FORM value: 0x1f
+warning: (x86_64) /lib/x86_64-linux-gnu/libc.so.6 unsupported DW_FORM value: 0x1f
+Process 271697 stopped
+* thread #1, name = 'rush-02', stop reason = breakpoint 1.1
+    frame #0: 0x00005555555555f1 rush-02`ft_check_format(entry="0: zero") at ft_parser.c:21:4
+   18  	{
+   19  		int	i;
+   20  	
+-> 21  		i = 0;
+   22  		while (entry[i] == ' ')
+   23  			i++;
+   24  		if (entry[i] == '+')
+(lldb) gui
+(lldb) q
+Quitting LLDB will kill one or more processes. Do you really want to proceed: [Y/n] y
+e3r11p9% vi nombres.dict                             
+e3r11p9% cat nombres.dict 
+0: zero
+42  :   Only for the braves !   Are you sure ?
+1: un
+2: deux
+3: trois
+4: quatre
+5: cinq
+10: dix
+6: six
+7: sept
+8: huit
+9: neuf   
+11: onze 
+12: douze
+13: treize
+14: quatorze
+15: quinze
+16: seize
+17: dix-sept
+18: dix-huit
+19: dix-neuf
+20: vingt
+30: trente
+40: quarante
+50: cinquante
+60: soixante
+70: soixante-dix
+80: quatre-vingts
+90: quatre-vingt-dix
+100: cent
+1000: mille
+1000000: million
+1000000000: milliard
+e3r11p9% lldb rush-02 nombres.dict 42
+(lldb) target create "rush-02"
+Current executable set to '/mnt/nfs/homes/hauerbac/rush_02/ex00/rush-02' (x86_64).
+(lldb) settings set -- target.run-args  "nombres.dict" "42"
+(lldb) run
+warning: (x86_64) /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 unsupported DW_FORM value: 0x1f
+Process 277042 launched: '/mnt/nfs/homes/hauerbac/rush_02/ex00/rush-02' (x86_64)
+warning: (x86_64) /lib64/ld-linux-x86-64.so.2 unsupported DW_FORM value: 0x1f
+warning: (x86_64) /lib/x86_64-linux-gnu/libc.so.6 unsupported DW_FORM value: 0x1f
+Dict error
+Process 277042 exited with status = 0 (0x00000000) 
+(lldb) q
+e3r11p9% lldb rush-02 nombres.dict 42
+(lldb) target create "rush-02"
+Current executable set to '/mnt/nfs/homes/hauerbac/rush_02/ex00/rush-02' (x86_64).
+(lldb) settings set -- target.run-args  "nombres.dict" "42"
+(lldb) b ft_check_format
+Breakpoint 1: where = rush-02`ft_check_format + 16 at ft_parser.c:21:4, address = 0x00000000000015f1
+(lldb) run
+warning: (x86_64) /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2 unsupported DW_FORM value: 0x1f
+Process 277107 launched: '/mnt/nfs/homes/hauerbac/rush_02/ex00/rush-02' (x86_64)
+warning: (x86_64) /lib64/ld-linux-x86-64.so.2 unsupported DW_FORM value: 0x1f
+warning: (x86_64) /lib/x86_64-linux-gnu/libc.so.6 unsupported DW_FORM value: 0x1f
+Process 277107 stopped
+* thread #1, name = 'rush-02', stop reason = breakpoint 1.1
+    frame #0: 0x00005555555555f1 rush-02`ft_check_format(entry="0: zero") at ft_parser.c:21:4
+   18  	{
+   19  		int	i;
+   20  	
+-> 21  		i = 0;
+   22  		while (entry[i] == ' ')
+   23  			i++;
+   24  		if (entry[i] == '+')
+(lldb) gui
+(lldb) q
+Quitting LLDB will kill one or more processes. Do you really want to proceed: [Y/n] y
+Dict error
+e3r11p9% norminette *.c                             
+ft_atois.c: OK!
+ft_dict_manip.c: OK!
+ft_free.c: OK!
+ft_parser.c: Error!
+Error: MISALIGNED_VAR_DECL  (line:  68, col:   9):	Misaligned variable declaration
+Error: MISALIGNED_VAR_DECL  (line:  70, col:   9):	Misaligned variable declaration
+Error: LINE_TOO_LONG        (line:  85, col:  82):	line too long
+ft_print.c: OK!
+ft_split.c: OK!
+ft_utils.c: OK!
+ft_write.c: OK!
+main.c: OK!
+e3r11p9% vi ft_parser.c
+e3r11p9% norminette *.c
+ft_atois.c: OK!
+ft_dict_manip.c: OK!
+ft_free.c: OK!
+ft_parser.c: OK!
+ft_print.c: OK!
+ft_split.c: OK!
+ft_utils.c: OK!
+ft_write.c: OK!
+main.c: OK!
+e3r11p9% make fclean                                 
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% ls -al
+total 60
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Feb 26 16:00 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Feb 26 12:19 ..
+-rw-r--r-- 1 hauerbac 2023_paris 1601 Feb 26 12:19 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris 1513 Feb 26 12:19 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris 1330 Feb 26 12:19 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris 1835 Feb 26 12:19 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris 3190 Feb 26 15:59 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris 1252 Feb 26 12:19 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris 2137 Feb 26 12:19 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris 1665 Feb 26 12:19 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris 2015 Feb 26 12:19 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris 1729 Feb 26 12:19 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  383 Feb 26 12:19 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris  419 Feb 26 13:30 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris  351 Feb 26 12:19 numbers.dict
+e3r11p9% make
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+ft_parser.c:72:19: error: use of undeclared identifier 'src'
+        words = ft_split(src, " ");
+                         ^
+ft_parser.c:77:26: error: implicit declaration of function 'ft_len' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                ptr = (char *) malloc((ft_len(str) + 1) * sizeof(char));
+                                       ^
+ft_parser.c:80:19: error: use of undeclared identifier 'word'; did you mean 'words'?
+                ft_strncpy(ptr, word[0], ft_len(word[0]) + 1);
+                                ^~~~
+                                words
+ft_parser.c:67:9: note: 'words' declared here
+        char    **words;
+                  ^
+ft_parser.c:80:35: error: use of undeclared identifier 'word'; did you mean 'words'?
+                ft_strncpy(ptr, word[0], ft_len(word[0]) + 1);
+                                                ^~~~
+                                                words
+ft_parser.c:67:9: note: 'words' declared here
+        char    **words;
+                  ^
+ft_parser.c:84:15: error: use of undeclared identifier 'word'; did you mean 'words'?
+                        ptr[ft_len(word[i - 1])] = ' ';
+                                   ^~~~
+                                   words
+ft_parser.c:67:9: note: 'words' declared here
+        char    **words;
+                  ^
+ft_parser.c:85:26: error: use of undeclared identifier 'word'; did you mean 'words'?
+                        ft_strncpy(ptr[ft_len(word[i - 1]) + 1], word[i],
+                                              ^~~~
+                                              words
+ft_parser.c:67:9: note: 'words' declared here
+        char    **words;
+                  ^
+ft_parser.c:85:45: error: use of undeclared identifier 'word'; did you mean 'words'?
+                        ft_strncpy(ptr[ft_len(word[i - 1]) + 1], word[i],
+                                                                 ^~~~
+                                                                 words
+ft_parser.c:67:9: note: 'words' declared here
+        char    **words;
+                  ^
+ft_parser.c:86:12: error: use of undeclared identifier 'word'; did you mean 'words'?
+                                ft_len(word[i]) + 1);
+                                       ^~~~
+                                       words
+ft_parser.c:67:9: note: 'words' declared here
+        char    **words;
+                  ^
+ft_parser.c:85:15: error: incompatible integer to pointer conversion passing 'char' to parameter of type 'char *'; take the address with & [-Werror,-Wint-conversion]
+                        ft_strncpy(ptr[ft_len(word[i - 1]) + 1], word[i],
+                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                   &
+ft_parser.c:44:24: note: passing argument to parameter 'dest' here
+char    *ft_strncpy(char *dest, char *src, unsigned int n)
+                          ^
+ft_parser.c:103:3: error: use of undeclared identifier 'line'
+                line = ft_trunc_multiple_spaces(entries[i]);
+                ^
+ft_parser.c:104:8: error: use of undeclared identifier 'line'; did you mean 'link'?
+                if (!line)
+                     ^~~~
+                     link
+/usr/include/unistd.h:819:12: note: 'link' declared here
+extern int link (const char *__from, const char *__to)
+           ^
+ft_parser.c:104:8: error: address of function 'link' will always evaluate to 'true' [-Werror,-Wpointer-bool-conversion]
+                if (!line)
+                    ~^~~~
+ft_parser.c:104:8: note: prefix with the address-of operator to silence this warning
+                if (!line)
+                     ^
+                     &
+ft_parser.c:106:20: error: use of undeclared identifier 'line'; did you mean 'link'?
+                entry = ft_split(line, ":");
+                                 ^~~~
+                                 link
+/usr/include/unistd.h:819:12: note: 'link' declared here
+extern int link (const char *__from, const char *__to)
+           ^
+ft_parser.c:107:8: error: use of undeclared identifier 'line'; did you mean 'link'?
+                free(line);
+                     ^~~~
+                     link
+/usr/include/unistd.h:819:12: note: 'link' declared here
+extern int link (const char *__from, const char *__to)
+           ^
+14 errors generated.
+make: *** [Makefile:18: ft_parser.o] Error 1
+e3r11p9% vi ft_parser.c
+e3r11p9% norminette *.c
+ft_atois.c: OK!
+ft_dict_manip.c: OK!
+ft_free.c: OK!
+ft_parser.c: OK!
+ft_print.c: OK!
+ft_split.c: OK!
+ft_utils.c: OK!
+ft_write.c: OK!
+main.c: OK!
+e3r11p9% make fclean   
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make          
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+ft_parser.c:85:15: error: incompatible integer to pointer conversion passing 'char' to parameter of type 'char *'; take the address with & [-Werror,-Wint-conversion]
+                        ft_strncpy(ptr[ft_strlen(words[i - 1]) + 1],
+                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                                   &
+ft_parser.c:44:24: note: passing argument to parameter 'dest' here
+char    *ft_strncpy(char *dest, char *src, unsigned int n)
+                          ^
+1 error generated.
+make: *** [Makefile:18: ft_parser.o] Error 1
+e3r11p9% vi ft_parser.c
+e3r11p9% norminette *.c
+ft_atois.c: OK!
+ft_dict_manip.c: OK!
+ft_free.c: OK!
+ft_parser.c: OK!
+ft_print.c: OK!
+ft_split.c: OK!
+ft_utils.c: OK!
+ft_write.c: OK!
+main.c: OK!
+e3r11p9% make fclean   
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make          
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ls -al
+total 124
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 26 16:07 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Feb 26 12:19 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1601 Feb 26 12:19 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris  1600 Feb 26 16:07 ft_atois.o
+-rw-r--r-- 1 hauerbac 2023_paris  1513 Feb 26 12:19 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris  1568 Feb 26 16:07 ft_dict_manip.o
+-rw-r--r-- 1 hauerbac 2023_paris  1330 Feb 26 12:19 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris  1480 Feb 26 16:07 ft_free.o
+-rw-r--r-- 1 hauerbac 2023_paris  1835 Feb 26 12:19 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris  3225 Feb 26 16:06 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris  4296 Feb 26 16:07 ft_parser.o
+-rw-r--r-- 1 hauerbac 2023_paris  1252 Feb 26 12:19 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris  1592 Feb 26 16:07 ft_print.o
+-rw-r--r-- 1 hauerbac 2023_paris  2137 Feb 26 12:19 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris  2560 Feb 26 16:07 ft_split.o
+-rw-r--r-- 1 hauerbac 2023_paris  1665 Feb 26 12:19 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris  1816 Feb 26 16:07 ft_utils.o
+-rw-r--r-- 1 hauerbac 2023_paris  2015 Feb 26 12:19 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris  2360 Feb 26 16:07 ft_write.o
+-rw-r--r-- 1 hauerbac 2023_paris  1729 Feb 26 12:19 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  2408 Feb 26 16:07 main.o
+-rw-r--r-- 1 hauerbac 2023_paris   383 Feb 26 12:19 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris   419 Feb 26 13:30 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris   351 Feb 26 12:19 numbers.dict
+-rwxr-xr-x 1 hauerbac 2023_paris 21536 Feb 26 16:07 rush-02
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Dict error$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Dict error$
+2$
+Line tronquee 0: zero$
+11$
+Line tronquee 4 A  ?$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Dict error$
+Count 2$
+0:$
+zero$
+$
+Line tronquee 0: zero$
+Count 11$
+42$
+:$
+Only$
+for$
+the$
+braves$
+!$
+Are$
+you$
+sure$
+?$
+$
+Line tronquee 4 A  ?$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+ft_parser.c:86:17: error: result of comparison against a string literal is unspecified (use an explicit string comparison function instead) [-Werror,-Wstring-compare]
+                        if (words[i] != ":" && words[i - 1] != ":")
+                                     ^  ~~~
+ft_parser.c:86:40: error: result of comparison against a string literal is unspecified (use an explicit string comparison function instead) [-Werror,-Wstring-compare]
+                        if (words[i] != ":" && words[i - 1] != ":")
+                                                            ^  ~~~
+2 errors generated.
+make: *** [Makefile:18: ft_parser.o] Error 1
+e3r11p9% vi ft_parser.c
+e3r11p9% norminette *.c                    
+ft_atois.c: OK!
+ft_dict_manip.c: OK!
+ft_free.c: OK!
+ft_parser.c: Error!
+Error: TOO_MANY_LINES       (line: 122, col:   1):	Function has more than 25 lines
+Error: TOO_MANY_FUNCS       (line: 153, col:   1):	Too many functions in file
+ft_print.c: OK!
+ft_split.c: OK!
+ft_utils.c: OK!
+ft_write.c: OK!
+main.c: OK!
+e3r11p9% vi ft_utils.c 
+e3r11p9% vi ft_split.c
+e3r11p9% vi ft_parser.c
+e3r11p9% vi ft_split.c 
+e3r11p9% vi ft_parser.c
+e3r11p9% make fclean   
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make          
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+ft_parser.c:65:10: error: redefinition of 'ft_strncpy'
+char    *ft_strncpy(char *dest, char *src, unsigned int n)
+         ^
+ft_parser.c:44:7: note: previous definition is here
+char    *ft_strncpy(char *dest, char *src, unsigned int n)
+         ^
+ft_parser.c:107:58: error: expected ';' after expression
+                        (unsigned char) words[i][0] - ':'
+                                                         ^
+                                                         ;
+ft_parser.c:107:53: error: expression result unused [-Werror,-Wunused-value]
+                        (unsigned char) words[i][0] - ':'
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~
+3 errors generated.
+make: *** [Makefile:18: ft_parser.o] Error 1
+e3r11p9% vi ft_parser.c
+e3r11p9% make fclean   
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make          
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+ft_parser.c:65:10: error: redefinition of 'ft_strncpy'
+char    *ft_strncpy(char *dest, char *src, unsigned int n)
+         ^
+ft_parser.c:44:7: note: previous definition is here
+char    *ft_strncpy(char *dest, char *src, unsigned int n)
+         ^
+ft_parser.c:107:58: error: expected ';' after expression
+                        (unsigned char) words[i][0] - ':'
+                                                         ^
+                                                         ;
+ft_parser.c:107:53: error: expression result unused [-Werror,-Wunused-value]
+                        (unsigned char) words[i][0] - ':'
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~
+3 errors generated.
+make: *** [Makefile:18: ft_parser.o] Error 1
+e3r11p9% vi ft_parser.c
+e3r11p9% make fclean   
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make          
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+ft_parser.c:86:58: error: expected ';' after expression
+                        (unsigned char) words[i][0] - ':'
+                                                         ^
+                                                         ;
+ft_parser.c:86:53: error: expression result unused [-Werror,-Wunused-value]
+                        (unsigned char) words[i][0] - ':'
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~
+2 errors generated.
+make: *** [Makefile:18: ft_parser.o] Error 1
+e3r11p9% vi ft_parser.c
+e3r11p9% make fclean   
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make          
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+ft_parser.c:86:58: error: expected ';' after expression
+                        (unsigned char) words[i][0] - ':'
+                                                         ^
+                                                         ;
+ft_parser.c:86:53: error: expression result unused [-Werror,-Wunused-value]
+                        (unsigned char) words[i][0] - ':'
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~
+2 errors generated.
+make: *** [Makefile:18: ft_parser.o] Error 1
+e3r11p9% vi ft_parser.c
+e3r11p9% make fclean   
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make          
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+ft_parser.c:86:58: error: expected ';' after expression
+                        (unsigned char) words[i][0] - ':'
+                                                         ^
+                                                         ;
+ft_parser.c:86:53: error: expression result unused [-Werror,-Wunused-value]
+                        (unsigned char) words[i][0] - ':'
+                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~ ^ ~~~
+2 errors generated.
+make: *** [Makefile:18: ft_parser.o] Error 1
+e3r11p9% vi ft_parser.c
+e3r11p9% make fclean   
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make          
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+ft_split.c:133:3: error: implicit declaration of function 'ft_strncpy' is invalid in C99 [-Werror,-Wimplicit-function-declaration]
+                ft_strncpy(ptr, words[0], ft_strlen(words[0]) + 1);
+                ^
+ft_split.c:133:3: note: did you mean 'ft_strncmp'?
+ft_split.c:90:5: note: 'ft_strncmp' declared here
+int     ft_strncmp(char *s1, char *s2, unsigned int n)
+        ^
+1 error generated.
+make: *** [Makefile:18: ft_split.o] Error 1
+e3r11p9% vi ft_split.c 
+e3r11p9% make fclean  
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make         
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Dict error$
+Count 2$
+0:$
+zero$
+$
+Line tronquee 0: zero$
+Count 11$
+42$
+:$
+Only$
+for$
+the$
+braves$
+!$
+Are$
+you$
+sure$
+?$
+$
+Line tronquee 4 A  ?$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Dict error$
+0:$
+zero$
+$
+0 Line tronquee 0:$
+$
+1 Line tronquee 0: zero$
+$
+Line tronquee 0: zero$
+42$
+:$
+Only$
+for$
+the$
+braves$
+!$
+Are$
+you$
+sure$
+?$
+$
+0 Line tronquee 42$
+$
+1 Line tronquee 42$
+$
+2 Line tronquee 42Only$
+$
+3 Line tronquee 42On for$
+$
+4 Line tronquee 42O the$
+$
+5 Line tronquee 42O braves$
+$
+6 Line tronquee 42O br !$
+$
+7 Line tronquee 4 Are$
+$
+8 Line tronquee 4 A you$
+$
+9 Line tronquee 4 A sure$
+$
+10 Line tronquee 4 A  ?$
+$
+Line tronquee 4 A  ?$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Dict error$
+0:$
+zero$
+$
+0 Line tronquee 0:$
+$
+1 Line tronquee 0:$
+$
+Line tronquee 0:$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Dict error$
+0:$
+zero$
+$
+0 Line tronquee 0:$
+$
+1 Line tronquee 0:$
+$
+Line tronquee 0:$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+quarante deux$
+0:$
+zero$
+$
+0 Line tronquee 0:$
+$
+1 Line tronquee 0:zero$
+$
+Line tronquee 0:zero$
+42$
+:$
+Only$
+for$
+the$
+braves$
+!$
+Are$
+you$
+sure$
+?$
+$
+0 Line tronquee 42$
+$
+1 Line tronquee 42:$
+$
+2 Line tronquee 42:Only$
+$
+3 Line tronquee 42:O lyfor$
+$
+4 Line tronquee 42:  lyforthe$
+$
+5 Line tronquee 42:  lyforthebraves$
+$
+6 Line tronquee 42:  l forthebraves!$
+$
+7 Line tronquee 4 :  l forthebraves!Are$
+$
+8 Line tronquee 4 :  l forthebraves!Areyou$
+$
+9 Line tronquee 4 :  l forthebraves!Areyousure$
+$
+10 Line tronquee 4 :  l forthebraves!Areyousure?$
+$
+Line tronquee 4 :  l forthebraves!Areyousure?$
+1:$
+un$
+$
+0 Line tronquee 1:$
+$
+1 Line tronquee 1:un$
+$
+Line tronquee 1:un$
+2:$
+deux$
+$
+0 Line tronquee 2:$
+$
+1 Line tronquee 2:deux$
+$
+Line tronquee 2:deux$
+3:$
+trois$
+$
+0 Line tronquee 3:$
+$
+1 Line tronquee 3:trois$
+$
+Line tronquee 3:trois$
+4:$
+quatre$
+$
+0 Line tronquee 4:$
+$
+1 Line tronquee 4:quatre$
+$
+Line tronquee 4:quatre$
+5:$
+cinq$
+$
+0 Line tronquee 5:$
+$
+1 Line tronquee 5:cinq$
+$
+Line tronquee 5:cinq$
+10:$
+dix$
+$
+0 Line tronquee 10:$
+$
+1 Line tronquee 10:dix$
+$
+Line tronquee 10:dix$
+6:$
+six$
+$
+0 Line tronquee 6:$
+$
+1 Line tronquee 6:six$
+$
+Line tronquee 6:six$
+7:$
+sept$
+$
+0 Line tronquee 7:$
+$
+1 Line tronquee 7:sept$
+$
+Line tronquee 7:sept$
+8:$
+huit$
+$
+0 Line tronquee 8:$
+$
+1 Line tronquee 8:huit$
+$
+Line tronquee 8:huit$
+9:$
+neuf$
+$
+0 Line tronquee 9:$
+$
+1 Line tronquee 9:neuf$
+$
+Line tronquee 9:neuf$
+11:$
+onze$
+$
+0 Line tronquee 11:$
+$
+1 Line tronquee 11:onze$
+$
+Line tronquee 11:onze$
+12:$
+douze$
+$
+0 Line tronquee 12:$
+$
+1 Line tronquee 12:douze$
+$
+Line tronquee 12:douze$
+13:$
+treize$
+$
+0 Line tronquee 13:$
+$
+1 Line tronquee 13:treize$
+$
+Line tronquee 13:treize$
+14:$
+quatorze$
+$
+0 Line tronquee 14:$
+$
+1 Line tronquee 14:quatorze$
+$
+Line tronquee 14:quatorze$
+15:$
+quinze$
+$
+0 Line tronquee 15:$
+$
+1 Line tronquee 15:quinze$
+$
+Line tronquee 15:quinze$
+16:$
+seize$
+$
+0 Line tronquee 16:$
+$
+1 Line tronquee 16:seize$
+$
+Line tronquee 16:seize$
+17:$
+dix-sept$
+$
+0 Line tronquee 17:$
+$
+1 Line tronquee 17:dix-sept$
+$
+Line tronquee 17:dix-sept$
+18:$
+dix-huit$
+$
+0 Line tronquee 18:$
+$
+1 Line tronquee 18:dix-huit$
+$
+Line tronquee 18:dix-huit$
+19:$
+dix-neuf$
+$
+0 Line tronquee 19:$
+$
+1 Line tronquee 19:dix-neuf$
+$
+Line tronquee 19:dix-neuf$
+20:$
+vingt$
+$
+0 Line tronquee 20:$
+$
+1 Line tronquee 20:vingt$
+$
+Line tronquee 20:vingt$
+30:$
+trente$
+$
+0 Line tronquee 30:$
+$
+1 Line tronquee 30:trente$
+$
+Line tronquee 30:trente$
+40:$
+quarante$
+$
+0 Line tronquee 40:$
+$
+1 Line tronquee 40:quarante$
+$
+Line tronquee 40:quarante$
+50:$
+cinquante$
+$
+0 Line tronquee 50:$
+$
+1 Line tronquee 50:cinquante$
+$
+Line tronquee 50:cinquante$
+60:$
+soixante$
+$
+0 Line tronquee 60:$
+$
+1 Line tronquee 60:soixante$
+$
+Line tronquee 60:soixante$
+70:$
+soixante-dix$
+$
+0 Line tronquee 70:$
+$
+1 Line tronquee 70:soixante-dix$
+$
+Line tronquee 70:soixante-dix$
+80:$
+quatre-vingts$
+$
+0 Line tronquee 80:$
+$
+1 Line tronquee 80:quatre-vingts$
+$
+Line tronquee 80:quatre-vingts$
+90:$
+quatre-vingt-dix$
+$
+0 Line tronquee 90:$
+$
+1 Line tronquee 90:quatre-vingt-dix$
+$
+Line tronquee 90:quatre-vingt-dix$
+100:$
+cent$
+$
+0 Line tronquee 100:$
+$
+1 Line tronquee 100:cent$
+$
+Line tronquee 100:cent$
+1000:$
+mille$
+$
+0 Line tronquee 1000:$
+$
+1 Line tronquee 1000:mille$
+$
+Line tronquee 1000:mille$
+1000000:$
+million$
+$
+0 Line tronquee 1000000:$
+$
+1 Line tronquee 1000000:million$
+$
+Line tronquee 1000000:million$
+1000000000:$
+milliard$
+$
+0 Line tronquee 1000000000:$
+$
+1 Line tronquee 1000000000:milliard$
+$
+Line tronquee 1000000000:milliard$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Only for the braves ! Are you sure ?$
+0:$
+zero$
+$
+0 Line tronquee 0:$
+$
+1 Line tronquee 0:zero$
+$
+Line tronquee 0:zero$
+42$
+:$
+Only$
+for$
+the$
+braves$
+!$
+Are$
+you$
+sure$
+?$
+$
+0 Line tronquee 42$
+$
+1 Line tronquee 42:$
+$
+2 Line tronquee 42:Only$
+$
+3 Line tronquee 42:Only for$
+$
+4 Line tronquee 42:Only for the$
+$
+5 Line tronquee 42:Only for the braves$
+$
+6 Line tronquee 42:Only for the braves !$
+$
+7 Line tronquee 42:Only for the braves ! Are$
+$
+8 Line tronquee 42:Only for the braves ! Are you$
+$
+9 Line tronquee 42:Only for the braves ! Are you sure$
+$
+10 Line tronquee 42:Only for the braves ! Are you sure ?$
+$
+Line tronquee 42:Only for the braves ! Are you sure ?$
+1:$
+un$
+$
+0 Line tronquee 1:$
+$
+1 Line tronquee 1:un$
+$
+Line tronquee 1:un$
+2:$
+deux$
+$
+0 Line tronquee 2:$
+$
+1 Line tronquee 2:deux$
+$
+Line tronquee 2:deux$
+3:$
+trois$
+$
+0 Line tronquee 3:$
+$
+1 Line tronquee 3:trois$
+$
+Line tronquee 3:trois$
+4:$
+quatre$
+$
+0 Line tronquee 4:$
+$
+1 Line tronquee 4:quatre$
+$
+Line tronquee 4:quatre$
+5:$
+cinq$
+$
+0 Line tronquee 5:$
+$
+1 Line tronquee 5:cinq$
+$
+Line tronquee 5:cinq$
+10:$
+dix$
+$
+0 Line tronquee 10:$
+$
+1 Line tronquee 10:dix$
+$
+Line tronquee 10:dix$
+6:$
+six$
+$
+0 Line tronquee 6:$
+$
+1 Line tronquee 6:six$
+$
+Line tronquee 6:six$
+7:$
+sept$
+$
+0 Line tronquee 7:$
+$
+1 Line tronquee 7:sept$
+$
+Line tronquee 7:sept$
+8:$
+huit$
+$
+0 Line tronquee 8:$
+$
+1 Line tronquee 8:huit$
+$
+Line tronquee 8:huit$
+9:$
+neuf$
+$
+0 Line tronquee 9:$
+$
+1 Line tronquee 9:neuf$
+$
+Line tronquee 9:neuf$
+11:$
+onze$
+$
+0 Line tronquee 11:$
+$
+1 Line tronquee 11:onze$
+$
+Line tronquee 11:onze$
+12:$
+douze$
+$
+0 Line tronquee 12:$
+$
+1 Line tronquee 12:douze$
+$
+Line tronquee 12:douze$
+13:$
+treize$
+$
+0 Line tronquee 13:$
+$
+1 Line tronquee 13:treize$
+$
+Line tronquee 13:treize$
+14:$
+quatorze$
+$
+0 Line tronquee 14:$
+$
+1 Line tronquee 14:quatorze$
+$
+Line tronquee 14:quatorze$
+15:$
+quinze$
+$
+0 Line tronquee 15:$
+$
+1 Line tronquee 15:quinze$
+$
+Line tronquee 15:quinze$
+16:$
+seize$
+$
+0 Line tronquee 16:$
+$
+1 Line tronquee 16:seize$
+$
+Line tronquee 16:seize$
+17:$
+dix-sept$
+$
+0 Line tronquee 17:$
+$
+1 Line tronquee 17:dix-sept$
+$
+Line tronquee 17:dix-sept$
+18:$
+dix-huit$
+$
+0 Line tronquee 18:$
+$
+1 Line tronquee 18:dix-huit$
+$
+Line tronquee 18:dix-huit$
+19:$
+dix-neuf$
+$
+0 Line tronquee 19:$
+$
+1 Line tronquee 19:dix-neuf$
+$
+Line tronquee 19:dix-neuf$
+20:$
+vingt$
+$
+0 Line tronquee 20:$
+$
+1 Line tronquee 20:vingt$
+$
+Line tronquee 20:vingt$
+30:$
+trente$
+$
+0 Line tronquee 30:$
+$
+1 Line tronquee 30:trente$
+$
+Line tronquee 30:trente$
+40:$
+quarante$
+$
+0 Line tronquee 40:$
+$
+1 Line tronquee 40:quarante$
+$
+Line tronquee 40:quarante$
+50:$
+cinquante$
+$
+0 Line tronquee 50:$
+$
+1 Line tronquee 50:cinquante$
+$
+Line tronquee 50:cinquante$
+60:$
+soixante$
+$
+0 Line tronquee 60:$
+$
+1 Line tronquee 60:soixante$
+$
+Line tronquee 60:soixante$
+70:$
+soixante-dix$
+$
+0 Line tronquee 70:$
+$
+1 Line tronquee 70:soixante-dix$
+$
+Line tronquee 70:soixante-dix$
+80:$
+quatre-vingts$
+$
+0 Line tronquee 80:$
+$
+1 Line tronquee 80:quatre-vingts$
+$
+Line tronquee 80:quatre-vingts$
+90:$
+quatre-vingt-dix$
+$
+0 Line tronquee 90:$
+$
+1 Line tronquee 90:quatre-vingt-dix$
+$
+Line tronquee 90:quatre-vingt-dix$
+100:$
+cent$
+$
+0 Line tronquee 100:$
+$
+1 Line tronquee 100:cent$
+$
+Line tronquee 100:cent$
+1000:$
+mille$
+$
+0 Line tronquee 1000:$
+$
+1 Line tronquee 1000:mille$
+$
+Line tronquee 1000:mille$
+1000000:$
+million$
+$
+0 Line tronquee 1000000:$
+$
+1 Line tronquee 1000000:million$
+$
+Line tronquee 1000000:million$
+1000000000:$
+milliard$
+$
+0 Line tronquee 1000000000:$
+$
+1 Line tronquee 1000000000:milliard$
+$
+Line tronquee 1000000000:milliard$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Only for the braves ! Are you sure ?$
+0:$
+zero$
+42$
+:$
+Only$
+for$
+the$
+braves$
+!$
+Are$
+you$
+sure$
+?$
+1:$
+un$
+2:$
+deux$
+3:$
+trois$
+4:$
+quatre$
+5:$
+cinq$
+10:$
+dix$
+6:$
+six$
+7:$
+sept$
+8:$
+huit$
+9:$
+neuf$
+11:$
+onze$
+12:$
+douze$
+13:$
+treize$
+14:$
+quatorze$
+15:$
+quinze$
+16:$
+seize$
+17:$
+dix-sept$
+18:$
+dix-huit$
+19:$
+dix-neuf$
+20:$
+vingt$
+30:$
+trente$
+40:$
+quarante$
+50:$
+cinquante$
+60:$
+soixante$
+70:$
+soixante-dix$
+80:$
+quatre-vingts$
+90:$
+quatre-vingt-dix$
+100:$
+cent$
+1000:$
+mille$
+1000000:$
+million$
+1000000000:$
+milliard$
+e3r11p9% vi ft_parser.c                    
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Only for the braves ! Are you sure ?$
+e3r11p9% norminette *.c                    
+ft_atois.c: OK!
+ft_dict_manip.c: OK!
+ft_free.c: OK!
+ft_parser.c: Error!
+Error: CONSECUTIVE_SPC      (line:  66, col:   5):	Two or more consecutives spaces
+Error: SPACE_BEFORE_FUNC    (line:  66, col:   8):	space before function name
+Error: TOO_FEW_TAB          (line:  68, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  68, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  68, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  68, col:  13):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  69, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  69, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  69, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  69, col:  12):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  69, col:  25):	Misaligned variable declaration
+Error: TOO_FEW_TAB          (line:  70, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  70, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  70, col:  13):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  70, col:  13):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  71, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  71, col:   9):	Found space when expecting tab
+Error: CONSECUTIVE_SPC      (line:  71, col:  12):	Two or more consecutives spaces
+Error: SPACE_REPLACE_TAB    (line:  71, col:  12):	Found space when expecting tab
+Error: MISALIGNED_VAR_DECL  (line:  71, col:  25):	Misaligned variable declaration
+Error: SPACE_REPLACE_TAB    (line:  73, col:   9):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  74, col:   9):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  75, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  76, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  76, col:   9):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  77, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  77, col:   9):	Space on empty line
+Error: SPACE_REPLACE_TAB    (line:  78, col:  17):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  79, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  79, col:  17):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  80, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  80, col:  25):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  81, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  81, col:  17):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  82, col:  17):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  83, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  83, col:  17):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  84, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  84, col:  17):	Space on empty line
+Error: TOO_FEW_TAB          (line:  85, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  85, col:  25):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  86, col:  33):	Found space when expecting tab
+Error: LINE_TOO_LONG        (line:  86, col:  82):	line too long
+Error: TOO_FEW_TAB          (line:  87, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  87, col:  33):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  88, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  88, col:  25):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  89, col:  25):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  90, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  90, col:  17):	Space on empty line
+Error: TOO_FEW_TAB          (line:  91, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  91, col:   9):	Space on empty line
+Error: TOO_FEW_TAB          (line:  92, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  92, col:   9):	Found space when expecting tab
+ft_print.c: OK!
+ft_split.c: OK!
+ft_utils.c: OK!
+ft_write.c: OK!
+main.c: OK!
+e3r11p9% vi ft_parser.c                    
+e3r11p9% norminette *.c                    
+ft_atois.c: OK!
+ft_dict_manip.c: OK!
+ft_free.c: OK!
+ft_parser.c: OK!
+ft_print.c: OK!
+ft_split.c: OK!
+ft_utils.c: OK!
+ft_write.c: OK!
+main.c: OK!
+e3r11p9% make fclean                       
+rm -f ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+rm -f rush-02
+e3r11p9% make                              
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o main.o
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e
+Only for the braves ! Are you sure ?$
+e3r11p9% ./rush-02 nombres.dict 420 | cat -e
+quatre cent vingt$
+e3r11p9% ./rush-02 420 | cat -e 
+four hundred twenty$
+e3r11p9% ./rush-02 420.3 | cat -e
+Error$
+e3r11p9% ./rush-02 nombres.dict 420,3 | cat -e
+Error$
+e3r11p9% cat ft_parser
+cat: ft_parser: No such file or directory
+e3r11p9% cat ft_parser.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: octoross <octoross@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 16:18:47 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/26 17:20:56 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+t_dict	*ft_parser(char *dict_name, int *win);
+
+int	ft_check_format(char *entry)
+{
+	int	i;
+
+	i = 0;
+	while (entry[i] == ' ')
+		i++;
+	if (entry[i] == '+')
+		i++;
+	if ('0' > entry[i] || entry[i] > '9')
+		return (0);
+	i++;
+	while ('0' <= entry[i] && entry[i] <= '9')
+		i++;
+	while (entry[i] == ' ')
+		i++;
+	if (entry[i] != ':')
+		return (0);
+	i++;
+	while (entry[i] == ' ')
+		i++;
+	while (entry[i] != '\0')
+		if (!ft_char_is_printable(entry[i++]))
+			return (0);
+	return (1);
+}
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int		i;
+	int		j;
+
+	if (dest && src)
+	{
+		i = 0;
+		while (dest[i] != '\0')
+			i++;
+		j = 0;
+		while (src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+
+char	*ft_trunc_multiple_spaces(char *str)
+{
+	char	**words;
+	int		count;
+	char	*ptr;
+	int		i;
+
+	words = ft_split(str, " ");
+	count = ft_strtablen(words);
+	ptr = NULL;
+	if (count > 0)
+	{
+		ptr = (char *) malloc((ft_strlen(str) + 1) * sizeof(char));
+		if (!ptr)
+			return (NULL);
+		ft_strcat(ptr, words[0]);
+		i = 1;
+		while (i < count)
+		{
+			if ((words[i][0] != ':')
+				&& (words[i - 1][ft_strlen(words[i - 1]) - 1] != ':'))
+				ft_strcat(ptr, " ");
+			ft_strcat(ptr, words[i]);
+			i++;
+		}
+	}
+	return (ptr);
+}
+
+int	ft_check_and_dict(char **entries, t_dict *dicts)
+{
+	int		i;
+	char	*line;
+	char	**entry;
+
+	i = 0;
+	while (entries[i])
+	{
+		if (!ft_check_format(entries[i]))
+			return (0);
+		line = ft_trunc_multiple_spaces(entries[i]);
+		if (!line)
+			return (0);
+		entry = ft_split(line, ":");
+		free(line);
+		if ((ft_strtablen(entry) != 2)
+			|| (ft_atoi_dict(entry[0]) == -1)
+			|| (!ft_is_printable(entry[1])))
+			return (0);
+		dicts[i].key = ft_atoi_dict(entry[0]);
+		dicts[i].value = entry[1];
+		i++;
+	}
+	dicts[i].key = -1;
+	dicts[i].value = "";
+	return (1);
+}
+
+t_dict	*ft_parser(char *dict_name, int *win)
+{
+	int		fd;
+	int		nb_bytes;
+	char	buffer[BUFF_SIZE + 1];
+	char	**entries;
+	t_dict	*dicts;
+
+	fd = open(dict_name, O_RDONLY);
+	if (fd == -1)
+		return (0);
+	nb_bytes = read(fd, buffer, BUFF_SIZE);
+	if (close(fd) == -1)
+		return (0);
+	buffer[nb_bytes] = '\0';
+	entries = ft_split(buffer, "\n");
+	dicts = (t_dict *)malloc(sizeof(t_dict) * (ft_strtablen(entries) + 1));
+	if (!dicts)
+		*win = 0;
+	*win = ft_check_and_dict(entries, dicts);
+	return (dicts);
+}
+e3r11p9% ./rush-02 nombres.dict 42 | cat -e 
+Only for the braves ! Are you sure ?$
+e3r11p9% cat nombres.dict 
+0: zero
+42  :   Only for the braves !   Are you sure ?
+1: un
+2: deux
+3: trois
+4: quatre
+5: cinq
+10: dix
+6: six
+7: sept
+8: huit
+9: neuf   
+11: onze 
+12: douze
+13: treize
+14: quatorze
+15: quinze
+16: seize
+17: dix-sept
+18: dix-huit
+19: dix-neuf
+20: vingt
+30: trente
+40: quarante
+50: cinquante
+60: soixante
+70: soixante-dix
+80: quatre-vingts
+90: quatre-vingt-dix
+100: cent
+1000: mille
+1000000: million
+1000000000: milliard
+e3r11p9% vi nombres.dict 
+e3r11p9% ./rush-02 nombres.dict 10 | cat -e
+dix 54k k$
+e3r11p9% ./rush-02 nombres.dict 10,5 | cat -e
+Error$
+e3r11p9% ./rush-02 nombres.dict 10.5 | cat -e
+Error$
+e3r11p9% ./rush-02 nombres.dict 4589754 | cat -e
+quatre million cinq cent quatre-vingts neuf mille sept cent cinquante quatre$
+e3r11p9% ./rush-02 nombres.dict 2147483647 | cat -e
+deux milliard un cent Only for the braves ! Are you sure ? cinq million quatre cent quatre-vingts trois mille six cent Only for the braves ! Are you sure ? cinq$
+e3r11p9% ./rush-02 2147483647 | cat -e 
+two billion one hundred forty seven million four hundred eighty three thousand six hundred forty seven$
+e3r11p9% ./rush-02 4294967295 | cat -e 
+four billion two hundred ninety four million nine hundred sixty seven thousand two hundred ninety five$
+e3r11p9% cd ..
+e3r11p9% ls
+ex00
+e3r11p9% cd ..
+e3r11p9% ls
+c_00  c_02  c_04  c_06	Desktop    Downloads	   Music     Public   rush_02	     samed     shell_00  Templates
+c_01  c_03  c_05  c_07	Documents  fev2023_23.tar  Pictures  rush_00  rush_02_0.tar  sgoinfre  shell_01  Videos
+e3r11p9% cp rush_02 rush_02_H
+cp: -r not specified; omitting directory 'rush_02'
+e3r11p9% cp -r rush_02 rush_02_H
+e3r11p9% ls
+c_00  c_02  c_04  c_06	Desktop    Downloads	   Music     Public   rush_02	     rush_02_H	sgoinfre  shell_01   Videos
+c_01  c_03  c_05  c_07	Documents  fev2023_23.tar  Pictures  rush_00  rush_02_0.tar  samed	shell_00  Templates
+e3r11p9% ls -al rush_02_H/ex00/*
+-rw-r--r-- 1 hauerbac 2023_paris  1601 Feb 26 17:39 rush_02_H/ex00/ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris  1600 Feb 26 17:39 rush_02_H/ex00/ft_atois.o
+-rw-r--r-- 1 hauerbac 2023_paris  1513 Feb 26 17:39 rush_02_H/ex00/ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris  1568 Feb 26 17:39 rush_02_H/ex00/ft_dict_manip.o
+-rw-r--r-- 1 hauerbac 2023_paris  1330 Feb 26 17:39 rush_02_H/ex00/ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris  1480 Feb 26 17:39 rush_02_H/ex00/ft_free.o
+-rw-r--r-- 1 hauerbac 2023_paris  1835 Feb 26 17:39 rush_02_H/ex00/ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris  3196 Feb 26 17:39 rush_02_H/ex00/ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris  4208 Feb 26 17:39 rush_02_H/ex00/ft_parser.o
+-rw-r--r-- 1 hauerbac 2023_paris  1252 Feb 26 17:39 rush_02_H/ex00/ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris  1592 Feb 26 17:39 rush_02_H/ex00/ft_print.o
+-rw-r--r-- 1 hauerbac 2023_paris  2137 Feb 26 17:39 rush_02_H/ex00/ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris  2560 Feb 26 17:39 rush_02_H/ex00/ft_split.o
+-rw-r--r-- 1 hauerbac 2023_paris  1665 Feb 26 17:39 rush_02_H/ex00/ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris  1816 Feb 26 17:39 rush_02_H/ex00/ft_utils.o
+-rw-r--r-- 1 hauerbac 2023_paris  2015 Feb 26 17:39 rush_02_H/ex00/ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris  2360 Feb 26 17:39 rush_02_H/ex00/ft_write.o
+-rw-r--r-- 1 hauerbac 2023_paris  1729 Feb 26 17:39 rush_02_H/ex00/main.c
+-rw-r--r-- 1 hauerbac 2023_paris  2408 Feb 26 17:39 rush_02_H/ex00/main.o
+-rw-r--r-- 1 hauerbac 2023_paris   383 Feb 26 17:39 rush_02_H/ex00/Makefile
+-rw-r--r-- 1 hauerbac 2023_paris   426 Feb 26 17:39 rush_02_H/ex00/nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris   351 Feb 26 17:39 rush_02_H/ex00/numbers.dict
+-rwxr-xr-x 1 hauerbac 2023_paris 21536 Feb 26 17:39 rush_02_H/ex00/rush-02
+e3r11p9% rmdir -R rush_02
+rmdir: invalid option -- 'R'
+Try 'rmdir --help' for more information.
+e3r11p9% rm -R rush_02 
+rm: remove write-protected regular file 'rush_02/.git/objects/pack/pack-3dfff5caf128ddcb7423bc4255e39a17368e7679.pack'? y
+rm: remove write-protected regular file 'rush_02/.git/objects/pack/pack-3dfff5caf128ddcb7423bc4255e39a17368e7679.idx'? y
+e3r11p9% ls
+c_00  c_02  c_04  c_06	Desktop    Downloads	   Music     Public   rush_02_0.tar  samed     shell_00  Templates
+c_01  c_03  c_05  c_07	Documents  fev2023_23.tar  Pictures  rush_00  rush_02_H      sgoinfre  shell_01  Videos
+e3r11p9% tar -cvf rush_02_H.tar rush_02_H/*
+rush_02_H/ex00/
+rush_02_H/ex00/Makefile
+rush_02_H/ex00/ft_write.o
+rush_02_H/ex00/ft_print.o
+rush_02_H/ex00/ft_parser.c
+rush_02_H/ex00/main.c
+rush_02_H/ex00/ft_atois.c
+rush_02_H/ex00/nombres.dict
+rush_02_H/ex00/rush-02
+rush_02_H/ex00/ft_free.c
+rush_02_H/ex00/ft_atois.o
+rush_02_H/ex00/numbers.dict
+rush_02_H/ex00/ft_dict_manip.c
+rush_02_H/ex00/main.o
+rush_02_H/ex00/ft_print.c
+rush_02_H/ex00/ft_free.o
+rush_02_H/ex00/ft_split.o
+rush_02_H/ex00/ft_utils.o
+rush_02_H/ex00/ft_utils.c
+rush_02_H/ex00/ft_dict_manip.o
+rush_02_H/ex00/ft_split.c
+rush_02_H/ex00/ft_library.h
+rush_02_H/ex00/ft_parser.o
+rush_02_H/ex00/ft_write.c
+e3r11p9% ls
+c_00  c_02  c_04  c_06	Desktop    Downloads	   Music     Public   rush_02_0.tar  rush_02_H.tar  sgoinfre  shell_01	 Videos
+c_01  c_03  c_05  c_07	Documents  fev2023_23.tar  Pictures  rush_00  rush_02_H      samed	    shell_00  Templates
+
+
+
