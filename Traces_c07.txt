@@ -8036,5 +8036,3303 @@ test_ft_ultimate_range.c:77:8: error: unused variable ‘ptr’ [-Werror=unused-
    77 |  int **ptr;
       |        ^~~
 cc1: all warnings being treated as errors
+------------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cat ../ex01/test_ft_range.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_range.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/22 19:07:10 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	*ft_range(int min, int max);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1;
+	int	*tab2;
+	int	*tab3;
+	int	*tab4;
+
+	min = 3;
+	max = 8;
+	tab1 = ft_range(min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	ft_print_int_tab(tab1, max - min);
+	free(tab1);
+	min = 42;
+	max = 42;
+	tab2 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(tab2, max - min);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(tab3, max - min);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4 = ft_range(min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(tab4, max - min);
+	free(tab4);
+	return (0);
+}
+e3r11p9% cat test_ft_ultimate_range.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/23 20:30:15 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int **tab, int size)
+{
+	int	i;
+	int	val;
+
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	printf("tab[0] = %p\n", tab[0]);
+	printf("tab[0][0] = %d\n", tab[0][0]);
+	if (tab != NULL && tab[0] != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		val = 0;
+		while (i < size)
+		{
+			val = tab[0][0];
+			printf("%d", tab[0][0]);
+			//ft_putnbr(tab[0][i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	int	**tab2 = NULL;
+	int	tab2_size;
+	int	**tab3 = NULL;
+	int	tab3_size;
+	int	**tab4 = NULL;
+	int	tab4_size;
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("&tab1 = %p\n", &tab1);
+	printf("tab1[0] = %d\n", tab1[0]);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% vi test_ft_ultimate_range.c 
+e3r11p9% cat test_ft_ultimate_range.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 17:00:30 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab(int **tab, int size)
+{
+	int	i;
+	int	val;
+
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	printf("tab[0] = %p\n", tab[0]);
+	printf("tab[0][0] = %d\n", tab[0][0]);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	int	**tab2 = NULL;
+	int	tab2_size;
+	int	**tab3 = NULL;
+	int	tab3_size;
+	int	**tab4 = NULL;
+	int	tab4_size;
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("&tab1 = %p\n", &tab1);
+	printf("tab1[0] = %d\n", tab1[0]);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% ls -al
+total 40
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 27 17:00 .
+drwxr-xr-x 5 hauerbac 2023_paris  4096 Feb 22 19:16 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1930 Feb 23 09:57 ft_ultimate_range_0.c
+-rw-r--r-- 1 hauerbac 2023_paris  1643 Feb 23 20:06 ft_ultimate_range.c
+-rwxr-xr-x 1 hauerbac 2023_paris 18912 Feb 23 20:30 test_ft_ultimate_range
+-rw-r--r-- 1 hauerbac 2023_paris  3290 Feb 27 17:00 test_ft_ultimate_range.c
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c 
+test_ft_ultimate_range.c:62:6: error: conflicting types for ‘ft_print_int_tab’
+   62 | void ft_print_int_tab(int **tab, int size)
+      |      ^~~~~~~~~~~~~~~~
+test_ft_ultimate_range.c:43:6: note: previous definition of ‘ft_print_int_tab’ was here
+   43 | void ft_print_int_tab(int *tab, int size)
+      |      ^~~~~~~~~~~~~~~~
+test_ft_ultimate_range.c: In function ‘ft_print_int_tab’:
+test_ft_ultimate_range.c:73:20: error: passing argument 1 of ‘ft_print_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   73 |   ft_print_int_tab(*tab, size);
+      |                    ^~~~
+      |                    |
+      |                    int *
+test_ft_ultimate_range.c:62:29: note: expected ‘int **’ but argument is of type ‘int *’
+   62 | void ft_print_int_tab(int **tab, int size)
+      |                       ~~~~~~^~~
+test_ft_ultimate_range.c:65:6: error: unused variable ‘val’ [-Werror=unused-variable]
+   65 |  int val;
+      |      ^~~
+test_ft_ultimate_range.c:64:6: error: unused variable ‘i’ [-Werror=unused-variable]
+   64 |  int i;
+      |      ^
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:93:6: error: unused variable ‘tab4_size’ [-Werror=unused-variable]
+   93 |  int tab4_size;
+      |      ^~~~~~~~~
+test_ft_ultimate_range.c:92:8: error: unused variable ‘tab4’ [-Werror=unused-variable]
+   92 |  int **tab4 = NULL;
+      |        ^~~~
+test_ft_ultimate_range.c:91:6: error: unused variable ‘tab3_size’ [-Werror=unused-variable]
+   91 |  int tab3_size;
+      |      ^~~~~~~~~
+test_ft_ultimate_range.c:90:8: error: unused variable ‘tab3’ [-Werror=unused-variable]
+   90 |  int **tab3 = NULL;
+      |        ^~~~
+test_ft_ultimate_range.c:89:6: error: unused variable ‘tab2_size’ [-Werror=unused-variable]
+   89 |  int tab2_size;
+      |      ^~~~~~~~~
+test_ft_ultimate_range.c:88:8: error: unused variable ‘tab2’ [-Werror=unused-variable]
+   88 |  int **tab2 = NULL;
+      |        ^~~~
+test_ft_ultimate_range.c:87:6: error: variable ‘tab1_size’ set but not used [-Werror=unused-but-set-variable]
+   87 |  int tab1_size;
+      |      ^~~~~~~~~
+test_ft_ultimate_range.c:85:8: error: unused variable ‘ptr’ [-Werror=unused-variable]
+   85 |  int **ptr;
+      |        ^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                   
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 17:02:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	int	i;
+	int	val;
+
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	printf("tab[0] = %p\n", tab[0]);
+	printf("tab[0][0] = %d\n", tab[0][0]);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	int	**tab2 = NULL;
+	int	tab2_size;
+	int	**tab3 = NULL;
+	int	tab3_size;
+	int	**tab4 = NULL;
+	int	tab4_size;
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("&tab1 = %p\n", &tab1);
+	ft_print_ptr_int_tab(*tab2, tab2_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% ls -al                                                                                          
+total 40
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 27 17:02 .
+drwxr-xr-x 5 hauerbac 2023_paris  4096 Feb 22 19:16 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1930 Feb 23 09:57 ft_ultimate_range_0.c
+-rw-r--r-- 1 hauerbac 2023_paris  1643 Feb 23 20:06 ft_ultimate_range.c
+-rwxr-xr-x 1 hauerbac 2023_paris 18912 Feb 23 20:30 test_ft_ultimate_range
+-rw-r--r-- 1 hauerbac 2023_paris  3299 Feb 27 17:02 test_ft_ultimate_range.c
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘ft_print_ptr_int_tab’:
+test_ft_ultimate_range.c:65:6: error: unused variable ‘val’ [-Werror=unused-variable]
+   65 |  int val;
+      |      ^~~
+test_ft_ultimate_range.c:64:6: error: unused variable ‘i’ [-Werror=unused-variable]
+   64 |  int i;
+      |      ^
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:100:23: error: passing argument 1 of ‘ft_print_ptr_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  100 |  ft_print_ptr_int_tab(*tab2, tab2_size);
+      |                       ^~~~~
+      |                       |
+      |                       int *
+test_ft_ultimate_range.c:62:33: note: expected ‘int **’ but argument is of type ‘int *’
+   62 | void ft_print_ptr_int_tab(int **tab, int size)
+      |                           ~~~~~~^~~
+test_ft_ultimate_range.c:93:6: error: unused variable ‘tab4_size’ [-Werror=unused-variable]
+   93 |  int tab4_size;
+      |      ^~~~~~~~~
+test_ft_ultimate_range.c:92:8: error: unused variable ‘tab4’ [-Werror=unused-variable]
+   92 |  int **tab4 = NULL;
+      |        ^~~~
+test_ft_ultimate_range.c:91:6: error: unused variable ‘tab3_size’ [-Werror=unused-variable]
+   91 |  int tab3_size;
+      |      ^~~~~~~~~
+test_ft_ultimate_range.c:90:8: error: unused variable ‘tab3’ [-Werror=unused-variable]
+   90 |  int **tab3 = NULL;
+      |        ^~~~
+test_ft_ultimate_range.c:87:6: error: variable ‘tab1_size’ set but not used [-Werror=unused-but-set-variable]
+   87 |  int tab1_size;
+      |      ^~~~~~~~~
+test_ft_ultimate_range.c:85:8: error: unused variable ‘ptr’ [-Werror=unused-variable]
+   85 |  int **ptr;
+      |        ^~~
+test_ft_ultimate_range.c:100:2: error: ‘tab2_size’ is used uninitialized in this function [-Werror=uninitialized]
+  100 |  ft_print_ptr_int_tab(*tab2, tab2_size);
+      |  ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 17:07:57 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	printf("tab[0] = %p\n", tab[0]);
+	printf("tab[0][0] = %d\n", tab[0][0]);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("&tab1 = %p\n", &tab1);
+	ft_print_ptr_int_tab(*tab2, tab2_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:97:24: error: ‘tab2’ undeclared (first use in this function); did you mean ‘tab1’?
+   97 |  ft_print_ptr_int_tab(*tab2, tab2_size);
+      |                        ^~~~
+      |                        tab1
+test_ft_ultimate_range.c:97:24: note: each undeclared identifier is reported only once for each function it appears in
+test_ft_ultimate_range.c:97:30: error: ‘tab2_size’ undeclared (first use in this function); did you mean ‘tab1_size’?
+   97 |  ft_print_ptr_int_tab(*tab2, tab2_size);
+      |                              ^~~~~~~~~
+      |                              tab1_size
+test_ft_ultimate_range.c:84:6: error: variable ‘tab1_size’ set but not used [-Werror=unused-but-set-variable]
+   84 |  int tab1_size;
+      |      ^~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 17:08:42 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	printf("tab[0] = %p\n", tab[0]);
+	printf("tab[0][0] = %d\n", tab[0][0]);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("&tab1 = %p\n", &tab1);
+	ft_print_ptr_int_tab(*tab1, tab1_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:97:23: error: passing argument 1 of ‘ft_print_ptr_int_tab’ makes pointer from integer without a cast [-Werror=int-conversion]
+   97 |  ft_print_ptr_int_tab(*tab1, tab1_size);
+      |                       ^~~~~
+      |                       |
+      |                       int
+test_ft_ultimate_range.c:62:33: note: expected ‘int **’ but argument is of type ‘int’
+   62 | void ft_print_ptr_int_tab(int **tab, int size)
+      |                           ~~~~~~^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 17:10:03 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	printf("tab[0] = %p\n", tab[0]);
+	printf("tab[0][0] = %d\n", tab[0][0]);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("&tab1 = %p\n", &tab1);
+	ft_print_ptr_int_tab(&tab1, tab1_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range 
+Pour min = 3 et max = 8, tab1 =
+&tab1 = 0x7ffff5542bc0
+The returned size of range is 5.
+tab = 0x7ffff5542bc0
+tab[0] = (nil)
+zsh: segmentation fault (core dumped)  ./test_ft_ultimate_range
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 17:11:09 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("&tab1 = %p\n", &tab1);
+	ft_print_ptr_int_tab(&tab1, tab1_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                      
+Pour min = 3 et max = 8, tab1 =
+&tab1 = 0x7fffcc885ab0
+The returned size of range is 5.
+tab = 0x7fffcc885ab0
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 17:12:12 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	printf("*tab = %p\n", *tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("&tab1 = %p\n", &tab1);
+	ft_print_ptr_int_tab(&tab1, tab1_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                      
+Pour min = 3 et max = 8, tab1 =
+&tab1 = 0x7fff2827b760
+The returned size of range is 5.
+tab = 0x7fff2827b760
+*tab = (nil)
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% vi ft_ultimate_range.c 
+e3r11p9% cat ft_ultimate_range.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 10:23:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 17:57:45 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int	*ft_range(int min, int max)
+{
+	int	range_len;
+	int	*ptr;
+	int	i;
+	int	value;
+
+	if (min < max)
+	{
+		range_len = max - min;
+		ptr = (int *) malloc(range_len * sizeof(int));
+		if (ptr)
+		{
+			value = min;
+			i = 0;
+			while (i < range_len && value < max)
+				ptr[i++] = value++;
+			if (i == range_len)
+				return (ptr);
+			else
+				return (NULL);
+		}
+	}
+	return (NULL);
+}
+
+int	ft_ultimate_range(int **range, int min, int max)
+{
+	int	range_len;
+	int	*ptr;
+
+	range = NULL;
+	if (min < max)
+	{
+		range = (int **) malloc(sizeof(int *));
+		if (range == NULL)
+			return (-1);
+		range_len = max - min;
+		ptr = ft_range(min, max);
+		if (ptr)
+		{
+			printf("ptr = %p, *ptr = %d, *(ptr + 1) = %d\n", ptr, *ptr, *(ptr + 1));
+			*range = ptr;
+			printf("range = %p, *range = %p, *(*range + 1) = %d\n", range, *range, *(*range + 1));
+			return (range_len);
+		}
+		else
+			return (-1);
+	}
+	else
+		return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                      
+ptr = 0x5617522042c0, *ptr = 3, *(ptr + 1) = 4
+range = 0x5617522042a0, *range = 0x5617522042c0, *(*range + 1) = 4
+Pour min = 3 et max = 8, tab1 =
+&tab1 = 0x7ffd08fa1e90
+The returned size of range is 5.
+tab = 0x7ffd08fa1e90
+*tab = (nil)
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 18:01:10 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	printf("*tab = %p\n", *tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr;
+	int	**tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(*tab1, tab1_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:96:23: error: passing argument 1 of ‘ft_print_ptr_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   96 |  ft_print_ptr_int_tab(*tab1, tab1_size);
+      |                       ^~~~~
+      |                       |
+      |                       int *
+test_ft_ultimate_range.c:62:33: note: expected ‘int **’ but argument is of type ‘int *’
+   62 | void ft_print_ptr_int_tab(int **tab, int size)
+      |                           ~~~~~~^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 18:01:39 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	printf("*tab = %p\n", *tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr;
+	int	**tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(tab1, tab1_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                      
+ptr = 0x561719cab2c0, *ptr = 3, *(ptr + 1) = 4
+range = 0x561719cab2a0, *range = 0x561719cab2c0, *(*range + 1) = 4
+Pour min = 3 et max = 8, tab1 =
+tab1 = (nil)
+The returned size of range is 5.
+tab = (nil)
+zsh: segmentation fault (core dumped)  ./test_ft_ultimate_range
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:13:59 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr;
+	int	**tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(tab1, tab1_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                      
+ptr = 0x5642c628b2c0, *ptr = 3, *(ptr + 1) = 4
+range = 0x5642c628b2a0, *range = 0x5642c628b2c0, *(*range + 1) = 4
+Pour min = 3 et max = 8, tab1 =
+tab1 = (nil)
+The returned size of range is 5.
+tab = (nil)
+
+Segmentation fault - Reason : tab == (nil).%                                                                               e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:14:52 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr;
+	int	**tab1;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(tab1, tab1_size);
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	ft_print_int_tab(ptr, tab1_size);*/
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:95:14: error: ‘tab1’ is used uninitialized in this function [-Werror=uninitialized]
+   95 |  tab1_size = ft_ultimate_range(tab1, min, max);
+      |              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:22:48 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr = NULL;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	tab1_size = ft_ultimate_range(ptr, min, max);
+	printf("2 ptr = %p\n", ptr);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:101:23: error: passing argument 1 of ‘ft_print_ptr_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  101 |  ft_print_ptr_int_tab(tab1, tab1_size);
+      |                       ^~~~
+      |                       |
+      |                       int *
+test_ft_ultimate_range.c:62:33: note: expected ‘int **’ but argument is of type ‘int *’
+   62 | void ft_print_ptr_int_tab(int **tab, int size)
+      |                           ~~~~~~^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:23:20 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr = NULL;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	tab1_size = ft_ultimate_range(ptr, min, max);
+	printf("2 ptr = %p\n", ptr);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(ptr, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                      
+ptr = 0x7ffc229dacd8
+ptr = 0x5632834416d0, *ptr = 3, *(ptr + 1) = 4
+range = 0x5632834416b0, *range = 0x5632834416d0, *(*range + 1) = 4
+2 ptr = 0x7ffc229dacd8
+Pour min = 3 et max = 8, tab1 =
+tab1 = (nil)
+The returned size of range is 5.
+tab = 0x7ffc229dacd8
+
+Segmentation fault - Reason : tab == (nil).%                                                                               e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:25:13 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr = NULL;
+	int	*tab1 = NULL;
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	tab1_size = ft_ultimate_range(ptr, min, max);
+	tab1 = *ptr;
+	printf("2 ptr = %p\n", ptr);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(ptr, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                      
+ptr = 0x7ffdec5b99b8
+ptr = 0x55752fd366d0, *ptr = 3, *(ptr + 1) = 4
+range = 0x55752fd366b0, *range = 0x55752fd366d0, *(*range + 1) = 4
+2 ptr = 0x7ffdec5b99b8
+Pour min = 3 et max = 8, tab1 =
+tab1 = (nil)
+The returned size of range is 5.
+tab = 0x7ffdec5b99b8
+
+Segmentation fault - Reason : tab == (nil).%                                                                               e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:29:22 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr = NULL;
+	int	tab1[0] = {};
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	tab1_size = ft_ultimate_range(ptr, min, max);
+	tab1 = *ptr;
+	printf("2 ptr = %p\n", ptr);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(ptr, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:95:6: error: assignment to ‘int **’ from incompatible pointer type ‘int (*)[0]’ [-Werror=incompatible-pointer-types]
+   95 |  ptr = &tab1;
+      |      ^
+test_ft_ultimate_range.c:98:7: error: assignment to expression with array type
+   98 |  tab1 = *ptr;
+      |       ^
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:29:58 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr = NULL;
+	int	tab1[] = {};
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	ptr = &tab1;
+	printf("ptr = %p\n", ptr);
+	tab1_size = ft_ultimate_range(ptr, min, max);
+	tab1 = *ptr;
+	printf("2 ptr = %p\n", ptr);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(ptr, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:95:6: error: assignment to ‘int **’ from incompatible pointer type ‘int (*)[0]’ [-Werror=incompatible-pointer-types]
+   95 |  ptr = &tab1;
+      |      ^
+test_ft_ultimate_range.c:98:7: error: assignment to expression with array type
+   98 |  tab1 = *ptr;
+      |       ^
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:31:22 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr = NULL;
+	int	tab1[] = {};
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);*/
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	/*tab1 = *ptr;
+	printf("2 ptr = %p\n", ptr);*/
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(&tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:97:32: error: passing argument 1 of ‘ft_ultimate_range’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   97 |  tab1_size = ft_ultimate_range(&tab1, min, max);
+      |                                ^~~~~
+      |                                |
+      |                                int (*)[0]
+test_ft_ultimate_range.c:17:29: note: expected ‘int **’ but argument is of type ‘int (*)[0]’
+   17 | int ft_ultimate_range(int **range, int min, int max);
+      |                       ~~~~~~^~~~~
+test_ft_ultimate_range.c:102:23: error: passing argument 1 of ‘ft_print_ptr_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  102 |  ft_print_ptr_int_tab(&tab1, tab1_size);
+      |                       ^~~~~
+      |                       |
+      |                       int (*)[0]
+test_ft_ultimate_range.c:62:33: note: expected ‘int **’ but argument is of type ‘int (*)[0]’
+   62 | void ft_print_ptr_int_tab(int **tab, int size)
+      |                           ~~~~~~^~~
+test_ft_ultimate_range.c:83:8: error: unused variable ‘ptr’ [-Werror=unused-variable]
+   83 |  int **ptr = NULL;
+      |        ^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:31:58 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr = NULL;
+	int	tab1[] = {0};
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);*/
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	/*tab1 = *ptr;
+	printf("2 ptr = %p\n", ptr);*/
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(&tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:97:32: error: passing argument 1 of ‘ft_ultimate_range’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   97 |  tab1_size = ft_ultimate_range(&tab1, min, max);
+      |                                ^~~~~
+      |                                |
+      |                                int (*)[1]
+test_ft_ultimate_range.c:17:29: note: expected ‘int **’ but argument is of type ‘int (*)[1]’
+   17 | int ft_ultimate_range(int **range, int min, int max);
+      |                       ~~~~~~^~~~~
+test_ft_ultimate_range.c:102:23: error: passing argument 1 of ‘ft_print_ptr_int_tab’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  102 |  ft_print_ptr_int_tab(&tab1, tab1_size);
+      |                       ^~~~~
+      |                       |
+      |                       int (*)[1]
+test_ft_ultimate_range.c:62:33: note: expected ‘int **’ but argument is of type ‘int (*)[1]’
+   62 | void ft_print_ptr_int_tab(int **tab, int size)
+      |                           ~~~~~~^~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:53:46 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	//int	**ptr = NULL;
+	int	*tab1 = {0};
+	int	tab1_size;
+	/*int	*tab2 = NULL;
+	int	tab2_size;
+	int	*tab3 = NULL;
+	int	tab3_size;
+	int	*tab4 = NULL;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	/*ptr = &tab1;
+	printf("ptr = %p\n", ptr);*/
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	/*tab1 = *ptr;
+	printf("2 ptr = %p\n", ptr);*/
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(&tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                      
+ptr = 0x56397f3072c0, *ptr = 3, *(ptr + 1) = 4
+range = 0x56397f3072a0, *range = 0x56397f3072c0, *(*range + 1) = 4
+Pour min = 3 et max = 8, tab1 =
+tab1 = (nil)
+The returned size of range is 5.
+tab = 0x7ffe8385e920
+
+Segmentation fault - Reason : tab == (nil).%                                                                               e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:57:14 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1 = {};
+	int	tab1_size;
+	/*int	*tab2 = {};
+	int	tab2_size;
+	int	*tab3 = {};
+	int	tab3_size;
+	int	*tab4 = {};
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(&tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:83:14: error: empty scalar initializer
+   83 |  int *tab1 = {};
+      |              ^
+test_ft_ultimate_range.c:83:14: note: (near initialization for ‘tab1’)
+e3r11p9% vi test_ft_ultimate_range.c                                                                   
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:57:50 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1 = {-1};
+	int	tab1_size;
+	/*int	*tab2 = {-1};
+	int	tab2_size;
+	int	*tab3 = {-1};
+	int	tab3_size;
+	int	*tab4 = {-1};
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(&tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% ./test_ft_ultimate_range                                                                      
+ptr = 0x5638575f32c0, *ptr = 3, *(ptr + 1) = 4
+range = 0x5638575f32a0, *range = 0x5638575f32c0, *(*range + 1) = 4
+Pour min = 3 et max = 8, tab1 =
+tab1 = (nil)
+The returned size of range is 5.
+tab = 0x7ffd751f2d00
+
+Segmentation fault - Reason : tab == (nil).%                                                                               
 

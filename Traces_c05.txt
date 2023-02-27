@@ -5945,5 +5945,257 @@ ex04/ft_fibonacci.c: OK!
 ex05/ft_sqrt.c: OK!
 ex06/ft_is_prime.c: OK!
 ex07/ft_find_next_prime.c: OK!
+-----------------------------------------------------------------------------------------------------------------------------
+You have been graded by Moulinette 	
+Hi,
 
+You have been graded 60 on C Piscine C 05:
+
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: Timeout, KO | ex08: Nothing turned in
+
+Evaluated by moulinette 36 minutes ago
+60%
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: Timeout, KO | ex08: Nothing turned in
+Peer evaluations (2/2)
+Evaluated by gsurugue 2 hours ago
+80%
+Tres bien,tres bonnes explications. Bonne continuation
+Your feedback, 2 hours ago :
+Merci beaucoup d'avoir fait l'effort d'essayer de comprendre mon code bien que vous n'ayez pas encore reflechi a ces exercices de Mathematiques. Bon courage et bonne fin de piscine!
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by afali an hour ago
+80%
+superbe explications, excellente rencontre
+Your feedback, 37 minutes ago :
+Correcteur tres gentil, qui a fait des efforts pour comprendre ces exercices de Mathematiques bien qu'il n'ait pas encore eu le temps d'y reflechir de son cote, et surtout pour comprendre mon code. Merci beaucoup, bon courage et bonne chance pour la fin de la Piscine!
+4 / 4 4 / 4 4 / 4 4 / 4
+
+= Host-specific information ====================================================
+$> hostname; uname -msr
+moulinette-vm1-light.int.42paris.fr
+Linux 5.15.0-60-generic x86_64
+$> date
+Mon Feb 27 06:07:23 PM UTC 2023
+
+= User files collection ========================================================
+Collecting user files from Vogsphere
+Repository URL: git@vogsphere.42paris.fr:vogsphere/intra-uuid-dcb18583-501e-44f5-b98f-51e2547a9f16-4713784-hauerbac
+
+= Git history ==================================================================
+$> git -C /tmp/tmp4pqwcfz4/user log --pretty='%H - %an, %ad : %s'
+ad9ae887db4eb1dff02673f1f84c6373e002f101 - Helene Auerbach, Fri Feb 24 14:46:01 2023 +0100 : Cleaning into ex06/ft_is_prime.c file
+884264d0ef93b383a8ef60d4e6c1ac27ca89bd86 - Helene Auerbach, Fri Feb 24 13:44:45 2023 +0100 : Correction of ex06/ft_is_prime.c file for timeout
+57ab69ff72879fc7d7ad9c3357ca6d938674a68b - Helene Auerbach, Fri Feb 24 12:36:46 2023 +0100 : Correction of ex05/ft_sqrt.c for the INT_MAX limitation
+a8cc55068e5b088f06c33ba32edf4e34b3a2a423 - Helene Auerbach, Thu Feb 23 08:18:51 2023 +0100 : Addition of 8 files
+
+= Collected files ==========================================
+$> ls -lAR /tmp/tmp4pqwcfz4/user
+/tmp/tmp4pqwcfz4/user:
+total 36
+drwxr-xr-x 2 root root 4096 Feb 27 18:07 ex00
+drwxr-xr-x 2 root root 4096 Feb 27 18:07 ex01
+drwxr-xr-x 2 root root 4096 Feb 27 18:07 ex02
+drwxr-xr-x 2 root root 4096 Feb 27 18:07 ex03
+drwxr-xr-x 2 root root 4096 Feb 27 18:07 ex04
+drwxr-xr-x 2 root root 4096 Feb 27 18:07 ex05
+drwxr-xr-x 2 root root 4096 Feb 27 18:07 ex06
+drwxr-xr-x 2 root root 4096 Feb 27 18:07 ex07
+-rw-r--r-- 1 root root 1641 Feb 27 18:07 __GIT_HISTORY
+
+/tmp/tmp4pqwcfz4/user/ex00:
+total 4
+-rw-r--r-- 1 root root 1094 Feb 27 18:07 ft_iterative_factorial.c
+
+/tmp/tmp4pqwcfz4/user/ex01:
+total 4
+-rw-r--r-- 1 root root 1071 Feb 27 18:07 ft_recursive_factorial.c
+
+/tmp/tmp4pqwcfz4/user/ex02:
+total 4
+-rw-r--r-- 1 root root 1249 Feb 27 18:07 ft_iterative_power.c
+
+/tmp/tmp4pqwcfz4/user/ex03:
+total 4
+-rw-r--r-- 1 root root 1164 Feb 27 18:07 ft_recursive_power.c
+
+/tmp/tmp4pqwcfz4/user/ex04:
+total 4
+-rw-r--r-- 1 root root 1095 Feb 27 18:07 ft_fibonacci.c
+
+/tmp/tmp4pqwcfz4/user/ex05:
+total 4
+-rw-r--r-- 1 root root 1181 Feb 27 18:07 ft_sqrt.c
+
+/tmp/tmp4pqwcfz4/user/ex06:
+total 4
+-rw-r--r-- 1 root root 1098 Feb 27 18:07 ft_is_prime.c
+
+/tmp/tmp4pqwcfz4/user/ex07:
+total 4
+-rw-r--r-- 1 root root 1163 Feb 27 18:07 ft_find_next_prime.c
+
+= ex00 =========================================================================
+$> /usr/bin/norminette -R CheckForbiddenSourceHeader ft_iterative_factorial.c | grep -E '^(Error|Warning)'
+
+$> cc -Wextra -Wall -Werror main_crash.c ft_iterative_factorial.c -o dugd4jtzcrpxc9v2sv08b7ge
+
+$> ulimit -s 100; ./dugd4jtzcrpxc9v2sv08b7ge
+success
+
+$> cc -Wextra -Wall -Werror ft_iterative_factorial.c main.c -o dugd4jtzcrpxc9v2sv08b7ge
+
+$> ./dugd4jtzcrpxc9v2sv08b7ge
+Factorial -55 = 0
+Factorial 0 = 1
+Factorial 1 = 1
+Factorial 2 = 2
+Factorial 12 = 479001600
+Factorial 3 = 6
+Factorial 4 = 24
+Factorial 5 = 120
+Factorial 6 = 720
+Factorial 7 = 5040
+Factorial 8 = 40320
+Factorial 9 = 362880
+Factorial 11 = 39916800
+
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+OK
+Grade: 5
+
+= ex01 =========================================================================
+$> /usr/bin/norminette -R CheckForbiddenSourceHeader ft_recursive_factorial.c | grep -E '^(Error|Warning)'
+
+$> cc -Wextra -Wall -Werror main_crash.c ft_recursive_factorial.c -o qono2fpljx141xfbztqx4e4n
+
+$> cc -Wextra -Wall -Werror ft_recursive_factorial.c main.c -o qono2fpljx141xfbztqx4e4n
+
+$> ./qono2fpljx141xfbztqx4e4n
+Factorial -55 = 0
+Factorial 0 = 1
+Factorial 1 = 1
+Factorial 2 = 2
+Factorial 12 = 479001600
+Factorial 3 = 6
+Factorial 4 = 24
+Factorial 5 = 120
+Factorial 6 = 720
+Factorial 7 = 5040
+Factorial 8 = 40320
+Factorial 9 = 362880
+Factorial 11 = 39916800
+
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+OK
+Grade: 5
+
+= ex02 =========================================================================
+$> /usr/bin/norminette -R CheckForbiddenSourceHeader ft_iterative_power.c | grep -E '^(Error|Warning)'
+
+$> cc -Wextra -Wall -Werror main_crash.c ft_iterative_power.c -o of7qvy8zaxmpf8w48havvjot -lpthread
+
+$> cc -Wextra -Wall -Werror main.c ft_iterative_power.c -o of7qvy8zaxmpf8w48havvjot
+
+$> ./of7qvy8zaxmpf8w48havvjot
+1576 ^ -2086 = 0
+0 ^ 0 = 1
+409 ^ 0 = 1
+450 ^ 1 = 450
+1 ^ 2 = 1
+2 ^ 3 = 8
+3 ^ 4 = 81
+8 ^ 5 = 32768
+-6 ^ 7 = -279936
+-4 ^ 8 = 65536
+-1 ^ 10 = 1
+
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+OK
+Grade: 10
+
+= ex03 =========================================================================
+$> /usr/bin/norminette -R CheckForbiddenSourceHeader ft_recursive_power.c | grep -E '^(Error|Warning)'
+
+$> cc -Wextra -Wall -Werror main_crash.c ft_recursive_power.c -o xq8jwr1gwgndceta3mjbtqxr -lpthread
+
+$> cc -Wextra -Wall -Werror ft_recursive_power.c main.c -o xq8jwr1gwgndceta3mjbtqxr
+
+$> ./xq8jwr1gwgndceta3mjbtqxr
+-3447 ^ -3714 = 0
+0 ^ 0 = 1
+-4191 ^ 0 = 1
+2709 ^ 1 = 2709
+3 ^ 2 = 9
+6 ^ 4 = 1296
+8 ^ 5 = 32768
+-6 ^ 7 = -279936
+-5 ^ 8 = 390625
+-4 ^ 9 = -262144
+-2 ^ 10 = 1024
+
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+OK
+Grade: 10
+
+= ex04 =========================================================================
+$> /usr/bin/norminette -R CheckForbiddenSourceHeader ft_fibonacci.c | grep -E '^(Error|Warning)'
+
+$> cc -Wextra -Wall -Werror main_crash.c ft_fibonacci.c -o vud57lo2d0v91cdd9qzxgyyb
+
+$> cc -Wextra -Wall -Werror ft_fibonacci.c main.c -o vud57lo2d0v91cdd9qzxgyyb
+
+$> ./vud57lo2d0v91cdd9qzxgyyb
+fibonacci of -3845 is -1
+fibonacci of 0 is 0
+fibonacci of 1 is 1
+fibonacci of 2 is 1
+fibonacci of 3 is 2
+fibonacci of 4 is 3
+fibonacci of 6 is 8
+
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+OK
+Grade: 10
+
+= ex05 =========================================================================
+$> cc -Wextra -Wall -Werror ft_sqrt.c main.c -o user_exe
+
+= Test 1 ===================================================
+$> ./eijukxvwl7ss0kghtufmuipj
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 10
+
+= ex06 =========================================================================
+$> cc -Wextra -Wall -Werror ft_is_prime.c main.c -o user_exe
+
+= Test 1 ===================================================
+$> ./1qleouo91ksryr5rljdva5r0
+$> diff -U 3 user_output_test1 test1.output | cat -e
+
+Diff OK :D
+Grade: 10
+
+= ex07 =========================================================================
+$> cc -Wextra -Wall -Werror main.c ft_find_next_prime.c -o user_exe
+
+= Test 1 ===================================================
+$> ./2a6oa1rvqk1e3h376oz91ros
+Command './2a6oa1rvqk1e3h376oz91ros' timed out after 10 seconds
+Test 1 timed out
+Grade: 0
+
+= Final grade: 60 ==============================================================
+-----------------------------------------------------------------------------------------------------------------------------
 

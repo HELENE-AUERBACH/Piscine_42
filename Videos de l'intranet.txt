@@ -535,17 +535,71 @@ fclean: clean
 re: fclean all
 
 7. Pointers to functions - Introduction (Pointeurs sur fonction - Introduction) :
-
+Il est possible de referencer l'adresse d'une fonction dans un pointeur : c'est un pointeur sur fonction.
 
 8. Pointers to functions - Syntax (Pointeurs sur fonction - Syntaxe) :
+int	x; // declaration d'une variable nommee x de type int
+int	*y; // declaration d'une variable de type pointeur sur int nommee y
 
+void	f(char c); // prototype de fonction nommee f prenant un parametre nomme c
+
+void	(*funptr)(char); // Pourun pointeur sur fonction, on peut omettre le nom du parametre de la fonction nommee funptr. Attention a ne pas oublier la notation (*...)!
+---------------------------------------------------
+#include <unistd.h> /* for write */
+
+typedef	void (*funptr)(char); // on indique le nom du type que l'on desire "aliasser" a la place de la variable si l'on avait utiliser la syntaxe de declaration du pointeur sur fonction
+
+void	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return;
+}
+
+int	main()
+{
+	void	(*f)(char); // declaration d'une variable nommee f de type pointeur sur fonction prenant en parametre un char
+	funptr	f2;// On peut utiliser typedef afin de rendre la syntaxe plus pratique a utiliser.
+
+	f = &ft_putchar; // assignation de l'adresse d'une fonction au pointeur sur fonction f
+	f('Z'); // appel de la fonction ft_putchar via le pointeur sur fonction f avec l'argument 'Z'
+	f2 = &ft_putchar;
+	f2('Z');
+	return (0);
+}
 
 9. Pointers to functions - Example :
-
+Il existe des cas ou les pointeurs sur fonctions apportent une reelle aide, et surtout une lisibilite et une maintanibilite du code.
+Exemple en pseudo-code ou l'on possede trois fonctions qui nous permettent d'ecrire une donnee arbitraire quelconque :
+- put_stdout	-> ecrit sur la sortie standard
+- put_file		-> ecrit dans un fichier
+- put_network -> ecrit sur le reseau
+On ecrit une fonction pour savoir sur quelle sortie ecrire concretement (parametre where) et quelle donnee ecrire (what).  Le probleme d'une approche naive est, qu'a chaque ajout d'un nouveau "where" comme STDERR, il faut ajouter un else if (or, une "foret" de if est inacceptable):
+function put(where, what)
+{
+	if (where == STDOUT)
+		put_stdout(what);
+	else if (where == FILE)
+		put_file(what);
+	else if (where == NETWORK)
+		put_network(what);
+	else
+		error();
+}
+On peut regrouper des pointeurs sur des fonctions dans une table et associer a chaque entree de cette table a quel moment on utilisera la fonction :
+fun_tab = [	(STDOUT, &put_stdout);
+			(FILE, &put_file);
+			(NETWORK, &put_network); ]
+function put (where, what)
+{
+	for (where_r, put_function) in fun_tab //where_r == "Where de reference"
+	{
+		if (where == where_r)
+			put_function(what);
+	}
+}
 
 10. Pointers to functions - Conclusion :
-
-
+Les pointeurs sur fonctions sont reserves a des cas d'utilisation bien precis et nous les retrouverons sous une forme legerement differente en C++.
 ---------------------------------------------------------------------------------------------------------------------------------------
 C Piscine - C 10  :
 
@@ -751,11 +805,239 @@ int main()
 	return (0);
 }
 ---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 12 :
 
+1. Chained list - Introduction :
+Les listes chainees sont dans leur forme la plus simple un ensemble de maillons epars en memoire relies entre eux et formant ainsi une chaine. Ces maillons, basiquement des structures, contiennent en leur sein des donnees arbitrairement choisies et un lien, ou pointeur, vers le prochain element (structure de la liste). Ainsi, l'ajout, la suppression, ou la modification de l'ordre d'un element dans la liste se revele assez simle et tient du jeu de pointeurs, contrairement au tableau qui, lorsqu'on souhaite y ajouter un element, necessite d'alloure en memoire une zone plus large que le premier tableau, d'y copier tous les elements du premier tableau, d'y ajouter le nouvel element, et enfin de free le premier tableau.
+Meme si cela ne pose pas de probleme lorsque l'on manipule de petites quantites de donnees, malloc eprouvera des difficultes a trouver une zone contigue et assez large en memoire lorsque vous manipulerez de plus grandes quantites de donnees. La liste chainee se contente quant a elle d'etre simplemnt reliee au nouvel element.
 
+2.Chained list - Examples (Exemple pratique) :
+Dans le fichier list.h (protege des inclusions multiples :
+#ifndef __list_h__
+#define __list_h__
+
+typedef struct s_list t_list; /* On peut creer un typedef sur la declaration future de notre liste */
+
+struct s_list
+{
+	char	*str;
+	t_list	*next; /* au lieu de : struct s_list	*next; */
+};
+
+t_list	*add_link(t_list *list, char *str);
+void	print_list(t_list *list);
+
+#endif
+
+Dans le fichier add_link.c :
+#include <stdlib.h>
+#include "list.h"
+
+t_list	*add_link(t_list *list, char *str)
+{
+	t_list	*tmp;
+
+	tmp = malloc(sizeof(t_list));
+	if (tmp)
+	{
+		tmp->str = str;
+		tmp->next = list;
+	}
+	return tmp;
+}
+
+Dans le fichier print_list.c :
+#include "list.h"
+
+void	print_list(t_list *list)
+{
+	while (list)
+	{
+		ft_putstr(list->str);
+		list = list->next;
+	}
+}
+
+Dans le fichier list.c :
+#include <stdlib.h> /* pour NULL */
+#include "list.h"
+
+int	main(void)
+{
+	t_list	*list;
+
+	list = NULL;
+	list = add_link(list, "toto\n");
+	list = add_link(list, "tata\n");
+	list = add_link(list, "tutu\n");
+	print_list(list);	/* affiche le contenu de la liste */
+	return (0);
+}
+
+A l'execution :
+tutu
+tata
+toto
+car
+[toto]->X
+[tata]->[toto]->X
+[tutu]->[tata]->[toto]->X
+
+3.Chained list - Tips (Chained list - Conseils) :
+Une autre facon d'ecrire add_link :
+Dans le fichier add_link.c :
+#include <stdlib.h>
+#include "list.h"
+
+int	add_link(t_list **list, char *str)
+{
+	*list = malloc(sizeof(t_list)); /* Ainsi, list pointera vers une zone memoire valide, et sera directement "sette" (initialise) dans la fonction main */
+...
+}
+
+Dans le fichier list.c :
+#include <stdlib.h> /* pour NULL */
+#include "list.h"
+
+int	main(void)
+{
+	/* Rappels sur les pointeurs :
+	int	i;
+	i = 10;
+	int	*p;
+	p = &i;
+	int	**pp;
+	pp = &p;
+	*/
+
+	t_list	*list;
+
+	list = NULL;
+	add_link(&list, "toto\n"); /* La fonction appelee peut modifier l'adresse de notre pointeur dans la fonction appelante */
+	add_link(&list, "tata\n");
+	add_link(&list, "tutu\n");
+	print_list(list);	/* affiche le contenu de la liste */
+	return (0);
+}
 ---------------------------------------------------------------------------------------------------------------------------------------
+C Piscine - C 13 :
+
+1. Binary trees - Introduction (Les arbres binaires - Intro) :
 
 
+2. Binary trees - Usage (Utilisation) :
+Un arbre binaire est une structure de donnees qui permet de stocker, d'organiser des elements de n'importe quel type (de la meme maniere qu'une liste chainee, si ce n'est que la liste chainee n'a qu'un seul element suivant) et qui a deux elements suivants "left" et "right" par noeud, de telle sorte que tous les elements plus petits qu'un noeud se retrouvent a gauche de ce noeud et tous les elements plus grands ou egaux que ce noeud se retrouvent a droite de ce noeud. Donc, la recherche dans un arbre binaire est beaucoup plus rapide que dans une liste chainee, surtout pour un grand grand nombre de donnees, et c'est la raison pour laquelle certains types de bases de donnees l'utilisent entre autres. Et certains types de parsers utilisent aussi les arbres binaires pour stocker des tokens par exemple.
+
+Exemple de liste chainee triee :
+0->1->1->2->3->4->X => 6 sauts pour atteindre 4
+
+Exemple d'arbre : => 3 sauts  pour atteindre 4 dans l'arbre (soit deux fois moins que dans la liste)
+                2
+             /	   \
+            1       3
+          /   \       \
+         0     1       4
+
+Structure pour un noeud d'un arbre binaire avec en plus le parent/pere du noeud (soit l'equivalent d'un "previous" dans une liste doublement chainee) :
+typedef struct		s_btree
+{
+	struct s_btree	*parent;
+	struct s_btree	*right;
+	struct s_btree	*left;
+	void		*data;
+}			t_btree;
+
+Il y a plusieurs techniques de parcours d'un arbre binaire en fonction de ce que l'on desire faire sachant qu'il existe differentes variantes :
+1. le parcours en profondeur infixe pour sortir les elements tries : parcours du sous_arbre gauche, puis parcours du noeud lui-meme, et enfin parcours du sous-arbre droit ;
+	=> dans l'exemple :  0, 1, 1, 2, 3, 4.
+2. le parcours en profondeur prefixe : parcours du noeud lui-meme, puis parcours du sous_arbre gauche, et enfin parcours du sous-arbre droit ;
+	=> dans l'exemple :  2, 1, 0, 1, 3, 4.
+3. le parcours en profondeur suffixe : parcours du sous_arbre gauche, puis parcours du sous-arbre droit, et enfin parcours du noeud lui-meme ;
+	=> dans l'exemple :  0, 1, 1, 4, 3, 2.
+4. le parcours en largeur (soit par etages) : parcours du noeud lui-meme, puis parcours de ses fils directs, puis parcours de ses petits-fils directs, etc. ;
+	=> dans l'exemple :  2, 1, 3, 0, 1 4.
+	
+Le parcours en largeur est un petit plus complique a implementer en C.
+Dans le cas du parcours en profondeur, on utilise un DFS.
+Dans le cas du parcours en largeur, on utilise un BFS.
+
+Le defaut des arbres binaires par rapport a une liste chainee est que l'insertion est un peu plus compliquee dans un arbre binaire car il faut utiliser de la dichotomie.
+Dans l'exemple, l'arbre devient apres l'insertion de la valeur -1, puis a nouveau de la valeur 0 :
+                2
+             /	   \
+            1       3
+          /   \       \
+         0     1       4
+       /   \
+     -1     0
+
+Ce type d'arbre n'est pas tres bien car, selon l'ordre d'insertion des valeurs, on peut arriver plus a un "peigne" qu'a un arbre (par exemple : insertion des valeurs 10, 9, 8, 7, 6, ... jusqu'a l'infini) ; ce qui nous fait perdre tout l'interet d'utiliser un arbre pour aller beaucoup plus vite et, de plus, on perd de la memoire a avoir deux noeuds a chaque fois bien qu'on ne se serve que d'un noeud.
+
+3. Binary trees - Balancing (Equilibrage) :
+Pour resoudre le probleme d'equilibrage (avoir le meme nombre d'elements de chaque cote) des arbres binaires presente a la fin de la video precedente, et obtenir un arbre dans lequel le temps de recherche est toujours optimum, il faut utiliser un "arbre rouge et noir", mais il va falloir "se casser un peu la tete" pour equilibrer l'arbre, et l'insertion et la suppression seront un peu plus longues.
+
+Dans le fichier ft_tree.h :
+enum	e_rb_color
+	{
+		RB_BLACK,
+		RB_RED
+	};
+
+typedef struct			s_rb_node
+{
+	struct s_rb_node	*parent;
+	struct s_rb_node	*right;
+	struct s_rb_node	*left;
+	void			*data;
+	enum e_rb_node	color;
+}					t_rb_node;
+
+Hormis, le champ en plus "color", la structure est la meme, ce qui va permettre que l'on dise au compilateur que "s_rb_node" est en fait une "struct s_btree" et ainsi nous permettre de reutiliser toutes nos fonctions de parcours codees pour les btree simples. Cela s'appelle du polymorphisme : c'est une forme assez primaire en C (on peut faire bien plus de choses).
+
+Les arbres rouge et noir ont plusieurs proprietes :
+1. le "root" (le noeud racine) de l'arbre est noir ;
+2. toutes les feuilles, y compris celles qui sont NULL (les feuilles "vides"), sont egalement noires (comme le root) ;
+3. un noeud rouge n'a que des fils noirs (soit ils sont tous les deux NULL, soit ce sont tous les deux ou pour l'un deux seulement de vrai(s) noeud(s) noir(s));
+4. depuis n'importe quel noeud de l'arbre,le nombre de noeuds noirs (la distance) entre le noeud de depart et l'une des feuilles est la meme pour toutes les feuilles de ce noeud-la.
+
+Exemple d'un cas simple d'insertion qui fait intervenir les deux operations que nous devrons utiliser, a savoir d'une part la recoloration du noeud, et d'autre part la rotation d'un noeud de l'arbre :
+1. Pour inserer dans un arbre rouge et noir, on procede tout d'abord a une insertion comme dans un arbre binaire classique, donc par dichotomie (remarque : par defaut, tous les noeuds sont rouges).
+2. Dans le cas de l'exemple ci-dessous (qui est l'un des cas particuliers parmi 4 ou 5), on doit faire tourner l'arbre d'une rotation vers la droite autour de G afin d'equilibrer l'arbre.
+3. On doit alors proceder a une inversion de couleur entre "P" et "G" afin d'obtenir que le nouveau "root" (le nouveau noeud racine) soit bien noir.
+4. Enfin, a chaque fois que l'on fait une insertion (dans les autres cas particuliers), il faut se rappeler recursivement sur le reste de l'arbre afin de verifier que toutes les proprietes sont bien a nouveau verifiees (un changement precedent peut obliger a refaire des changements : normalemetn, on s'en sort avec 2 rotations et 2-3 recolorations au maximum dans le pire des cas).
+
+0. Begin :
+	     G(B)
+	  /	   \
+        P(R)	   U(B)
+	/
+     N(R)
+
+1. Intermediate :
+       P(R)
+      /	   \
+    N(R)   G(B)
+	    \
+            U(B)
+
+2. End :
+         P(B)
+       /     \
+     N(R)    G(R)
+               \
+              U(B)
+
+Notation utilisee :
+1. G : grandparent (grand-pere du noeud) ;
+2. P : parent ;
+3. U : uncle ;
+4. N : noeud que l'on vient d'inserer ;
+5. B : black ;
+6. R : red.
+
+Conseils :
+1. Coder une fonction qui affiche l'arbre (y compris les noeuds NULL en continuant a les deplier afin que cela soit plus lisible) aidera a debugger nos fonctions et voir si une insertion/suppression "marche" bien et si l'arbre est equilibre.
+2. Bien lire les explications sur les arbres binaires sur Internet.
 ---------------------------------------------------------------------------------------------------------------------------------------
 
 

@@ -8522,4 +8522,36 @@ remote: . Processing 1 references
 remote: Processed 1 references in total
 To vogsphere.42paris.fr:vogsphere/intra-uuid-6a1b9f13-7ddf-4a83-aa49-6a33a5af1086-4711613-hauerbac
  * [new branch]      master -> master
+--------------------------------------------------------------------------------------------------------------------------------
+You have been graded by Moulinette 	
+Hi,
+
+You have been graded 85 on C Piscine C 02:
+
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: OK | ex09: OK | ex10: OK | ex11: OK | ex12: Nothing turned in
+
+
+Evaluated by moulinette 3 minutes ago
+85%
+ex00: OK | ex01: OK | ex02: OK | ex03: OK | ex04: OK | ex05: OK | ex06: OK | ex07: OK | ex08: OK | ex09: OK | ex10: OK | ex11: OK | ex12: Nothing turned in
+Peer evaluations (2/2)
+Evaluated by juandrie 2 hours ago
+85%
+Bravo pour votre travail, merci pour l explication tres claire des exercices et notamment ceux aue je n ai pas faits. Bonne chance pour la suite
+Your feedback, 2 hours ago :
+Correctrice tres gentille, tres encourageante, et qui a pris le temps d'ecouter toute l'histoire de mes retries et surtout mes explications du code. Merci beaucoup, bon courage et bonne chance pour la fin de la piscine!
+4 / 4 4 / 4 4 / 4 4 / 4
+Evaluated by eydahan 24 minutes ago
+85%
+tres sympa, explique bien, bonne continuation et bonne courrage pour la dernierre semaine.
+Your feedback, 3 minutes ago :
+Correcteur tres gentil, patient, attentif aux autres et tres interesse par la comparaison des solutions possibles. Merci beaucoup et bon courage pour la fin de la Piscine! :-)
+4 / 4 4 / 4 4 / 4 4 / 4
+--------------------------------------------------------------------------------------------------------------------------------
+	
+	
+	
+
+
+
 
