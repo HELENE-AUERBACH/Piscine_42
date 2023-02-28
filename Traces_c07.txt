@@ -11335,4 +11335,2746 @@ The returned size of range is 5.
 tab = 0x7ffd751f2d00
 
 Segmentation fault - Reason : tab == (nil).%                                                                               
+-------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd ../../c_07
+e3r11p9% cd ex03
+e3r11p9% ls
+ft_strjoin.c
+e3r11p9% vi ft_strjoin.c 
+e3r11p9% cat ft_strjoin.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 12:56:26 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 12:56:31 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+		while (str[i] != '\0')
+			i++;
+	return (i);
+}
+
+char	*ft_strncat_at_index(char *dest, char *src, unsigned int nb, int index)
+{
+	int		i;
+	int		j;
+
+	if (dest && src && nb > 0 && index >= 0)
+	{
+		i = index;
+		j = 0;
+		while ((unsigned int) j < nb && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*result;
+	int		i;
+	int		j;
+	//int		k;
+	int		sep_len;
+	int		strings_total_len;
+
+	result = NULL;
+	if (size > 0 && strs && sep && strs[0])
+	{
+		strings_total_len = 0;
+		i = 0;
+		while (i < size && strs[i])
+			strings_total_len += ft_strlen(strs[i++]);
+		sep_len = ft_strlen(sep);
+		result = (char *) malloc((((size - 1) * sep_len) + strings_total_len + 1) * sizeof(char));
+		if (!result)
+			return (NULL);
+		i = 0;
+		//k = 0;
+		j = 0;
+                while (i < size && strs[i])
+                {
+                        result = ft_strncat_at_index(result, strs[i], ft_strlen(strs[i]), j);
+			/*j = 0;
+                        while (strs[i][j] && k <= ((size - 1) * sep_len) + strings_total_len)
+                        {
+                                result[k] = strs[i][j];
+                                j++;
+				k++;
+                        }*/
+			j += ft_strlen(strs[i]);
+                        if (i != size - 1)
+			{
+                        	result = ft_strncat_at_index(result, sep, sep_len, j);
+				j += sep_len;
+				/*j = 0;
+	                        while (sep[j] && k <= ((size - 1) * sep_len) + strings_total_len)
+        	                {
+                	                result[k] = sep[j];
+                        	        j++;
+					k++;
+				}*/
+                        }
+                        i++;
+                }
+		if (j < ((size - 1) * sep_len) + strings_total_len + 1)
+		//if (k < ((size - 1) * sep_len) + strings_total_len + 1)
+			result[j] = '\0';
+			//result[k] = '\0';
+	}
+	else
+	{
+		result = (char *) malloc(sizeof(char));
+		if (result)
+			result[0] = '\0';
+	}
+	return (result);
+}
+e3r11p9% vi test_ft_strjoin.c 
+e3r11p9% cat test_ft_strjoin.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strjoin.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 13:02:48 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:02:55 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strjoin(int size, char **strs, char *sep);
+
+int	main(int argc, char **argv)
+{
+	int	i;
+
+	if (argc == 4)
+		printf("size == %d, sep == %s => %s\n", argv[1], argv[3], ft_strjoin(argv[1], argv[2], argv[3]));
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strjoin ft_strjoin.c test_ft_strjoin.c 
+test_ft_strjoin.c: In function ‘main’:
+test_ft_strjoin.c:22:76: error: passing argument 1 of ‘ft_strjoin’ makes integer from pointer without a cast [-Werror=int-conversion]
+   22 |   printf("size == %d, sep == %s => %s\n", argv[1], argv[3], ft_strjoin(argv[1], argv[2], argv[3]));
+      |                                                                        ~~~~^~~
+      |                                                                            |
+      |                                                                            char *
+test_ft_strjoin.c:15:22: note: expected ‘int’ but argument is of type ‘char *’
+   15 | char *ft_strjoin(int size, char **strs, char *sep);
+      |                  ~~~~^~~~
+test_ft_strjoin.c:22:85: error: passing argument 2 of ‘ft_strjoin’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   22 |   printf("size == %d, sep == %s => %s\n", argv[1], argv[3], ft_strjoin(argv[1], argv[2], argv[3]));
+      |                                                                                 ~~~~^~~
+      |                                                                                     |
+      |                                                                                     char *
+test_ft_strjoin.c:15:35: note: expected ‘char **’ but argument is of type ‘char *’
+   15 | char *ft_strjoin(int size, char **strs, char *sep);
+      |                            ~~~~~~~^~~~
+test_ft_strjoin.c:22:20: error: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘char *’ [-Werror=format=]
+   22 |   printf("size == %d, sep == %s => %s\n", argv[1], argv[3], ft_strjoin(argv[1], argv[2], argv[3]));
+      |                   ~^                      ~~~~~~~
+      |                    |                          |
+      |                    int                        char *
+      |                   %s
+test_ft_strjoin.c:19:6: error: unused variable ‘i’ [-Werror=unused-variable]
+   19 |  int i;
+      |      ^
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strjoin.c                                                      
+e3r11p9% cat test_ft_strjoin.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strjoin.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 13:02:48 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:08:04 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strjoin(int size, char **strs, char *sep);
+
+int	main(int argc, char **argv)
+{
+	int	i;
+	char	*strs[] = {"Toto", " TITUTA  ", "", "42"};
+
+	if (argc == 2)
+		printf("size == 4, sep == %s => %s\n", argv[1], ft_strjoin(4, strs, argv[1]));
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strjoin ft_strjoin.c test_ft_strjoin.c
+test_ft_strjoin.c: In function ‘main’:
+test_ft_strjoin.c:19:6: error: unused variable ‘i’ [-Werror=unused-variable]
+   19 |  int i;
+      |      ^
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_strjoin.c                                                      
+e3r11p9% cat test_ft_strjoin.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strjoin.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 13:02:48 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:08:22 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strjoin(int size, char **strs, char *sep);
+
+int	main(int argc, char **argv)
+{
+	char	*strs[] = {"Toto", " TITUTA  ", "", "42"};
+
+	if (argc == 2)
+		printf("size == 4, sep == %s => %s\n", argv[1], ft_strjoin(4, strs, argv[1]));
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strjoin ft_strjoin.c test_ft_strjoin.c
+e3r11p9% ./test_ft_strjoin 
+e3r11p9% ./test_ft_strjoin "' "
+size == 4, sep == '  => Toto'  TITUTA  ' ' 42
+e3r11p9% ./test_ft_strjoin "' " | cat -e
+size == 4, sep == '  => Toto'  TITUTA  ' ' 42$
+e3r11p9% vi test_ft_strjoin.c                                                      
+e3r11p9% cat test_ft_strjoin.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strjoin.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 13:02:48 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:10:53 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strjoin(int size, char **strs, char *sep);
+
+int	main(int argc, char **argv)
+{
+	char	*strs[] = {"Toto", " TITUTA  ", "", "42"};
+
+	if (argc == 2)
+		printf("size == 4, sep == %s => %s\n", argv[1], ft_strjoin(4, strs, argv[1]));
+		printf("size == 0, sep == %s => %s\n", argv[1], ft_strjoin(0, strs, argv[1]));
+	return (0);
+}
+e3r11p9% norminette -R test_ft_strjoin.c
+ft_strjoin.c: Error!
+Error: WRONG_SCOPE_COMMENT  (line:  51, col:   5):	Comment is invalid in this scope
+Error: VAR_DECL_START_FUNC  (line:  52, col:   1):	Variable declaration not at start of function
+Error: VAR_DECL_START_FUNC  (line:  53, col:   1):	Variable declaration not at start of function
+Error: LINE_TOO_LONG        (line:  63, col:  82):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  67, col:   9):	Comment is invalid in this scope
+Error: TOO_FEW_TAB          (line:  69, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  69, col:  17):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  70, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  70, col:  17):	Space on empty line
+Error: SPACE_REPLACE_TAB    (line:  71, col:  25):	Found space when expecting tab
+Error: LINE_TOO_LONG        (line:  71, col:  85):	line too long
+Error: LINE_TOO_LONG        (line:  72, col:   1):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  72, col:  13):	Comment is invalid in this scope
+Error: TOO_FEW_TAB          (line:  80, col:   1):	Missing tabs for indent level
+Error: SPACE_REPLACE_TAB    (line:  80, col:  25):	Found space when expecting tab
+Error: SPACE_REPLACE_TAB    (line:  82, col:  25):	Found space when expecting tab
+Error: LINE_TOO_LONG        (line:  82, col:  82):	line too long
+Error: LINE_TOO_LONG        (line:  84, col:   1):	line too long
+Error: WRONG_SCOPE_COMMENT  (line:  84, col:  17):	Comment is invalid in this scope
+Error: TOO_FEW_TAB          (line:  91, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  91, col:  25):	Space on empty line
+Error: SPACE_REPLACE_TAB    (line:  92, col:  25):	Found space when expecting tab
+Error: TOO_FEW_TAB          (line:  93, col:   1):	Missing tabs for indent level
+Error: SPACE_EMPTY_LINE     (line:  93, col:  17):	Space on empty line
+Error: WRONG_SCOPE_COMMENT  (line:  95, col:   9):	Comment is invalid in this scope
+Error: WRONG_SCOPE_COMMENT  (line:  97, col:  13):	Comment is invalid in this scope
+Error: TOO_MANY_LINES       (line: 106, col:   1):	Function has more than 25 lines
+test_ft_strjoin.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  21):	Declaration and assignation on a single line
+Error: LINE_TOO_LONG        (line:  22, col:  82):	line too long
+Error: TOO_MANY_TAB         (line:  23, col:   1):	Extra tabs for indent level
+Error: LINE_TOO_LONG        (line:  23, col:  82):	line too long
+e3r11p9% vi test_ft_strjoin.c          
+e3r11p9% vi ft_strjoin.c 
+e3r11p9% cat ft_strjoin.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 12:56:26 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:24:36 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+		while (str[i] != '\0')
+			i++;
+	return (i);
+}
+
+char	*ft_strncat_at_index(char *dest, char *src, unsigned int nb, int index)
+{
+	int		i;
+	int		j;
+
+	if (dest && src && nb > 0 && index >= 0)
+	{
+		i = index;
+		j = 0;
+		while ((unsigned int) j < nb && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+
+char	*ft_cat_strs(int size, char **strs, char *sep, int strings_total_len, int sep_len)
+{
+	char	*result;
+	int		i;
+	int		j;
+	
+	result = (char *) malloc((((size - 1) * sep_len) + strings_total_len + 1)
+		* sizeof(char));
+	if (!result)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (i < size && strs[i])
+	{
+		result = ft_strncat_at_index(result, strs[i], ft_strlen(strs[i]), j);
+		j += ft_strlen(strs[i]);
+		if (i != size - 1)
+		{
+			result = ft_strncat_at_index(result, sep, sep_len, j);
+			j += sep_len;
+		}
+		i++;
+	}
+	if (j < ((size - 1) * sep_len) + strings_total_len + 1)
+		result[j] = '\0';
+	return (result);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*result;
+	int		i;
+	int		j;
+	int		sep_len;
+	int		strings_total_len;
+
+	result = NULL;
+	if (size > 0 && strs && sep && strs[0])
+	{
+		strings_total_len = 0;
+		i = 0;
+		while (i < size && strs[i])
+			strings_total_len += ft_strlen(strs[i++]);
+		sep_len = ft_strlen(sep);
+		result = ft_cat_strs(size, strs, sep, strings_total_len, sep_len);
+	}
+	else
+	{
+		result = (char *) malloc(sizeof(char));
+		if (result)
+			result[0] = '\0';
+	}
+	return (result);
+}
+e3r11p9% norminette -R ft_strjoin.c 
+ft_strjoin.c: Error!
+Error: LINE_TOO_LONG        (line:  46, col:  82):	line too long
+Error: TOO_MANY_ARGS        (line:  46, col:  91):	Function has more than 4 arguments
+Error: SPACE_EMPTY_LINE     (line:  51, col:   1):	Space on empty line
+Error: TOO_FEW_TAB          (line:  53, col:   1):	Missing tabs for indent level
+test_ft_strjoin.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  21):	Declaration and assignation on a single line
+Error: LINE_TOO_LONG        (line:  22, col:  82):	line too long
+Error: TOO_MANY_TAB         (line:  23, col:   1):	Extra tabs for indent level
+Error: LINE_TOO_LONG        (line:  23, col:  82):	line too long
+e3r11p9% vi ft_strjoin.c          
+e3r11p9% cat ft_strjoin.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 12:56:26 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:39:56 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+		while (str[i] != '\0')
+			i++;
+	return (i);
+}
+
+char	*ft_strncat_at_index(char *dest, char *src, unsigned int nb, int index)
+{
+	int		i;
+	int		j;
+
+	if (dest && src && nb > 0 && index >= 0)
+	{
+		i = index;
+		j = 0;
+		while ((unsigned int) j < nb && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+
+char	*ft_cat_strs(int size, char **strs, char *sep, char *result)
+{
+	int	sep_len;
+	int	i;
+	int	j;
+	
+	sep_len = ft_strlen(sep);
+	i = 0;
+	j = 0;
+	while (i < size && strs[i])
+	{
+		result = ft_strncat_at_index(result, strs[i], ft_strlen(strs[i]), j);
+		j += ft_strlen(strs[i]);
+		if (i != size - 1)
+		{
+			result = ft_strncat_at_index(result, sep, sep_len, j);
+			j += sep_len;
+		}
+		i++;
+	}
+	if (j < ft_strlen(result))
+		result[j] = '\0';
+	return (result);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*result;
+	int		i;
+	int		j;
+	int		sep_len;
+	int		strings_total_len;
+
+	result = (char *) malloc(sizeof(char));
+	if (result)
+		result[0] = '\0';
+	if (size > 0 && strs && sep && strs[0])
+	{
+		strings_total_len = 0;
+		i = 0;
+		while (i < size && strs[i])
+			strings_total_len += ft_strlen(strs[i++]);
+		sep_len = ft_strlen(sep);
+		if (result)
+			free(result);
+		result = (char *) malloc((((size - 1) * sep_len) + strings_total_len + 1)
+			* sizeof(char));
+		if (!result)
+			return (NULL);
+		result = ft_cat_strs(size, strs, sep, result);
+	}
+	return (result);
+}
+e3r11p9% norminette -R ft_strjoin.c
+ft_strjoin.c: Error!
+Error: SPACE_EMPTY_LINE     (line:  51, col:   1):	Space on empty line
+Error: LINE_TOO_LONG        (line:  91, col:  82):	line too long
+Error: TOO_FEW_TAB          (line:  92, col:   1):	Missing tabs for indent level
+test_ft_strjoin.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  21):	Declaration and assignation on a single line
+Error: LINE_TOO_LONG        (line:  22, col:  82):	line too long
+Error: TOO_MANY_TAB         (line:  23, col:   1):	Extra tabs for indent level
+Error: LINE_TOO_LONG        (line:  23, col:  82):	line too long
+e3r11p9% vi ft_strjoin.c          
+e3r11p9% cat ft_strjoin.c          
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 12:56:26 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:42:36 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+		while (str[i] != '\0')
+			i++;
+	return (i);
+}
+
+char	*ft_strncat_at_index(char *dest, char *src, unsigned int nb, int index)
+{
+	int		i;
+	int		j;
+
+	if (dest && src && nb > 0 && index >= 0)
+	{
+		i = index;
+		j = 0;
+		while ((unsigned int) j < nb && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+
+char	*ft_cat_strs(int size, char **strs, char *sep, char *result)
+{
+	int	sep_len;
+	int	i;
+	int	j;
+
+	sep_len = ft_strlen(sep);
+	i = 0;
+	j = 0;
+	while (i < size && strs[i])
+	{
+		result = ft_strncat_at_index(result, strs[i], ft_strlen(strs[i]), j);
+		j += ft_strlen(strs[i]);
+		if (i != size - 1)
+		{
+			result = ft_strncat_at_index(result, sep, sep_len, j);
+			j += sep_len;
+		}
+		i++;
+	}
+	if (j < ft_strlen(result))
+		result[j] = '\0';
+	return (result);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*result;
+	int		i;
+	int		j;
+	int		sep_len;
+	int		strings_total_len;
+
+	result = (char *) malloc(sizeof(char));
+	if (result)
+		result[0] = '\0';
+	if (size > 0 && strs && sep && strs[0])
+	{
+		strings_total_len = 0;
+		i = 0;
+		while (i < size && strs[i])
+			strings_total_len += ft_strlen(strs[i++]);
+		sep_len = ft_strlen(sep);
+		if (result)
+			free(result);
+		result = (char *) malloc((((size - 1) * sep_len)
+			+ strings_total_len + 1) * sizeof(char));
+		if (!result)
+			return (NULL);
+		result = ft_cat_strs(size, strs, sep, result);
+	}
+	return (result);
+}
+e3r11p9% norminette -R ft_strjoin.c
+ft_strjoin.c: Error!
+Error: TOO_FEW_TAB          (line:  92, col:   1):	Missing tabs for indent level
+test_ft_strjoin.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  21):	Declaration and assignation on a single line
+Error: LINE_TOO_LONG        (line:  22, col:  82):	line too long
+Error: TOO_MANY_TAB         (line:  23, col:   1):	Extra tabs for indent level
+Error: LINE_TOO_LONG        (line:  23, col:  82):	line too long
+e3r11p9% vi ft_strjoin.c          
+e3r11p9% cat ft_strjoin.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 12:56:26 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:43:27 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+		while (str[i] != '\0')
+			i++;
+	return (i);
+}
+
+char	*ft_strncat_at_index(char *dest, char *src, unsigned int nb, int index)
+{
+	int		i;
+	int		j;
+
+	if (dest && src && nb > 0 && index >= 0)
+	{
+		i = index;
+		j = 0;
+		while ((unsigned int) j < nb && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+
+char	*ft_cat_strs(int size, char **strs, char *sep, char *result)
+{
+	int	sep_len;
+	int	i;
+	int	j;
+
+	sep_len = ft_strlen(sep);
+	i = 0;
+	j = 0;
+	while (i < size && strs[i])
+	{
+		result = ft_strncat_at_index(result, strs[i], ft_strlen(strs[i]), j);
+		j += ft_strlen(strs[i]);
+		if (i != size - 1)
+		{
+			result = ft_strncat_at_index(result, sep, sep_len, j);
+			j += sep_len;
+		}
+		i++;
+	}
+	if (j < ft_strlen(result))
+		result[j] = '\0';
+	return (result);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*result;
+	int		i;
+	int		j;
+	int		sep_len;
+	int		strings_total_len;
+
+	result = (char *) malloc(sizeof(char));
+	if (result)
+		result[0] = '\0';
+	if (size > 0 && strs && sep && strs[0])
+	{
+		strings_total_len = 0;
+		i = 0;
+		while (i < size && strs[i])
+			strings_total_len += ft_strlen(strs[i++]);
+		sep_len = ft_strlen(sep);
+		if (result)
+			free(result);
+		result = (char *) malloc((((size - 1) * sep_len)
+				+ strings_total_len + 1) * sizeof(char));
+		if (!result)
+			return (NULL);
+		result = ft_cat_strs(size, strs, sep, result);
+	}
+	return (result);
+}
+e3r11p9% vi test_ft_strjoin.c
+e3r11p9% cat test_ft_strjoin.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_strjoin.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 13:02:48 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:44:37 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_strjoin(int size, char **strs, char *sep);
+
+int	main(int argc, char **argv)
+{
+	char	*strs[] = {"Toto", " TITUTA  ", "", "42"};
+
+	if (argc == 2)
+	{
+		printf("size == 4, sep == %s => %s\n", argv[1],
+			ft_strjoin(4, strs, argv[1]));
+		printf("size == 0, sep == %s => %s\n", argv[1],
+			ft_strjoin(0, strs, argv[1]));
+	}
+	return (0);
+}
+e3r11p9% norminette -R ft_strjoin.c
+ft_strjoin.c: Error!
+Error: TOO_FEW_TAB          (line:  92, col:   1):	Missing tabs for indent level
+test_ft_strjoin.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  21):	Declaration and assignation on a single line
+e3r11p9% vi ft_strjoin.c     
+e3r11p9% cat ft_strjoin.c     
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 12:56:26 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:46:29 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+		while (str[i] != '\0')
+			i++;
+	return (i);
+}
+
+char	*ft_strncat_at_index(char *dest, char *src, unsigned int nb, int index)
+{
+	int		i;
+	int		j;
+
+	if (dest && src && nb > 0 && index >= 0)
+	{
+		i = index;
+		j = 0;
+		while ((unsigned int) j < nb && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+
+char	*ft_cat_strs(int size, char **strs, char *sep, char *result)
+{
+	int	sep_len;
+	int	i;
+	int	j;
+
+	sep_len = ft_strlen(sep);
+	i = 0;
+	j = 0;
+	while (i < size && strs[i])
+	{
+		result = ft_strncat_at_index(result, strs[i], ft_strlen(strs[i]), j);
+		j += ft_strlen(strs[i]);
+		if (i != size - 1)
+		{
+			result = ft_strncat_at_index(result, sep, sep_len, j);
+			j += sep_len;
+		}
+		i++;
+	}
+	if (j < ft_strlen(result))
+		result[j] = '\0';
+	return (result);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*result;
+	int		i;
+	int		j;
+	int		sep_len;
+	int		strings_total_len;
+
+	result = (char *) malloc(sizeof(char));
+	if (result)
+		result[0] = '\0';
+	if (size > 0 && strs && sep && strs[0])
+	{
+		strings_total_len = 0;
+		i = 0;
+		while (i < size && strs[i])
+			strings_total_len += ft_strlen(strs[i++]);
+		sep_len = ft_strlen(sep);
+		if (result)
+			free(result);
+		result = (char *) malloc((((size - 1) * sep_len)
+					+ strings_total_len + 1) * sizeof(char));
+		if (!result)
+			return (NULL);
+		result = ft_cat_strs(size, strs, sep, result);
+	}
+	return (result);
+}
+e3r11p9% norminette -R ft_strjoin.c
+ft_strjoin.c: OK!
+test_ft_strjoin.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  21):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strjoin ft_strjoin.c test_ft_strjoin.c
+ft_strjoin.c: In function ‘ft_strjoin’:
+ft_strjoin.c:75:7: error: unused variable ‘j’ [-Werror=unused-variable]
+   75 |  int  j;
+      |       ^
+cc1: all warnings being treated as errors
+e3r11p9% vi ft_strjoin.c                                                 
+e3r11p9% cat ft_strjoin.c                                                 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/28 12:56:26 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 13:47:25 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str)
+		while (str[i] != '\0')
+			i++;
+	return (i);
+}
+
+char	*ft_strncat_at_index(char *dest, char *src, unsigned int nb, int index)
+{
+	int		i;
+	int		j;
+
+	if (dest && src && nb > 0 && index >= 0)
+	{
+		i = index;
+		j = 0;
+		while ((unsigned int) j < nb && src[j] != '\0')
+		{
+			dest[i] = src[j];
+			i++;
+			j++;
+		}
+		dest[i] = '\0';
+	}
+	return (dest);
+}
+
+char	*ft_cat_strs(int size, char **strs, char *sep, char *result)
+{
+	int	sep_len;
+	int	i;
+	int	j;
+
+	sep_len = ft_strlen(sep);
+	i = 0;
+	j = 0;
+	while (i < size && strs[i])
+	{
+		result = ft_strncat_at_index(result, strs[i], ft_strlen(strs[i]), j);
+		j += ft_strlen(strs[i]);
+		if (i != size - 1)
+		{
+			result = ft_strncat_at_index(result, sep, sep_len, j);
+			j += sep_len;
+		}
+		i++;
+	}
+	if (j < ft_strlen(result))
+		result[j] = '\0';
+	return (result);
+}
+
+char	*ft_strjoin(int size, char **strs, char *sep)
+{
+	char	*result;
+	int		i;
+	int		sep_len;
+	int		strings_total_len;
+
+	result = (char *) malloc(sizeof(char));
+	if (result)
+		result[0] = '\0';
+	if (size > 0 && strs && sep && strs[0])
+	{
+		strings_total_len = 0;
+		i = 0;
+		while (i < size && strs[i])
+			strings_total_len += ft_strlen(strs[i++]);
+		sep_len = ft_strlen(sep);
+		if (result)
+			free(result);
+		result = (char *) malloc((((size - 1) * sep_len)
+					+ strings_total_len + 1) * sizeof(char));
+		if (!result)
+			return (NULL);
+		result = ft_cat_strs(size, strs, sep, result);
+	}
+	return (result);
+}
+e3r11p9% norminette -R ft_strjoin.c                                                 
+ft_strjoin.c: OK!
+test_ft_strjoin.c: Error!
+Error: DECL_ASSIGN_LINE     (line:  19, col:  21):	Declaration and assignation on a single line
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_strjoin ft_strjoin.c test_ft_strjoin.c
+e3r11p9% ls -al                                                                     
+total 32
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 28 13:47 .
+drwxr-xr-x 6 hauerbac 2023_paris  4096 Feb 28 09:26 ..
+-rw-r--r-- 1 hauerbac 2023_paris  2380 Feb 28 13:47 ft_strjoin.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16280 Feb 28 13:47 test_ft_strjoin
+-rw-r--r-- 1 hauerbac 2023_paris  1254 Feb 28 13:44 test_ft_strjoin.c
+e3r11p9% ./test_ft_strjoin "-'-" | cat -e 
+size == 4, sep == -'- => Toto-'- TITUTA  -'--'-42$
+size == 0, sep == -'- => $
+--------------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd ~/c_07/ex02
+e3r11p9% ls
+ft_ultimate_range_0.c  ft_ultimate_range.c  test_ft_ultimate_range  test_ft_ultimate_range.c
+e3r11p9% cat test_ft_ultimate_range.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/27 19:57:50 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_ptr_int_tab(int **tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && *tab != NULL && size > 0)
+	{
+		printf("*tab = %p\n", *tab);
+		ft_print_int_tab(*tab, size);
+	}
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1 = {-1};
+	int	tab1_size;
+	/*int	*tab2 = {-1};
+	int	tab2_size;
+	int	*tab3 = {-1};
+	int	tab3_size;
+	int	*tab4 = {-1};
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_ptr_int_tab(&tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% vi test_ft_ultimate_range.c 
+e3r11p9% cat test_ft_ultimate_range.c 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 14:33:46 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab_with_size(int *tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && size > 0)
+		ft_print_int_tab(tab, size);
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1 = {-1};
+	int	tab1_size;
+	/*int	*tab2 = {-1};
+	int	tab2_size;
+	int	*tab3 = {-1};
+	int	tab3_size;
+	int	*tab4 = {-1};
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_int_tab_with_size(tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c 
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:80:15: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   80 |  int *tab1 = {-1};
+      |               ^
+test_ft_ultimate_range.c:80:15: note: (near initialization for ‘tab1’)
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 14:34:57 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab_with_size(int *tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && size > 0)
+		ft_print_int_tab(tab, size);
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1 = {(int) -1};
+	int	tab1_size;
+	/*int	*tab2 = {-1};
+	int	tab2_size;
+	int	*tab3 = {-1};
+	int	tab3_size;
+	int	*tab4 = {-1};
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_int_tab_with_size(tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:80:15: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+   80 |  int *tab1 = {(int) -1};
+      |               ^
+test_ft_ultimate_range.c:80:15: note: (near initialization for ‘tab1’)
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 14:35:35 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab_with_size(int *tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && size > 0)
+		ft_print_int_tab(tab, size);
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	tab1[] = {-1};
+	int	tab1_size;
+	/*int	*tab2 = {-1};
+	int	tab2_size;
+	int	*tab3 = {-1};
+	int	tab3_size;
+	int	*tab4 = {-1};
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_int_tab_with_size(tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘main’:
+test_ft_ultimate_range.c:91:32: error: passing argument 1 of ‘ft_ultimate_range’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+   91 |  tab1_size = ft_ultimate_range(&tab1, min, max);
+      |                                ^~~~~
+      |                                |
+      |                                int (*)[1]
+test_ft_ultimate_range.c:17:29: note: expected ‘int **’ but argument is of type ‘int (*)[1]’
+   17 | int ft_ultimate_range(int **range, int min, int max);
+      |                       ~~~~~~^~~~~
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% cat test_ft_ultimate_range.c                                                                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 14:36:07 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab_with_size(int *tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %p\n", tab);
+	if (tab != NULL && size > 0)
+		ft_print_int_tab(tab, size);
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1;
+	int	tab1_size;
+	/*int	*tab2 = {-1};
+	int	tab2_size;
+	int	*tab3 = {-1};
+	int	tab3_size;
+	int	*tab4 = {-1};
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("tab1 = %p\n", tab1);
+	ft_print_int_tab_with_size(tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ls -al
+total 36
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Feb 28 14:36 .
+drwxr-xr-x 6 hauerbac 2023_paris  4096 Feb 28 09:26 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1930 Feb 23 09:57 ft_ultimate_range_0.c
+-rw-r--r-- 1 hauerbac 2023_paris  1828 Feb 27 17:57 ft_ultimate_range.c
+-rwxr-xr-x 1 hauerbac 2023_paris 16344 Feb 28 14:36 test_ft_ultimate_range
+-rw-r--r-- 1 hauerbac 2023_paris  3157 Feb 28 14:36 test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range 
+ptr = 0x55a51e34e2c0, *ptr = 3, *(ptr + 1) = 4
+range = 0x55a51e34e2a0, *range = 0x55a51e34e2c0, *(*range + 1) = 4
+Pour min = 3 et max = 8, tab1 =
+tab1 = (nil)
+The returned size of range is 5.
+tab = (nil)
+
+Segmentation fault - Reason : tab == (nil).%                                                                      e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                       
+ptr = 0x55b1b04bc2c0, *ptr = 3, *(ptr + 1) = 4
+range = 0x55b1b04bc2a0, *range = 0x55b1b04bc2c0, *(*range + 1) = 4
+Pour min = 3 et max = 8, tab1 =
+&tab1 = 0x7ffcb22bc3f0
+tab1 = (nil)
+The returned size of range is 5.
+tab = (nil)
+
+Segmentation fault - Reason : tab == (nil).%                                                                      e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+test_ft_ultimate_range.c: In function ‘ft_print_int_tab_with_size’:
+test_ft_ultimate_range.c:65:17: error: format ‘%d’ expects argument of type ‘int’, but argument 2 has type ‘int *’ [-Werror=format=]
+   65 |  printf("tab = %d\n", tab);
+      |                ~^     ~~~
+      |                 |     |
+      |                 int   int *
+      |                %ls
+cc1: all warnings being treated as errors
+e3r11p9% vi test_ft_ultimate_range.c                                                                     
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                       
+ptr = 0x55f635c092c0, *ptr = 3, *(ptr + 1) = 4
+range = 0x55f635c092a0, *range = 0x55f635c092c0, *(*range + 1) = 4
+Pour min = 3 et max = 8, tab1 =
+&tab1 = 0x7ffee1e93a90
+tab1 = (nil)
+The returned size of range is 5.
+tab = (null)
+e3r11p9% vi test_ft_ultimate_range.c                                                                     
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                       
+ptr = 0x55beb3aae2c0, *ptr = 3, *(ptr + 1) = 4
+range = 0x55beb3aae2a0, *range = 0x55beb3aae2c0, *(*range + 1) = 4
+Pour min = 3 et max = 8, tab1 =
+&tab1 = 0x7ffd48c841d0
+tab1 = (null)
+The returned size of range is 5.
+tab = (null)
+e3r11p9% cat test_ft_ultimate_range.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 14:44:34 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab_with_size(int *tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("tab = %ls\n", tab);
+	if (size > 0)
+		ft_print_int_tab(tab, size);
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	*tab1;
+	int	tab1_size;
+	/*int	*tab2;
+	int	tab2_size;
+	int	*tab3;
+	int	tab3_size;
+	int	*tab4;
+	int	tab4_size;*/
+
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(&tab1, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	printf("&tab1 = %p\n", &tab1);
+	printf("tab1 = %ls\n", tab1);
+	ft_print_int_tab_with_size(tab1, tab1_size);
+	//free(*tab1);
+	/*free(*ptr);
+	free(ptr);*/
+	/*min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(tab2, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*tab2, tab2_size);
+	free(*tab2);
+	free(tab2);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(tab3, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*tab3, tab3_size);
+	free(*tab3);
+	free(tab3);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(tab4, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*tab4, tab4_size);
+	free(*tab4);
+	free(tab4);*/
+	return (0);
+}
+--------------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% vim ft_ultimate_range.c                         
+e3r11p9% cat ft_ultimate_range.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 10:23:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 16:35:21 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int	*ft_range(int min, int max)
+{
+	int	range_len;
+	int	*ptr;
+	int	i;
+	int	value;
+
+	if (min < max)
+	{
+		range_len = max - min;
+		ptr = (int *) malloc(range_len * sizeof(int));
+		if (ptr)
+		{
+			value = min;
+			i = 0;
+			while (i < range_len && value < max)
+				ptr[i++] = value++;
+			if (i == range_len)
+				return (ptr);
+			else
+				return (NULL);
+		}
+	}
+	return (NULL);
+}
+
+int	ft_ultimate_range(int **range, int min, int max)
+{
+	int	range_len;
+	int	*ptr;
+
+	if (range == NULL)
+		return (-1);
+	if (min < max)
+	{
+		range_len = max - min;
+		ptr = ft_range(min, max);
+		if (ptr)
+		{
+			*range = ptr;
+			return (range_len);
+		}
+		else
+			return (-1);
+	}
+	else
+		return (0);
+}
+e3r11p9% vim test_ft_ultimate_range.c                    
+e3r11p9% gcc ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./a.out                                         
+Pour min = 3 et max = 8, tab1 =
+ptr = 0x55d39e47a2a0
+3, 4, 5, 6, 7, The returned size of range is 5.
+ptr_tab = 0x55d39e47a2a0
+[3, 4, 5, 6, 7]Warn: Any segfault will mean that arrays are not correctly allocated
+5:5
+0, 1, 2, 3, 4 : 0, 1, 2, 3, 4
+0:0
+2:2
+-1, 0 : -1, 0%                                                                                                                                                      e3r11p9% vim test_ft_ultimate_range.c               
+e3r11p9% cat test_ft_ultimate_range.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 16:48:23 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab_with_size(int **ptr_tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("ptr_tab = %p\n", ptr_tab);
+	if (size > 0)
+		ft_print_int_tab(*ptr_tab, size);
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : ptr_tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr;
+	int	tab1_size;
+	int	tab2_size;
+	int	tab3_size;
+	int	tab4_size;
+	int	*range;
+
+	ptr = (int **) malloc(sizeof(int *));
+	min = 3;
+	max = 8;
+	tab1_size = ft_ultimate_range(ptr, min, max);
+	printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+	/*printf("ptr = %p\n", ptr);
+	int i = 0;
+	while (i < 5)
+	{
+		printf("%d, ", *(*ptr + i));
+		i++;
+	}*/
+	ft_print_int_tab_with_size(ptr, tab1_size);
+	free(*ptr);
+	min = 42;
+	max = 42;
+	tab2_size = ft_ultimate_range(ptr, min, max);
+	printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+	ft_print_int_tab(*ptr, tab2_size);
+	free(*ptr);
+	min = -42;
+	max = 43;
+	tab3_size = ft_ultimate_range(ptr, min, max);
+	printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+	ft_print_int_tab(*ptr, tab3_size);
+	free(*ptr);
+	min = 42;
+	max = -1;
+	tab4_size = ft_ultimate_range(ptr, min, max);
+	printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+	ft_print_int_tab(*ptr, tab4_size);
+	free(*ptr);
+	free(ptr);
+
+	printf("\nWarn: Any segfault will mean that arrays are not correctly allocated\n");
+	printf("5:%d\n", ft_ultimate_range(&range, 0, 5));
+	printf("0, 1, 2, 3, 4 : %d, %d, %d, %d, %d\n", range[0], range[1], range[2], range[3], range[4]);
+	printf("0:%d\n", ft_ultimate_range(&range, 3, 3));
+	printf("2:%d\n", ft_ultimate_range(&range, -1, 1));
+	printf("-1, 0 : %d, %d", range[0], range[1]);
+	return (0);
+}
+e3r11p9% gcc ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./a.out                                         
+Pour min = 3 et max = 8, tab1 =
+The returned size of range is 5.
+ptr_tab = 0x55a8eec532a0
+[3, 4, 5, 6, 7]
+Pour min = 42 et max = 42, tab2 =
+free(): double free detected in tcache 2
+zsh: IOT instruction (core dumped)  ./a.out
+e3r11p9% vim test_ft_ultimate_range.c                    
+e3r11p9% gcc ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./a.out                                         
+Pour min = 3 et max = 8, tab1 =
+The returned size of range is 5.
+ptr_tab = 0x55b59d6cc2a0
+[3, 4, 5, 6, 7]
+Pour min = 42 et max = 42, tab2 =
+free(): double free detected in tcache 2
+zsh: IOT instruction (core dumped)  ./a.out
+e3r11p9% vim test_ft_ultimate_range.c                    
+e3r11p9% cat test_ft_ultimate_range.c                    
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 17:01:23 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab_with_size(int **ptr_tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("ptr_tab = %p\n", ptr_tab);
+	if (size > 0)
+		ft_print_int_tab(*ptr_tab, size);
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : ptr_tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr;
+	int	tab1_size;
+	int	tab2_size;
+	int	tab3_size;
+	int	tab4_size;
+	int	*range;
+
+	ptr = (int **) malloc(sizeof(int *));
+	if (ptr)
+	{
+		min = 3;
+		max = 8;
+		printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+		tab1_size = ft_ultimate_range(ptr, min, max);
+		/*printf("ptr = %p\n", ptr);
+		int i = 0;
+		while (i < 5)
+		{
+			printf("%d, ", *(*ptr + i));
+			i++;
+		}*/
+		ft_print_int_tab_with_size(ptr, tab1_size);
+		if (*ptr)
+			free(*ptr);
+		min = 42;
+		max = 42;
+		printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+		tab2_size = ft_ultimate_range(ptr, min, max);
+		ft_print_int_tab(*ptr, tab2_size);
+		if (*ptr)
+			free(*ptr);
+		min = -42;
+		max = 43;
+		printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+		tab3_size = ft_ultimate_range(ptr, min, max);
+		ft_print_int_tab(*ptr, tab3_size);
+		if (*ptr)
+			free(*ptr);
+		min = 42;
+		max = -1;
+		printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+		tab4_size = ft_ultimate_range(ptr, min, max);
+		ft_print_int_tab(*ptr, tab4_size);
+		if (*ptr)
+			free(*ptr);
+		free(ptr);
+	}
+
+	printf("\nWarn: Any segfault will mean that arrays are not correctly allocated\n");
+	printf("5:%d\n", ft_ultimate_range(&range, 0, 5));
+	printf("0, 1, 2, 3, 4 : %d, %d, %d, %d, %d\n", range[0], range[1], range[2], range[3], range[4]);
+	printf("0:%d\n", ft_ultimate_range(&range, 3, 3));
+	printf("2:%d\n", ft_ultimate_range(&range, -1, 1));
+	printf("-1, 0 : %d, %d", range[0], range[1]);
+	return (0);
+}
+e3r11p9% gcc ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./a.out                                         
+Pour min = 3 et max = 8, tab1 =
+The returned size of range is 5.
+ptr_tab = 0x557efa0d52a0
+[3, 4, 5, 6, 7]
+Pour min = 42 et max = 42, tab2 =
+free(): double free detected in tcache 2
+zsh: IOT instruction (core dumped)  ./a.out
+e3r11p9% vim test_ft_ultimate_range.c                    
+e3r11p9% gcc ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./a.out                                         
+Pour min = 3 et max = 8, tab1 =
+The returned size of range is 5.
+ptr_tab = 0x5577476002a0
+[3, 4, 5, 6, 7]
+Pour min = 42 et max = 42, tab2 =
+free(): double free detected in tcache 2
+zsh: IOT instruction (core dumped)  ./a.out
+e3r11p9% vim test_ft_ultimate_range.c                    
+e3r11p9% gcc ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./a.out                                         
+Pour min = 3 et max = 8, tab1 =
+The returned size of range is 5.
+ptr_tab = 0x55d9eefd32a0
+[3, 4, 5, 6, 7]
+Pour min = 42 et max = 42, tab2 =
+
+Pour min = -42 et max = 43, tab3 =
+[-42, -41, -40, -39, -38, -37, -36, -35, -34, -33, -32, -31, -30, -29, -28, -27, -26, -25, -24, -23, -22, -21, -20, -19, -18, -17, -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]
+Pour min = 42 et max = -1, tab4 =
+
+Warn: Any segfault will mean that arrays are not correctly allocated
+5:5
+0, 1, 2, 3, 4 : 0, 1, 2, 3, 4
+0:0
+2:2
+-1, 0 : -1, 0%                                                                                                                                                      e3r11p9% cat test_ft_ultimate_range.c                 
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 17:14:57 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab_with_size(int **ptr_tab, int size)
+{
+	printf("The returned size of range is %d.\n", size);
+	printf("ptr_tab = %p\n", ptr_tab);
+	if (size > 0)
+		ft_print_int_tab(*ptr_tab, size);
+	else if (size == 0)
+		printf("\nNone array - Reason : If the value of min is greater or equal to max’s value, range will point on NULL and it should return 0.");
+	else if (size == -1)
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).");
+	else
+		printf("\nSegmentation fault - Reason : ptr_tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr;
+	int	**save_ptr;
+	int	tab1_size;
+	int	tab2_size;
+	int	tab3_size;
+	int	tab4_size;
+	int	*range;
+
+	ptr = (int **) malloc(sizeof(int *));
+	save_ptr = ptr;
+	if (ptr)
+	{
+		min = 3;
+		max = 8;
+		printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+		tab1_size = ft_ultimate_range(ptr, min, max);
+		/*printf("ptr = %p\n", ptr);
+		int i = 0;
+		while (i < 5)
+		{
+			printf("%d, ", *(*ptr + i));
+			i++;
+		}*/
+		ft_print_int_tab_with_size(ptr, tab1_size);
+		/*if (*ptr)
+			free(*ptr);
+		ptr = save_ptr;*/
+		min = 42;
+		max = 42;
+		printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+		tab2_size = ft_ultimate_range(ptr, min, max);
+		ft_print_int_tab(*ptr, tab2_size);
+		/*if (*ptr)
+			free(*ptr);
+		ptr = save_ptr;*/
+		min = -42;
+		max = 43;
+		printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+		tab3_size = ft_ultimate_range(ptr, min, max);
+		ft_print_int_tab(*ptr, tab3_size);
+		/*if (*ptr)
+			free(*ptr);
+		ptr = save_ptr;*/
+		min = 42;
+		max = -1;
+		printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+		tab4_size = ft_ultimate_range(ptr, min, max);
+		ft_print_int_tab(*ptr, tab4_size);
+		if (*ptr)
+			free(*ptr);
+		free(ptr);
+	}
+
+	printf("\nWarn: Any segfault will mean that arrays are not correctly allocated\n");
+	printf("5:%d\n", ft_ultimate_range(&range, 0, 5));
+	printf("0, 1, 2, 3, 4 : %d, %d, %d, %d, %d\n", range[0], range[1], range[2], range[3], range[4]);
+	printf("0:%d\n", ft_ultimate_range(&range, 3, 3));
+	printf("2:%d\n", ft_ultimate_range(&range, -1, 1));
+	printf("-1, 0 : %d, %d", range[0], range[1]);
+	return (0);
+}
+------------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% vi test_ft_ultimate_range.c                                                                     
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                       
+Pour min = 3 et max = 8, tab1 =
+[3, 4, 5, 6, 7]
+The returned size of range is 5.
+ptr_tab = 0x55659297d2a0
+
+Pour min = 42 et max = 42, tab2 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+zsh: segmentation fault (core dumped)  ./test_ft_ultimate_range
+e3r11p9% vi test_ft_ultimate_range.c                                                                    
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% ./test_ft_ultimate_range                                                                       
+Pour min = 3 et max = 8, tab1 =
+[3, 4, 5, 6, 7]
+The returned size of range is 5.
+ptr_tab = 0x55ac356ba2a0
+
+Pour min = 42 et max = 42, tab2 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+
+Pour min = -42 et max = 43, tab3 =
+[-42, -41, -40, -39, -38, -37, -36, -35, -34, -33, -32, -31, -30, -29, -28, -27, -26, -25, -24, -23, -22, -21, -20, -19, -18, -17, -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]
+The returned size of range is 85.
+ptr_tab = 0x55ac356ba6d0
+
+Pour min = 42 et max = -1, tab4 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+
+Warn: Any segfault will mean that arrays are not correctly allocated
+5:5
+0, 1, 2, 3, 4 : 0, 1, 2, 3, 4
+0:0
+2:2
+-1, 0 : -1, 0%                                                                                                                                                      e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range -g3 ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% valgrind --leak-check=full ./test_ft_ultimate_range                                                 
+==650900== Memcheck, a memory error detector
+==650900== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==650900== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==650900== Command: ./test_ft_ultimate_range
+==650900== 
+Pour min = 3 et max = 8, tab1 =
+[3, 4, 5, 6, 7]
+The returned size of range is 5.
+ptr_tab = 0x4a9f040
+
+Pour min = 42 et max = 42, tab2 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+==650900== Conditional jump or move depends on uninitialised value(s)
+==650900==    at 0x109687: main (test_ft_ultimate_range.c:136)
+==650900== 
+
+Pour min = -42 et max = 43, tab3 =
+[-42, -41, -40, -39, -38, -37, -36, -35, -34, -33, -32, -31, -30, -29, -28, -27, -26, -25, -24, -23, -22, -21, -20, -19, -18, -17, -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]
+The returned size of range is 85.
+ptr_tab = 0x4a9f580
+
+Pour min = 42 et max = -1, tab4 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+
+Warn: Any segfault will mean that arrays are not correctly allocated
+5:5
+0, 1, 2, 3, 4 : 0, 1, 2, 3, 4
+0:0
+2:2
+-1, 0 : -1, 0==650900== 
+==650900== HEAP SUMMARY:
+==650900==     in use at exit: 0 bytes in 0 blocks
+==650900==   total heap usage: 9 allocs, 9 frees, 1,444 bytes allocated
+==650900== 
+==650900== All heap blocks were freed -- no leaks are possible
+==650900== 
+==650900== Use --track-origins=yes to see where uninitialised values come from
+==650900== For lists of detected and suppressed errors, rerun with: -s
+==650900== ERROR SUMMARY: 1 errors from 1 contexts (suppressed: 0 from 0)
+e3r11p9% ./test_ft_ultimate_range                                                                            
+Pour min = 3 et max = 8, tab1 =
+[3, 4, 5, 6, 7]
+The returned size of range is 5.
+ptr_tab = 0x55dd5cdfb2a0
+
+Pour min = 42 et max = 42, tab2 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+zsh: segmentation fault (core dumped)  ./test_ft_ultimate_range
+e3r11p9% vi test_ft_ultimate_range.c                                                                         
+e3r11p9% gcc -Wall -Wextra -Werror -o test_ft_ultimate_range -g3 ft_ultimate_range.c test_ft_ultimate_range.c
+e3r11p9% valgrind --leak-check=full -s ./test_ft_ultimate_range                                              
+==652176== Memcheck, a memory error detector
+==652176== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==652176== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==652176== Command: ./test_ft_ultimate_range
+==652176== 
+Pour min = 3 et max = 8, tab1 =
+[3, 4, 5, 6, 7]
+The returned size of range is 5.
+ptr_tab = 0x4a9f040
+
+Pour min = 42 et max = 42, tab2 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+
+Pour min = -42 et max = 43, tab3 =
+[-42, -41, -40, -39, -38, -37, -36, -35, -34, -33, -32, -31, -30, -29, -28, -27, -26, -25, -24, -23, -22, -21, -20, -19, -18, -17, -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]
+The returned size of range is 85.
+ptr_tab = 0x4a9f580
+
+Pour min = 42 et max = -1, tab4 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+
+Warn: Any segfault will mean that arrays are not correctly allocated
+5:5
+0, 1, 2, 3, 4 : 0, 1, 2, 3, 4
+0:0
+2:2
+-1, 0 : -1, 0==652176== 
+==652176== HEAP SUMMARY:
+==652176==     in use at exit: 0 bytes in 0 blocks
+==652176==   total heap usage: 9 allocs, 9 frees, 1,444 bytes allocated
+==652176== 
+==652176== All heap blocks were freed -- no leaks are possible
+==652176== 
+==652176== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+e3r11p9% ./test_ft_ultimate_range 
+Pour min = 3 et max = 8, tab1 =
+[3, 4, 5, 6, 7]
+The returned size of range is 5.
+ptr_tab = 0x562512c8e2a0
+
+Pour min = 42 et max = 42, tab2 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+
+Pour min = -42 et max = 43, tab3 =
+[-42, -41, -40, -39, -38, -37, -36, -35, -34, -33, -32, -31, -30, -29, -28, -27, -26, -25, -24, -23, -22, -21, -20, -19, -18, -17, -16, -15, -14, -13, -12, -11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42]
+The returned size of range is 85.
+ptr_tab = 0x562512c8e2a0
+
+Pour min = 42 et max = -1, tab4 =
+
+None array - Reason : If min >= max, range will point on NULL and it should return 0.
+The returned size of range is 0.
+
+Warn: Any segfault will mean that arrays are not correctly allocated
+5:5
+0, 1, 2, 3, 4 : 0, 1, 2, 3, 4
+0:0
+2:2
+-1, 0 : -1, 0%                                                                                                                                                      
+e3r11p9% cat test_ft_ultimate_range.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_ultimate_range.c                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/22 17:56:00 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 19:13:43 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	ft_ultimate_range(int **range, int min, int max);
+
+void	ft_putnbr(int nb)
+{
+	long	nb_in_long;
+	int		digit_to_char;
+
+	nb_in_long = nb;
+	if (nb_in_long < 0)
+	{
+		write(1, "-", 1);
+		nb_in_long = nb_in_long * -1;
+	}
+	if (nb_in_long < 10)
+	{
+		digit_to_char = nb_in_long + '0';
+		write(1, &digit_to_char, 1);
+	}
+	else
+	{
+		ft_putnbr(nb_in_long / 10);
+		ft_putnbr(nb_in_long % 10);
+	}
+}
+
+void	ft_print_int_tab(int *tab, int size)
+{
+	int	i;
+
+	if (tab != NULL && size > 0)
+	{
+		write(1, "[", 1);
+		i = 0;
+		while (i < size)
+		{
+			ft_putnbr(tab[i]);
+			if (i < size - 1)
+				write(1, ", ", 2);
+			i++;
+		}
+		write(1, "]", 1);
+	}
+}
+
+void	ft_print_int_tab_with_size(int **ptr_tab, int size)
+{
+	if (size > 0)
+	{
+		if (ptr_tab && *ptr_tab)
+			ft_print_int_tab(*ptr_tab, size);
+		printf("\nThe returned size of range is %d.\n", size);
+		printf("ptr_tab = %p\n", ptr_tab);
+	}
+	else if (size == 0)
+	{
+		printf("\nNone array - Reason : If min >= max, range will point on NULL and it should return 0.\n");
+		printf("The returned size of range is %d.\n", size);
+	}
+	else if (size == -1)
+	{
+		printf("\nIncomplete array - Reason : The size of range should be returned (or -1 on error).\n");
+		printf("The returned size of range is %d.\n", size);
+	}
+	else
+		printf("\nSegmentation fault - Reason : ptr_tab == (nil).");
+}
+
+int	main(void)
+{
+	int	min;
+	int	max;
+	int	**ptr1;
+	int	tab1_size;
+	int	**ptr2;
+	int	tab2_size;
+	int	**ptr3;
+	int	tab3_size;
+	int	**ptr4;
+	int	tab4_size;
+	int	*range1;
+	int	*range2;
+	int	*range3;
+
+	ptr1 = (int **) malloc(sizeof(int *));
+	if (ptr1)
+	{
+		min = 3;
+		max = 8;
+		printf("Pour min = %d et max = %d, tab1 =\n", min, max);
+		tab1_size = ft_ultimate_range(ptr1, min, max);
+		/*if (ptr1 && *ptr1)
+		{
+			printf("ptr1 = %p\n", ptr1);
+			int i = 0;
+			while (i < 5)
+			{
+				printf("%d, ", *(*ptr1 + i));
+				i++;
+			}
+		}*/
+		ft_print_int_tab_with_size(ptr1, tab1_size);
+		if (ptr1)
+			if (*ptr1)
+				free(*ptr1);
+		free(ptr1);
+	}
+	ptr2 = (int **) malloc(sizeof(int *));
+	if (ptr2)
+	{
+		min = 42;
+		max = 42;
+		printf("\nPour min = %d et max = %d, tab2 =\n", min, max);
+		tab2_size = ft_ultimate_range(ptr2, min, max);
+		ft_print_int_tab_with_size(ptr2, tab2_size);
+		free(ptr2);
+	}
+	ptr3 = (int **) malloc(sizeof(int *));
+	if (ptr3)
+	{
+		min = -42;
+		max = 43;
+		printf("\nPour min = %d et max = %d, tab3 =\n", min, max);
+		tab3_size = ft_ultimate_range(ptr3, min, max);
+		ft_print_int_tab_with_size(ptr3, tab3_size);
+		if (ptr3)
+			if (*ptr3)
+				free(*ptr3);
+		free(ptr3);
+	}
+	ptr4 = (int **) malloc(sizeof(int *));
+	if (ptr4)
+	{
+		min = 42;
+		max = -1;
+		printf("\nPour min = %d et max = %d, tab4 =\n", min, max);
+		tab4_size = ft_ultimate_range(ptr4, min, max);
+		ft_print_int_tab_with_size(ptr4, tab4_size);
+		free(ptr4);
+	}
+
+	printf("\nWarn: Any segfault will mean that arrays are not correctly allocated\n");
+	printf("5:%d\n", ft_ultimate_range(&range1, 0, 5));
+	printf("0, 1, 2, 3, 4 : %d, %d, %d, %d, %d\n", range1[0], range1[1], range1[2], range1[3], range1[4]);
+	if (range1)
+		free(range1);
+	printf("0:%d\n", ft_ultimate_range(&range2, 3, 3));
+	printf("2:%d\n", ft_ultimate_range(&range3, -1, 1));
+	printf("-1, 0 : %d, %d", range3[0], range3[1]);
+	if (range3)
+		free(range3);
+	return (0);
+}
+e3r11p9% cat ft_ultimate_range.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/23 10:23:31 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/02/28 18:18:23 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+int	*ft_range(int min, int max)
+{
+	int	range_len;
+	int	*ptr;
+	int	i;
+	int	value;
+
+	if (min < max)
+	{
+		range_len = max - min;
+		ptr = (int *) malloc(range_len * sizeof(int));
+		if (ptr)
+		{
+			value = min;
+			i = 0;
+			while (i < range_len && value < max)
+				ptr[i++] = value++;
+			if (i == range_len)
+				return (ptr);
+			else
+				return (NULL);
+		}
+	}
+	return (NULL);
+}
+
+int	ft_ultimate_range(int **range, int min, int max)
+{
+	int	range_len;
+	int	*ptr;
+
+	if (range == NULL)
+		return (-1);
+	if (min < max)
+	{
+		range_len = max - min;
+		ptr = ft_range(min, max);
+		*range = ptr;
+		if (ptr)
+			return (range_len);
+		else
+			return (-1);
+	}
+	else
+		return (0);
+}
+ 
