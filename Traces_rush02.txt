@@ -3048,6 +3048,3080 @@ rush_02_H/ex00/ft_write.c
 e3r11p9% ls
 c_00  c_02  c_04  c_06	Desktop    Downloads	   Music     Public   rush_02_0.tar  rush_02_H.tar  sgoinfre  shell_01	 Videos
 c_01  c_03  c_05  c_07	Documents  fev2023_23.tar  Pictures  rush_00  rush_02_H      samed	    shell_00  Templates
+----------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% pwd
+/mnt/nfs/homes/hauerbac
+e3r11p9% ls
+c_00  c_03  c_06     Documents	     Music     rush_00	      rush_02_H      sgoinfre  Templates
+c_01  c_04  c_07     Downloads	     Pictures  rush_02	      rush_02_H.tar  shell_00  Videos
+c_02  c_05  Desktop  fev2023_23.tar  Public    rush_02_0.tar  samed	     shell_01
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-7e7e0111-22b7-49b9-a22c-80b404a1157a-4719074-hauerbac rush_02_1
+Cloning into 'rush_02_1'...
+remote: Enumerating objects: 82, done.
+remote: Counting objects: 100% (82/82), done.
+remote: Compressing objects: 100% (79/79), done.
+remote: Total 82 (delta 40), reused 0 (delta 0)
+Receiving objects: 100% (82/82), 13.79 KiB | 830.00 KiB/s, done.
+Resolving deltas: 100% (40/40), done.
+e3r11p9% ls -alR rush_02_1    
+rush_02_1:
+total 20
+drwxr-xr-x  4 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwx------ 35 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+drwxr-xr-x  2 hauerbac 2023_paris 4096 Mar  1 18:46 ex00
+drwxr-xr-x  8 hauerbac 2023_paris 4096 Mar  1 18:46 .git
+-rw-r--r--  1 hauerbac 2023_paris   27 Mar  1 18:46 .gitignore
 
+rush_02_1/ex00:
+total 64
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+-rw-r--r-- 1 hauerbac 2023_paris 1601 Mar  1 18:46 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris 1514 Mar  1 18:46 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris 1330 Mar  1 18:46 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris 1731 Mar  1 18:46 ft_join.c
+-rw-r--r-- 1 hauerbac 2023_paris 1936 Mar  1 18:46 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris 2848 Mar  1 18:46 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris 1202 Mar  1 18:46 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris 2145 Mar  1 18:46 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris 1665 Mar  1 18:46 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris 2015 Mar  1 18:46 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris 1909 Mar  1 18:46 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  396 Mar  1 18:46 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris  372 Mar  1 18:46 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris  351 Mar  1 18:46 numbers.dict
+
+rush_02_1/.git:
+total 52
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 branches
+-rw-r--r-- 1 hauerbac 2023_paris  324 Mar  1 18:46 config
+-rw-r--r-- 1 hauerbac 2023_paris   73 Mar  1 18:46 description
+-rw-r--r-- 1 hauerbac 2023_paris   23 Mar  1 18:46 HEAD
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 hooks
+-rw-r--r-- 1 hauerbac 2023_paris 1304 Mar  1 18:46 index
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 info
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Mar  1 18:46 logs
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 objects
+-rw-r--r-- 1 hauerbac 2023_paris  114 Mar  1 18:46 packed-refs
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Mar  1 18:46 refs
+
+rush_02_1/.git/branches:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+
+rush_02_1/.git/hooks:
+total 68
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+-rwxr-xr-x 1 hauerbac 2023_paris  478 Mar  1 18:46 applypatch-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  896 Mar  1 18:46 commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4655 Mar  1 18:46 fsmonitor-watchman.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  189 Mar  1 18:46 post-update.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  424 Mar  1 18:46 pre-applypatch.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1643 Mar  1 18:46 pre-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  416 Mar  1 18:46 pre-merge-commit.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1492 Mar  1 18:46 prepare-commit-msg.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 1374 Mar  1 18:46 pre-push.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 4898 Mar  1 18:46 pre-rebase.sample
+-rwxr-xr-x 1 hauerbac 2023_paris  544 Mar  1 18:46 pre-receive.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 2783 Mar  1 18:46 push-to-checkout.sample
+-rwxr-xr-x 1 hauerbac 2023_paris 3650 Mar  1 18:46 update.sample
+
+rush_02_1/.git/info:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+-rw-r--r-- 1 hauerbac 2023_paris  240 Mar  1 18:46 exclude
+
+rush_02_1/.git/logs:
+total 16
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+-rw-r--r-- 1 hauerbac 2023_paris  262 Mar  1 18:46 HEAD
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 refs
+
+rush_02_1/.git/logs/refs:
+total 16
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 heads
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Mar  1 18:46 remotes
+
+rush_02_1/.git/logs/refs/heads:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+-rw-r--r-- 1 hauerbac 2023_paris  262 Mar  1 18:46 master
+
+rush_02_1/.git/logs/refs/remotes:
+total 12
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 origin
+
+rush_02_1/.git/logs/refs/remotes/origin:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+-rw-r--r-- 1 hauerbac 2023_paris  262 Mar  1 18:46 HEAD
+
+rush_02_1/.git/objects:
+total 16
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 info
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 pack
+
+rush_02_1/.git/objects/info:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+
+rush_02_1/.git/objects/pack:
+total 28
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Mar  1 18:46 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Mar  1 18:46 ..
+-r--r--r-- 1 hauerbac 2023_paris  3368 Mar  1 18:46 pack-c095cbfe8f903608197eb46898856db91ea9e6d4.idx
+-r--r--r-- 1 hauerbac 2023_paris 14123 Mar  1 18:46 pack-c095cbfe8f903608197eb46898856db91ea9e6d4.pack
+
+rush_02_1/.git/refs:
+total 20
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 8 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 heads
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Mar  1 18:46 remotes
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 tags
+
+rush_02_1/.git/refs/heads:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+-rw-r--r-- 1 hauerbac 2023_paris   41 Mar  1 18:46 master
+
+rush_02_1/.git/refs/remotes:
+total 12
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 origin
+
+rush_02_1/.git/refs/remotes/origin:
+total 12
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 3 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+-rw-r--r-- 1 hauerbac 2023_paris   32 Mar  1 18:46 HEAD
+
+rush_02_1/.git/refs/tags:
+total 8
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 5 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+e3r11p9% ls -alR rush_02_1/ex*
+rush_02_1/ex00:
+total 64
+drwxr-xr-x 2 hauerbac 2023_paris 4096 Mar  1 18:46 .
+drwxr-xr-x 4 hauerbac 2023_paris 4096 Mar  1 18:46 ..
+-rw-r--r-- 1 hauerbac 2023_paris 1601 Mar  1 18:46 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris 1514 Mar  1 18:46 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris 1330 Mar  1 18:46 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris 1731 Mar  1 18:46 ft_join.c
+-rw-r--r-- 1 hauerbac 2023_paris 1936 Mar  1 18:46 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris 2848 Mar  1 18:46 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris 1202 Mar  1 18:46 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris 2145 Mar  1 18:46 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris 1665 Mar  1 18:46 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris 2015 Mar  1 18:46 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris 1909 Mar  1 18:46 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  396 Mar  1 18:46 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris  372 Mar  1 18:46 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris  351 Mar  1 18:46 numbers.dict
+e3r11p9% cat rush_02_1/ex00/ft_parser.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: octoross <octoross@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/25 16:18:47 by soutin            #+#    #+#             */
+/*   Updated: 2023/02/26 18:49:16 by octoross         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_library.h"
+
+int	ft_check_format(char *entry)
+{
+	int	i;
+
+	i = 0;
+	while (entry[i] == ' ')
+		i++;
+	if (entry[i] == '+')
+		i++;
+	if ('0' > entry[i] || entry[i] > '9')
+		return (0);
+	i++;
+	while ('0' <= entry[i] && entry[i] <= '9')
+		i++;
+	while (entry[i] == ' ')
+		i++;
+	if (entry[i] != ':')
+		return (0);
+	i++;
+	while (entry[i] == ' ')
+		i++;
+	if (!ft_char_is_printable(entry[i]))
+		return (0);
+	while (entry[i] && ft_char_is_printable(entry[i]))
+		i++;
+	return (entry[i] == '\0');
+}
+
+int	ft_check_entry(char **entry, char *value)
+{
+	if (ft_strtablen(entry) < 2)
+		return (0);
+	if (ft_atoi_dict(entry[0]) == -1)
+		return (0);
+	if (!ft_is_printable(value))
+		return (0);
+	return (1);
+}
+
+void	ft_invalid_value(t_dict *dicts, int i, int *flag)
+{
+	ft_set_dict(dicts, i, -1, "");
+	ft_free_dicts(dicts);
+	*flag = 0;
+}
+
+int	ft_check_and_dict(char **entries, t_dict *dicts, int *flag)
+{
+	int		i;
+	char	**entry;
+	char	*value;
+
+	i = 0;
+	while (entries[i] && *flag)
+	{
+		if (!ft_check_format(entries[i]))
+			*flag = 0;
+		entry = ft_split(entries[i], ": ");
+		if (!entry)
+			*flag = 0;
+		value = ft_join_space(&entry[1]);
+		if (!value)
+			ft_invalid_value(dicts, i, flag);
+		if (!ft_check_entry(entry, value))
+			*flag = 0;
+		ft_set_dict(dicts, i, ft_atoi_dict(entry[0]), value);
+		ft_free_tab(entry, ft_strtablen(entry));
+		i++;
+	}
+	ft_set_dict(dicts, i, -1, "");
+	ft_free_tab(entries, ft_strtablen(entries));
+	return (1);
+}
+
+t_dict	*ft_parser(char *dict_name, int *win)
+{
+	int		fd;
+	int		nb_bytes;
+	char	buffer[BUFF_SIZE + 1];
+	char	**entries;
+	t_dict	*dicts;
+
+	fd = open(dict_name, O_RDONLY);
+	if (fd == -1)
+		return (NULL);
+	nb_bytes = read(fd, buffer, BUFF_SIZE);
+	if (close(fd) == -1)
+		return (NULL);
+	buffer[nb_bytes] = '\0';
+	entries = ft_split(buffer, "\n");
+	dicts = (t_dict *)malloc(sizeof(t_dict) * (ft_strtablen(entries) + 1));
+	if (!dicts)
+	{
+		*win = 0;
+		return (NULL);
+	}
+	*win = ft_check_and_dict(entries, dicts, win);
+	return (dicts);
+}
+e3r11p9% rm -r rush_02                 
+rm: remove write-protected regular file 'rush_02/.git/objects/pack/pack-c095cbfe8f903608197eb46898856db91ea9e6d4.idx'? y
+rm: remove write-protected regular file 'rush_02/.git/objects/pack/pack-c095cbfe8f903608197eb46898856db91ea9e6d4.pack'? y
+e3r11p9% ls
+c_00  c_03  c_06     Documents	     Music     rush_00	      rush_02_H      sgoinfre  Templates
+c_01  c_04  c_07     Downloads	     Pictures  rush_02_0.tar  rush_02_H.tar  shell_00  Videos
+c_02  c_05  Desktop  fev2023_23.tar  Public    rush_02_1      samed	     shell_01
+e3r11p9% git clone git@vogsphere.42paris.fr:vogsphere/intra-uuid-7e7e0111-22b7-49b9-a22c-80b404a1157a-4719074-hauerbac rush_02_2
+Cloning into 'rush_02_2'...
+remote: Enumerating objects: 82, done.
+remote: Counting objects: 100% (82/82), done.
+remote: Compressing objects: 100% (79/79), done.
+remote: Total 82 (delta 40), reused 0 (delta 0)
+Receiving objects: 100% (82/82), 13.79 KiB | 1.25 MiB/s, done.
+Resolving deltas: 100% (40/40), done.
+e3r11p9% cd rush_02_2
+e3r11p9% vi ft_parser.c
+e3r11p9% vi ex00/ft_parser.c
+e3r11p9% ls
+ex00
+e3r11p9% ls -alR ex00/*
+-rw-r--r-- 1 hauerbac 2023_paris 1601 Mar  1 18:49 ex00/ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris 1514 Mar  1 18:49 ex00/ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris 1330 Mar  1 18:49 ex00/ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris 1731 Mar  1 18:49 ex00/ft_join.c
+-rw-r--r-- 1 hauerbac 2023_paris 1936 Mar  1 18:49 ex00/ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris 2852 Mar  1 18:50 ex00/ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris 1202 Mar  1 18:49 ex00/ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris 2145 Mar  1 18:49 ex00/ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris 1665 Mar  1 18:49 ex00/ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris 2015 Mar  1 18:49 ex00/ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris 1909 Mar  1 18:49 ex00/main.c
+-rw-r--r-- 1 hauerbac 2023_paris  396 Mar  1 18:49 ex00/Makefile
+-rw-r--r-- 1 hauerbac 2023_paris  372 Mar  1 18:49 ex00/nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris  351 Mar  1 18:49 ex00/numbers.dict
+e3r11p9% cd ex00
+e3r11p9% make
+cc -Wall -Wextra -Werror -c ft_dict_manip.c -o ft_dict_manip.o
+cc -Wall -Wextra -Werror -c ft_parser.c -o ft_parser.o
+cc -Wall -Wextra -Werror -c ft_atois.c -o ft_atois.o
+cc -Wall -Wextra -Werror -c ft_print.c -o ft_print.o
+cc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o
+cc -Wall -Wextra -Werror -c ft_write.c -o ft_write.o
+cc -Wall -Wextra -Werror -c ft_utils.c -o ft_utils.o
+cc -Wall -Wextra -Werror -c ft_free.c -o ft_free.o
+cc -Wall -Wextra -Werror -c ft_join.c -o ft_join.o
+cc -Wall -Wextra -Werror -c main.c -o main.o
+cc -Wall -Wextra -Werror -o rush-02 ft_dict_manip.o ft_parser.o ft_atois.o ft_print.o ft_split.o ft_write.o ft_utils.o ft_free.o ft_join.o main.o
+e3r11p9% ls -alR       
+.:
+total 132
+drwxr-xr-x 2 hauerbac 2023_paris  4096 Mar  1 18:51 .
+drwxr-xr-x 4 hauerbac 2023_paris  4096 Mar  1 18:49 ..
+-rw-r--r-- 1 hauerbac 2023_paris  1601 Mar  1 18:49 ft_atois.c
+-rw-r--r-- 1 hauerbac 2023_paris  1600 Mar  1 18:51 ft_atois.o
+-rw-r--r-- 1 hauerbac 2023_paris  1514 Mar  1 18:49 ft_dict_manip.c
+-rw-r--r-- 1 hauerbac 2023_paris  1728 Mar  1 18:51 ft_dict_manip.o
+-rw-r--r-- 1 hauerbac 2023_paris  1330 Mar  1 18:49 ft_free.c
+-rw-r--r-- 1 hauerbac 2023_paris  1480 Mar  1 18:51 ft_free.o
+-rw-r--r-- 1 hauerbac 2023_paris  1731 Mar  1 18:49 ft_join.c
+-rw-r--r-- 1 hauerbac 2023_paris  1904 Mar  1 18:51 ft_join.o
+-rw-r--r-- 1 hauerbac 2023_paris  1936 Mar  1 18:49 ft_library.h
+-rw-r--r-- 1 hauerbac 2023_paris  2852 Mar  1 18:50 ft_parser.c
+-rw-r--r-- 1 hauerbac 2023_paris  4120 Mar  1 18:51 ft_parser.o
+-rw-r--r-- 1 hauerbac 2023_paris  1202 Mar  1 18:49 ft_print.c
+-rw-r--r-- 1 hauerbac 2023_paris  1664 Mar  1 18:51 ft_print.o
+-rw-r--r-- 1 hauerbac 2023_paris  2145 Mar  1 18:49 ft_split.c
+-rw-r--r-- 1 hauerbac 2023_paris  2560 Mar  1 18:51 ft_split.o
+-rw-r--r-- 1 hauerbac 2023_paris  1665 Mar  1 18:49 ft_utils.c
+-rw-r--r-- 1 hauerbac 2023_paris  1816 Mar  1 18:51 ft_utils.o
+-rw-r--r-- 1 hauerbac 2023_paris  2015 Mar  1 18:49 ft_write.c
+-rw-r--r-- 1 hauerbac 2023_paris  2360 Mar  1 18:51 ft_write.o
+-rw-r--r-- 1 hauerbac 2023_paris  1909 Mar  1 18:49 main.c
+-rw-r--r-- 1 hauerbac 2023_paris  2736 Mar  1 18:51 main.o
+-rw-r--r-- 1 hauerbac 2023_paris   396 Mar  1 18:49 Makefile
+-rw-r--r-- 1 hauerbac 2023_paris   372 Mar  1 18:49 nombres.dict
+-rw-r--r-- 1 hauerbac 2023_paris   351 Mar  1 18:49 numbers.dict
+-rwxr-xr-x 1 hauerbac 2023_paris 21712 Mar  1 18:51 rush-02
+e3r11p9% ./rush-02 nombres.dict 42
+quarante deux
+e3r11p9% ./rush-02 42        
+forty two
+e3r11p9% cd ..
+e3r11p9% cd ..
+e3r11p9% ls
+c_00  c_03  c_06     Documents	     Music     rush_00	      rush_02_2      samed     shell_01
+c_01  c_04  c_07     Downloads	     Pictures  rush_02_0.tar  rush_02_H      sgoinfre  Templates
+c_02  c_05  Desktop  fev2023_23.tar  Public    rush_02_1      rush_02_H.tar  shell_00  Videos
+e3r11p9% tar -cvf rush_00.tar rush_00/*
+rush_00/ex00/
+rush_00/ex00/rush03.c
+rush_00/ex00/test_rush00
+rush_00/ex00/rush01.c
+rush_00/ex00/test_generic_rush0
+rush_00/ex00/ft_putchar.c
+rush_00/ex00/main.c
+rush_00/ex00/test_rush02
+rush_00/ex00/rush04.c
+rush_00/ex00/generic_rush.c
+rush_00/ex00/test_rush01
+rush_00/ex00/a.out
+rush_00/ex00/test_rush04
+rush_00/ex00/rush02.c
+rush_00/ex00/rush00.c
+rush_00/ex00/generic_main.c
+rush_00/git_rush00/
+rush_00/git_rush00/.git/
+rush_00/git_rush00/.git/packed-refs
+rush_00/git_rush00/.git/HEAD
+rush_00/git_rush00/.git/branches/
+rush_00/git_rush00/.git/info/
+rush_00/git_rush00/.git/info/exclude
+rush_00/git_rush00/.git/config
+rush_00/git_rush00/.git/objects/
+rush_00/git_rush00/.git/objects/pack/
+rush_00/git_rush00/.git/objects/pack/pack-9a405a4e9dd41a68b98d060c66f92cf5c2408b3b.idx
+rush_00/git_rush00/.git/objects/pack/pack-9a405a4e9dd41a68b98d060c66f92cf5c2408b3b.pack
+rush_00/git_rush00/.git/objects/info/
+rush_00/git_rush00/.git/index
+rush_00/git_rush00/.git/description
+rush_00/git_rush00/.git/hooks/
+rush_00/git_rush00/.git/hooks/post-update.sample
+rush_00/git_rush00/.git/hooks/applypatch-msg.sample
+rush_00/git_rush00/.git/hooks/pre-applypatch.sample
+rush_00/git_rush00/.git/hooks/pre-rebase.sample
+rush_00/git_rush00/.git/hooks/pre-push.sample
+rush_00/git_rush00/.git/hooks/push-to-checkout.sample
+rush_00/git_rush00/.git/hooks/pre-commit.sample
+rush_00/git_rush00/.git/hooks/fsmonitor-watchman.sample
+rush_00/git_rush00/.git/hooks/pre-merge-commit.sample
+rush_00/git_rush00/.git/hooks/commit-msg.sample
+rush_00/git_rush00/.git/hooks/update.sample
+rush_00/git_rush00/.git/hooks/pre-receive.sample
+rush_00/git_rush00/.git/hooks/prepare-commit-msg.sample
+rush_00/git_rush00/.git/logs/
+rush_00/git_rush00/.git/logs/HEAD
+rush_00/git_rush00/.git/logs/refs/
+rush_00/git_rush00/.git/logs/refs/remotes/
+rush_00/git_rush00/.git/logs/refs/remotes/origin/
+rush_00/git_rush00/.git/logs/refs/remotes/origin/HEAD
+rush_00/git_rush00/.git/logs/refs/heads/
+rush_00/git_rush00/.git/logs/refs/heads/main
+rush_00/git_rush00/.git/refs/
+rush_00/git_rush00/.git/refs/tags/
+rush_00/git_rush00/.git/refs/remotes/
+rush_00/git_rush00/.git/refs/remotes/origin/
+rush_00/git_rush00/.git/refs/remotes/origin/HEAD
+rush_00/git_rush00/.git/refs/heads/
+rush_00/git_rush00/.git/refs/heads/main
+rush_00/git_rush00/ex00/
+rush_00/git_rush00/ex00/rush03.c
+rush_00/git_rush00/ex00/rush01.c
+rush_00/git_rush00/ex00/ft_putchar.c
+rush_00/git_rush00/ex00/main.c
+rush_00/git_rush00/ex00/rush04.c
+rush_00/git_rush00/ex00/rush02.c
+rush_00/git_rush00/ex00/rush00.c
+e3r11p9% ls
+c_00  c_03  c_06     Documents	     Music     rush_00	      rush_02_1  rush_02_H.tar	shell_00   Videos
+c_01  c_04  c_07     Downloads	     Pictures  rush_00.tar    rush_02_2  samed		shell_01
+c_02  c_05  Desktop  fev2023_23.tar  Public    rush_02_0.tar  rush_02_H  sgoinfre	Templates
+e3r11p9% tar -cvf rush_02_1.tar rush_02_1/*
+rush_02_1/ex00/
+rush_02_1/ex00/Makefile
+rush_02_1/ex00/ft_parser.c
+rush_02_1/ex00/main.c
+rush_02_1/ex00/ft_atois.c
+rush_02_1/ex00/nombres.dict
+rush_02_1/ex00/ft_free.c
+rush_02_1/ex00/numbers.dict
+rush_02_1/ex00/ft_dict_manip.c
+rush_02_1/ex00/ft_print.c
+rush_02_1/ex00/ft_utils.c
+rush_02_1/ex00/ft_split.c
+rush_02_1/ex00/ft_library.h
+rush_02_1/ex00/ft_write.c
+rush_02_1/ex00/ft_join.c
+e3r11p9% ls
+c_00  c_03  c_06     Documents	     Music     rush_00	      rush_02_1      rush_02_H	    sgoinfre  Templates
+c_01  c_04  c_07     Downloads	     Pictures  rush_00.tar    rush_02_1.tar  rush_02_H.tar  shell_00  Videos
+c_02  c_05  Desktop  fev2023_23.tar  Public    rush_02_0.tar  rush_02_2      samed	    shell_01
+e3r11p9% tar -cvf rush_02_2.tar rush_02_2/* 
+rush_02_2/ex00/
+rush_02_2/ex00/Makefile
+rush_02_2/ex00/ft_write.o
+rush_02_2/ex00/ft_print.o
+rush_02_2/ex00/ft_parser.c
+rush_02_2/ex00/main.c
+rush_02_2/ex00/ft_atois.c
+rush_02_2/ex00/nombres.dict
+rush_02_2/ex00/ft_join.o
+rush_02_2/ex00/rush-02
+rush_02_2/ex00/ft_free.c
+rush_02_2/ex00/ft_atois.o
+rush_02_2/ex00/numbers.dict
+rush_02_2/ex00/ft_dict_manip.c
+rush_02_2/ex00/main.o
+rush_02_2/ex00/ft_print.c
+rush_02_2/ex00/ft_free.o
+rush_02_2/ex00/ft_split.o
+rush_02_2/ex00/ft_utils.o
+rush_02_2/ex00/ft_utils.c
+rush_02_2/ex00/ft_dict_manip.o
+rush_02_2/ex00/ft_split.c
+rush_02_2/ex00/ft_library.h
+rush_02_2/ex00/ft_parser.o
+rush_02_2/ex00/ft_write.c
+rush_02_2/ex00/ft_join.c
+e3r11p9% ls                                
+c_00  c_03  c_06     Documents	     Music     rush_00	      rush_02_1      rush_02_2.tar  samed     shell_01
+c_01  c_04  c_07     Downloads	     Pictures  rush_00.tar    rush_02_1.tar  rush_02_H	    sgoinfre  Templates
+c_02  c_05  Desktop  fev2023_23.tar  Public    rush_02_0.tar  rush_02_2      rush_02_H.tar  shell_00  Videos
+e3r11p9% tar -cvf c_00.tar c_00/*     
+c_00/ex00/
+c_00/ex00/ft_putchar.c
+c_00/ex00/ft_putchar.h
+c_00/ex00/test_ft_putchar_with_function.c
+c_00/ex00/test_ft_putchar
+c_00/ex00/a.out
+c_00/ex00/test_ft_putchar.c
+c_00/ex01/
+c_00/ex01/a.out
+c_00/ex01/test_ft_print_alphabet.c
+c_00/ex01/ft_print_alphabet.c
+c_00/ex01/test_ft_print_alphabet
+c_00/ex01/test_ft_print_alphabet_0.c
+c_00/ex02/
+c_00/ex02/test_ft_print_reverse_alphabet.c
+c_00/ex02/test_ft_print_reverse_alphabet
+c_00/ex02/test_ft_print_reverse_alphabet_0.c
+c_00/ex02/a.out
+c_00/ex02/ft_print_reverse_alphabet.c
+c_00/ex03/
+c_00/ex03/test_ft_print_numbers_0.c
+c_00/ex03/a.out
+c_00/ex03/test_ft_print_numbers
+c_00/ex03/test_ft_print_numbers.c
+c_00/ex03/ft_print_numbers.c
+c_00/ex04/
+c_00/ex04/test_ft_is_negative
+c_00/ex04/a.out
+c_00/ex04/ft_is_negative.c
+c_00/ex04/test_ft_is_negative.c
+c_00/ex04/test_ft_is_negative_0.c
+c_00/ex05/
+c_00/ex05/test_ft_print_comb.c
+c_00/ex05/a.out
+c_00/ex05/test_ft_print_comb
+c_00/ex05/ft_print_comb.c
+c_00/ex06/
+c_00/ex06/message(1).txt
+c_00/ex06/ft_print_comb2.c
+c_00/ex06/test_ft_print_comb2
+c_00/ex06/result1.txt
+c_00/ex06/test_ft_print_comb2.c
+c_00/ex06/result2.txt
+c_00/ex07/
+c_00/ex07/ft_putnbr.c
+c_00/ex07/test_ft_putnbr.c
+c_00/ex07/test_ft_putnbr
+c_00/ex08/
+c_00/ex08/test_ft_print_combn
+c_00/ex08/ft_print_combn0.c
+c_00/ex08/test_ft_print_combn.c
+c_00/ex08/result.txt
+c_00/ex08/ft_print_combn.c
+c_00/git_c_00/
+c_00/git_c_00/.git/
+c_00/git_c_00/.git/COMMIT_EDITMSG
+c_00/git_c_00/.git/HEAD
+c_00/git_c_00/.git/branches/
+c_00/git_c_00/.git/info/
+c_00/git_c_00/.git/info/exclude
+c_00/git_c_00/.git/config
+c_00/git_c_00/.git/objects/
+c_00/git_c_00/.git/objects/48/
+c_00/git_c_00/.git/objects/48/77dd299ad82437e5ead7f9be7ae3fb0a73db51
+c_00/git_c_00/.git/objects/dc/
+c_00/git_c_00/.git/objects/dc/99baa52bc2ff21f759458cae971ded49fd992f
+c_00/git_c_00/.git/objects/c6/
+c_00/git_c_00/.git/objects/c6/8ed013020b54afa37a0e20d4ef1d86d7957d29
+c_00/git_c_00/.git/objects/fc/
+c_00/git_c_00/.git/objects/fc/6bb2097e81b59b7e7b0618329f89fad6f4edff
+c_00/git_c_00/.git/objects/99/
+c_00/git_c_00/.git/objects/99/46a455c9353d3a17d836ebcefab02efd9566d1
+c_00/git_c_00/.git/objects/4c/
+c_00/git_c_00/.git/objects/4c/87a88fe0fbb7044796e2374109ee3500f073b8
+c_00/git_c_00/.git/objects/b7/
+c_00/git_c_00/.git/objects/b7/967507c97bdfa8c708156d6a37e36f073bb682
+c_00/git_c_00/.git/objects/b7/dc7dd8bb57bd0694fe60f0db6b2490a2f37f31
+c_00/git_c_00/.git/objects/ad/
+c_00/git_c_00/.git/objects/ad/556161be2765095fda04c9677ea3567bec2550
+c_00/git_c_00/.git/objects/02/
+c_00/git_c_00/.git/objects/02/0c4fc979fe180d716091e1aae7a7f7e8989602
+c_00/git_c_00/.git/objects/pack/
+c_00/git_c_00/.git/objects/64/
+c_00/git_c_00/.git/objects/64/b217cdecf109140d335cf79cc3ca3d11894aa4
+c_00/git_c_00/.git/objects/64/f019016a385f08f833482e6c74a4ac4220849d
+c_00/git_c_00/.git/objects/fa/
+c_00/git_c_00/.git/objects/fa/6576391b8676654bc4d6780db3dfce7c276849
+c_00/git_c_00/.git/objects/dd/
+c_00/git_c_00/.git/objects/dd/d842f9f5e75120a803d98b11dbb17b7991cb20
+c_00/git_c_00/.git/objects/88/
+c_00/git_c_00/.git/objects/88/20f3a7d2ba9cd756fe1c8c70864e2d09da633c
+c_00/git_c_00/.git/objects/bf/
+c_00/git_c_00/.git/objects/bf/d8007b70284ff5f4b00b19bb68162da2a7edb5
+c_00/git_c_00/.git/objects/85/
+c_00/git_c_00/.git/objects/85/e6aac8400b4df85d4efd5c70c51400d3f538b0
+c_00/git_c_00/.git/objects/c9/
+c_00/git_c_00/.git/objects/c9/de9a37d6232289a5d3bdc76f06d210fabe1df1
+c_00/git_c_00/.git/objects/07/
+c_00/git_c_00/.git/objects/07/0b13a33eb417fbe7a0588abbff699b768c12de
+c_00/git_c_00/.git/objects/info/
+c_00/git_c_00/.git/objects/44/
+c_00/git_c_00/.git/objects/44/fa9b80254db60080298df3a375b51bd8d42982
+c_00/git_c_00/.git/objects/71/
+c_00/git_c_00/.git/objects/71/e972f3eb35aaac7b57c511b5bbdb0c52342715
+c_00/git_c_00/.git/objects/71/d5389511e6feb6a427f77673473e6a23eeeb1a
+c_00/git_c_00/.git/objects/1c/
+c_00/git_c_00/.git/objects/1c/4dc66ef4929dfdf7023ef6bf30b5524c08b399
+c_00/git_c_00/.git/objects/30/
+c_00/git_c_00/.git/objects/30/c1269e9f2cab09c37ccd5fe6185ba9753b941a
+c_00/git_c_00/.git/objects/51/
+c_00/git_c_00/.git/objects/51/6bcb7d91513e87b28677afdc8f96d83a1f0655
+c_00/git_c_00/.git/objects/50/
+c_00/git_c_00/.git/objects/50/82ee7a1eba25eef2bfdcefc225cb40453874ec
+c_00/git_c_00/.git/objects/c0/
+c_00/git_c_00/.git/objects/c0/6597400ec28259942035171e31961a8091b606
+c_00/git_c_00/.git/objects/c0/f40444b570a8830bebc8e604287872683b9b61
+c_00/git_c_00/.git/objects/7b/
+c_00/git_c_00/.git/objects/7b/ce0e1ca89c0af1af054da9374c0bd22b634cb4
+c_00/git_c_00/.git/objects/26/
+c_00/git_c_00/.git/objects/26/d150aaf6b2f0ca6fda8d6fdf936bdda1c49167
+c_00/git_c_00/.git/objects/70/
+c_00/git_c_00/.git/objects/70/17c80461f163cf2eb8451b463dd0a2a670e350
+c_00/git_c_00/.git/objects/8b/
+c_00/git_c_00/.git/objects/8b/a188227467ae1ae91bcdcc17eef13a4cc2b2be
+c_00/git_c_00/.git/objects/6e/
+c_00/git_c_00/.git/objects/6e/2b2495cf76d85edc95dd5c6fd404ad340e6cb8
+c_00/git_c_00/.git/objects/0b/
+c_00/git_c_00/.git/objects/0b/96e5e3b6e54fe27012c49e8b940de1e67bc103
+c_00/git_c_00/.git/objects/81/
+c_00/git_c_00/.git/objects/81/e218f1a0a908d1a5a4e433dbc56aa848e99cb0
+c_00/git_c_00/.git/objects/18/
+c_00/git_c_00/.git/objects/18/04278ef1e99b21f08446e10526559a6d99e9cb
+c_00/git_c_00/.git/objects/69/
+c_00/git_c_00/.git/objects/69/1cc2f06b79a894e72d57a2c417c2e063178905
+c_00/git_c_00/.git/objects/90/
+c_00/git_c_00/.git/objects/90/71955430bc87c2d4cf607e4c8e01f552c23e05
+c_00/git_c_00/.git/objects/17/
+c_00/git_c_00/.git/objects/17/63257b29ffc76bb51ed4d6d30ee463907d3644
+c_00/git_c_00/.git/objects/17/4a1fa3b165f3130208a8fbaed24be367e24a87
+c_00/git_c_00/.git/objects/1b/
+c_00/git_c_00/.git/objects/1b/903d084dbc086dc2c5efd938f11677200c3873
+c_00/git_c_00/.git/objects/bb/
+c_00/git_c_00/.git/objects/bb/490cfebdad9077a7a0e32ca5ede24f50348fff
+c_00/git_c_00/.git/objects/29/
+c_00/git_c_00/.git/objects/29/f0b0e5953b44bad96dfb923ed641d37b6406f9
+c_00/git_c_00/.git/objects/e0/
+c_00/git_c_00/.git/objects/e0/dfb0a11d0f54241d05dbe7ad5efd603ebc44c3
+c_00/git_c_00/.git/objects/9d/
+c_00/git_c_00/.git/objects/9d/6c0e624f47a46f55fc010e42a788c18b49fedc
+c_00/git_c_00/.git/objects/e1/
+c_00/git_c_00/.git/objects/e1/917df7e7ad02b87f32d2163a02c50d26661d8f
+c_00/git_c_00/.git/index
+c_00/git_c_00/.git/description
+c_00/git_c_00/.git/hooks/
+c_00/git_c_00/.git/hooks/post-update.sample
+c_00/git_c_00/.git/hooks/applypatch-msg.sample
+c_00/git_c_00/.git/hooks/pre-applypatch.sample
+c_00/git_c_00/.git/hooks/pre-rebase.sample
+c_00/git_c_00/.git/hooks/pre-push.sample
+c_00/git_c_00/.git/hooks/push-to-checkout.sample
+c_00/git_c_00/.git/hooks/pre-commit.sample
+c_00/git_c_00/.git/hooks/fsmonitor-watchman.sample
+c_00/git_c_00/.git/hooks/pre-merge-commit.sample
+c_00/git_c_00/.git/hooks/commit-msg.sample
+c_00/git_c_00/.git/hooks/update.sample
+c_00/git_c_00/.git/hooks/pre-receive.sample
+c_00/git_c_00/.git/hooks/prepare-commit-msg.sample
+c_00/git_c_00/.git/logs/
+c_00/git_c_00/.git/logs/HEAD
+c_00/git_c_00/.git/logs/refs/
+c_00/git_c_00/.git/logs/refs/remotes/
+c_00/git_c_00/.git/logs/refs/remotes/origin/
+c_00/git_c_00/.git/logs/refs/remotes/origin/master
+c_00/git_c_00/.git/logs/refs/heads/
+c_00/git_c_00/.git/logs/refs/heads/master
+c_00/git_c_00/.git/refs/
+c_00/git_c_00/.git/refs/tags/
+c_00/git_c_00/.git/refs/remotes/
+c_00/git_c_00/.git/refs/remotes/origin/
+c_00/git_c_00/.git/refs/remotes/origin/master
+c_00/git_c_00/.git/refs/heads/
+c_00/git_c_00/.git/refs/heads/master
+c_00/git_c_00/ex04/
+c_00/git_c_00/ex04/ft_is_negative.c
+c_00/git_c_00/ex02/
+c_00/git_c_00/ex02/ft_print_reverse_alphabet.c
+c_00/git_c_00/ex08/
+c_00/git_c_00/ex07/
+c_00/git_c_00/ex07/ft_putnbr.c
+c_00/git_c_00/ex05/
+c_00/git_c_00/ex05/ft_print_comb.c
+c_00/git_c_00/ex00/
+c_00/git_c_00/ex00/ft_putchar.c
+c_00/git_c_00/ex03/
+c_00/git_c_00/ex03/ft_print_numbers.c
+c_00/git_c_00/ex01/
+c_00/git_c_00/ex01/ft_print_alphabet.c
+c_00/git_c_00/ex06/
+c_00/git_c_00/ex06/ft_print_comb2.c
+c_00/git_c_00_2/
+c_00/git_c_00_2/.git/
+c_00/git_c_00_2/.git/HEAD
+c_00/git_c_00_2/.git/branches/
+c_00/git_c_00_2/.git/info/
+c_00/git_c_00_2/.git/info/exclude
+c_00/git_c_00_2/.git/config
+c_00/git_c_00_2/.git/objects/
+c_00/git_c_00_2/.git/objects/pack/
+c_00/git_c_00_2/.git/objects/info/
+c_00/git_c_00_2/.git/description
+c_00/git_c_00_2/.git/hooks/
+c_00/git_c_00_2/.git/hooks/post-update.sample
+c_00/git_c_00_2/.git/hooks/applypatch-msg.sample
+c_00/git_c_00_2/.git/hooks/pre-applypatch.sample
+c_00/git_c_00_2/.git/hooks/pre-rebase.sample
+c_00/git_c_00_2/.git/hooks/pre-push.sample
+c_00/git_c_00_2/.git/hooks/push-to-checkout.sample
+c_00/git_c_00_2/.git/hooks/pre-commit.sample
+c_00/git_c_00_2/.git/hooks/fsmonitor-watchman.sample
+c_00/git_c_00_2/.git/hooks/pre-merge-commit.sample
+c_00/git_c_00_2/.git/hooks/commit-msg.sample
+c_00/git_c_00_2/.git/hooks/update.sample
+c_00/git_c_00_2/.git/hooks/pre-receive.sample
+c_00/git_c_00_2/.git/hooks/prepare-commit-msg.sample
+c_00/git_c_00_2/.git/refs/
+c_00/git_c_00_2/.git/refs/tags/
+c_00/git_c_00_2/.git/refs/heads/
+c_00/git_c_00_2/ex04/
+c_00/git_c_00_2/ex04/ft_is_negative.c
+c_00/git_c_00_2/ex02/
+c_00/git_c_00_2/ex02/ft_print_reverse_alphabet.c
+c_00/git_c_00_2/ex07/
+c_00/git_c_00_2/ex07/ft_putnbr.c
+c_00/git_c_00_2/ex05/
+c_00/git_c_00_2/ex05/ft_print_comb.c
+c_00/git_c_00_2/ex00/
+c_00/git_c_00_2/ex00/ft_putchar.c
+c_00/git_c_00_2/ex03/
+c_00/git_c_00_2/ex03/ft_print_numbers.c
+c_00/git_c_00_2/ex01/
+c_00/git_c_00_2/ex01/ft_print_alphabet.c
+c_00/git_c_00_2/ex06/
+c_00/git_c_00_2/ex06/ft_print_comb2.c
+c_00/notamr-a/
+c_00/notamr-a/.git/
+c_00/notamr-a/.git/packed-refs
+c_00/notamr-a/.git/HEAD
+c_00/notamr-a/.git/branches/
+c_00/notamr-a/.git/info/
+c_00/notamr-a/.git/info/exclude
+c_00/notamr-a/.git/config
+c_00/notamr-a/.git/objects/
+c_00/notamr-a/.git/objects/pack/
+c_00/notamr-a/.git/objects/pack/pack-1603f4f11973c7c1185c3607e0c4e2e21f853ff4.pack
+c_00/notamr-a/.git/objects/pack/pack-1603f4f11973c7c1185c3607e0c4e2e21f853ff4.idx
+c_00/notamr-a/.git/objects/info/
+c_00/notamr-a/.git/index
+c_00/notamr-a/.git/description
+c_00/notamr-a/.git/hooks/
+c_00/notamr-a/.git/hooks/post-update.sample
+c_00/notamr-a/.git/hooks/applypatch-msg.sample
+c_00/notamr-a/.git/hooks/pre-applypatch.sample
+c_00/notamr-a/.git/hooks/pre-rebase.sample
+c_00/notamr-a/.git/hooks/pre-push.sample
+c_00/notamr-a/.git/hooks/push-to-checkout.sample
+c_00/notamr-a/.git/hooks/pre-commit.sample
+c_00/notamr-a/.git/hooks/fsmonitor-watchman.sample
+c_00/notamr-a/.git/hooks/pre-merge-commit.sample
+c_00/notamr-a/.git/hooks/commit-msg.sample
+c_00/notamr-a/.git/hooks/update.sample
+c_00/notamr-a/.git/hooks/pre-receive.sample
+c_00/notamr-a/.git/hooks/prepare-commit-msg.sample
+c_00/notamr-a/.git/logs/
+c_00/notamr-a/.git/logs/HEAD
+c_00/notamr-a/.git/logs/refs/
+c_00/notamr-a/.git/logs/refs/remotes/
+c_00/notamr-a/.git/logs/refs/remotes/origin/
+c_00/notamr-a/.git/logs/refs/remotes/origin/HEAD
+c_00/notamr-a/.git/logs/refs/heads/
+c_00/notamr-a/.git/logs/refs/heads/master
+c_00/notamr-a/.git/refs/
+c_00/notamr-a/.git/refs/tags/
+c_00/notamr-a/.git/refs/remotes/
+c_00/notamr-a/.git/refs/remotes/origin/
+c_00/notamr-a/.git/refs/remotes/origin/HEAD
+c_00/notamr-a/.git/refs/heads/
+c_00/notamr-a/.git/refs/heads/master
+c_00/notamr-a/ft_putchar.c
+c_00/notamr-a/ft_comb2.c
+c_00/notamr-a/ft_putchar2.c
+c_00/notamr-a/ft_is_negative.c
+c_00/notamr-a/ft_printcomb2.c
+c_00/notamr-a/ft_putnbr.c
+c_00/notamr-a/ft_print_alphabet.c
+c_00/notamr-a/ft_print_comb.c
+c_00/notamr-a/ft_print_reverse_alphabet.c
+c_00/notamr-a/testNour
+e3r11p9% tar -cvf c_01.tar c_01/* 
+c_01/ex00/
+c_01/ex00/test_ft_ft_2.c
+c_01/ex00/test_ft_ft_2
+c_01/ex00/test_ft_ft.c
+c_01/ex00/ft_ft.c
+c_01/ex00/test_ft_ft
+c_01/ex01/
+c_01/ex01/ft_ultimate_ft.c
+c_01/ex01/test_ft_ultimate_ft.c
+c_01/ex01/test_ft_ultimate_ft
+c_01/ex02/
+c_01/ex02/ft_swap.c
+c_01/ex02/test_ft_swap.c
+c_01/ex02/test_ft_swap
+c_01/ex03/
+c_01/ex03/ft_div_mod.c
+c_01/ex03/test_ft_div_mod.c
+c_01/ex03/test_ft_div_mod
+c_01/ex04/
+c_01/ex04/test_ft_ultimate_div_mod.c
+c_01/ex04/test_ft_ultimate_div_mod
+c_01/ex04/ft_ultimate_div_mod.c
+c_01/ex05/
+c_01/ex05/test_ft_putstr
+c_01/ex05/ft_putstr.c
+c_01/ex05/test_ft_putstr.c
+c_01/ex06/
+c_01/ex06/test_ft_strlen
+c_01/ex06/ft_strlen.c
+c_01/ex06/test_ft_strlen.c
+c_01/ex07/
+c_01/ex07/test_ft_rev_int_tab
+c_01/ex07/ft_rev_int_tab.c
+c_01/ex07/test_ft_rev_int_tab.c
+c_01/ex08/
+c_01/ex08/test_ft_sort_int_tab.c
+c_01/ex08/test_ft_sort_int_tab
+c_01/ex08/ft_sort_int_tab.c
+c_01/git_c_01/
+c_01/git_c_01/.git/
+c_01/git_c_01/.git/COMMIT_EDITMSG
+c_01/git_c_01/.git/HEAD
+c_01/git_c_01/.git/branches/
+c_01/git_c_01/.git/info/
+c_01/git_c_01/.git/info/exclude
+c_01/git_c_01/.git/config
+c_01/git_c_01/.git/objects/
+c_01/git_c_01/.git/objects/f8/
+c_01/git_c_01/.git/objects/f8/42f6d4c4ce0fcfa18d31371e9b18c4c868352f
+c_01/git_c_01/.git/objects/c6/
+c_01/git_c_01/.git/objects/c6/7e16d982fca4a20af3e19fa287acf7e00e8a2d
+c_01/git_c_01/.git/objects/df/
+c_01/git_c_01/.git/objects/df/72278e7b7997b7d6f25332cc28b4ba3cb2cf4e
+c_01/git_c_01/.git/objects/20/
+c_01/git_c_01/.git/objects/20/4e237ec6afc587b85a76b2ba0215cc18262754
+c_01/git_c_01/.git/objects/pack/
+c_01/git_c_01/.git/objects/3e/
+c_01/git_c_01/.git/objects/3e/66c1be5235573d62137aabfcb5e845a1074724
+c_01/git_c_01/.git/objects/3e/f44b3a3322d2418f0d79553a856ef0f7a81c4a
+c_01/git_c_01/.git/objects/c1/
+c_01/git_c_01/.git/objects/c1/eb81da05d77b54f9f4dadbb12c9718720f796c
+c_01/git_c_01/.git/objects/39/
+c_01/git_c_01/.git/objects/39/088dc03b8ff0ef517daf695712aabb7f69aca9
+c_01/git_c_01/.git/objects/bf/
+c_01/git_c_01/.git/objects/bf/91b6433b54920890d9c78ff8017eabd57e03a6
+c_01/git_c_01/.git/objects/b2/
+c_01/git_c_01/.git/objects/b2/293e5769a53b450810bca7f38b79b52ed3f491
+c_01/git_c_01/.git/objects/67/
+c_01/git_c_01/.git/objects/67/2ad673589bc5bb45c751033e0bca45ad7d97f2
+c_01/git_c_01/.git/objects/01/
+c_01/git_c_01/.git/objects/01/99284fc56d86bcf4fe8e09bd9bc24399e8863a
+c_01/git_c_01/.git/objects/info/
+c_01/git_c_01/.git/objects/1c/
+c_01/git_c_01/.git/objects/1c/c289008fc2e64acd71cfab38a372accbbdd0e5
+c_01/git_c_01/.git/objects/2b/
+c_01/git_c_01/.git/objects/2b/d57cdcddeaff1fb198b2e0bd20e0f785757827
+c_01/git_c_01/.git/objects/2b/3d9182ca12988bbb67dcac18dbbe477bd78552
+c_01/git_c_01/.git/objects/d8/
+c_01/git_c_01/.git/objects/d8/68fd308034440102737947f473ee9cfed9e8de
+c_01/git_c_01/.git/objects/60/
+c_01/git_c_01/.git/objects/60/69af0034da6805ab0f029d51ff58f82b0171ef
+c_01/git_c_01/.git/objects/c0/
+c_01/git_c_01/.git/objects/c0/c1cff758825d9f70b7e4d672c2e48a9cb1a9cc
+c_01/git_c_01/.git/objects/7b/
+c_01/git_c_01/.git/objects/7b/a8af65be7b0b58e362f9bdf148c1ca296a9277
+c_01/git_c_01/.git/objects/9a/
+c_01/git_c_01/.git/objects/9a/abe603852809a233224d768b95dff02634ac70
+c_01/git_c_01/.git/objects/9c/
+c_01/git_c_01/.git/objects/9c/9558d61523f14b35a7308863c763fcafac8609
+c_01/git_c_01/.git/objects/4e/
+c_01/git_c_01/.git/objects/4e/876efbb10be5319624d41e0cf40c57b4346385
+c_01/git_c_01/.git/objects/09/
+c_01/git_c_01/.git/objects/09/3bbcb19847284ca2f3702b36a1d03ad92e0ec3
+c_01/git_c_01/.git/objects/81/
+c_01/git_c_01/.git/objects/81/20115b6b67752fafdec112690f8c4086664b14
+c_01/git_c_01/.git/objects/18/
+c_01/git_c_01/.git/objects/18/87d30658d6240156c7eaf88b3b8e25e1663953
+c_01/git_c_01/.git/objects/fe/
+c_01/git_c_01/.git/objects/fe/ac61ba5cc8460b84692947541f49c4b4252441
+c_01/git_c_01/.git/objects/69/
+c_01/git_c_01/.git/objects/69/84dda5ee141d4fb102b8eeb1d0c07db2768659
+c_01/git_c_01/.git/objects/f9/
+c_01/git_c_01/.git/objects/f9/a0311dcd2274e9739a8f1546dfdcb9b319dbc8
+c_01/git_c_01/.git/objects/af/
+c_01/git_c_01/.git/objects/af/c3b9c80f02a7396cc71c01bc78eacd2e18897e
+c_01/git_c_01/.git/objects/b8/
+c_01/git_c_01/.git/objects/b8/0d9d745aa24ab9e336bc1763940e5c14909d35
+c_01/git_c_01/.git/objects/66/
+c_01/git_c_01/.git/objects/66/5d344ce4211644f5b802d08c1cb276e7241b12
+c_01/git_c_01/.git/objects/9d/
+c_01/git_c_01/.git/objects/9d/fc2f1ef39d28427778c6bdf5a74063e1cbda08
+c_01/git_c_01/.git/objects/82/
+c_01/git_c_01/.git/objects/82/bf39b1851edb12ffccf5ae6fa9b6aa54530549
+c_01/git_c_01/.git/objects/82/cd6907097293c428bdc025aa988cdf827972e0
+c_01/git_c_01/.git/objects/4f/
+c_01/git_c_01/.git/objects/4f/625fbe1984bea10ccda59a8dc059a00c0e678c
+c_01/git_c_01/.git/objects/4f/5b1be090afc5c9bcf295d995f49b332341eeb3
+c_01/git_c_01/.git/index
+c_01/git_c_01/.git/description
+c_01/git_c_01/.git/hooks/
+c_01/git_c_01/.git/hooks/post-update.sample
+c_01/git_c_01/.git/hooks/applypatch-msg.sample
+c_01/git_c_01/.git/hooks/pre-applypatch.sample
+c_01/git_c_01/.git/hooks/pre-rebase.sample
+c_01/git_c_01/.git/hooks/pre-push.sample
+c_01/git_c_01/.git/hooks/push-to-checkout.sample
+c_01/git_c_01/.git/hooks/pre-commit.sample
+c_01/git_c_01/.git/hooks/fsmonitor-watchman.sample
+c_01/git_c_01/.git/hooks/pre-merge-commit.sample
+c_01/git_c_01/.git/hooks/commit-msg.sample
+c_01/git_c_01/.git/hooks/update.sample
+c_01/git_c_01/.git/hooks/pre-receive.sample
+c_01/git_c_01/.git/hooks/prepare-commit-msg.sample
+c_01/git_c_01/.git/logs/
+c_01/git_c_01/.git/logs/HEAD
+c_01/git_c_01/.git/logs/refs/
+c_01/git_c_01/.git/logs/refs/remotes/
+c_01/git_c_01/.git/logs/refs/remotes/origin/
+c_01/git_c_01/.git/logs/refs/remotes/origin/master
+c_01/git_c_01/.git/logs/refs/heads/
+c_01/git_c_01/.git/logs/refs/heads/master
+c_01/git_c_01/.git/refs/
+c_01/git_c_01/.git/refs/tags/
+c_01/git_c_01/.git/refs/remotes/
+c_01/git_c_01/.git/refs/remotes/origin/
+c_01/git_c_01/.git/refs/remotes/origin/master
+c_01/git_c_01/.git/refs/heads/
+c_01/git_c_01/.git/refs/heads/master
+c_01/git_c_01/ex04/
+c_01/git_c_01/ex04/ft_ultimate_div_mod.c
+c_01/git_c_01/ex02/
+c_01/git_c_01/ex02/ft_swap.c
+c_01/git_c_01/ex08/
+c_01/git_c_01/ex08/ft_sort_int_tab.c
+c_01/git_c_01/ex07/
+c_01/git_c_01/ex07/ft_rev_int_tab.c
+c_01/git_c_01/ex05/
+c_01/git_c_01/ex05/ft_putstr.c
+c_01/git_c_01/ex00/
+c_01/git_c_01/ex00/ft_ft.c
+c_01/git_c_01/ex03/
+c_01/git_c_01/ex03/ft_div_mod.c
+c_01/git_c_01/ex01/
+c_01/git_c_01/ex01/ft_ultimate_ft.c
+c_01/git_c_01/ex06/
+c_01/git_c_01/ex06/ft_strlen.c
+e3r11p9% tar -cvf c_02.tar c_02/* 
+c_02/ex00/
+c_02/ex00/test_ft_strcpy.c
+c_02/ex00/test_strcpy.c
+c_02/ex00/test_ft_strcpy
+c_02/ex00/ft_strcpy.c
+c_02/ex00/test_strcpy
+c_02/ex01/
+c_02/ex01/test_ft_strncpy
+c_02/ex01/ft_strncpy.c
+c_02/ex01/test_ft_strncpy.c
+c_02/ex02/
+c_02/ex02/test_ft_str_is_alpha
+c_02/ex02/ft_str_is_alpha.c
+c_02/ex02/test_ft_str_is_alpha.c
+c_02/ex03/
+c_02/ex03/test_ft_str_is_numeric.c
+c_02/ex03/test_ft_str_is_numeric
+c_02/ex03/ft_str_is_numeric.c
+c_02/ex04/
+c_02/ex04/test_ft_str_is_lowercase.c
+c_02/ex04/ft_str_is_lowercase.c
+c_02/ex04/test_ft_str_is_lowercase
+c_02/ex05/
+c_02/ex05/ft_str_is_uppercase.c
+c_02/ex05/test_ft_str_is_uppercase
+c_02/ex05/test_ft_str_is_uppercase.c
+c_02/ex06/
+c_02/ex06/ft_str_is_printable.c
+c_02/ex06/test_ft_str_is_printable
+c_02/ex06/test_ft_str_is_printable.c
+c_02/ex07/
+c_02/ex07/ft_strupcase_with_malloc.c
+c_02/ex07/ft_strupcase.c
+c_02/ex07/test_ft_strupcase
+c_02/ex07/test_ft_strupcase_with_malloc
+c_02/ex07/test_ft_strupcase.c
+c_02/ex07/test_ft_strupcase_with_malloc.c
+c_02/ex08/
+c_02/ex08/test_ft_strlowcase_with_malloc.c
+c_02/ex08/test_ft_strlowcase_with_malloc
+c_02/ex08/test_ft_strlowcase.c
+c_02/ex08/ft_strlowcase_with_malloc.c
+c_02/ex08/ft_strlowcase.c
+c_02/ex08/test_ft_strlowcase
+c_02/ex09/
+c_02/ex09/test_ft_strcapitalize.c
+c_02/ex09/test_ft_strcapitalize_with_malloc
+c_02/ex09/ft_strcapitalize_with_malloc.c
+c_02/ex09/test_ft_strcapitalize_with_malloc.c
+c_02/ex09/test_ft_strcapitalize
+c_02/ex09/ft_strcapitalize.c
+c_02/ex10/
+c_02/ex10/test_ft_strlcpy
+c_02/ex10/test_ft_strlcpy.c
+c_02/ex10/ft_strlcpy.c
+c_02/ex11/
+c_02/ex11/ft_putstr_non_printable.c
+c_02/ex11/test_ft_putstr_non_printable
+c_02/ex11/test_ft_putstr_non_printable.c
+c_02/ex12/
+c_02/ex12/ft_print_memory.c
+c_02/git_c_02/
+c_02/git_c_02/ex09/
+c_02/git_c_02/ex09/ft_strcapitalize.c
+c_02/git_c_02/.git/
+c_02/git_c_02/.git/COMMIT_EDITMSG
+c_02/git_c_02/.git/HEAD
+c_02/git_c_02/.git/branches/
+c_02/git_c_02/.git/info/
+c_02/git_c_02/.git/info/exclude
+c_02/git_c_02/.git/config
+c_02/git_c_02/.git/objects/
+c_02/git_c_02/.git/objects/79/
+c_02/git_c_02/.git/objects/79/df68cc80171cf8c9457aac8a2cedc521d4bd42
+c_02/git_c_02/.git/objects/dc/
+c_02/git_c_02/.git/objects/dc/0a0387611f79b8cb7226bdeb17a153fa7c2fa7
+c_02/git_c_02/.git/objects/dc/f755e38ef52b91f3716f4463fa99cc7a496927
+c_02/git_c_02/.git/objects/d2/
+c_02/git_c_02/.git/objects/d2/422e38e96abe62c14b635f6159e4cbb2f76791
+c_02/git_c_02/.git/objects/15/
+c_02/git_c_02/.git/objects/15/c8b4a0cf43d58d93460f053b90ea0e40561d3a
+c_02/git_c_02/.git/objects/d9/
+c_02/git_c_02/.git/objects/d9/e451140ffd95607407fdbfacc0146314a2a6fb
+c_02/git_c_02/.git/objects/ce/
+c_02/git_c_02/.git/objects/ce/f44e5a802f19b4c5b825b7c690a1e1a3ae3d5e
+c_02/git_c_02/.git/objects/f1/
+c_02/git_c_02/.git/objects/f1/d4394c5458d31066f6d6c9535a1ecf97659331
+c_02/git_c_02/.git/objects/a6/
+c_02/git_c_02/.git/objects/a6/1a943968565bd024ba88b428647d2737bf2e44
+c_02/git_c_02/.git/objects/62/
+c_02/git_c_02/.git/objects/62/5f6b4d15a41682e102cf66ff6190bef9939615
+c_02/git_c_02/.git/objects/20/
+c_02/git_c_02/.git/objects/20/464e211bc6f476aef50a95d6e43428ed97cce9
+c_02/git_c_02/.git/objects/1a/
+c_02/git_c_02/.git/objects/1a/2c813f8bba2a1268ec2bdae72b74c2c5225077
+c_02/git_c_02/.git/objects/da/
+c_02/git_c_02/.git/objects/da/e84169dd6c63fe8b24518e036891b44b8a4dd7
+c_02/git_c_02/.git/objects/02/
+c_02/git_c_02/.git/objects/02/e478c7b38eead8dc155c4d98ec8f461df9f262
+c_02/git_c_02/.git/objects/6d/
+c_02/git_c_02/.git/objects/6d/2b1174f1aad6118a032e566e0d0fbfd860031d
+c_02/git_c_02/.git/objects/pack/
+c_02/git_c_02/.git/objects/3e/
+c_02/git_c_02/.git/objects/3e/966ab52c7efab484735a7e2cd42a3f0db2b674
+c_02/git_c_02/.git/objects/c1/
+c_02/git_c_02/.git/objects/c1/3a6e7dd77d81ddd3f11a34334d572acaab597a
+c_02/git_c_02/.git/objects/fa/
+c_02/git_c_02/.git/objects/fa/c5abdade9ba32d65b97c250f55aadc110cc85c
+c_02/git_c_02/.git/objects/fa/4994800efb70f69f2ef2dd8a16654107450334
+c_02/git_c_02/.git/objects/39/
+c_02/git_c_02/.git/objects/39/04239f40b7d0a888d99048efbf4698a814eb46
+c_02/git_c_02/.git/objects/info/
+c_02/git_c_02/.git/objects/1c/
+c_02/git_c_02/.git/objects/1c/9ab56a7d2b5840ad643d3dd13202a297e67918
+c_02/git_c_02/.git/objects/93/
+c_02/git_c_02/.git/objects/93/7d1b7cab3682baa9b833e465eaeaef02efa952
+c_02/git_c_02/.git/objects/93/4aeb59d4ef2fd916b67643e53c60309ff83920
+c_02/git_c_02/.git/objects/51/
+c_02/git_c_02/.git/objects/51/6c7276bae6f63a98b796f863788da989df1396
+c_02/git_c_02/.git/objects/83/
+c_02/git_c_02/.git/objects/83/c4a0579a97f1227ae729085ee1ba49df52a715
+c_02/git_c_02/.git/objects/2a/
+c_02/git_c_02/.git/objects/2a/6b211dbecd416c1f822082ae753a29544a92cf
+c_02/git_c_02/.git/objects/2a/27d71c3179e0cf9c368bd12d1b27679b5a1069
+c_02/git_c_02/.git/objects/ed/
+c_02/git_c_02/.git/objects/ed/e4c7f44b8953b6384ceb5a7662f910bfbc7bf5
+c_02/git_c_02/.git/objects/9a/
+c_02/git_c_02/.git/objects/9a/1c9ad85dde488fffada102bb6821e39abd9f46
+c_02/git_c_02/.git/objects/9c/
+c_02/git_c_02/.git/objects/9c/5b9ddb0f4eef486d6d8f88a06893cde4b19e23
+c_02/git_c_02/.git/objects/33/
+c_02/git_c_02/.git/objects/33/e8ed4e1a047e5163d28b5c3b4c46be9774b4e7
+c_02/git_c_02/.git/objects/ba/
+c_02/git_c_02/.git/objects/ba/cab8503c9d05996b6ab0614be44058555e6fe1
+c_02/git_c_02/.git/objects/b9/
+c_02/git_c_02/.git/objects/b9/65851ff6f103a66dbcc23a50b0705d41569a9f
+c_02/git_c_02/.git/objects/52/
+c_02/git_c_02/.git/objects/52/fb590a4f0d6905625efa28b212b7a038b0d496
+c_02/git_c_02/.git/objects/c5/
+c_02/git_c_02/.git/objects/c5/231d7537df68bfa497e1ff838d3ecc0576f0c8
+c_02/git_c_02/.git/objects/6c/
+c_02/git_c_02/.git/objects/6c/fa3f35a87805ff8ca8859f506f630e3fe5e3c9
+c_02/git_c_02/.git/objects/05/
+c_02/git_c_02/.git/objects/05/f73201c082a01ac026a3ca79775d3bdffa89ba
+c_02/git_c_02/.git/objects/05/25045c269e08286a95ae05779fbab10183c4b2
+c_02/git_c_02/.git/objects/b8/
+c_02/git_c_02/.git/objects/b8/fe2faca5bef4e2c2465b0cafff3fb4f9882fe4
+c_02/git_c_02/.git/objects/0e/
+c_02/git_c_02/.git/objects/0e/ceb38ec2fd39f4376fbae1c495dd0ab3e94e32
+c_02/git_c_02/.git/objects/43/
+c_02/git_c_02/.git/objects/43/1da8d1cfae1185623423b511d3310b67f106df
+c_02/git_c_02/.git/objects/68/
+c_02/git_c_02/.git/objects/68/3723a27b1e8f9a696848147e2aea2a41272f51
+c_02/git_c_02/.git/objects/4b/
+c_02/git_c_02/.git/objects/4b/8b4bd3e2926f463fa3c1ca814037c24045bc46
+c_02/git_c_02/.git/objects/b0/
+c_02/git_c_02/.git/objects/b0/12422c07cf8ceddaa41ee8306de73f5b79bfb7
+c_02/git_c_02/.git/objects/82/
+c_02/git_c_02/.git/objects/82/744300fc744bd204cc1b8d8419bf83ce889d10
+c_02/git_c_02/.git/objects/65/
+c_02/git_c_02/.git/objects/65/499c9194707f5c3f3d65dfefef84185e4c41b9
+c_02/git_c_02/.git/objects/65/f4b17111fb2eb1afc6d246b822213da9c15ec4
+c_02/git_c_02/.git/objects/e1/
+c_02/git_c_02/.git/objects/e1/d563b7d9e76d52ade4c744f13c79b2e65ca85e
+c_02/git_c_02/.git/index
+c_02/git_c_02/.git/description
+c_02/git_c_02/.git/hooks/
+c_02/git_c_02/.git/hooks/post-update.sample
+c_02/git_c_02/.git/hooks/applypatch-msg.sample
+c_02/git_c_02/.git/hooks/pre-applypatch.sample
+c_02/git_c_02/.git/hooks/pre-rebase.sample
+c_02/git_c_02/.git/hooks/pre-push.sample
+c_02/git_c_02/.git/hooks/push-to-checkout.sample
+c_02/git_c_02/.git/hooks/pre-commit.sample
+c_02/git_c_02/.git/hooks/fsmonitor-watchman.sample
+c_02/git_c_02/.git/hooks/pre-merge-commit.sample
+c_02/git_c_02/.git/hooks/commit-msg.sample
+c_02/git_c_02/.git/hooks/update.sample
+c_02/git_c_02/.git/hooks/pre-receive.sample
+c_02/git_c_02/.git/hooks/prepare-commit-msg.sample
+c_02/git_c_02/.git/logs/
+c_02/git_c_02/.git/logs/HEAD
+c_02/git_c_02/.git/logs/refs/
+c_02/git_c_02/.git/logs/refs/remotes/
+c_02/git_c_02/.git/logs/refs/remotes/origin/
+c_02/git_c_02/.git/logs/refs/remotes/origin/master
+c_02/git_c_02/.git/logs/refs/heads/
+c_02/git_c_02/.git/logs/refs/heads/master
+c_02/git_c_02/.git/refs/
+c_02/git_c_02/.git/refs/tags/
+c_02/git_c_02/.git/refs/remotes/
+c_02/git_c_02/.git/refs/remotes/origin/
+c_02/git_c_02/.git/refs/remotes/origin/master
+c_02/git_c_02/.git/refs/heads/
+c_02/git_c_02/.git/refs/heads/master
+c_02/git_c_02/ex04/
+c_02/git_c_02/ex04/ft_str_is_lowercase.c
+c_02/git_c_02/ex02/
+c_02/git_c_02/ex02/ft_str_is_alpha.c
+c_02/git_c_02/ex11/
+c_02/git_c_02/ex11/ft_putstr_non_printable.c
+c_02/git_c_02/ex08/
+c_02/git_c_02/ex08/ft_strlowcase.c
+c_02/git_c_02/ex07/
+c_02/git_c_02/ex07/ft_strupcase.c
+c_02/git_c_02/ex05/
+c_02/git_c_02/ex05/ft_str_is_uppercase.c
+c_02/git_c_02/ex10/
+c_02/git_c_02/ex10/ft_strlcpy.c
+c_02/git_c_02/ex00/
+c_02/git_c_02/ex03/
+c_02/git_c_02/ex03/ft_str_is_numeric.c
+c_02/git_c_02/ex12/
+c_02/git_c_02/ex01/
+c_02/git_c_02/ex01/ft_strncpy.c
+c_02/git_c_02/ex06/
+c_02/git_c_02/ex06/ft_str_is_printable.c
+c_02/git_c_02_2/
+c_02/git_c_02_2/ex09/
+c_02/git_c_02_2/ex09/ft_strcapitalize.c
+c_02/git_c_02_2/.git/
+c_02/git_c_02_2/.git/COMMIT_EDITMSG
+c_02/git_c_02_2/.git/HEAD
+c_02/git_c_02_2/.git/branches/
+c_02/git_c_02_2/.git/info/
+c_02/git_c_02_2/.git/info/exclude
+c_02/git_c_02_2/.git/config
+c_02/git_c_02_2/.git/objects/
+c_02/git_c_02_2/.git/objects/dc/
+c_02/git_c_02_2/.git/objects/dc/0a0387611f79b8cb7226bdeb17a153fa7c2fa7
+c_02/git_c_02_2/.git/objects/d2/
+c_02/git_c_02_2/.git/objects/d2/422e38e96abe62c14b635f6159e4cbb2f76791
+c_02/git_c_02_2/.git/objects/ce/
+c_02/git_c_02_2/.git/objects/ce/f44e5a802f19b4c5b825b7c690a1e1a3ae3d5e
+c_02/git_c_02_2/.git/objects/62/
+c_02/git_c_02_2/.git/objects/62/b1a211ff9945c2c387256185fac56537241d83
+c_02/git_c_02_2/.git/objects/ad/
+c_02/git_c_02_2/.git/objects/ad/0c4fff246a906b9f0ebb430e526c306ed94dcf
+c_02/git_c_02_2/.git/objects/02/
+c_02/git_c_02_2/.git/objects/02/e478c7b38eead8dc155c4d98ec8f461df9f262
+c_02/git_c_02_2/.git/objects/6d/
+c_02/git_c_02_2/.git/objects/6d/2b1174f1aad6118a032e566e0d0fbfd860031d
+c_02/git_c_02_2/.git/objects/pack/
+c_02/git_c_02_2/.git/objects/3e/
+c_02/git_c_02_2/.git/objects/3e/966ab52c7efab484735a7e2cd42a3f0db2b674
+c_02/git_c_02_2/.git/objects/41/
+c_02/git_c_02_2/.git/objects/41/7a001c12dc0dfd4b00dbf9936fa7abd39b8078
+c_02/git_c_02_2/.git/objects/c1/
+c_02/git_c_02_2/.git/objects/c1/3a6e7dd77d81ddd3f11a34334d572acaab597a
+c_02/git_c_02_2/.git/objects/info/
+c_02/git_c_02_2/.git/objects/44/
+c_02/git_c_02_2/.git/objects/44/abd93631fe428dffa5d5c07d41cde0126e1784
+c_02/git_c_02_2/.git/objects/1c/
+c_02/git_c_02_2/.git/objects/1c/9ab56a7d2b5840ad643d3dd13202a297e67918
+c_02/git_c_02_2/.git/objects/93/
+c_02/git_c_02_2/.git/objects/93/4aeb59d4ef2fd916b67643e53c60309ff83920
+c_02/git_c_02_2/.git/objects/51/
+c_02/git_c_02_2/.git/objects/51/6c7276bae6f63a98b796f863788da989df1396
+c_02/git_c_02_2/.git/objects/2a/
+c_02/git_c_02_2/.git/objects/2a/6b211dbecd416c1f822082ae753a29544a92cf
+c_02/git_c_02_2/.git/objects/9a/
+c_02/git_c_02_2/.git/objects/9a/1c9ad85dde488fffada102bb6821e39abd9f46
+c_02/git_c_02_2/.git/objects/33/
+c_02/git_c_02_2/.git/objects/33/e8ed4e1a047e5163d28b5c3b4c46be9774b4e7
+c_02/git_c_02_2/.git/objects/ba/
+c_02/git_c_02_2/.git/objects/ba/cab8503c9d05996b6ab0614be44058555e6fe1
+c_02/git_c_02_2/.git/objects/b9/
+c_02/git_c_02_2/.git/objects/b9/65851ff6f103a66dbcc23a50b0705d41569a9f
+c_02/git_c_02_2/.git/objects/52/
+c_02/git_c_02_2/.git/objects/52/fb590a4f0d6905625efa28b212b7a038b0d496
+c_02/git_c_02_2/.git/objects/c5/
+c_02/git_c_02_2/.git/objects/c5/231d7537df68bfa497e1ff838d3ecc0576f0c8
+c_02/git_c_02_2/.git/objects/05/
+c_02/git_c_02_2/.git/objects/05/f73201c082a01ac026a3ca79775d3bdffa89ba
+c_02/git_c_02_2/.git/objects/43/
+c_02/git_c_02_2/.git/objects/43/1da8d1cfae1185623423b511d3310b67f106df
+c_02/git_c_02_2/.git/objects/4b/
+c_02/git_c_02_2/.git/objects/4b/8b4bd3e2926f463fa3c1ca814037c24045bc46
+c_02/git_c_02_2/.git/objects/82/
+c_02/git_c_02_2/.git/objects/82/744300fc744bd204cc1b8d8419bf83ce889d10
+c_02/git_c_02_2/.git/objects/65/
+c_02/git_c_02_2/.git/objects/65/499c9194707f5c3f3d65dfefef84185e4c41b9
+c_02/git_c_02_2/.git/index
+c_02/git_c_02_2/.git/description
+c_02/git_c_02_2/.git/hooks/
+c_02/git_c_02_2/.git/hooks/post-update.sample
+c_02/git_c_02_2/.git/hooks/applypatch-msg.sample
+c_02/git_c_02_2/.git/hooks/pre-applypatch.sample
+c_02/git_c_02_2/.git/hooks/pre-rebase.sample
+c_02/git_c_02_2/.git/hooks/pre-push.sample
+c_02/git_c_02_2/.git/hooks/push-to-checkout.sample
+c_02/git_c_02_2/.git/hooks/pre-commit.sample
+c_02/git_c_02_2/.git/hooks/fsmonitor-watchman.sample
+c_02/git_c_02_2/.git/hooks/pre-merge-commit.sample
+c_02/git_c_02_2/.git/hooks/commit-msg.sample
+c_02/git_c_02_2/.git/hooks/update.sample
+c_02/git_c_02_2/.git/hooks/pre-receive.sample
+c_02/git_c_02_2/.git/hooks/prepare-commit-msg.sample
+c_02/git_c_02_2/.git/logs/
+c_02/git_c_02_2/.git/logs/HEAD
+c_02/git_c_02_2/.git/logs/refs/
+c_02/git_c_02_2/.git/logs/refs/remotes/
+c_02/git_c_02_2/.git/logs/refs/remotes/origin/
+c_02/git_c_02_2/.git/logs/refs/remotes/origin/master
+c_02/git_c_02_2/.git/logs/refs/heads/
+c_02/git_c_02_2/.git/logs/refs/heads/master
+c_02/git_c_02_2/.git/refs/
+c_02/git_c_02_2/.git/refs/tags/
+c_02/git_c_02_2/.git/refs/remotes/
+c_02/git_c_02_2/.git/refs/remotes/origin/
+c_02/git_c_02_2/.git/refs/remotes/origin/master
+c_02/git_c_02_2/.git/refs/heads/
+c_02/git_c_02_2/.git/refs/heads/master
+c_02/git_c_02_2/ex04/
+c_02/git_c_02_2/ex04/ft_str_is_lowercase.c
+c_02/git_c_02_2/ex02/
+c_02/git_c_02_2/ex02/ft_str_is_alpha.c
+c_02/git_c_02_2/ex11/
+c_02/git_c_02_2/ex11/ft_putstr_non_printable.c
+c_02/git_c_02_2/ex08/
+c_02/git_c_02_2/ex08/ft_strlowcase.c
+c_02/git_c_02_2/ex07/
+c_02/git_c_02_2/ex07/ft_strupcase.c
+c_02/git_c_02_2/ex05/
+c_02/git_c_02_2/ex05/ft_str_is_uppercase.c
+c_02/git_c_02_2/ex10/
+c_02/git_c_02_2/ex10/ft_strlcpy.c
+c_02/git_c_02_2/ex00/
+c_02/git_c_02_2/ex00/ft_strcpy.c
+c_02/git_c_02_2/ex03/
+c_02/git_c_02_2/ex03/ft_str_is_numeric.c
+c_02/git_c_02_2/ex01/
+c_02/git_c_02_2/ex01/ft_strncpy.c
+c_02/git_c_02_2/ex06/
+c_02/git_c_02_2/ex06/ft_str_is_printable.c
+c_02/git_c_02_3/
+c_02/git_c_02_3/ex09/
+c_02/git_c_02_3/ex09/ft_strcapitalize.c
+c_02/git_c_02_3/.git/
+c_02/git_c_02_3/.git/COMMIT_EDITMSG
+c_02/git_c_02_3/.git/HEAD
+c_02/git_c_02_3/.git/branches/
+c_02/git_c_02_3/.git/info/
+c_02/git_c_02_3/.git/info/exclude
+c_02/git_c_02_3/.git/config
+c_02/git_c_02_3/.git/objects/
+c_02/git_c_02_3/.git/objects/dc/
+c_02/git_c_02_3/.git/objects/dc/0a0387611f79b8cb7226bdeb17a153fa7c2fa7
+c_02/git_c_02_3/.git/objects/d2/
+c_02/git_c_02_3/.git/objects/d2/422e38e96abe62c14b635f6159e4cbb2f76791
+c_02/git_c_02_3/.git/objects/de/
+c_02/git_c_02_3/.git/objects/de/2e09140ce66e79bf2151585638e0e05524e685
+c_02/git_c_02_3/.git/objects/ce/
+c_02/git_c_02_3/.git/objects/ce/f44e5a802f19b4c5b825b7c690a1e1a3ae3d5e
+c_02/git_c_02_3/.git/objects/ad/
+c_02/git_c_02_3/.git/objects/ad/0c4fff246a906b9f0ebb430e526c306ed94dcf
+c_02/git_c_02_3/.git/objects/02/
+c_02/git_c_02_3/.git/objects/02/e478c7b38eead8dc155c4d98ec8f461df9f262
+c_02/git_c_02_3/.git/objects/pack/
+c_02/git_c_02_3/.git/objects/3e/
+c_02/git_c_02_3/.git/objects/3e/966ab52c7efab484735a7e2cd42a3f0db2b674
+c_02/git_c_02_3/.git/objects/c1/
+c_02/git_c_02_3/.git/objects/c1/3a6e7dd77d81ddd3f11a34334d572acaab597a
+c_02/git_c_02_3/.git/objects/info/
+c_02/git_c_02_3/.git/objects/44/
+c_02/git_c_02_3/.git/objects/44/abd93631fe428dffa5d5c07d41cde0126e1784
+c_02/git_c_02_3/.git/objects/d8/
+c_02/git_c_02_3/.git/objects/d8/7f8dc72ee073a8c3c70e3b3168d1cad369c815
+c_02/git_c_02_3/.git/objects/54/
+c_02/git_c_02_3/.git/objects/54/c53af2e7c031c0277258067346aaf130cf1c5a
+c_02/git_c_02_3/.git/objects/51/
+c_02/git_c_02_3/.git/objects/51/6c7276bae6f63a98b796f863788da989df1396
+c_02/git_c_02_3/.git/objects/50/
+c_02/git_c_02_3/.git/objects/50/10d9556dec39ddb0805a23a38ef175b2f7b6bc
+c_02/git_c_02_3/.git/objects/2a/
+c_02/git_c_02_3/.git/objects/2a/6b211dbecd416c1f822082ae753a29544a92cf
+c_02/git_c_02_3/.git/objects/9a/
+c_02/git_c_02_3/.git/objects/9a/1c9ad85dde488fffada102bb6821e39abd9f46
+c_02/git_c_02_3/.git/objects/ca/
+c_02/git_c_02_3/.git/objects/ca/d0c84b6d77d570fc1173d22c4ee95aa1443183
+c_02/git_c_02_3/.git/objects/33/
+c_02/git_c_02_3/.git/objects/33/e8ed4e1a047e5163d28b5c3b4c46be9774b4e7
+c_02/git_c_02_3/.git/objects/16/
+c_02/git_c_02_3/.git/objects/16/457174e12b0001c6fdf7ff9e964ef990979471
+c_02/git_c_02_3/.git/objects/ba/
+c_02/git_c_02_3/.git/objects/ba/cab8503c9d05996b6ab0614be44058555e6fe1
+c_02/git_c_02_3/.git/objects/b9/
+c_02/git_c_02_3/.git/objects/b9/65851ff6f103a66dbcc23a50b0705d41569a9f
+c_02/git_c_02_3/.git/objects/52/
+c_02/git_c_02_3/.git/objects/52/fb590a4f0d6905625efa28b212b7a038b0d496
+c_02/git_c_02_3/.git/objects/c5/
+c_02/git_c_02_3/.git/objects/c5/231d7537df68bfa497e1ff838d3ecc0576f0c8
+c_02/git_c_02_3/.git/objects/05/
+c_02/git_c_02_3/.git/objects/05/f73201c082a01ac026a3ca79775d3bdffa89ba
+c_02/git_c_02_3/.git/objects/27/
+c_02/git_c_02_3/.git/objects/27/5b91881e7cf65c671ab556b5984b26037824be
+c_02/git_c_02_3/.git/objects/4b/
+c_02/git_c_02_3/.git/objects/4b/8b4bd3e2926f463fa3c1ca814037c24045bc46
+c_02/git_c_02_3/.git/objects/cf/
+c_02/git_c_02_3/.git/objects/cf/52a8e255894dacabc5685fedd49348fa6dccbb
+c_02/git_c_02_3/.git/index
+c_02/git_c_02_3/.git/description
+c_02/git_c_02_3/.git/hooks/
+c_02/git_c_02_3/.git/hooks/post-update.sample
+c_02/git_c_02_3/.git/hooks/applypatch-msg.sample
+c_02/git_c_02_3/.git/hooks/pre-applypatch.sample
+c_02/git_c_02_3/.git/hooks/pre-rebase.sample
+c_02/git_c_02_3/.git/hooks/pre-push.sample
+c_02/git_c_02_3/.git/hooks/push-to-checkout.sample
+c_02/git_c_02_3/.git/hooks/pre-commit.sample
+c_02/git_c_02_3/.git/hooks/fsmonitor-watchman.sample
+c_02/git_c_02_3/.git/hooks/pre-merge-commit.sample
+c_02/git_c_02_3/.git/hooks/commit-msg.sample
+c_02/git_c_02_3/.git/hooks/update.sample
+c_02/git_c_02_3/.git/hooks/pre-receive.sample
+c_02/git_c_02_3/.git/hooks/prepare-commit-msg.sample
+c_02/git_c_02_3/.git/logs/
+c_02/git_c_02_3/.git/logs/HEAD
+c_02/git_c_02_3/.git/logs/refs/
+c_02/git_c_02_3/.git/logs/refs/remotes/
+c_02/git_c_02_3/.git/logs/refs/remotes/origin/
+c_02/git_c_02_3/.git/logs/refs/remotes/origin/master
+c_02/git_c_02_3/.git/logs/refs/heads/
+c_02/git_c_02_3/.git/logs/refs/heads/master
+c_02/git_c_02_3/.git/refs/
+c_02/git_c_02_3/.git/refs/tags/
+c_02/git_c_02_3/.git/refs/remotes/
+c_02/git_c_02_3/.git/refs/remotes/origin/
+c_02/git_c_02_3/.git/refs/remotes/origin/master
+c_02/git_c_02_3/.git/refs/heads/
+c_02/git_c_02_3/.git/refs/heads/master
+c_02/git_c_02_3/ex04/
+c_02/git_c_02_3/ex04/ft_str_is_lowercase.c
+c_02/git_c_02_3/ex02/
+c_02/git_c_02_3/ex02/ft_str_is_alpha.c
+c_02/git_c_02_3/ex11/
+c_02/git_c_02_3/ex11/ft_putstr_non_printable.c
+c_02/git_c_02_3/ex08/
+c_02/git_c_02_3/ex08/ft_strlowcase.c
+c_02/git_c_02_3/ex07/
+c_02/git_c_02_3/ex07/ft_strupcase.c
+c_02/git_c_02_3/ex05/
+c_02/git_c_02_3/ex05/ft_str_is_uppercase.c
+c_02/git_c_02_3/ex10/
+c_02/git_c_02_3/ex10/ft_strlcpy.c
+c_02/git_c_02_3/ex00/
+c_02/git_c_02_3/ex00/ft_strcpy.c
+c_02/git_c_02_3/ex03/
+c_02/git_c_02_3/ex03/ft_str_is_numeric.c
+c_02/git_c_02_3/ex01/
+c_02/git_c_02_3/ex01/ft_strncpy.c
+c_02/git_c_02_3/ex06/
+c_02/git_c_02_3/ex06/ft_str_is_printable.c
+c_02/git_c_02_4/
+c_02/git_c_02_4/ex09/
+c_02/git_c_02_4/ex09/ft_strcapitalize.c
+c_02/git_c_02_4/.git/
+c_02/git_c_02_4/.git/COMMIT_EDITMSG
+c_02/git_c_02_4/.git/HEAD
+c_02/git_c_02_4/.git/branches/
+c_02/git_c_02_4/.git/info/
+c_02/git_c_02_4/.git/info/exclude
+c_02/git_c_02_4/.git/config
+c_02/git_c_02_4/.git/objects/
+c_02/git_c_02_4/.git/objects/dc/
+c_02/git_c_02_4/.git/objects/dc/0a0387611f79b8cb7226bdeb17a153fa7c2fa7
+c_02/git_c_02_4/.git/objects/d2/
+c_02/git_c_02_4/.git/objects/d2/422e38e96abe62c14b635f6159e4cbb2f76791
+c_02/git_c_02_4/.git/objects/de/
+c_02/git_c_02_4/.git/objects/de/2e09140ce66e79bf2151585638e0e05524e685
+c_02/git_c_02_4/.git/objects/ce/
+c_02/git_c_02_4/.git/objects/ce/f44e5a802f19b4c5b825b7c690a1e1a3ae3d5e
+c_02/git_c_02_4/.git/objects/7e/
+c_02/git_c_02_4/.git/objects/7e/f7c31ccbd45544ea8c1d470cd156c6af99c00f
+c_02/git_c_02_4/.git/objects/ad/
+c_02/git_c_02_4/.git/objects/ad/0c4fff246a906b9f0ebb430e526c306ed94dcf
+c_02/git_c_02_4/.git/objects/02/
+c_02/git_c_02_4/.git/objects/02/e478c7b38eead8dc155c4d98ec8f461df9f262
+c_02/git_c_02_4/.git/objects/pack/
+c_02/git_c_02_4/.git/objects/3e/
+c_02/git_c_02_4/.git/objects/3e/966ab52c7efab484735a7e2cd42a3f0db2b674
+c_02/git_c_02_4/.git/objects/c1/
+c_02/git_c_02_4/.git/objects/c1/3a6e7dd77d81ddd3f11a34334d572acaab597a
+c_02/git_c_02_4/.git/objects/info/
+c_02/git_c_02_4/.git/objects/44/
+c_02/git_c_02_4/.git/objects/44/abd93631fe428dffa5d5c07d41cde0126e1784
+c_02/git_c_02_4/.git/objects/54/
+c_02/git_c_02_4/.git/objects/54/c53af2e7c031c0277258067346aaf130cf1c5a
+c_02/git_c_02_4/.git/objects/51/
+c_02/git_c_02_4/.git/objects/51/6c7276bae6f63a98b796f863788da989df1396
+c_02/git_c_02_4/.git/objects/2a/
+c_02/git_c_02_4/.git/objects/2a/6b211dbecd416c1f822082ae753a29544a92cf
+c_02/git_c_02_4/.git/objects/8c/
+c_02/git_c_02_4/.git/objects/8c/0226fdedddb8872eea07e9bccbd607868e3a79
+c_02/git_c_02_4/.git/objects/9a/
+c_02/git_c_02_4/.git/objects/9a/1c9ad85dde488fffada102bb6821e39abd9f46
+c_02/git_c_02_4/.git/objects/33/
+c_02/git_c_02_4/.git/objects/33/e8ed4e1a047e5163d28b5c3b4c46be9774b4e7
+c_02/git_c_02_4/.git/objects/6e/
+c_02/git_c_02_4/.git/objects/6e/d98b54dfdd65abddb6890ea41d1639b1f5932c
+c_02/git_c_02_4/.git/objects/ba/
+c_02/git_c_02_4/.git/objects/ba/cab8503c9d05996b6ab0614be44058555e6fe1
+c_02/git_c_02_4/.git/objects/b9/
+c_02/git_c_02_4/.git/objects/b9/65851ff6f103a66dbcc23a50b0705d41569a9f
+c_02/git_c_02_4/.git/objects/ea/
+c_02/git_c_02_4/.git/objects/ea/fd98a1d5c6a50bd07d84c8cf1f8016caeb4439
+c_02/git_c_02_4/.git/objects/52/
+c_02/git_c_02_4/.git/objects/52/fb590a4f0d6905625efa28b212b7a038b0d496
+c_02/git_c_02_4/.git/objects/c5/
+c_02/git_c_02_4/.git/objects/c5/231d7537df68bfa497e1ff838d3ecc0576f0c8
+c_02/git_c_02_4/.git/objects/05/
+c_02/git_c_02_4/.git/objects/05/f73201c082a01ac026a3ca79775d3bdffa89ba
+c_02/git_c_02_4/.git/objects/4b/
+c_02/git_c_02_4/.git/objects/4b/8b4bd3e2926f463fa3c1ca814037c24045bc46
+c_02/git_c_02_4/.git/objects/3c/
+c_02/git_c_02_4/.git/objects/3c/49ab50b37dfea013330cf01889ff2d454c3db6
+c_02/git_c_02_4/.git/objects/b0/
+c_02/git_c_02_4/.git/objects/b0/821f44d82fd716e0b55e3b9c5fd5b76aee78f1
+c_02/git_c_02_4/.git/index
+c_02/git_c_02_4/.git/description
+c_02/git_c_02_4/.git/hooks/
+c_02/git_c_02_4/.git/hooks/post-update.sample
+c_02/git_c_02_4/.git/hooks/applypatch-msg.sample
+c_02/git_c_02_4/.git/hooks/pre-applypatch.sample
+c_02/git_c_02_4/.git/hooks/pre-rebase.sample
+c_02/git_c_02_4/.git/hooks/pre-push.sample
+c_02/git_c_02_4/.git/hooks/push-to-checkout.sample
+c_02/git_c_02_4/.git/hooks/pre-commit.sample
+c_02/git_c_02_4/.git/hooks/fsmonitor-watchman.sample
+c_02/git_c_02_4/.git/hooks/pre-merge-commit.sample
+c_02/git_c_02_4/.git/hooks/commit-msg.sample
+c_02/git_c_02_4/.git/hooks/update.sample
+c_02/git_c_02_4/.git/hooks/pre-receive.sample
+c_02/git_c_02_4/.git/hooks/prepare-commit-msg.sample
+c_02/git_c_02_4/.git/logs/
+c_02/git_c_02_4/.git/logs/HEAD
+c_02/git_c_02_4/.git/logs/refs/
+c_02/git_c_02_4/.git/logs/refs/remotes/
+c_02/git_c_02_4/.git/logs/refs/remotes/origin/
+c_02/git_c_02_4/.git/logs/refs/remotes/origin/master
+c_02/git_c_02_4/.git/logs/refs/heads/
+c_02/git_c_02_4/.git/logs/refs/heads/master
+c_02/git_c_02_4/.git/refs/
+c_02/git_c_02_4/.git/refs/tags/
+c_02/git_c_02_4/.git/refs/remotes/
+c_02/git_c_02_4/.git/refs/remotes/origin/
+c_02/git_c_02_4/.git/refs/remotes/origin/master
+c_02/git_c_02_4/.git/refs/heads/
+c_02/git_c_02_4/.git/refs/heads/master
+c_02/git_c_02_4/ex04/
+c_02/git_c_02_4/ex04/ft_str_is_lowercase.c
+c_02/git_c_02_4/ex02/
+c_02/git_c_02_4/ex02/ft_str_is_alpha.c
+c_02/git_c_02_4/ex11/
+c_02/git_c_02_4/ex11/ft_putstr_non_printable.c
+c_02/git_c_02_4/ex08/
+c_02/git_c_02_4/ex08/ft_strlowcase.c
+c_02/git_c_02_4/ex07/
+c_02/git_c_02_4/ex07/ft_strupcase.c
+c_02/git_c_02_4/ex05/
+c_02/git_c_02_4/ex05/ft_str_is_uppercase.c
+c_02/git_c_02_4/ex10/
+c_02/git_c_02_4/ex10/ft_strlcpy.c
+c_02/git_c_02_4/ex00/
+c_02/git_c_02_4/ex00/ft_strcpy.c
+c_02/git_c_02_4/ex03/
+c_02/git_c_02_4/ex03/ft_str_is_numeric.c
+c_02/git_c_02_4/ex01/
+c_02/git_c_02_4/ex01/ft_strncpy.c
+c_02/git_c_02_4/ex06/
+c_02/git_c_02_4/ex06/ft_str_is_printable.c
+e3r11p9% tar -cvf c_03.tar c_03/* 
+c_03/ex00/
+c_03/ex00/ft_strcmp.c
+c_03/ex00/test_ft_strcmp
+c_03/ex00/test_ft_strcmp.c
+c_03/ex01/
+c_03/ex01/test_ft_strncmp
+c_03/ex01/ft_strncmp.c
+c_03/ex01/test_ft_strncmp.c
+c_03/ex02/
+c_03/ex02/ft_strcat.c
+c_03/ex02/test_ft_strcat.c
+c_03/ex02/test_ft_strcat
+c_03/ex03/
+c_03/ex03/ft_strncat.c
+c_03/ex03/test_ft_strncat.c
+c_03/ex03/test_ft_strncat
+c_03/ex04/
+c_03/ex04/test_ft_strstr.c
+c_03/ex04/ft_strstr.c
+c_03/ex04/test_ft_strstr
+c_03/ex05/
+c_03/ex05/test_ft_strlcat.c
+c_03/ex05/test_ft_strlcat
+c_03/ex05/ft_strlcat.c
+c_03/git_c_03/
+c_03/git_c_03/.git/
+c_03/git_c_03/.git/COMMIT_EDITMSG
+c_03/git_c_03/.git/HEAD
+c_03/git_c_03/.git/branches/
+c_03/git_c_03/.git/info/
+c_03/git_c_03/.git/info/exclude
+c_03/git_c_03/.git/config
+c_03/git_c_03/.git/objects/
+c_03/git_c_03/.git/objects/84/
+c_03/git_c_03/.git/objects/84/81fb39ce47bcd8b668af1453b2dc3b2d56b487
+c_03/git_c_03/.git/objects/b7/
+c_03/git_c_03/.git/objects/b7/d73fcd7b62c94bca0432fe1c32602f9897917a
+c_03/git_c_03/.git/objects/19/
+c_03/git_c_03/.git/objects/19/57977d3d375e2e4971fbb54fa35e120d3e4c58
+c_03/git_c_03/.git/objects/5d/
+c_03/git_c_03/.git/objects/5d/778696671a8c8ea18001e28ef7155b27bd6a19
+c_03/git_c_03/.git/objects/6d/
+c_03/git_c_03/.git/objects/6d/898b8eef53d0d0094318371e8ec1bdf08bd172
+c_03/git_c_03/.git/objects/pack/
+c_03/git_c_03/.git/objects/64/
+c_03/git_c_03/.git/objects/64/be17b6fc7960a4fd9f19ea04a7bc472ba5cef6
+c_03/git_c_03/.git/objects/2c/
+c_03/git_c_03/.git/objects/2c/65ef1a7bb3476133e6508baf15f2dfd54b0f28
+c_03/git_c_03/.git/objects/info/
+c_03/git_c_03/.git/objects/60/
+c_03/git_c_03/.git/objects/60/149fc4afd2db4f59ca5797e726c03a8de105d6
+c_03/git_c_03/.git/objects/30/
+c_03/git_c_03/.git/objects/30/648a44e3172717962e80d18cbafa1b42f6a44f
+c_03/git_c_03/.git/objects/a8/
+c_03/git_c_03/.git/objects/a8/524d9d400a0dd75c5b281fa3b835559b12b244
+c_03/git_c_03/.git/objects/a3/
+c_03/git_c_03/.git/objects/a3/0eb7031418851a220c9d8621c7b7c98cc3b58f
+c_03/git_c_03/.git/objects/c7/
+c_03/git_c_03/.git/objects/c7/c818bf5e3b77622322a1f135e23faa78f69923
+c_03/git_c_03/.git/objects/9a/
+c_03/git_c_03/.git/objects/9a/e6c5d4be382c93949a319f1a38ba4f956b8cbf
+c_03/git_c_03/.git/objects/b9/
+c_03/git_c_03/.git/objects/b9/3120a6e37c0752e64b2d0ab440a84905e74c69
+c_03/git_c_03/.git/objects/7c/
+c_03/git_c_03/.git/objects/7c/5eda40c83b105554cb94b65b42826f9b3b5893
+c_03/git_c_03/.git/objects/f2/
+c_03/git_c_03/.git/objects/f2/9da126e7177e50e47c206925341b075cf5e40c
+c_03/git_c_03/.git/objects/ea/
+c_03/git_c_03/.git/objects/ea/63b47cf4013d9352e1f1120d7baf32dc45027d
+c_03/git_c_03/.git/objects/bb/
+c_03/git_c_03/.git/objects/bb/101588f15a3455388f20e055d172cfd93ae8f6
+c_03/git_c_03/.git/objects/3a/
+c_03/git_c_03/.git/objects/3a/5010594e5a89af3dba979816b8551d9cb1f467
+c_03/git_c_03/.git/objects/12/
+c_03/git_c_03/.git/objects/12/15729d8d24289f00799337dbe51f95825c8f2f
+c_03/git_c_03/.git/objects/73/
+c_03/git_c_03/.git/objects/73/ad285790ed12f11c0fb9e88c62e183feb5dd84
+c_03/git_c_03/.git/objects/ff/
+c_03/git_c_03/.git/objects/ff/d1789dce23eb2b03f4ab11bb0e935e2e722919
+c_03/git_c_03/.git/objects/86/
+c_03/git_c_03/.git/objects/86/f4609bb289e5d0b9272393eaaa0647d0fe73c9
+c_03/git_c_03/.git/objects/3c/
+c_03/git_c_03/.git/objects/3c/1c8bee08fc645fb5dcde66c52e0ce1486d7644
+c_03/git_c_03/.git/index
+c_03/git_c_03/.git/description
+c_03/git_c_03/.git/hooks/
+c_03/git_c_03/.git/hooks/post-update.sample
+c_03/git_c_03/.git/hooks/applypatch-msg.sample
+c_03/git_c_03/.git/hooks/pre-applypatch.sample
+c_03/git_c_03/.git/hooks/pre-rebase.sample
+c_03/git_c_03/.git/hooks/pre-push.sample
+c_03/git_c_03/.git/hooks/push-to-checkout.sample
+c_03/git_c_03/.git/hooks/pre-commit.sample
+c_03/git_c_03/.git/hooks/fsmonitor-watchman.sample
+c_03/git_c_03/.git/hooks/pre-merge-commit.sample
+c_03/git_c_03/.git/hooks/commit-msg.sample
+c_03/git_c_03/.git/hooks/update.sample
+c_03/git_c_03/.git/hooks/pre-receive.sample
+c_03/git_c_03/.git/hooks/prepare-commit-msg.sample
+c_03/git_c_03/.git/logs/
+c_03/git_c_03/.git/logs/HEAD
+c_03/git_c_03/.git/logs/refs/
+c_03/git_c_03/.git/logs/refs/remotes/
+c_03/git_c_03/.git/logs/refs/remotes/origin/
+c_03/git_c_03/.git/logs/refs/remotes/origin/master
+c_03/git_c_03/.git/logs/refs/heads/
+c_03/git_c_03/.git/logs/refs/heads/master
+c_03/git_c_03/.git/refs/
+c_03/git_c_03/.git/refs/tags/
+c_03/git_c_03/.git/refs/remotes/
+c_03/git_c_03/.git/refs/remotes/origin/
+c_03/git_c_03/.git/refs/remotes/origin/master
+c_03/git_c_03/.git/refs/heads/
+c_03/git_c_03/.git/refs/heads/master
+c_03/git_c_03/ex04/
+c_03/git_c_03/ex04/ft_strstr.c
+c_03/git_c_03/ex02/
+c_03/git_c_03/ex02/ft_strcat.c
+c_03/git_c_03/ex05/
+c_03/git_c_03/ex05/ft_strlcat.c
+c_03/git_c_03/ex00/
+c_03/git_c_03/ex00/ft_strcmp.c
+c_03/git_c_03/ex03/
+c_03/git_c_03/ex03/ft_strncat.c
+c_03/git_c_03/ex01/
+c_03/git_c_03/ex01/ft_strncmp.c
+e3r11p9% tar -cvf c_04.tar c_04/* 
+c_04/ex00/
+c_04/ex00/test_ft_strlen
+c_04/ex00/ft_strlen.c
+c_04/ex00/test_ft_strlen.c
+c_04/ex01/
+c_04/ex01/test_ft_putstr
+c_04/ex01/ft_putstr.c
+c_04/ex01/test_ft_putstr.c
+c_04/ex02/
+c_04/ex02/ft_putnbr.c
+c_04/ex02/test_ft_putnbr.c
+c_04/ex02/test_ft_putnbr
+c_04/ex03/
+c_04/ex03/test_ft_atoi.c
+c_04/ex03/test_ft_atoi
+c_04/ex03/.test_ft_atoi.c.swp
+c_04/ex03/ft_atoi.c
+c_04/ex04/
+c_04/ex04/test_ft_putnbr_base.c
+c_04/ex04/ft_putnbr_base_0.c
+c_04/ex04/ft_putnbr_base.c
+c_04/ex04/test_ft_putnbr_base
+c_04/ex04/test_ft_putnbr_base_0
+c_04/ex05/
+c_04/git_c_04/
+c_04/git_c_04/.git/
+c_04/git_c_04/.git/COMMIT_EDITMSG
+c_04/git_c_04/.git/HEAD
+c_04/git_c_04/.git/branches/
+c_04/git_c_04/.git/info/
+c_04/git_c_04/.git/info/exclude
+c_04/git_c_04/.git/config
+c_04/git_c_04/.git/objects/
+c_04/git_c_04/.git/objects/32/
+c_04/git_c_04/.git/objects/32/e02a3f93daa301b160b738c8fc4792d9cb3f54
+c_04/git_c_04/.git/objects/34/
+c_04/git_c_04/.git/objects/34/14c60c3c8daf58ce5fbbe262d8fdbaf4cb092b
+c_04/git_c_04/.git/objects/57/
+c_04/git_c_04/.git/objects/57/f557f8e8dd1f4efebf913bd8d0ee14d0775587
+c_04/git_c_04/.git/objects/ce/
+c_04/git_c_04/.git/objects/ce/1022455e01b59ad4b6e306cdf93d9a02e7c40a
+c_04/git_c_04/.git/objects/da/
+c_04/git_c_04/.git/objects/da/2d096ddbb60097881cafefebe02bfa409e7f82
+c_04/git_c_04/.git/objects/6d/
+c_04/git_c_04/.git/objects/6d/d707d6d477124ca3b7f8c0803d3c17dfde0b3b
+c_04/git_c_04/.git/objects/pack/
+c_04/git_c_04/.git/objects/89/
+c_04/git_c_04/.git/objects/89/98a821c841421d295279d659ea4dc28bc10278
+c_04/git_c_04/.git/objects/bd/
+c_04/git_c_04/.git/objects/bd/5520e267d9f589e455eef58f00ba9c706fb4e9
+c_04/git_c_04/.git/objects/0f/
+c_04/git_c_04/.git/objects/0f/81794c018d3bf628e9fa2718328b2e56754091
+c_04/git_c_04/.git/objects/bf/
+c_04/git_c_04/.git/objects/bf/c77787d80dce4be345807e23abc1b7a0434779
+c_04/git_c_04/.git/objects/01/
+c_04/git_c_04/.git/objects/01/ec02880ad6675ccd5d50765208c6633aa88fb0
+c_04/git_c_04/.git/objects/info/
+c_04/git_c_04/.git/objects/2a/
+c_04/git_c_04/.git/objects/2a/8583225cd51a19456650eeccd7586e4e962c5d
+c_04/git_c_04/.git/objects/2a/7315c474d7de65a1404feaed0c72ac11d7b70d
+c_04/git_c_04/.git/objects/5f/
+c_04/git_c_04/.git/objects/5f/fc6fa705a9ebf459e9ffe8a77569a7a5e4b265
+c_04/git_c_04/.git/objects/8c/
+c_04/git_c_04/.git/objects/8c/e82cc482b5b0b802dd420f2f9fb89b6f4a5eb3
+c_04/git_c_04/.git/objects/be/
+c_04/git_c_04/.git/objects/be/03491a8dcc1877dc8f13af1a83bcd599161212
+c_04/git_c_04/.git/objects/c8/
+c_04/git_c_04/.git/objects/c8/64319085b2395eaa59087f1d51c3bf923efa48
+c_04/git_c_04/.git/objects/f2/
+c_04/git_c_04/.git/objects/f2/53524d685a858acde2277e6c6543306ffabc9a
+c_04/git_c_04/.git/objects/1f/
+c_04/git_c_04/.git/objects/1f/22e1efeccbfc99baca5765bc335af970bfed56
+c_04/git_c_04/.git/objects/66/
+c_04/git_c_04/.git/objects/66/2101a42365547380bd3f2750385df8c2c8c0cc
+c_04/git_c_04/.git/objects/27/
+c_04/git_c_04/.git/objects/27/893828e30a5531c9d8cbec9148b6fafbcbcb59
+c_04/git_c_04/.git/objects/e8/
+c_04/git_c_04/.git/objects/e8/1eb9b04a329262f46fda1f3e63e69676d76f5f
+c_04/git_c_04/.git/objects/14/
+c_04/git_c_04/.git/objects/14/799e5bfd41727a711145c4dadc794dcc773ffb
+c_04/git_c_04/.git/objects/e1/
+c_04/git_c_04/.git/objects/e1/c25dd483d385110b09d262bf55ebf6d45bede2
+c_04/git_c_04/.git/index
+c_04/git_c_04/.git/description
+c_04/git_c_04/.git/hooks/
+c_04/git_c_04/.git/hooks/post-update.sample
+c_04/git_c_04/.git/hooks/applypatch-msg.sample
+c_04/git_c_04/.git/hooks/pre-applypatch.sample
+c_04/git_c_04/.git/hooks/pre-rebase.sample
+c_04/git_c_04/.git/hooks/pre-push.sample
+c_04/git_c_04/.git/hooks/push-to-checkout.sample
+c_04/git_c_04/.git/hooks/pre-commit.sample
+c_04/git_c_04/.git/hooks/fsmonitor-watchman.sample
+c_04/git_c_04/.git/hooks/pre-merge-commit.sample
+c_04/git_c_04/.git/hooks/commit-msg.sample
+c_04/git_c_04/.git/hooks/update.sample
+c_04/git_c_04/.git/hooks/pre-receive.sample
+c_04/git_c_04/.git/hooks/prepare-commit-msg.sample
+c_04/git_c_04/.git/logs/
+c_04/git_c_04/.git/logs/HEAD
+c_04/git_c_04/.git/logs/refs/
+c_04/git_c_04/.git/logs/refs/remotes/
+c_04/git_c_04/.git/logs/refs/remotes/origin/
+c_04/git_c_04/.git/logs/refs/remotes/origin/master
+c_04/git_c_04/.git/logs/refs/heads/
+c_04/git_c_04/.git/logs/refs/heads/master
+c_04/git_c_04/.git/refs/
+c_04/git_c_04/.git/refs/tags/
+c_04/git_c_04/.git/refs/remotes/
+c_04/git_c_04/.git/refs/remotes/origin/
+c_04/git_c_04/.git/refs/remotes/origin/master
+c_04/git_c_04/.git/refs/heads/
+c_04/git_c_04/.git/refs/heads/master
+c_04/git_c_04/ex04/
+c_04/git_c_04/ex04/ft_putnbr_base.c
+c_04/git_c_04/ex02/
+c_04/git_c_04/ex02/ft_putnbr.c
+c_04/git_c_04/ex05/
+c_04/git_c_04/ex00/
+c_04/git_c_04/ex00/ft_strlen.c
+c_04/git_c_04/ex03/
+c_04/git_c_04/ex03/ft_atoi.c
+c_04/git_c_04/ex01/
+c_04/git_c_04/ex01/ft_putstr.c
+c_04/git_c_04_2/
+c_04/git_c_04_2/.git/
+c_04/git_c_04_2/.git/COMMIT_EDITMSG
+c_04/git_c_04_2/.git/HEAD
+c_04/git_c_04_2/.git/branches/
+c_04/git_c_04_2/.git/info/
+c_04/git_c_04_2/.git/info/exclude
+c_04/git_c_04_2/.git/config
+c_04/git_c_04_2/.git/objects/
+c_04/git_c_04_2/.git/objects/dc/
+c_04/git_c_04_2/.git/objects/dc/23bbe5bd5b54bf51235534b1ec79fffa7358d7
+c_04/git_c_04_2/.git/objects/57/
+c_04/git_c_04_2/.git/objects/57/f557f8e8dd1f4efebf913bd8d0ee14d0775587
+c_04/git_c_04_2/.git/objects/da/
+c_04/git_c_04_2/.git/objects/da/2d096ddbb60097881cafefebe02bfa409e7f82
+c_04/git_c_04_2/.git/objects/pack/
+c_04/git_c_04_2/.git/objects/bd/
+c_04/git_c_04_2/.git/objects/bd/5520e267d9f589e455eef58f00ba9c706fb4e9
+c_04/git_c_04_2/.git/objects/0f/
+c_04/git_c_04_2/.git/objects/0f/81794c018d3bf628e9fa2718328b2e56754091
+c_04/git_c_04_2/.git/objects/75/
+c_04/git_c_04_2/.git/objects/75/bac2c17d08ab3941fd9b40a3f39e553d53839e
+c_04/git_c_04_2/.git/objects/info/
+c_04/git_c_04_2/.git/objects/87/
+c_04/git_c_04_2/.git/objects/87/ddcd1a8067a151657c15a09dd2621c95144c75
+c_04/git_c_04_2/.git/objects/8c/
+c_04/git_c_04_2/.git/objects/8c/e82cc482b5b0b802dd420f2f9fb89b6f4a5eb3
+c_04/git_c_04_2/.git/objects/6e/
+c_04/git_c_04_2/.git/objects/6e/7427cdd5df6c68b76bf1955e74e2b47d34b0fb
+c_04/git_c_04_2/.git/objects/c5/
+c_04/git_c_04_2/.git/objects/c5/69fae024bd9bbe307846c739a63fa29c4155e8
+c_04/git_c_04_2/.git/objects/66/
+c_04/git_c_04_2/.git/objects/66/2101a42365547380bd3f2750385df8c2c8c0cc
+c_04/git_c_04_2/.git/objects/3c/
+c_04/git_c_04_2/.git/objects/3c/68efb375f660a92be6a8c4cdad6474baf3410e
+c_04/git_c_04_2/.git/index
+c_04/git_c_04_2/.git/description
+c_04/git_c_04_2/.git/hooks/
+c_04/git_c_04_2/.git/hooks/post-update.sample
+c_04/git_c_04_2/.git/hooks/applypatch-msg.sample
+c_04/git_c_04_2/.git/hooks/pre-applypatch.sample
+c_04/git_c_04_2/.git/hooks/pre-rebase.sample
+c_04/git_c_04_2/.git/hooks/pre-push.sample
+c_04/git_c_04_2/.git/hooks/push-to-checkout.sample
+c_04/git_c_04_2/.git/hooks/pre-commit.sample
+c_04/git_c_04_2/.git/hooks/fsmonitor-watchman.sample
+c_04/git_c_04_2/.git/hooks/pre-merge-commit.sample
+c_04/git_c_04_2/.git/hooks/commit-msg.sample
+c_04/git_c_04_2/.git/hooks/update.sample
+c_04/git_c_04_2/.git/hooks/pre-receive.sample
+c_04/git_c_04_2/.git/hooks/prepare-commit-msg.sample
+c_04/git_c_04_2/.git/logs/
+c_04/git_c_04_2/.git/logs/HEAD
+c_04/git_c_04_2/.git/logs/refs/
+c_04/git_c_04_2/.git/logs/refs/remotes/
+c_04/git_c_04_2/.git/logs/refs/remotes/origin/
+c_04/git_c_04_2/.git/logs/refs/remotes/origin/master
+c_04/git_c_04_2/.git/logs/refs/heads/
+c_04/git_c_04_2/.git/logs/refs/heads/master
+c_04/git_c_04_2/.git/refs/
+c_04/git_c_04_2/.git/refs/tags/
+c_04/git_c_04_2/.git/refs/remotes/
+c_04/git_c_04_2/.git/refs/remotes/origin/
+c_04/git_c_04_2/.git/refs/remotes/origin/master
+c_04/git_c_04_2/.git/refs/heads/
+c_04/git_c_04_2/.git/refs/heads/master
+c_04/git_c_04_2/ex04/
+c_04/git_c_04_2/ex04/ft_putnbr_base.c
+c_04/git_c_04_2/ex02/
+c_04/git_c_04_2/ex02/ft_putnbr.c
+c_04/git_c_04_2/ex00/
+c_04/git_c_04_2/ex00/ft_strlen.c
+c_04/git_c_04_2/ex03/
+c_04/git_c_04_2/ex03/ft_atoi.c
+c_04/git_c_04_2/ex01/
+c_04/git_c_04_2/ex01/ft_putstr.c
+e3r11p9% tar -cvf c_05.tar c_05/* 
+c_05/ex00/
+c_05/ex00/test_ft_iterative_factorial
+c_05/ex00/ft_iterative_factorial.c
+c_05/ex00/test_ft_iterative_factorial.c
+c_05/ex01/
+c_05/ex01/test_ft_recursive_factorial
+c_05/ex01/test_ft_recursive_factorial.c
+c_05/ex01/ft_recursive_factorial.c
+c_05/ex02/
+c_05/ex02/test_ft_iterative_power.c
+c_05/ex02/ft_iterative_power.c
+c_05/ex02/test_ft_iterative_power
+c_05/ex03/
+c_05/ex03/test_ft_recursive_power.c
+c_05/ex03/test_ft_recursive_power
+c_05/ex03/ft_recursive_power.c
+c_05/ex04/
+c_05/ex04/test_ft_fibonacci.c
+c_05/ex04/test_ft_fibonacci
+c_05/ex04/ft_fibonacci.c
+c_05/ex05/
+c_05/ex05/test_ft_sqrt
+c_05/ex05/test_ft_sqrt.c
+c_05/ex05/ft_sqrt.c
+c_05/ex06/
+c_05/ex06/test_ft_is_prime.c
+c_05/ex06/test_ft_is_prime
+c_05/ex06/ft_is_prime.c
+c_05/ex07/
+c_05/ex07/test_ft_find_next_prime
+c_05/ex07/ft_find_next_prime.c
+c_05/ex07/test_ft_find_next_prime.c
+c_05/git_c_05/
+c_05/git_c_05/.git/
+c_05/git_c_05/.git/COMMIT_EDITMSG
+c_05/git_c_05/.git/HEAD
+c_05/git_c_05/.git/branches/
+c_05/git_c_05/.git/info/
+c_05/git_c_05/.git/info/exclude
+c_05/git_c_05/.git/config
+c_05/git_c_05/.git/objects/
+c_05/git_c_05/.git/objects/59/
+c_05/git_c_05/.git/objects/59/f57a72474d6fd47005c0238de0b43251835412
+c_05/git_c_05/.git/objects/57/
+c_05/git_c_05/.git/objects/57/ab69ff72879fc7d7ad9c3357ca6d938674a68b
+c_05/git_c_05/.git/objects/f1/
+c_05/git_c_05/.git/objects/f1/3fb634996b99fec42f864e8b899c5d16157d44
+c_05/git_c_05/.git/objects/a6/
+c_05/git_c_05/.git/objects/a6/09c10326d345c3508e813596fe83a9e325e0cc
+c_05/git_c_05/.git/objects/95/
+c_05/git_c_05/.git/objects/95/ab539fa83c3830b5782500caf4e12848bc7590
+c_05/git_c_05/.git/objects/ad/
+c_05/git_c_05/.git/objects/ad/9ae887db4eb1dff02673f1f84c6373e002f101
+c_05/git_c_05/.git/objects/pack/
+c_05/git_c_05/.git/objects/35/
+c_05/git_c_05/.git/objects/35/e66b6344cf8cb2fa7eb5b268b02c0c44f05e53
+c_05/git_c_05/.git/objects/88/
+c_05/git_c_05/.git/objects/88/4264d0ef93b383a8ef60d4e6c1ac27ca89bd86
+c_05/git_c_05/.git/objects/2c/
+c_05/git_c_05/.git/objects/2c/92ab97d2bd9ef1af188c23f5c63883ba0593e3
+c_05/git_c_05/.git/objects/info/
+c_05/git_c_05/.git/objects/72/
+c_05/git_c_05/.git/objects/72/3dcda14b75fe9222381bfb837004ac23b020a4
+c_05/git_c_05/.git/objects/93/
+c_05/git_c_05/.git/objects/93/282f1424759ed557fba19b755302a013207477
+c_05/git_c_05/.git/objects/a8/
+c_05/git_c_05/.git/objects/a8/cc55068e5b088f06c33ba32edf4e34b3a2a423
+c_05/git_c_05/.git/objects/51/
+c_05/git_c_05/.git/objects/51/97578394899a45d3e357f74f2235f133a14b18
+c_05/git_c_05/.git/objects/83/
+c_05/git_c_05/.git/objects/83/335f7ae0e688dcc3ae6f1ca81f866af72da17b
+c_05/git_c_05/.git/objects/31/
+c_05/git_c_05/.git/objects/31/22187b34fa35c8884f27400d9c65db88ecd63f
+c_05/git_c_05/.git/objects/ee/
+c_05/git_c_05/.git/objects/ee/2ec32d3f5cf08734adce12f21b448b5a6b830b
+c_05/git_c_05/.git/objects/5f/
+c_05/git_c_05/.git/objects/5f/30500b2ac6b2a67d0ae19a2fe228f0b49e40c0
+c_05/git_c_05/.git/objects/ca/
+c_05/git_c_05/.git/objects/ca/d9d6c5fac77c9a683dfd291d01c3f9e9e91fae
+c_05/git_c_05/.git/objects/0b/
+c_05/git_c_05/.git/objects/0b/9a6e8f5feec3b96689b2a1a78518fcff373e7c
+c_05/git_c_05/.git/objects/09/
+c_05/git_c_05/.git/objects/09/2bf671adfdbfef9c0c80bd3cafdd3c87a267a7
+c_05/git_c_05/.git/objects/1f/
+c_05/git_c_05/.git/objects/1f/f003a3d867465feab5631b56f04d19d9adbf8c
+c_05/git_c_05/.git/objects/e6/
+c_05/git_c_05/.git/objects/e6/4137d16cd8fbaf3815b3861a8ab03f3cab2d3e
+c_05/git_c_05/.git/objects/90/
+c_05/git_c_05/.git/objects/90/d087b3c5887e667f49d50b3dd997f4468ed143
+c_05/git_c_05/.git/objects/17/
+c_05/git_c_05/.git/objects/17/d7d7063e2722750f462012caeefaa2352481f5
+c_05/git_c_05/.git/objects/65/
+c_05/git_c_05/.git/objects/65/83e35d147461d7ab4533826e41fe2c30fd8293
+c_05/git_c_05/.git/objects/cf/
+c_05/git_c_05/.git/objects/cf/16479fc7c12aae44bf88d77cfef6fb7ccf23b5
+c_05/git_c_05/.git/objects/14/
+c_05/git_c_05/.git/objects/14/9b3085135cf237095dbbdec42b863a9fe00cf0
+c_05/git_c_05/.git/objects/14/2e331ffa5b895f9b3333e523f8e2df17f0693f
+c_05/git_c_05/.git/objects/97/
+c_05/git_c_05/.git/objects/97/42867e2671ee551623bd200fac1b55cb71db04
+c_05/git_c_05/.git/objects/5b/
+c_05/git_c_05/.git/objects/5b/b949f190896c58c334becf5427e6a766e5e009
+c_05/git_c_05/.git/index
+c_05/git_c_05/.git/description
+c_05/git_c_05/.git/hooks/
+c_05/git_c_05/.git/hooks/post-update.sample
+c_05/git_c_05/.git/hooks/applypatch-msg.sample
+c_05/git_c_05/.git/hooks/pre-applypatch.sample
+c_05/git_c_05/.git/hooks/pre-rebase.sample
+c_05/git_c_05/.git/hooks/pre-push.sample
+c_05/git_c_05/.git/hooks/push-to-checkout.sample
+c_05/git_c_05/.git/hooks/pre-commit.sample
+c_05/git_c_05/.git/hooks/fsmonitor-watchman.sample
+c_05/git_c_05/.git/hooks/pre-merge-commit.sample
+c_05/git_c_05/.git/hooks/commit-msg.sample
+c_05/git_c_05/.git/hooks/update.sample
+c_05/git_c_05/.git/hooks/pre-receive.sample
+c_05/git_c_05/.git/hooks/prepare-commit-msg.sample
+c_05/git_c_05/.git/logs/
+c_05/git_c_05/.git/logs/HEAD
+c_05/git_c_05/.git/logs/refs/
+c_05/git_c_05/.git/logs/refs/remotes/
+c_05/git_c_05/.git/logs/refs/remotes/origin/
+c_05/git_c_05/.git/logs/refs/remotes/origin/master
+c_05/git_c_05/.git/logs/refs/heads/
+c_05/git_c_05/.git/logs/refs/heads/master
+c_05/git_c_05/.git/refs/
+c_05/git_c_05/.git/refs/tags/
+c_05/git_c_05/.git/refs/remotes/
+c_05/git_c_05/.git/refs/remotes/origin/
+c_05/git_c_05/.git/refs/remotes/origin/master
+c_05/git_c_05/.git/refs/heads/
+c_05/git_c_05/.git/refs/heads/master
+c_05/git_c_05/ex04/
+c_05/git_c_05/ex04/ft_fibonacci.c
+c_05/git_c_05/ex02/
+c_05/git_c_05/ex02/ft_iterative_power.c
+c_05/git_c_05/ex07/
+c_05/git_c_05/ex07/ft_find_next_prime.c
+c_05/git_c_05/ex05/
+c_05/git_c_05/ex05/ft_sqrt.c
+c_05/git_c_05/ex00/
+c_05/git_c_05/ex00/ft_iterative_factorial.c
+c_05/git_c_05/ex03/
+c_05/git_c_05/ex03/ft_recursive_power.c
+c_05/git_c_05/ex01/
+c_05/git_c_05/ex01/ft_recursive_factorial.c
+c_05/git_c_05/ex06/
+c_05/git_c_05/ex06/ft_is_prime.c
+e3r11p9% tar -cvf c_06.tar c_06/* 
+c_06/ex00/
+c_06/ex00/ft_print_program_name.c
+c_06/ex00/test_ft_print_program_name
+c_06/ex00/ft_print_program_name
+c_06/ex01/
+c_06/ex01/ft_print_params.c
+c_06/ex01/ft_print_params
+c_06/ex01/test_ft_print_params
+c_06/ex02/
+c_06/ex02/ft_rev_params.c
+c_06/ex02/ft_rev_params
+c_06/ex02/test_ft_rev_params
+c_06/ex03/
+c_06/ex03/test_ft_sort_params_0
+c_06/ex03/test_ft_sort_params
+c_06/ex03/ft_sort_params_0.c
+c_06/ex03/ft_sort_params.c
+c_06/git_c_06/
+c_06/git_c_06/.git/
+c_06/git_c_06/.git/COMMIT_EDITMSG
+c_06/git_c_06/.git/HEAD
+c_06/git_c_06/.git/branches/
+c_06/git_c_06/.git/info/
+c_06/git_c_06/.git/info/exclude
+c_06/git_c_06/.git/config
+c_06/git_c_06/.git/objects/
+c_06/git_c_06/.git/objects/48/
+c_06/git_c_06/.git/objects/48/7aa13268ce7bac143f711d8cc879b5808eb709
+c_06/git_c_06/.git/objects/49/
+c_06/git_c_06/.git/objects/49/c5ad94ba2ab54ab09996acaa6bd297fa186a39
+c_06/git_c_06/.git/objects/ae/
+c_06/git_c_06/.git/objects/ae/52d39f0f4993f1af9fcfdae7c424c6258fd494
+c_06/git_c_06/.git/objects/pack/
+c_06/git_c_06/.git/objects/0f/
+c_06/git_c_06/.git/objects/0f/1e4695663928c2d3558d6af43c375ba98d3597
+c_06/git_c_06/.git/objects/info/
+c_06/git_c_06/.git/objects/61/
+c_06/git_c_06/.git/objects/61/3afc210b74b54cb6617a88fd08b6c8dfd4fc6a
+c_06/git_c_06/.git/objects/76/
+c_06/git_c_06/.git/objects/76/2501a752d12199ab619c26f596cc57cd2bdd6c
+c_06/git_c_06/.git/objects/4d/
+c_06/git_c_06/.git/objects/4d/140460bd29c9744ca1b189b05a4bc0ee092498
+c_06/git_c_06/.git/objects/66/
+c_06/git_c_06/.git/objects/66/a1b95076fc081cc7084529d08f7ccd1b69e5b8
+c_06/git_c_06/.git/objects/bc/
+c_06/git_c_06/.git/objects/bc/9793733ba29e1ab5517e94ea205a8a4042d1ca
+c_06/git_c_06/.git/objects/3b/
+c_06/git_c_06/.git/objects/3b/4ae5fdb65eaa889064589d205d089a0b3b3307
+c_06/git_c_06/.git/index
+c_06/git_c_06/.git/description
+c_06/git_c_06/.git/hooks/
+c_06/git_c_06/.git/hooks/post-update.sample
+c_06/git_c_06/.git/hooks/applypatch-msg.sample
+c_06/git_c_06/.git/hooks/pre-applypatch.sample
+c_06/git_c_06/.git/hooks/pre-rebase.sample
+c_06/git_c_06/.git/hooks/pre-push.sample
+c_06/git_c_06/.git/hooks/push-to-checkout.sample
+c_06/git_c_06/.git/hooks/pre-commit.sample
+c_06/git_c_06/.git/hooks/fsmonitor-watchman.sample
+c_06/git_c_06/.git/hooks/pre-merge-commit.sample
+c_06/git_c_06/.git/hooks/commit-msg.sample
+c_06/git_c_06/.git/hooks/update.sample
+c_06/git_c_06/.git/hooks/pre-receive.sample
+c_06/git_c_06/.git/hooks/prepare-commit-msg.sample
+c_06/git_c_06/.git/logs/
+c_06/git_c_06/.git/logs/HEAD
+c_06/git_c_06/.git/logs/refs/
+c_06/git_c_06/.git/logs/refs/remotes/
+c_06/git_c_06/.git/logs/refs/remotes/origin/
+c_06/git_c_06/.git/logs/refs/remotes/origin/master
+c_06/git_c_06/.git/logs/refs/heads/
+c_06/git_c_06/.git/logs/refs/heads/master
+c_06/git_c_06/.git/refs/
+c_06/git_c_06/.git/refs/tags/
+c_06/git_c_06/.git/refs/remotes/
+c_06/git_c_06/.git/refs/remotes/origin/
+c_06/git_c_06/.git/refs/remotes/origin/master
+c_06/git_c_06/.git/refs/heads/
+c_06/git_c_06/.git/refs/heads/master
+c_06/git_c_06/ex02/
+c_06/git_c_06/ex02/ft_rev_params.c
+c_06/git_c_06/ex00/
+c_06/git_c_06/ex00/ft_print_program_name.c
+c_06/git_c_06/ex03/
+c_06/git_c_06/ex03/ft_sort_params.c
+c_06/git_c_06/ex01/
+c_06/git_c_06/ex01/ft_print_params.c
+c_06/git_c_06_2/
+c_06/git_c_06_2/.git/
+c_06/git_c_06_2/.git/COMMIT_EDITMSG
+c_06/git_c_06_2/.git/HEAD
+c_06/git_c_06_2/.git/branches/
+c_06/git_c_06_2/.git/info/
+c_06/git_c_06_2/.git/info/exclude
+c_06/git_c_06_2/.git/config
+c_06/git_c_06_2/.git/objects/
+c_06/git_c_06_2/.git/objects/48/
+c_06/git_c_06_2/.git/objects/48/7aa13268ce7bac143f711d8cc879b5808eb709
+c_06/git_c_06_2/.git/objects/49/
+c_06/git_c_06_2/.git/objects/49/c5ad94ba2ab54ab09996acaa6bd297fa186a39
+c_06/git_c_06_2/.git/objects/pack/
+c_06/git_c_06_2/.git/objects/0f/
+c_06/git_c_06_2/.git/objects/0f/1e4695663928c2d3558d6af43c375ba98d3597
+c_06/git_c_06_2/.git/objects/info/
+c_06/git_c_06_2/.git/objects/61/
+c_06/git_c_06_2/.git/objects/61/3afc210b74b54cb6617a88fd08b6c8dfd4fc6a
+c_06/git_c_06_2/.git/objects/76/
+c_06/git_c_06_2/.git/objects/76/2501a752d12199ab619c26f596cc57cd2bdd6c
+c_06/git_c_06_2/.git/objects/9f/
+c_06/git_c_06_2/.git/objects/9f/c462881c8253c91981e1f83dc9e8ad463fe697
+c_06/git_c_06_2/.git/objects/bc/
+c_06/git_c_06_2/.git/objects/bc/9793733ba29e1ab5517e94ea205a8a4042d1ca
+c_06/git_c_06_2/.git/objects/bc/9167eaf980ce81ce22b82f35ba35fc4ea5689b
+c_06/git_c_06_2/.git/objects/98/
+c_06/git_c_06_2/.git/objects/98/94124a9e7013ac800d34121daedaeec8407ae0
+c_06/git_c_06_2/.git/objects/7d/
+c_06/git_c_06_2/.git/objects/7d/daf040ca242975102d60f1110967c128233a53
+c_06/git_c_06_2/.git/index
+c_06/git_c_06_2/.git/description
+c_06/git_c_06_2/.git/hooks/
+c_06/git_c_06_2/.git/hooks/post-update.sample
+c_06/git_c_06_2/.git/hooks/applypatch-msg.sample
+c_06/git_c_06_2/.git/hooks/pre-applypatch.sample
+c_06/git_c_06_2/.git/hooks/pre-rebase.sample
+c_06/git_c_06_2/.git/hooks/pre-push.sample
+c_06/git_c_06_2/.git/hooks/push-to-checkout.sample
+c_06/git_c_06_2/.git/hooks/pre-commit.sample
+c_06/git_c_06_2/.git/hooks/fsmonitor-watchman.sample
+c_06/git_c_06_2/.git/hooks/pre-merge-commit.sample
+c_06/git_c_06_2/.git/hooks/commit-msg.sample
+c_06/git_c_06_2/.git/hooks/update.sample
+c_06/git_c_06_2/.git/hooks/pre-receive.sample
+c_06/git_c_06_2/.git/hooks/prepare-commit-msg.sample
+c_06/git_c_06_2/.git/logs/
+c_06/git_c_06_2/.git/logs/HEAD
+c_06/git_c_06_2/.git/logs/refs/
+c_06/git_c_06_2/.git/logs/refs/remotes/
+c_06/git_c_06_2/.git/logs/refs/remotes/origin/
+c_06/git_c_06_2/.git/logs/refs/remotes/origin/master
+c_06/git_c_06_2/.git/logs/refs/heads/
+c_06/git_c_06_2/.git/logs/refs/heads/master
+c_06/git_c_06_2/.git/refs/
+c_06/git_c_06_2/.git/refs/tags/
+c_06/git_c_06_2/.git/refs/remotes/
+c_06/git_c_06_2/.git/refs/remotes/origin/
+c_06/git_c_06_2/.git/refs/remotes/origin/master
+c_06/git_c_06_2/.git/refs/heads/
+c_06/git_c_06_2/.git/refs/heads/master
+c_06/git_c_06_2/ex02/
+c_06/git_c_06_2/ex02/ft_rev_params.c
+c_06/git_c_06_2/ex00/
+c_06/git_c_06_2/ex00/ft_print_program_name.c
+c_06/git_c_06_2/ex03/
+c_06/git_c_06_2/ex03/ft_sort_params.c
+c_06/git_c_06_2/ex01/
+c_06/git_c_06_2/ex01/ft_print_params.c
+c_06/test_git_c_06_2/
+c_06/test_git_c_06_2/.git/
+c_06/test_git_c_06_2/.git/packed-refs
+c_06/test_git_c_06_2/.git/HEAD
+c_06/test_git_c_06_2/.git/branches/
+c_06/test_git_c_06_2/.git/info/
+c_06/test_git_c_06_2/.git/info/exclude
+c_06/test_git_c_06_2/.git/config
+c_06/test_git_c_06_2/.git/objects/
+c_06/test_git_c_06_2/.git/objects/pack/
+c_06/test_git_c_06_2/.git/objects/pack/pack-40935c598612de1a0766136130709b9424d99a32.pack
+c_06/test_git_c_06_2/.git/objects/pack/pack-40935c598612de1a0766136130709b9424d99a32.idx
+c_06/test_git_c_06_2/.git/objects/info/
+c_06/test_git_c_06_2/.git/index
+c_06/test_git_c_06_2/.git/description
+c_06/test_git_c_06_2/.git/hooks/
+c_06/test_git_c_06_2/.git/hooks/post-update.sample
+c_06/test_git_c_06_2/.git/hooks/applypatch-msg.sample
+c_06/test_git_c_06_2/.git/hooks/pre-applypatch.sample
+c_06/test_git_c_06_2/.git/hooks/pre-rebase.sample
+c_06/test_git_c_06_2/.git/hooks/pre-push.sample
+c_06/test_git_c_06_2/.git/hooks/push-to-checkout.sample
+c_06/test_git_c_06_2/.git/hooks/pre-commit.sample
+c_06/test_git_c_06_2/.git/hooks/fsmonitor-watchman.sample
+c_06/test_git_c_06_2/.git/hooks/pre-merge-commit.sample
+c_06/test_git_c_06_2/.git/hooks/commit-msg.sample
+c_06/test_git_c_06_2/.git/hooks/update.sample
+c_06/test_git_c_06_2/.git/hooks/pre-receive.sample
+c_06/test_git_c_06_2/.git/hooks/prepare-commit-msg.sample
+c_06/test_git_c_06_2/.git/logs/
+c_06/test_git_c_06_2/.git/logs/HEAD
+c_06/test_git_c_06_2/.git/logs/refs/
+c_06/test_git_c_06_2/.git/logs/refs/remotes/
+c_06/test_git_c_06_2/.git/logs/refs/remotes/origin/
+c_06/test_git_c_06_2/.git/logs/refs/remotes/origin/HEAD
+c_06/test_git_c_06_2/.git/logs/refs/heads/
+c_06/test_git_c_06_2/.git/logs/refs/heads/master
+c_06/test_git_c_06_2/.git/refs/
+c_06/test_git_c_06_2/.git/refs/tags/
+c_06/test_git_c_06_2/.git/refs/remotes/
+c_06/test_git_c_06_2/.git/refs/remotes/origin/
+c_06/test_git_c_06_2/.git/refs/remotes/origin/HEAD
+c_06/test_git_c_06_2/.git/refs/heads/
+c_06/test_git_c_06_2/.git/refs/heads/master
+c_06/test_git_c_06_2/ex02/
+c_06/test_git_c_06_2/ex02/ft_rev_params.c
+c_06/test_git_c_06_2/ex00/
+c_06/test_git_c_06_2/ex00/ft_print_program_name.c
+c_06/test_git_c_06_2/ex03/
+c_06/test_git_c_06_2/ex03/ft_sort_params.c
+c_06/test_git_c_06_2/ex01/
+c_06/test_git_c_06_2/ex01/ft_print_params.c
+e3r11p9% tar -cvf samed.tar samed/*    
+samed/ex00/
+samed/ex00/z
+samed/ex01/
+samed/ex01/testShell00.tar
+samed/ex01/testShell00
+samed/ex02/
+samed/ex02/test3
+samed/ex02/test1
+samed/ex02/test4
+samed/ex02/test6
+samed/ex02/exo2.tar
+samed/ex02/test0/
+samed/ex02/test5
+samed/ex02/test2/
+samed/ex03/
+samed/ex03/id_rsa_pub
+samed/ex04/
+samed/ex04/....wq
+samed/ex04/midLS
+samed/ex05/
+samed/ex05/git_commit.sh
+samed/ex05/ex06
+samed/ex06/
+samed/ex06/git_ignore.sh
+samed/ex07/
+samed/ex07/b
+samed/ex08/
+samed/ex08/clean
+samed/ex09/
+samed/ex09/ft_magic
+e3r11p9% tar -cvf shell_00.tar shell_00/*    
+shell_00/amhappio/
+shell_00/amhappio/shell00-1/
+shell_00/amhappio/shell00-1/.git/
+shell_00/amhappio/shell00-1/.git/packed-refs
+shell_00/amhappio/shell00-1/.git/HEAD
+shell_00/amhappio/shell00-1/.git/branches/
+shell_00/amhappio/shell00-1/.git/info/
+shell_00/amhappio/shell00-1/.git/info/exclude
+shell_00/amhappio/shell00-1/.git/config
+shell_00/amhappio/shell00-1/.git/objects/
+shell_00/amhappio/shell00-1/.git/objects/pack/
+shell_00/amhappio/shell00-1/.git/objects/pack/pack-c6af33f10a5493c4765d5fa369536ef595c1b439.idx
+shell_00/amhappio/shell00-1/.git/objects/pack/pack-c6af33f10a5493c4765d5fa369536ef595c1b439.pack
+shell_00/amhappio/shell00-1/.git/objects/info/
+shell_00/amhappio/shell00-1/.git/index
+shell_00/amhappio/shell00-1/.git/description
+shell_00/amhappio/shell00-1/.git/hooks/
+shell_00/amhappio/shell00-1/.git/hooks/post-update.sample
+shell_00/amhappio/shell00-1/.git/hooks/applypatch-msg.sample
+shell_00/amhappio/shell00-1/.git/hooks/pre-applypatch.sample
+shell_00/amhappio/shell00-1/.git/hooks/pre-rebase.sample
+shell_00/amhappio/shell00-1/.git/hooks/pre-push.sample
+shell_00/amhappio/shell00-1/.git/hooks/push-to-checkout.sample
+shell_00/amhappio/shell00-1/.git/hooks/pre-commit.sample
+shell_00/amhappio/shell00-1/.git/hooks/fsmonitor-watchman.sample
+shell_00/amhappio/shell00-1/.git/hooks/pre-merge-commit.sample
+shell_00/amhappio/shell00-1/.git/hooks/commit-msg.sample
+shell_00/amhappio/shell00-1/.git/hooks/update.sample
+shell_00/amhappio/shell00-1/.git/hooks/pre-receive.sample
+shell_00/amhappio/shell00-1/.git/hooks/prepare-commit-msg.sample
+shell_00/amhappio/shell00-1/.git/logs/
+shell_00/amhappio/shell00-1/.git/logs/HEAD
+shell_00/amhappio/shell00-1/.git/logs/refs/
+shell_00/amhappio/shell00-1/.git/logs/refs/remotes/
+shell_00/amhappio/shell00-1/.git/logs/refs/remotes/origin/
+shell_00/amhappio/shell00-1/.git/logs/refs/remotes/origin/HEAD
+shell_00/amhappio/shell00-1/.git/logs/refs/heads/
+shell_00/amhappio/shell00-1/.git/logs/refs/heads/master
+shell_00/amhappio/shell00-1/.git/refs/
+shell_00/amhappio/shell00-1/.git/refs/tags/
+shell_00/amhappio/shell00-1/.git/refs/remotes/
+shell_00/amhappio/shell00-1/.git/refs/remotes/origin/
+shell_00/amhappio/shell00-1/.git/refs/remotes/origin/HEAD
+shell_00/amhappio/shell00-1/.git/refs/heads/
+shell_00/amhappio/shell00-1/.git/refs/heads/master
+shell_00/amhappio/git_shell_00/
+shell_00/amhappio/git_shell_00/ex09/
+shell_00/amhappio/git_shell_00/ex09/ft_magic
+shell_00/amhappio/git_shell_00/ex09/ft_magic.mgc
+shell_00/amhappio/git_shell_00/ex09/test
+shell_00/amhappio/git_shell_00/.git/
+shell_00/amhappio/git_shell_00/.git/packed-refs
+shell_00/amhappio/git_shell_00/.git/HEAD
+shell_00/amhappio/git_shell_00/.git/branches/
+shell_00/amhappio/git_shell_00/.git/info/
+shell_00/amhappio/git_shell_00/.git/info/exclude
+shell_00/amhappio/git_shell_00/.git/config
+shell_00/amhappio/git_shell_00/.git/objects/
+shell_00/amhappio/git_shell_00/.git/objects/pack/
+shell_00/amhappio/git_shell_00/.git/objects/pack/pack-c6af33f10a5493c4765d5fa369536ef595c1b439.idx
+shell_00/amhappio/git_shell_00/.git/objects/pack/pack-c6af33f10a5493c4765d5fa369536ef595c1b439.pack
+shell_00/amhappio/git_shell_00/.git/objects/info/
+shell_00/amhappio/git_shell_00/.git/index
+shell_00/amhappio/git_shell_00/.git/description
+shell_00/amhappio/git_shell_00/.git/hooks/
+shell_00/amhappio/git_shell_00/.git/hooks/post-update.sample
+shell_00/amhappio/git_shell_00/.git/hooks/applypatch-msg.sample
+shell_00/amhappio/git_shell_00/.git/hooks/pre-applypatch.sample
+shell_00/amhappio/git_shell_00/.git/hooks/pre-rebase.sample
+shell_00/amhappio/git_shell_00/.git/hooks/pre-push.sample
+shell_00/amhappio/git_shell_00/.git/hooks/push-to-checkout.sample
+shell_00/amhappio/git_shell_00/.git/hooks/pre-commit.sample
+shell_00/amhappio/git_shell_00/.git/hooks/fsmonitor-watchman.sample
+shell_00/amhappio/git_shell_00/.git/hooks/pre-merge-commit.sample
+shell_00/amhappio/git_shell_00/.git/hooks/commit-msg.sample
+shell_00/amhappio/git_shell_00/.git/hooks/update.sample
+shell_00/amhappio/git_shell_00/.git/hooks/pre-receive.sample
+shell_00/amhappio/git_shell_00/.git/hooks/prepare-commit-msg.sample
+shell_00/amhappio/git_shell_00/.git/logs/
+shell_00/amhappio/git_shell_00/.git/logs/HEAD
+shell_00/amhappio/git_shell_00/.git/logs/refs/
+shell_00/amhappio/git_shell_00/.git/logs/refs/remotes/
+shell_00/amhappio/git_shell_00/.git/logs/refs/remotes/origin/
+shell_00/amhappio/git_shell_00/.git/logs/refs/remotes/origin/HEAD
+shell_00/amhappio/git_shell_00/.git/logs/refs/heads/
+shell_00/amhappio/git_shell_00/.git/logs/refs/heads/master
+shell_00/amhappio/git_shell_00/.git/refs/
+shell_00/amhappio/git_shell_00/.git/refs/tags/
+shell_00/amhappio/git_shell_00/.git/refs/remotes/
+shell_00/amhappio/git_shell_00/.git/refs/remotes/origin/
+shell_00/amhappio/git_shell_00/.git/refs/remotes/origin/HEAD
+shell_00/amhappio/git_shell_00/.git/refs/heads/
+shell_00/amhappio/git_shell_00/.git/refs/heads/master
+shell_00/amhappio/git_shell_00/ex04/
+shell_00/amhappio/git_shell_00/ex04/midLS
+shell_00/amhappio/git_shell_00/ex02/
+shell_00/amhappio/git_shell_00/ex02/test3
+shell_00/amhappio/git_shell_00/ex02/test1
+shell_00/amhappio/git_shell_00/ex02/test4
+shell_00/amhappio/git_shell_00/ex02/test6
+shell_00/amhappio/git_shell_00/ex02/exo2.tar
+shell_00/amhappio/git_shell_00/ex02/test0/
+shell_00/amhappio/git_shell_00/ex02/test5
+shell_00/amhappio/git_shell_00/ex02/test2/
+shell_00/amhappio/git_shell_00/ex08/
+shell_00/amhappio/git_shell_00/ex08/clean
+shell_00/amhappio/git_shell_00/ex08/test#
+shell_00/amhappio/git_shell_00/ex07/
+shell_00/amhappio/git_shell_00/ex07/b
+shell_00/amhappio/git_shell_00/ex07/sw.diff
+shell_00/amhappio/git_shell_00/ex07/sw.diff.original
+shell_00/amhappio/git_shell_00/ex07/a
+shell_00/amhappio/git_shell_00/ex05/
+shell_00/amhappio/git_shell_00/ex05/git_commit.sh
+shell_00/amhappio/git_shell_00/test/
+shell_00/amhappio/git_shell_00/test/b
+shell_00/amhappio/git_shell_00/test/sw.diff
+shell_00/amhappio/git_shell_00/test/a
+shell_00/amhappio/git_shell_00/ex00/
+shell_00/amhappio/git_shell_00/ex00/z
+shell_00/amhappio/git_shell_00/ex03/
+shell_00/amhappio/git_shell_00/ex03/id_rsa_pub
+shell_00/amhappio/git_shell_00/ex01/
+shell_00/amhappio/git_shell_00/ex01/testShell00.tar
+shell_00/amhappio/git_shell_00/ex01/testShell00
+shell_00/amhappio/git_shell_00/ex06/
+shell_00/amhappio/git_shell_00/ex06/git_ignore.sh
+shell_00/amhappio/test/
+shell_00/ex00/
+shell_00/ex00/z
+shell_00/ex01/
+shell_00/ex01/testShell00.tar
+shell_00/ex01/testShell00
+shell_00/ex02/
+shell_00/ex02/test3
+shell_00/ex02/test1
+shell_00/ex02/test4
+shell_00/ex02/test6
+shell_00/ex02/exo2.tar
+shell_00/ex02/test0/
+shell_00/ex02/test0/test6
+shell_00/ex02/test5
+shell_00/ex02/test2/
+shell_00/ex03/
+shell_00/ex03/id_rsa_pub
+shell_00/ex04/
+shell_00/ex04/midLS
+shell_00/ex05/
+shell_00/ex05/git_commit.sh
+shell_00/ex06/
+shell_00/ex06/git_ignore.sh
+shell_00/ex07/
+shell_00/ex07/b
+shell_00/ex07/sw.diff
+shell_00/ex07/sw.diff.original
+shell_00/ex07/a
+shell_00/ex08/
+shell_00/ex08/clean
+shell_00/ex08/find
+shell_00/ex09/
+shell_00/ex09/test42file
+shell_00/ex09/ft_magic
+shell_00/ex09/ft_magic.mgc
+shell_00/ex09/test42file2
+shell_00/git_first_day/
+shell_00/git_first_day/ex09/
+shell_00/git_first_day/ex09/ft_magic
+shell_00/git_first_day/.git/
+shell_00/git_first_day/.git/COMMIT_EDITMSG
+shell_00/git_first_day/.git/HEAD
+shell_00/git_first_day/.git/branches/
+shell_00/git_first_day/.git/info/
+shell_00/git_first_day/.git/info/exclude
+shell_00/git_first_day/.git/config
+shell_00/git_first_day/.git/objects/
+shell_00/git_first_day/.git/objects/e9/
+shell_00/git_first_day/.git/objects/e9/00b1c81c65dc52463027be827c1418fc7ff505
+shell_00/git_first_day/.git/objects/3d/
+shell_00/git_first_day/.git/objects/3d/6463c804bdc87f68b4f8c13135e2fac74baba3
+shell_00/git_first_day/.git/objects/ce/
+shell_00/git_first_day/.git/objects/ce/c4618582cdd6849e9876e126a956b5d68398a7
+shell_00/git_first_day/.git/objects/10/
+shell_00/git_first_day/.git/objects/10/2549f47dd23fd761c19b340d630f23315aca10
+shell_00/git_first_day/.git/objects/f7/
+shell_00/git_first_day/.git/objects/f7/b755ae0ed7890ed685be3e571719804480f1d8
+shell_00/git_first_day/.git/objects/80/
+shell_00/git_first_day/.git/objects/80/f16a59fe93dd7dff5110718c267c83302641ed
+shell_00/git_first_day/.git/objects/99/
+shell_00/git_first_day/.git/objects/99/1a3dee6fae3c62760328607ece8ecd3e2f5276
+shell_00/git_first_day/.git/objects/4c/
+shell_00/git_first_day/.git/objects/4c/fda81e7e5a2036b6508a99ce5888683b5c5043
+shell_00/git_first_day/.git/objects/ad/
+shell_00/git_first_day/.git/objects/ad/f3a015a18a7f9292531efbde5ded3d2a42c37e
+shell_00/git_first_day/.git/objects/da/
+shell_00/git_first_day/.git/objects/da/1fbf3aad751cff584ff032819a0ebc756b60e6
+shell_00/git_first_day/.git/objects/pack/
+shell_00/git_first_day/.git/objects/f6/
+shell_00/git_first_day/.git/objects/f6/97ce796349899355efa5119331f01eccda32ca
+shell_00/git_first_day/.git/objects/9b/
+shell_00/git_first_day/.git/objects/9b/a02b6a3f943f738ba47c2627fda894a21de390
+shell_00/git_first_day/.git/objects/c1/
+shell_00/git_first_day/.git/objects/c1/a8e8a0b7f701802ce1787cbc7591369fba768b
+shell_00/git_first_day/.git/objects/0f/
+shell_00/git_first_day/.git/objects/0f/12f2dad13535344036ee5065aa17bd5671564e
+shell_00/git_first_day/.git/objects/88/
+shell_00/git_first_day/.git/objects/88/f1d32c5b15b5e222d8dcf5485f6e5eb18fee93
+shell_00/git_first_day/.git/objects/c9/
+shell_00/git_first_day/.git/objects/c9/67dea656f19fb2324c8e640e27b2b26485c90d
+shell_00/git_first_day/.git/objects/38/
+shell_00/git_first_day/.git/objects/38/641dc4fb53f74373414ec7d1ac3bc83c0f02d0
+shell_00/git_first_day/.git/objects/info/
+shell_00/git_first_day/.git/objects/c2/
+shell_00/git_first_day/.git/objects/c2/dab24187d4ff62bb3a040d4e64274a5804ed28
+shell_00/git_first_day/.git/objects/c2/3e03c103fb66c86b602a84a8d69132ac3496fe
+shell_00/git_first_day/.git/objects/71/
+shell_00/git_first_day/.git/objects/71/33c3235dcb292bccdd4d9016bc111e99f2b59e
+shell_00/git_first_day/.git/objects/1c/
+shell_00/git_first_day/.git/objects/1c/b7e1c06dc99002d3cf65aa03a40caa3afd568b
+shell_00/git_first_day/.git/objects/d8/
+shell_00/git_first_day/.git/objects/d8/5f91597ec9193c61a835769be4971a73420e46
+shell_00/git_first_day/.git/objects/c0/
+shell_00/git_first_day/.git/objects/c0/2817c95c16e27dd748fc6e2e57e9d5fa74c0af
+shell_00/git_first_day/.git/objects/a7/
+shell_00/git_first_day/.git/objects/a7/b36e161829ddd289d6610cf367cf4b71231bad
+shell_00/git_first_day/.git/objects/7b/
+shell_00/git_first_day/.git/objects/7b/28b9f15cb27239e331cf0c9681254052ee8300
+shell_00/git_first_day/.git/objects/f3/
+shell_00/git_first_day/.git/objects/f3/eba773569cf7b209381bda1c8e8879055f9ab1
+shell_00/git_first_day/.git/objects/c7/
+shell_00/git_first_day/.git/objects/c7/ad206449fc6e8373355e4eb1e66031f638cb07
+shell_00/git_first_day/.git/objects/ac/
+shell_00/git_first_day/.git/objects/ac/84f08ee0ce4f19737670daaab85b846e4386a0
+shell_00/git_first_day/.git/objects/26/
+shell_00/git_first_day/.git/objects/26/fac0efb5e2f800d7ec053b4d46bfeb81f02575
+shell_00/git_first_day/.git/objects/9c/
+shell_00/git_first_day/.git/objects/9c/b5e40cf3a1b778145018e54e6ab05206c1cc3d
+shell_00/git_first_day/.git/objects/9c/e8272dd24837956e1ede590e1b3bbaacadad4a
+shell_00/git_first_day/.git/objects/8b/
+shell_00/git_first_day/.git/objects/8b/e1a88632fc492b10b8344811b081f85e1187e1
+shell_00/git_first_day/.git/objects/33/
+shell_00/git_first_day/.git/objects/33/0e4f86351a994066be26d2180ce44400f84fe7
+shell_00/git_first_day/.git/objects/f5/
+shell_00/git_first_day/.git/objects/f5/37b605f1652114ca36b21afe6922fab99c9b57
+shell_00/git_first_day/.git/objects/f5/d990e854e3fa7798b53745b4ab94bb55d00f35
+shell_00/git_first_day/.git/objects/0b/
+shell_00/git_first_day/.git/objects/0b/0a9a3390f31b577cf318b6c8902ea06ed0bb2f
+shell_00/git_first_day/.git/objects/c8/
+shell_00/git_first_day/.git/objects/c8/953064a74a6e8a061cd407f0071eac1c3b2dcd
+shell_00/git_first_day/.git/objects/81/
+shell_00/git_first_day/.git/objects/81/bf7d3c4318d7ebb09e73bbcf29b06f24320fdc
+shell_00/git_first_day/.git/objects/f2/
+shell_00/git_first_day/.git/objects/f2/b485fd55976ffc2774df4b9bb2cf904a1a8344
+shell_00/git_first_day/.git/objects/1f/
+shell_00/git_first_day/.git/objects/1f/936bc4bc17e06f70a1872d0ae2d80cfe3e211d
+shell_00/git_first_day/.git/objects/ea/
+shell_00/git_first_day/.git/objects/ea/a787135f0f32ef457c26f775326f2073c22d40
+shell_00/git_first_day/.git/objects/ec/
+shell_00/git_first_day/.git/objects/ec/28b5c0966dce0dd645a794662ff5175f1e4c99
+shell_00/git_first_day/.git/objects/47/
+shell_00/git_first_day/.git/objects/47/d6fb1e2053ad2042dac85efb5e333cccac5085
+shell_00/git_first_day/.git/objects/b3/
+shell_00/git_first_day/.git/objects/b3/f71ee87022e002db39e3c7af4a2ca4738be4f5
+shell_00/git_first_day/.git/objects/17/
+shell_00/git_first_day/.git/objects/17/66a555ee5982965d907348b562f9feff49a121
+shell_00/git_first_day/.git/objects/52/
+shell_00/git_first_day/.git/objects/52/74572095ec0fb5fb6150d45a99c955be5105b2
+shell_00/git_first_day/.git/objects/d3/
+shell_00/git_first_day/.git/objects/d3/237e62cd3b84f243a97a00e0279179ac3a4108
+shell_00/git_first_day/.git/objects/40/
+shell_00/git_first_day/.git/objects/40/023368becde911acf363460a808fc5ffc3dff7
+shell_00/git_first_day/.git/objects/40/e15ac17fe2346df99cef96357117f00022cb90
+shell_00/git_first_day/.git/objects/f9/
+shell_00/git_first_day/.git/objects/f9/19799ebdb6c584c1f6be16651db38ff28eb280
+shell_00/git_first_day/.git/objects/3a/
+shell_00/git_first_day/.git/objects/3a/876cac764e27485224ca333f0d32a95c327c0a
+shell_00/git_first_day/.git/objects/e0/
+shell_00/git_first_day/.git/objects/e0/cbf213f0b1914421c30a22bcdfaf91569ff026
+shell_00/git_first_day/.git/objects/0e/
+shell_00/git_first_day/.git/objects/0e/2908ac59deaf31ea3917fefd778789ee25bdbc
+shell_00/git_first_day/.git/objects/73/
+shell_00/git_first_day/.git/objects/73/1152d3b9389c802094da1102b4e8858644e55b
+shell_00/git_first_day/.git/objects/43/
+shell_00/git_first_day/.git/objects/43/5fac29f0783ff5c0bcc6757ea6c6e7ff403275
+shell_00/git_first_day/.git/objects/68/
+shell_00/git_first_day/.git/objects/68/e96444208798107dc14e788b3383ab8b33321a
+shell_00/git_first_day/.git/objects/68/243de851b10bab2ebbf2280d6e43f670985b75
+shell_00/git_first_day/.git/objects/e8/
+shell_00/git_first_day/.git/objects/e8/dcd24b996fa75ded89b6ef5d648b0d0ab4bceb
+shell_00/git_first_day/.git/objects/9d/
+shell_00/git_first_day/.git/objects/9d/7b4f892d4adc8550740c9475ea930e56d727d0
+shell_00/git_first_day/.git/objects/9d/9fa72269c734e061f7d413f5452e77b51c9905
+shell_00/git_first_day/.git/objects/23/
+shell_00/git_first_day/.git/objects/23/2ba7f3a462d21e92c4f28d80d703e46c41f949
+shell_00/git_first_day/.git/objects/23/f46d3538c2343bb26e42cbf9e24023c4afd82c
+shell_00/git_first_day/.git/objects/82/
+shell_00/git_first_day/.git/objects/82/511f9fa136f87d3ad18f2833362447b8533f04
+shell_00/git_first_day/.git/objects/c4/
+shell_00/git_first_day/.git/objects/c4/2048c0c70615c353f36b3e39904e7604b454d1
+shell_00/git_first_day/.git/objects/5b/
+shell_00/git_first_day/.git/objects/5b/2b48fa9789d4937c46c173e8a6b77e7c0f2db7
+shell_00/git_first_day/.git/objects/4f/
+shell_00/git_first_day/.git/objects/4f/78de51c47df29b8e594a6739f021fbc422b49e
+shell_00/git_first_day/.git/index
+shell_00/git_first_day/.git/description
+shell_00/git_first_day/.git/hooks/
+shell_00/git_first_day/.git/hooks/post-update.sample
+shell_00/git_first_day/.git/hooks/applypatch-msg.sample
+shell_00/git_first_day/.git/hooks/pre-applypatch.sample
+shell_00/git_first_day/.git/hooks/pre-rebase.sample
+shell_00/git_first_day/.git/hooks/pre-push.sample
+shell_00/git_first_day/.git/hooks/push-to-checkout.sample
+shell_00/git_first_day/.git/hooks/pre-commit.sample
+shell_00/git_first_day/.git/hooks/fsmonitor-watchman.sample
+shell_00/git_first_day/.git/hooks/pre-merge-commit.sample
+shell_00/git_first_day/.git/hooks/commit-msg.sample
+shell_00/git_first_day/.git/hooks/update.sample
+shell_00/git_first_day/.git/hooks/pre-receive.sample
+shell_00/git_first_day/.git/hooks/prepare-commit-msg.sample
+shell_00/git_first_day/.git/logs/
+shell_00/git_first_day/.git/logs/HEAD
+shell_00/git_first_day/.git/logs/refs/
+shell_00/git_first_day/.git/logs/refs/remotes/
+shell_00/git_first_day/.git/logs/refs/remotes/origin/
+shell_00/git_first_day/.git/logs/refs/remotes/origin/master
+shell_00/git_first_day/.git/logs/refs/heads/
+shell_00/git_first_day/.git/logs/refs/heads/master
+shell_00/git_first_day/.git/refs/
+shell_00/git_first_day/.git/refs/tags/
+shell_00/git_first_day/.git/refs/remotes/
+shell_00/git_first_day/.git/refs/remotes/origin/
+shell_00/git_first_day/.git/refs/remotes/origin/master
+shell_00/git_first_day/.git/refs/heads/
+shell_00/git_first_day/.git/refs/heads/master
+shell_00/git_first_day/ex04/
+shell_00/git_first_day/ex04/midLS
+shell_00/git_first_day/ex02/
+shell_00/git_first_day/ex02/exo2.tar
+shell_00/git_first_day/ex08/
+shell_00/git_first_day/ex08/clean
+shell_00/git_first_day/ex07/
+shell_00/git_first_day/ex07/b
+shell_00/git_first_day/ex05/
+shell_00/git_first_day/ex05/git_commit.sh
+shell_00/git_first_day/ex00/
+shell_00/git_first_day/ex00/z
+shell_00/git_first_day/ex03/
+shell_00/git_first_day/ex03/id_rsa_pub
+shell_00/git_first_day/ex01/
+shell_00/git_first_day/ex01/testShell00.tar
+shell_00/git_first_day/ex06/
+shell_00/git_first_day/ex06/git_ignore.sh
+shell_00/git_first_day_2/
+shell_00/git_first_day_2/ex09/
+shell_00/git_first_day_2/ex09/ft_magic
+shell_00/git_first_day_2/.git/
+shell_00/git_first_day_2/.git/packed-refs
+shell_00/git_first_day_2/.git/HEAD
+shell_00/git_first_day_2/.git/branches/
+shell_00/git_first_day_2/.git/info/
+shell_00/git_first_day_2/.git/info/exclude
+shell_00/git_first_day_2/.git/config
+shell_00/git_first_day_2/.git/objects/
+shell_00/git_first_day_2/.git/objects/pack/
+shell_00/git_first_day_2/.git/objects/pack/pack-52f9510b6e39bc8dc74f43b713b9439e9ac80423.idx
+shell_00/git_first_day_2/.git/objects/pack/pack-52f9510b6e39bc8dc74f43b713b9439e9ac80423.pack
+shell_00/git_first_day_2/.git/objects/info/
+shell_00/git_first_day_2/.git/index
+shell_00/git_first_day_2/.git/description
+shell_00/git_first_day_2/.git/hooks/
+shell_00/git_first_day_2/.git/hooks/post-update.sample
+shell_00/git_first_day_2/.git/hooks/applypatch-msg.sample
+shell_00/git_first_day_2/.git/hooks/pre-applypatch.sample
+shell_00/git_first_day_2/.git/hooks/pre-rebase.sample
+shell_00/git_first_day_2/.git/hooks/pre-push.sample
+shell_00/git_first_day_2/.git/hooks/push-to-checkout.sample
+shell_00/git_first_day_2/.git/hooks/pre-commit.sample
+shell_00/git_first_day_2/.git/hooks/fsmonitor-watchman.sample
+shell_00/git_first_day_2/.git/hooks/pre-merge-commit.sample
+shell_00/git_first_day_2/.git/hooks/commit-msg.sample
+shell_00/git_first_day_2/.git/hooks/update.sample
+shell_00/git_first_day_2/.git/hooks/pre-receive.sample
+shell_00/git_first_day_2/.git/hooks/prepare-commit-msg.sample
+shell_00/git_first_day_2/.git/logs/
+shell_00/git_first_day_2/.git/logs/HEAD
+shell_00/git_first_day_2/.git/logs/refs/
+shell_00/git_first_day_2/.git/logs/refs/remotes/
+shell_00/git_first_day_2/.git/logs/refs/remotes/origin/
+shell_00/git_first_day_2/.git/logs/refs/remotes/origin/HEAD
+shell_00/git_first_day_2/.git/logs/refs/heads/
+shell_00/git_first_day_2/.git/logs/refs/heads/master
+shell_00/git_first_day_2/.git/refs/
+shell_00/git_first_day_2/.git/refs/tags/
+shell_00/git_first_day_2/.git/refs/remotes/
+shell_00/git_first_day_2/.git/refs/remotes/origin/
+shell_00/git_first_day_2/.git/refs/remotes/origin/HEAD
+shell_00/git_first_day_2/.git/refs/heads/
+shell_00/git_first_day_2/.git/refs/heads/master
+shell_00/git_first_day_2/ex04/
+shell_00/git_first_day_2/ex04/midLS
+shell_00/git_first_day_2/ex02/
+shell_00/git_first_day_2/ex02/exo2.tar
+shell_00/git_first_day_2/ex08/
+shell_00/git_first_day_2/ex08/clean
+shell_00/git_first_day_2/ex07/
+shell_00/git_first_day_2/ex07/b
+shell_00/git_first_day_2/ex05/
+shell_00/git_first_day_2/ex05/git_commit.sh
+shell_00/git_first_day_2/ex00/
+shell_00/git_first_day_2/ex00/z
+shell_00/git_first_day_2/ex03/
+shell_00/git_first_day_2/ex03/id_rsa_pub
+shell_00/git_first_day_2/ex01/
+shell_00/git_first_day_2/ex01/testShell00.tar
+shell_00/git_first_day_2/ex06/
+shell_00/git_first_day_2/ex06/git_ignore.sh
+e3r11p9% tar -cvf shell_01.tar shell_01/* 
+shell_01/ex01/
+shell_01/ex01/test_print_groups.sh
+shell_01/ex01/print_groups.sh
+shell_01/ex02/
+shell_01/ex02/find_sh.sh
+shell_01/ex03/
+shell_01/ex03/count_files.sh
+shell_01/ex04/
+shell_01/ex04/MAC.sh
+shell_01/ex05/
+shell_01/ex05/"\\?$*'MaRViN'*$?\\"
+shell_01/ex06/
+shell_01/ex06/skip.sh
+shell_01/ex07/
+shell_01/ex07/r_dwssap.sh
+shell_01/ex07/test_r_dwssap.sh
+shell_01/ex08/
+shell_01/git_second_day/
+shell_01/git_second_day/.git/
+shell_01/git_second_day/.git/COMMIT_EDITMSG
+shell_01/git_second_day/.git/HEAD
+shell_01/git_second_day/.git/branches/
+shell_01/git_second_day/.git/info/
+shell_01/git_second_day/.git/info/exclude
+shell_01/git_second_day/.git/config
+shell_01/git_second_day/.git/objects/
+shell_01/git_second_day/.git/objects/e9/
+shell_01/git_second_day/.git/objects/e9/e0d9666ef046d22b632ac6d950d1c70b4c66b3
+shell_01/git_second_day/.git/objects/7f/
+shell_01/git_second_day/.git/objects/7f/a675a86bfa88c5ab95280e122248ade0a6a587
+shell_01/git_second_day/.git/objects/7f/3cc3b780675e51639984027d1757e2d2b1690e
+shell_01/git_second_day/.git/objects/32/
+shell_01/git_second_day/.git/objects/32/8774d0fa8721309e64b03e4b9f38ddd9613021
+shell_01/git_second_day/.git/objects/49/
+shell_01/git_second_day/.git/objects/49/403637585b1e314a6e41c4149c8c48322f30c5
+shell_01/git_second_day/.git/objects/15/
+shell_01/git_second_day/.git/objects/15/54c9c22d81a007ba5ec41cb2ec31a30d7e27c7
+shell_01/git_second_day/.git/objects/3d/
+shell_01/git_second_day/.git/objects/3d/330a38a54da4bd1bec11efe019fc00b86a2f16
+shell_01/git_second_day/.git/objects/d9/
+shell_01/git_second_day/.git/objects/d9/d535f76a503f33743b6957697f30c14f1b89ad
+shell_01/git_second_day/.git/objects/f7/
+shell_01/git_second_day/.git/objects/f7/0d7bba4ae1f07682e0358bd7a2068094fc023b
+shell_01/git_second_day/.git/objects/62/
+shell_01/git_second_day/.git/objects/62/47559f6cfd4537b094b18bb165f0f6247dacbe
+shell_01/git_second_day/.git/objects/b1/
+shell_01/git_second_day/.git/objects/b1/e2aaed8f3ec1702d85c78c55810324d4f0abac
+shell_01/git_second_day/.git/objects/80/
+shell_01/git_second_day/.git/objects/80/4982b107f2a93ebd7d35c0645a4b7a76f0f8ba
+shell_01/git_second_day/.git/objects/b7/
+shell_01/git_second_day/.git/objects/b7/ad6e268ff8a36e29bde144003d5457397a9479
+shell_01/git_second_day/.git/objects/19/
+shell_01/git_second_day/.git/objects/19/8f78dc835c93523be295aacef994813bf0fadc
+shell_01/git_second_day/.git/objects/19/2548e949786b9903109a943350e6ca0f1241d3
+shell_01/git_second_day/.git/objects/cb/
+shell_01/git_second_day/.git/objects/cb/8380e16ad1b2e73c0b2a769eb1a19d497cc2a3
+shell_01/git_second_day/.git/objects/1a/
+shell_01/git_second_day/.git/objects/1a/66e0dfee68bb49bbefb4c4fa8619915fe79c67
+shell_01/git_second_day/.git/objects/06/
+shell_01/git_second_day/.git/objects/06/51259feaafffc956baba255837c7e4a3a0858a
+shell_01/git_second_day/.git/objects/a1/
+shell_01/git_second_day/.git/objects/a1/16399d52b519bf3df7947362c3048419967060
+shell_01/git_second_day/.git/objects/pack/
+shell_01/git_second_day/.git/objects/9b/
+shell_01/git_second_day/.git/objects/9b/6979f012ae3d54365a5d98b38b559fdfe78639
+shell_01/git_second_day/.git/objects/c9/
+shell_01/git_second_day/.git/objects/c9/37370cc54a409bd6e77f607679cd715af2f6a5
+shell_01/git_second_day/.git/objects/c9/ed1a552c6159ec3dcfaae61e8fa2023a63dc0f
+shell_01/git_second_day/.git/objects/info/
+shell_01/git_second_day/.git/objects/94/
+shell_01/git_second_day/.git/objects/94/e4d665d9dc63ee9e0f47382cf2664e00465775
+shell_01/git_second_day/.git/objects/77/
+shell_01/git_second_day/.git/objects/77/6d10e15af4e6b46d3f33286a7ea1375954b13b
+shell_01/git_second_day/.git/objects/d0/
+shell_01/git_second_day/.git/objects/d0/9a51e7583713cf1d65845620c14ee2be6e2728
+shell_01/git_second_day/.git/objects/72/
+shell_01/git_second_day/.git/objects/72/10c0795937e22ffbd6b54332246ad116ef2f84
+shell_01/git_second_day/.git/objects/72/983af614d04faf6669d12b6bccc53b60e8be94
+shell_01/git_second_day/.git/objects/c0/
+shell_01/git_second_day/.git/objects/c0/ec6260cd2b6993c225f5ed615efd3c62058622
+shell_01/git_second_day/.git/objects/2e/
+shell_01/git_second_day/.git/objects/2e/b471d3883854e38f723a3e4dc5f0b4d3f43db9
+shell_01/git_second_day/.git/objects/7b/
+shell_01/git_second_day/.git/objects/7b/ddaada341cbbe43bf741d0855656f15475897a
+shell_01/git_second_day/.git/objects/13/
+shell_01/git_second_day/.git/objects/13/0af3881e500aaa433bb75307288990fded11de
+shell_01/git_second_day/.git/objects/8c/
+shell_01/git_second_day/.git/objects/8c/a89f52a9c8ff7a06e96f378e5c5a389fe3e42d
+shell_01/git_second_day/.git/objects/a0/
+shell_01/git_second_day/.git/objects/a0/75c024015c53f046dbf5fe9c0f2a6a39fc96e6
+shell_01/git_second_day/.git/objects/55/
+shell_01/git_second_day/.git/objects/55/0f8d4eaf80bf77a83e8358becdbdd30953c73f
+shell_01/git_second_day/.git/objects/b9/
+shell_01/git_second_day/.git/objects/b9/6b82b6e2d582e8061e452b27bdd3e70577e04c
+shell_01/git_second_day/.git/objects/7c/
+shell_01/git_second_day/.git/objects/7c/e24e7a43ca9380e5bf19148c56d8cccaad2b17
+shell_01/git_second_day/.git/objects/0d/
+shell_01/git_second_day/.git/objects/0d/e46c8cd1acbc84a0cff6e97b0d56e97491c3b1
+shell_01/git_second_day/.git/objects/e6/
+shell_01/git_second_day/.git/objects/e6/851b5e2aeb861b3994c72f35ffc07ddbe70a03
+shell_01/git_second_day/.git/objects/25/
+shell_01/git_second_day/.git/objects/25/040da4d17dbca9e3ed4e9b7fb0142c3b432610
+shell_01/git_second_day/.git/objects/25/cffe1fc9fe4b0e35d524ecb8b6912cc7036eee
+shell_01/git_second_day/.git/objects/af/
+shell_01/git_second_day/.git/objects/af/10155b9d14c3be2ba6ef72974684376540515b
+shell_01/git_second_day/.git/objects/bb/
+shell_01/git_second_day/.git/objects/bb/39adf9d880900c0e190b1e558526a935b7714c
+shell_01/git_second_day/.git/objects/d6/
+shell_01/git_second_day/.git/objects/d6/f7f887bfd5231046e81c20b0eb092622d8a507
+shell_01/git_second_day/.git/objects/43/
+shell_01/git_second_day/.git/objects/43/4e4a3a174288bf029be7465f245b7e3b65d3cf
+shell_01/git_second_day/.git/objects/04/
+shell_01/git_second_day/.git/objects/04/cdfc7ca78154fc9bd256db18f3f5d30a7d712c
+shell_01/git_second_day/.git/objects/a5/
+shell_01/git_second_day/.git/objects/a5/1f9eb22f622bdf8aaead44f9daae707b4a2957
+shell_01/git_second_day/.git/objects/e8/
+shell_01/git_second_day/.git/objects/e8/497830487b08010b565162bbe1a984f56ec467
+shell_01/git_second_day/.git/objects/bc/
+shell_01/git_second_day/.git/objects/bc/40951ec65281a91eee75928c314846c07a7144
+shell_01/git_second_day/.git/objects/3c/
+shell_01/git_second_day/.git/objects/3c/4f4b3798a50858364490e239c6ddd9afa918dc
+shell_01/git_second_day/.git/objects/c4/
+shell_01/git_second_day/.git/objects/c4/eb7be747669454af70107b90edaec3f6f6fe86
+shell_01/git_second_day/.git/objects/e1/
+shell_01/git_second_day/.git/objects/e1/af8150a23c72a0b6c113221d5e0d218237fce3
+shell_01/git_second_day/.git/index
+shell_01/git_second_day/.git/description
+shell_01/git_second_day/.git/hooks/
+shell_01/git_second_day/.git/hooks/post-update.sample
+shell_01/git_second_day/.git/hooks/applypatch-msg.sample
+shell_01/git_second_day/.git/hooks/pre-applypatch.sample
+shell_01/git_second_day/.git/hooks/pre-rebase.sample
+shell_01/git_second_day/.git/hooks/pre-push.sample
+shell_01/git_second_day/.git/hooks/push-to-checkout.sample
+shell_01/git_second_day/.git/hooks/pre-commit.sample
+shell_01/git_second_day/.git/hooks/fsmonitor-watchman.sample
+shell_01/git_second_day/.git/hooks/pre-merge-commit.sample
+shell_01/git_second_day/.git/hooks/commit-msg.sample
+shell_01/git_second_day/.git/hooks/update.sample
+shell_01/git_second_day/.git/hooks/pre-receive.sample
+shell_01/git_second_day/.git/hooks/prepare-commit-msg.sample
+shell_01/git_second_day/.git/logs/
+shell_01/git_second_day/.git/logs/HEAD
+shell_01/git_second_day/.git/logs/refs/
+shell_01/git_second_day/.git/logs/refs/remotes/
+shell_01/git_second_day/.git/logs/refs/remotes/origin/
+shell_01/git_second_day/.git/logs/refs/remotes/origin/master
+shell_01/git_second_day/.git/logs/refs/heads/
+shell_01/git_second_day/.git/logs/refs/heads/master
+shell_01/git_second_day/.git/refs/
+shell_01/git_second_day/.git/refs/tags/
+shell_01/git_second_day/.git/refs/remotes/
+shell_01/git_second_day/.git/refs/remotes/origin/
+shell_01/git_second_day/.git/refs/remotes/origin/master
+shell_01/git_second_day/.git/refs/heads/
+shell_01/git_second_day/.git/refs/heads/master
+shell_01/git_second_day/ex04/
+shell_01/git_second_day/ex04/MAC.sh
+shell_01/git_second_day/ex02/
+shell_01/git_second_day/ex02/find_sh.sh
+shell_01/git_second_day/ex08/
+shell_01/git_second_day/ex07/
+shell_01/git_second_day/ex07/r_dwssap.sh
+shell_01/git_second_day/ex05/
+shell_01/git_second_day/ex05/"\\?$*'MaRViN'*$?\\"
+shell_01/git_second_day/ex03/
+shell_01/git_second_day/ex03/count_files.sh
+shell_01/git_second_day/ex01/
+shell_01/git_second_day/ex01/print_groups.sh
+shell_01/git_second_day/ex06/
+shell_01/git_second_day/ex06/skip.sh
+shell_01/git_second_day_2/
+shell_01/git_second_day_2/.git/
+shell_01/git_second_day_2/.git/COMMIT_EDITMSG
+shell_01/git_second_day_2/.git/HEAD
+shell_01/git_second_day_2/.git/branches/
+shell_01/git_second_day_2/.git/info/
+shell_01/git_second_day_2/.git/info/exclude
+shell_01/git_second_day_2/.git/config
+shell_01/git_second_day_2/.git/objects/
+shell_01/git_second_day_2/.git/objects/7f/
+shell_01/git_second_day_2/.git/objects/7f/3cc3b780675e51639984027d1757e2d2b1690e
+shell_01/git_second_day_2/.git/objects/49/
+shell_01/git_second_day_2/.git/objects/49/403637585b1e314a6e41c4149c8c48322f30c5
+shell_01/git_second_day_2/.git/objects/f7/
+shell_01/git_second_day_2/.git/objects/f7/0d7bba4ae1f07682e0358bd7a2068094fc023b
+shell_01/git_second_day_2/.git/objects/b1/
+shell_01/git_second_day_2/.git/objects/b1/e2aaed8f3ec1702d85c78c55810324d4f0abac
+shell_01/git_second_day_2/.git/objects/19/
+shell_01/git_second_day_2/.git/objects/19/8f78dc835c93523be295aacef994813bf0fadc
+shell_01/git_second_day_2/.git/objects/cb/
+shell_01/git_second_day_2/.git/objects/cb/8380e16ad1b2e73c0b2a769eb1a19d497cc2a3
+shell_01/git_second_day_2/.git/objects/1a/
+shell_01/git_second_day_2/.git/objects/1a/66e0dfee68bb49bbefb4c4fa8619915fe79c67
+shell_01/git_second_day_2/.git/objects/pack/
+shell_01/git_second_day_2/.git/objects/a9/
+shell_01/git_second_day_2/.git/objects/a9/36b601569a508554d8e242ca6c0b327e26c846
+shell_01/git_second_day_2/.git/objects/info/
+shell_01/git_second_day_2/.git/objects/2e/
+shell_01/git_second_day_2/.git/objects/2e/b471d3883854e38f723a3e4dc5f0b4d3f43db9
+shell_01/git_second_day_2/.git/objects/a0/
+shell_01/git_second_day_2/.git/objects/a0/75c024015c53f046dbf5fe9c0f2a6a39fc96e6
+shell_01/git_second_day_2/.git/objects/7c/
+shell_01/git_second_day_2/.git/objects/7c/e24e7a43ca9380e5bf19148c56d8cccaad2b17
+shell_01/git_second_day_2/.git/objects/e6/
+shell_01/git_second_day_2/.git/objects/e6/851b5e2aeb861b3994c72f35ffc07ddbe70a03
+shell_01/git_second_day_2/.git/objects/25/
+shell_01/git_second_day_2/.git/objects/25/040da4d17dbca9e3ed4e9b7fb0142c3b432610
+shell_01/git_second_day_2/.git/objects/04/
+shell_01/git_second_day_2/.git/objects/04/cdfc7ca78154fc9bd256db18f3f5d30a7d712c
+shell_01/git_second_day_2/.git/objects/3c/
+shell_01/git_second_day_2/.git/objects/3c/4f4b3798a50858364490e239c6ddd9afa918dc
+shell_01/git_second_day_2/.git/objects/e1/
+shell_01/git_second_day_2/.git/objects/e1/af8150a23c72a0b6c113221d5e0d218237fce3
+shell_01/git_second_day_2/.git/index
+shell_01/git_second_day_2/.git/description
+shell_01/git_second_day_2/.git/hooks/
+shell_01/git_second_day_2/.git/hooks/post-update.sample
+shell_01/git_second_day_2/.git/hooks/applypatch-msg.sample
+shell_01/git_second_day_2/.git/hooks/pre-applypatch.sample
+shell_01/git_second_day_2/.git/hooks/pre-rebase.sample
+shell_01/git_second_day_2/.git/hooks/pre-push.sample
+shell_01/git_second_day_2/.git/hooks/push-to-checkout.sample
+shell_01/git_second_day_2/.git/hooks/pre-commit.sample
+shell_01/git_second_day_2/.git/hooks/fsmonitor-watchman.sample
+shell_01/git_second_day_2/.git/hooks/pre-merge-commit.sample
+shell_01/git_second_day_2/.git/hooks/commit-msg.sample
+shell_01/git_second_day_2/.git/hooks/update.sample
+shell_01/git_second_day_2/.git/hooks/pre-receive.sample
+shell_01/git_second_day_2/.git/hooks/prepare-commit-msg.sample
+shell_01/git_second_day_2/.git/logs/
+shell_01/git_second_day_2/.git/logs/HEAD
+shell_01/git_second_day_2/.git/logs/refs/
+shell_01/git_second_day_2/.git/logs/refs/remotes/
+shell_01/git_second_day_2/.git/logs/refs/remotes/origin/
+shell_01/git_second_day_2/.git/logs/refs/remotes/origin/master
+shell_01/git_second_day_2/.git/logs/refs/heads/
+shell_01/git_second_day_2/.git/logs/refs/heads/master
+shell_01/git_second_day_2/.git/refs/
+shell_01/git_second_day_2/.git/refs/tags/
+shell_01/git_second_day_2/.git/refs/remotes/
+shell_01/git_second_day_2/.git/refs/remotes/origin/
+shell_01/git_second_day_2/.git/refs/remotes/origin/master
+shell_01/git_second_day_2/.git/refs/heads/
+shell_01/git_second_day_2/.git/refs/heads/master
+shell_01/git_second_day_2/ex04/
+shell_01/git_second_day_2/ex04/MAC.sh
+shell_01/git_second_day_2/ex02/
+shell_01/git_second_day_2/ex02/find_sh.sh
+shell_01/git_second_day_2/ex08/
+shell_01/git_second_day_2/ex07/
+shell_01/git_second_day_2/ex07/r_dwssap.sh
+shell_01/git_second_day_2/ex05/
+shell_01/git_second_day_2/ex05/"\\?$*'MaRViN'*$?\\"
+shell_01/git_second_day_2/ex03/
+shell_01/git_second_day_2/ex03/count_files.sh
+shell_01/git_second_day_2/ex01/
+shell_01/git_second_day_2/ex01/print_groups.sh
+shell_01/git_second_day_2/ex06/
+shell_01/git_second_day_2/ex06/skip.sh
+e3r11p9% tar -cvf c_07.tar c_07/*       
+c_07/ex00/
+c_07/ex00/test_ft_strdup
+c_07/ex00/test_ft_strdup.c
+c_07/ex00/ft_strdup.c
+c_07/ex01/
+c_07/ex01/ft_range.c
+c_07/ex01/test_ft_range
+c_07/ex01/test_ft_range.c
+c_07/ex02/
+c_07/ex02/ft_ultimate_range.c
+c_07/ex02/ft_ultimate_range_0.c
+c_07/ex02/test_ft_ultimate_range.c
+c_07/ex02/test_ft_ultimate_range
+c_07/ex03/
+c_07/ex03/test_ft_strjoin
+c_07/ex03/ft_strjoin.c
+c_07/ex03/test_ft_strjoin.c
+c_07/ex04/
+c_07/ex04/test_ft_convert_base
+c_07/ex04/ft_convert_base.c
+c_07/ex04/ft_convert_base2.c
+c_07/ex04/test_ft_convert_base.c
+c_07/ex05/
+c_07/ex05/test_ft_split
+c_07/ex05/test_ft_split.c
+c_07/ex05/ft_split.c
+c_07/git_c_07/
+c_07/git_c_07/.git/
+c_07/git_c_07/.git/COMMIT_EDITMSG
+c_07/git_c_07/.git/HEAD
+c_07/git_c_07/.git/branches/
+c_07/git_c_07/.git/info/
+c_07/git_c_07/.git/info/exclude
+c_07/git_c_07/.git/config
+c_07/git_c_07/.git/objects/
+c_07/git_c_07/.git/objects/ce/
+c_07/git_c_07/.git/objects/ce/b117967d544c6ac3a6c1ff995ae9ce0ff5a575
+c_07/git_c_07/.git/objects/f7/
+c_07/git_c_07/.git/objects/f7/789c30a2c9d9a640918b3564038fd8061f6d26
+c_07/git_c_07/.git/objects/8d/
+c_07/git_c_07/.git/objects/8d/9b2ad90ae1454d06f1db47bb6707772adb8a09
+c_07/git_c_07/.git/objects/19/
+c_07/git_c_07/.git/objects/19/bfd6876ae4bd51b472550c5d8f305fb950a443
+c_07/git_c_07/.git/objects/cb/
+c_07/git_c_07/.git/objects/cb/32ded50a029d6e67e9aa8473fcda6b6a8c039e
+c_07/git_c_07/.git/objects/a1/
+c_07/git_c_07/.git/objects/a1/6778fb515a50ec3cc9a26f710d66e65e26b94e
+c_07/git_c_07/.git/objects/pack/
+c_07/git_c_07/.git/objects/0f/
+c_07/git_c_07/.git/objects/0f/9c702219f5aa7396488f45364a70eeba4f020a
+c_07/git_c_07/.git/objects/39/
+c_07/git_c_07/.git/objects/39/25f5297a28756333e4190a77a7a393a215ba12
+c_07/git_c_07/.git/objects/85/
+c_07/git_c_07/.git/objects/85/a477649f32533f7d5eefaf640de5d8b5cf9e0e
+c_07/git_c_07/.git/objects/67/
+c_07/git_c_07/.git/objects/67/a6bf2b8b9f607a052b01d68f3ec72c8ce6ae84
+c_07/git_c_07/.git/objects/info/
+c_07/git_c_07/.git/objects/77/
+c_07/git_c_07/.git/objects/77/43ea3ddce216ff30d182707aab3a4ef67fb3ba
+c_07/git_c_07/.git/objects/c2/
+c_07/git_c_07/.git/objects/c2/1322283ffd283ccea619475370abc818d0bddb
+c_07/git_c_07/.git/objects/b4/
+c_07/git_c_07/.git/objects/b4/9a9e7757fb469e2ad28c24c330a6488c5b3cde
+c_07/git_c_07/.git/objects/83/
+c_07/git_c_07/.git/objects/83/9ef8f6f09ba3a2e1ba44dc351d5bdd1bb7973a
+c_07/git_c_07/.git/objects/a3/
+c_07/git_c_07/.git/objects/a3/425f8ca537547f74f1dd04982c63a0c899b96c
+c_07/git_c_07/.git/objects/74/
+c_07/git_c_07/.git/objects/74/086766b5206f5b2be4be25ea072b5ed4e61d77
+c_07/git_c_07/.git/objects/ed/
+c_07/git_c_07/.git/objects/ed/1a167b328af8a81438f989ebc0ddd346e6d287
+c_07/git_c_07/.git/objects/9a/
+c_07/git_c_07/.git/objects/9a/205826687c2bb1880509072427b17ebf37f198
+c_07/git_c_07/.git/objects/f0/
+c_07/git_c_07/.git/objects/f0/769da2091ddd7c822214d4e9732160ea258178
+c_07/git_c_07/.git/objects/be/
+c_07/git_c_07/.git/objects/be/6c3498f77e23e6df7d60e42033213a74533357
+c_07/git_c_07/.git/objects/18/
+c_07/git_c_07/.git/objects/18/b72a9bdc22103d9a1ac433a5b82fbb6713a104
+c_07/git_c_07/.git/objects/69/
+c_07/git_c_07/.git/objects/69/8f70bf2d5dc362943035887d0e6a1c7c189886
+c_07/git_c_07/.git/objects/90/
+c_07/git_c_07/.git/objects/90/aa2e724ca04e9ef9134aefd8349bf18cbb5188
+c_07/git_c_07/.git/objects/d7/
+c_07/git_c_07/.git/objects/d7/7644ce4e05a3169385415c8b5a4ea4e6d11198
+c_07/git_c_07/.git/index
+c_07/git_c_07/.git/description
+c_07/git_c_07/.git/hooks/
+c_07/git_c_07/.git/hooks/post-update.sample
+c_07/git_c_07/.git/hooks/applypatch-msg.sample
+c_07/git_c_07/.git/hooks/pre-applypatch.sample
+c_07/git_c_07/.git/hooks/pre-rebase.sample
+c_07/git_c_07/.git/hooks/pre-push.sample
+c_07/git_c_07/.git/hooks/push-to-checkout.sample
+c_07/git_c_07/.git/hooks/pre-commit.sample
+c_07/git_c_07/.git/hooks/fsmonitor-watchman.sample
+c_07/git_c_07/.git/hooks/pre-merge-commit.sample
+c_07/git_c_07/.git/hooks/commit-msg.sample
+c_07/git_c_07/.git/hooks/update.sample
+c_07/git_c_07/.git/hooks/pre-receive.sample
+c_07/git_c_07/.git/hooks/prepare-commit-msg.sample
+c_07/git_c_07/.git/logs/
+c_07/git_c_07/.git/logs/HEAD
+c_07/git_c_07/.git/logs/refs/
+c_07/git_c_07/.git/logs/refs/remotes/
+c_07/git_c_07/.git/logs/refs/remotes/origin/
+c_07/git_c_07/.git/logs/refs/remotes/origin/master
+c_07/git_c_07/.git/logs/refs/heads/
+c_07/git_c_07/.git/logs/refs/heads/master
+c_07/git_c_07/.git/refs/
+c_07/git_c_07/.git/refs/tags/
+c_07/git_c_07/.git/refs/remotes/
+c_07/git_c_07/.git/refs/remotes/origin/
+c_07/git_c_07/.git/refs/remotes/origin/master
+c_07/git_c_07/.git/refs/heads/
+c_07/git_c_07/.git/refs/heads/master
+c_07/git_c_07/ex04/
+c_07/git_c_07/ex04/ft_convert_base.c
+c_07/git_c_07/ex02/
+c_07/git_c_07/ex02/ft_ultimate_range.c
+c_07/git_c_07/ex05/
+c_07/git_c_07/ex05/ft_split.c
+c_07/git_c_07/ex00/
+c_07/git_c_07/ex00/ft_strdup.c
+c_07/git_c_07/ex03/
+c_07/git_c_07/ex03/ft_strjoin.c
+c_07/git_c_07/ex01/
+c_07/git_c_07/ex01/ft_range.c
 
 
