@@ -16478,5 +16478,229 @@ c_00	  c_02	    c_04      c_06	Documents	Pictures     rush_02_0.tar  rush_02_2.t
 c_00.tar  c_02.tar  c_04.tar  c_06.tar	Downloads	Public	     rush_02_1	    rush_02_H	   sgoinfre	 shell_01.tar
 c_01	  c_03	    c_05      c_07	fev2023_23.tar	rush_00      rush_02_1.tar  rush_02_H.tar  shell_00	 Templates
 c_01.tar  c_03.tar  c_05.tar  Desktop	Music		rush_00.tar  rush_02_2	    samed	   shell_00.tar  Videos
+----------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cd ludovic2 
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05
+e3r11p9% norminette
+ex01/ft_range.c: OK!
+ex05/ft_split.c: OK!
+ex02/ft_ultimate_range.c: OK!
+ex00/ft_strdup.c: OK!
+ex03/ft_strjoin.c: OK!
+ex04/ft_convert_base.c: OK!
+e3r11p9% for f in */*.c;do cc -Wall -Werror -Wextra $f; done                                                                   
+/usr/bin/ld: /usr/bin/../lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+/usr/bin/ld: /usr/bin/../lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+/usr/bin/ld: /usr/bin/../lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+/usr/bin/ld: /usr/bin/../lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+/usr/bin/ld: /usr/bin/../lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+/usr/bin/ld: /tmp/ft_convert_base-ba7ba5.o: in function `ft_convert_base':
+ft_convert_base.c:(.text+0x404): undefined reference to `ft_atoi_base'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+/usr/bin/ld: /usr/bin/../lib/gcc/x86_64-linux-gnu/12/../../../x86_64-linux-gnu/crt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+e3r11p9% for f in */*.c;do gcc -Wall -Werror -Wextra $f; done
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/10/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/10/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/10/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/10/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/10/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+/usr/bin/ld: /tmp/ccCspVby.o: in function `ft_convert_base':
+ft_convert_base.c:(.text+0x345): undefined reference to `ft_atoi_base'
+collect2: error: ld returned 1 exit status
+/usr/bin/ld: /usr/lib/gcc/x86_64-linux-gnu/10/../../../x86_64-linux-gnu/Scrt1.o: in function `_start':
+(.text+0x1b): undefined reference to `main'
+collect2: error: ld returned 1 exit status
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05
+e3r11p9% bat */*
+e3r11p9% ls
+ex00  ex01  ex02  ex03	ex04  ex05
+e3r11p9% batcat */*
+------------------------------------------------------------------------------------------------------------------------------
+e3r11p9% cat test_ft_convert_base.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_ft_convert_base.c                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 14:53:06 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/03/02 16:04:00 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdio.h>
+
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to);
+
+int	main(void)
+{
+	printf("42 en base 10: %s", ft_convert_base("42", "0123456789", "0123456789"));
+	printf("\n2a == 42 en base 16: %s", ft_convert_base("2a", "0123456789abcdef", "0123456789"));
+	printf("\n-2a == -42 en base 16: %s", ft_convert_base("-2a", "0123456789abcdef", "0123456789"));
+	printf("\n (42 en base vide): %s", ft_convert_base("42", "0123456789", ""));
+	printf("\n (42 en base de taille 1): %s", ft_convert_base("42", "0", "0123456789"));
+	printf("\n (42 en base 16 avec + et -): %s", ft_convert_base("42", "0123456789", "+-0123456789abcdef"));
+	printf("\n (42 en base 16 avec une tabulation): %s", ft_convert_base("42", "0123456789", "\t0123456789abcdef"));
+	printf("\n101010 == 42 en base 2: %s", ft_convert_base("42", "0123456789", "01"));
+	printf("\nvn == 42 en base 8 (\"poneyvif\"): %s", ft_convert_base("vn", "poneyvif", "0123456789"));
+	printf("\n-2147483648 == −20000000000 en base 8 (\"01234567\"): %s", ft_convert_base("-2147483648", "0123456789", "01234567"));
+	printf("\n2147483647 == 17777777777 en base 8 (\"01234567\"): %s", ft_convert_base("2147483647", "0123456789", "01234567"));
+	printf("\n-2147483648 == −10000000000000000000000000000000 en base 2 (\"01\"): %s", ft_convert_base("-2147483648", "0123456789", "01"));
+	printf("\n2147483647 == 1111111111111111111111111111111 en base 2 (\"01\"): %s", ft_convert_base("2147483647", "0123456789", "01"));
+	return (0);
+}
+e3r11p9% cat ft_convert_base.c
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hauerbac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/01 14:33:49 by hauerbac          #+#    #+#             */
+/*   Updated: 2023/03/02 16:05:07 by hauerbac         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+#include <stddef.h>
+
+int	ft_atoi_base(char *str, char *base);
+
+int	ft_error_or_strlen(const char *str)
+{
+	int	base_len;
+	int	i;
+
+	base_len = -1;
+	i = 0;
+	while (str && str[i] != '\0')
+	{
+		if (str[i] == ' ' || str[i] == '\f'
+			|| str[i] == '\n' || str[i] == '\r'
+			|| str[i] == '\t' || str[i] == '\v')
+			return (0);
+		i++;
+	}
+	base_len = i;
+	return (base_len);
+}
+
+int	ft_error_or_correct_base(const char *str, int base_len)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < base_len)
+	{
+		if (str[i] == '+' || str[i] == '-')
+			return (0);
+		else if (i > 0 && str[i])
+		{
+			j = 0;
+			while (j < i && str[j])
+			{
+				if (str[j] == str[i])
+					return (0);
+				j++;
+			}
+		}
+		i++;
+	}
+	if (i == base_len)
+		return (base_len);
+	return (0);
+}
+
+int	ft_error_or_base_len(const char *str)
+{
+	int	base_len;
+
+	base_len = ft_error_or_strlen(str);
+	if (base_len < 2)
+		return (0);
+	return (ft_error_or_correct_base(str, base_len));
+}
+
+char	*ft_itoa_base(char *result, int nb, char *base, int base_len)
+{
+	long	nb_into_long;
+	int		i;
+
+	nb_into_long = nb;
+	i = 0;
+	while (i < 33 && result[i] != '\0')
+		i++;
+	if (nb_into_long < 0)
+	{
+		result[i++] = '-';
+		nb_into_long *= -1;
+	}
+	if (i < 33 && nb_into_long < base_len)
+	{
+		result[i++] = base[nb_into_long];
+		result[i] = '\0';
+	}
+	else
+	{
+		ft_itoa_base(result, nb_into_long / base_len, base, base_len);
+		ft_itoa_base(result, nb_into_long % base_len, base, base_len);
+	}
+	return (result);
+}
+
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+{
+	int		base_from_len;
+	int		base_to_len;
+	int		nb_from_base_from;
+	char	*result;
+	int		i;
+
+	base_from_len = ft_error_or_base_len(base_from);
+	base_to_len = ft_error_or_base_len(base_to);
+	if (base_from_len && base_to_len && nbr)
+	{
+		nb_from_base_from = ft_atoi_base(nbr, base_from);
+		result = (char *) malloc((33 + 1) * sizeof(char));
+		if (result)
+		{
+			i = 0;
+			while (i < 33 + 1)
+				result[i++] = '\0';
+			return (ft_itoa_base(result, nb_from_base_from,
+					base_to, base_to_len));
+		}
+		return (NULL);
+	}
+	return (NULL);
+}
+
 
  
